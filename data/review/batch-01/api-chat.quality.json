@@ -1,0 +1,382 @@
+[
+  {
+    "category": "security",
+    "confidence": "high",
+    "detail": "SharedHttpClient 是所有 LLM 提供商（OpenAI/Anthropic/Gemini/DeepSeek/自定义代理等）共用的唯一 OkHttpClient，其 Builder 被 UnsafeModelSsl.apply() 包装（已核实 UnsafeModelSsl.kt：安装空实现的 X509TrustManager 并把 hostnameVerifier 恒返回 true）。后果：发往所有模型端点的 HTTPS 请求都不校验证书链与主机名，同一网络路径上的攻击者（恶意 Wi-Fi/被攻陷的路由器/中间人）可解密流量，直接窃取请求头中的 API Key 与完整对话内容（含用户可能粘贴的敏感信息）。该客户端也用于 getModelsList 等调用，影响面是全部云端模型流量。",
+    "evidence": "val instance: OkHttpClient by lazy {\n        UnsafeModelSsl.apply(\n            OkHttpClient.Builder()\n                // Increase the connection timeout to handle slow networks better.\n                .connectTimeout(60, TimeUnit.SECONDS)",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIServiceFactory.kt",
+    "line": 199,
+    "severity": "high",
+    "title": "共享 OkHttpClient 全局关闭 TLS 证书校验，全部云端模型流量可被中间人窃听"
+  },
+  {
+    "category": "correctness",
+    "confidence": "high",
+    "detail": "自动补全逻辑用 `URL(path)` 判断是否需要追加路径，但拼接时直接用原始字符串（含 query）。当用户填写的端点带查询参数（如 https://api.example.com?key=xxx 或代理要求 ?token=）时，path 为空会走补全分支，返回 \"https://api.example.com?key=xxx/v1/chat/completions\"——路径被拼到了 query 后面，形成非法 URL，后续请求必然失败。同样的拼接模式也存在于 completeResponsesEndpoint（/v1/responses）与 Anthropic 分支（/v1/messages）。",
+    "evidence": "if (path.isNullOrEmpty()) {\n                return \"$endpointWithoutSlash/v1/chat/completions\"\n            }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleter.kt",
+    "line": 36,
+    "severity": "warning",
+    "title": "带 query 参数的端点 URL 补全后变成非法 URL"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "JSONObject.getString(key) 在值不是字符串（如数字、布尔、嵌套对象）时会抛 JSONException，被外层 catch 捕获后直接返回 emptyMap()——即一个不合法的值会导致用户配置的全部自定义请求头被静默丢弃，而不是跳过该条或报错。触发条件：自定义请求头 JSON 中出现非字符串值，如 {\"X-Retry\": 3}。结果是用户以为生效的鉴权/路由头实际没有发出，请求失败时难以定位。",
+    "evidence": "     */\n    private fun parseCustomHeaders(customHeadersJson: String): Map<String, String> {\n        return try {\n            val headers = mutableMapOf<String, String>()\n            if (customHeadersJson.isNotEmpty() && customHeadersJson != \"{}\") {\n                val jsonObject = JSONObject(customHeadersJson)",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIServiceFactory.kt",
+    "line": 224,
+    "severity": "warning",
+    "title": "自定义请求头解析：单个非字符串值导致全部请求头被静默丢弃"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "loadBitmapFromUri 对 file/content URI 直接 BitmapFactory.decodeStream 全尺寸解码，没有任何 inSampleSize 缩放或尺寸上限。avatarUri 来自角色配置/通知参数，若指向一张超大图片（如用户相册里的高像素照片），解码会在调用线程分配巨大内存，极易触发 OOM 崩溃。建议先用 inJustDecodeBounds 探尺寸再按通知大图标需求（如 192px）下采样。",
+    "evidence": "inputStream?.use { stream ->\n                    BitmapFactory.decodeStream(stream)\n                }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt",
+    "line": 276,
+    "severity": "warning",
+    "title": "通知头像无约束全尺寸解码，超大图片可致 OOM"
+  },
+  {
+    "category": "security",
+    "confidence": "medium",
+    "detail": "notifyReplyCompleted 把 AI 回复正文写入系统通知：setContentText 取前 100 字，BigTextStyle.bigText 放入完整正文。Operit 是设备 Agent，回复内容可能包含用户文件内容、粘贴的凭证等敏感信息；通知会出现在通知栏/通知历史中。当前未设置 setVisibility(VISIBILITY_SECRET)，建议至少对敏感场景做可见性限制或提供脱敏开关。注：该通知仅在应用退到后台时发送（前台时直接 return）。",
+    "evidence": ".setContentText(\n                            cleanedReplyContent\n                                .take(100)\n                                .ifEmpty {\n                                    appContext.getString(R.string.notification_ai_reply_content)\n                                }\n                        )",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt",
+    "line": 344,
+    "severity": "suggestion",
+    "title": "AI 回复全文进入系统通知，敏感内容缺乏可见性保护"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 3027,
+    "title": "前台服务引用计数泄漏：后台发送消息时计数只增不减",
+    "detail": "startAiService 在函数入口无条件执行 FOREGROUND_REF_COUNT.incrementAndGet()，但当应用在后台且服务未运行时（第3036-3041行）会提前 return，跳过配对的 stopAiService() 递减。每次后台 sendMessage 都会让计数器永久 +1，stopAiService 的 CAS 递减永远到不了 0，导致后续无法把服务置为闲置状态、ActivityLifecycleManager.checkAndApplyKeepScreenOn(false) 永远不执行，屏幕常亮和\"运行中\"通知被长期占用。",
+    "evidence": "val refCount = FOREGROUND_REF_COUNT.incrementAndGet()\nif (!appInForeground &&\n    !AIForegroundService.isRunning.get() &&\n    !alwaysListeningEnabled &&\n    !externalHttpEnabled\n) {\n    AppLogger.d(TAG, \"应用不在前台，跳过启动 AIForegroundService\")\n    return",
+    "confidence": "high"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 1266,
+    "title": "流式收集中段的致命错误被静默吞掉，UI 无感知",
+    "detail": "responseStream.collect 抛出的非 Socket closed 异常（网络中断、解析错误等）发生时，providerStreamCollectionStarted 已为 true（第1152行设置、第1225行才清零），导致 catch 块跳过第1266行 Error 状态设置、跳过第1277行 throw e；finally 块又因 hadFatalError=true 跳过 processStreamCompletion。结果：流静默结束，_inputProcessingState 停留在 Receiving/Executing，错误既不抛给调用方也不显示给用户，调用方看到的是\"正常结束但内容缺失\"。",
+    "evidence": "                } else {\n                    hadFatalError = true\n                    // Handle any exceptions\n                    AppLogger.e(TAG, \"发送消息时发生错误: ${e.message}\", e)\n                    if (!providerStreamCollectionStarted) {\n                        withContext(Dispatchers.Main) {\n                            _inputProcessingState.value =\n                                    InputProcessingState.Error(message = context.getString(R.string.enhanced_error_with_message, e.message ?: \"\"))\n                        }",
+    "confidence": "high"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 504,
+    "title": "token 累计计数器是实例级字段，多路并发 sendMessage 互相覆盖",
+    "detail": "accumulatedInputTokenCount / accumulatedOutputTokenCount / accumulatedCachedInputTokenCount 及 currentRequest* 是 EnhancedAIService 实例字段（非 MessageExecutionContext 内），而 sendMessage 入口（第956-961行）无条件清零。单例 getInstance() 被所有 FunctionType / 子任务共享时，两路并发 sendMessage 会互相重置和累加对方的计数，导致 getCurrentInputTokenCount()、captureCurrentTurnTokenSnapshot() 和日志中的 token 数据错误。MessageExecutionContext 已为并发而设计，但 token 计数器没跟进。",
+    "evidence": "private var accumulatedInputTokenCount = 0L\nprivate var accumulatedOutputTokenCount = 0L\nprivate var accumulatedCachedInputTokenCount = 0L\n// sendMessage 入口:\naccumulatedInputTokenCount = 0L\naccumulatedOutputTokenCount = 0L\naccumulatedCachedInputTokenCount = 0L",
+    "confidence": "high"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 2112,
+    "title": "工具执行 Job 泄漏：外层流被取消时后台工具继续运行",
+    "detail": "handleToolInvocation 把工具执行体 launch 到共享的 toolProcessingScope（独立作用域，非当前协程的子协程），然后只做 processToolJob.join()。当外层 Stream 收集器被取消（用户关闭页面、超时、finally 提前返回）时，join() 抛出 CancellationException，但 processToolJob 本体不会被取消——finally 只从 toolExecutionJobs 移除记录。结果是工具（可能含文件/网络等副作用操作）在用户取消后仍在后台继续执行。应改为 join 失败时显式 job.cancel()。",
+    "evidence": "val processToolJob = toolProcessingScope.launch {\n    val modelSnapshot = getModelExecutionSnapshot(...)\n    ...\n}\nval invocationId = java.util.UUID.randomUUID().toString()\ntoolExecutionJobs[invocationId] = processToolJob\ntry {\n    processToolJob.join()\n} finally {\n    toolExecutionJobs.remove(invocationId)\n}",
+    "confidence": "high"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 2313,
+    "title": "token 阈值默认 0.0：传入 maxTokens>0 但未设阈值时首次工具调用后必触发总结",
+    "detail": "SendMessageOptions.tokenUsageThreshold 默认 0.0（第328行），processToolResults 中只要 maxTokens > 0 就计算 usageRatio >= tokenUsageThreshold（第2310-2313行）。调用方若只传 maxTokens 而保留默认阈值，任何 usageRatio（恒 >= 0）都会立即触发 onTokenLimitExceeded 并中断对话进入总结流程，行为与\"阈值\"语义相悖。阈值应默认 1.0 或在 threshold <= 0 时跳过检查。",
+    "evidence": "        // After a tool call, check if token usage exceeds the threshold\n        if (maxTokens > 0) {\n            val usageRatio = currentTokens.toDouble() / maxTokens.toDouble()\n\n            if (usageRatio >= tokenUsageThreshold) {\n                AppLogger.w(TAG, \"Token usage ($usageRatio) exceeds threshold ($tokenUsageThreshold) after tool call. Triggering summary.\")\n                onTokenLimitExceeded?.invoke()\n                context.isConversationActive.set(false)",
+    "confidence": "medium"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 2132,
+    "title": "handleToolInvocation 死胡同：零工具结果且无覆盖消息时状态卡死",
+    "detail": "processToolJob 内只有两个分支：toolBatch.results 非空 → processToolResults；toolResultOverrideMessage 非空 → 用覆盖消息继续。若 executeInvocations 返回空结果（invocations 被全部过滤/路由未命中）且 toolResultOverrideMessage 为 null（正常工具调用路径即如此），两个分支都不进，job 静默结束。此时 _inputProcessingState 停留在 ExecutingTool，isConversationActive 仍为 true，流结束且无任何 finalize/错误处理，UI 永久显示\"正在执行工具\"。",
+    "evidence": "if (toolBatch.results.isNotEmpty()) {\n    AppLogger.d(TAG, \"所有工具结果收集完毕，准备最终处理。\")\n    processToolResults(...)\n} else if (!toolResultOverrideMessage.isNullOrEmpty()) {\n    AppLogger.d(TAG, \"0工具路由命中，使用覆盖消息继续请求AI。\")\n    processToolResults(results = emptyList(), ...)\n}\n// 无 else 分支：空结果 + 空覆盖消息时直接结束",
+    "confidence": "medium"
+  },
+  {
+    "severity": "warning",
+    "category": "correctness",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 1805,
+    "title": "纯思考/截断工具告警回传无最大轮次保护，可能无限循环烧 token",
+    "detail": "processStreamCompletion 检测到纯思考输出或截断工具调用后，注入警告 status 并经 handleToolInvocation → processToolResults → processStreamCompletion 递归重新请求 AI，链路上没有任何轮次计数器/上限。若模型持续输出纯 thinking 或无法闭合的工具 XML，会无限循环调用 API，每轮还把警告追加进历史导致上下文膨胀。唯一出口是可选的 maxTokens 阈值（默认 0=关闭），默认配置下无保护。",
+    "evidence": "AppLogger.w(TAG, \"检测到纯思考输出（removeThinking后正文为空），已回传告警给AI继续生成\")\nhandleToolInvocation(\n    toolInvocations = emptyList(),\n    ...\n    toolResultOverrideMessage = pureThinkingWarning,\n    ...\n)\nreturn",
+    "confidence": "medium"
+  },
+  {
+    "severity": "suggestion",
+    "category": "performance",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 3030,
+    "title": "startAiService 用 runBlocking 阻塞调用线程读 DataStore",
+    "detail": "startAiService 在每次 sendMessage 的流式体内被调用，内部两次 runBlocking { ...Flow.first() } 同步等待 DataStore。若调用线程是主线程（Stream 收集器上下文不确定）会阻塞 UI 甚至 ANR；即使在 IO 线程也是无谓的线程占用。建议改为 suspend 函数或在初始化时缓存这两个开关值。",
+    "evidence": "val alwaysListeningEnabled = runCatching {\n    runBlocking { WakeWordPreferences(context).alwaysListeningEnabledFlow.first() }\n}.getOrDefault(false)\nval externalHttpEnabled = runCatching {\n    runBlocking { ExternalHttpApiPreferences.getInstance(context).enabledFlow.first() }\n}.getOrDefault(false)",
+    "confidence": "medium"
+  },
+  {
+    "severity": "suggestion",
+    "category": "performance",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 963,
+    "title": "eventChannel 使用 replay = Int.MAX_VALUE 无界缓冲",
+    "detail": "每次 sendMessage 创建 MutableSharedStream<TextStreamEvent>(replay = Int.MAX_VALUE)，所有 SAVEPOINT/ROLLBACK 事件在整个流生命周期内缓存在内存中永不释放。若调用方只消费文本流而不消费 eventChannel（或流被遗弃），事件无限堆积。建议用有限 replay（如 64）或在流结束时清理缓冲。",
+    "evidence": "val eventChannel = MutableSharedStream<TextStreamEvent>(replay = Int.MAX_VALUE)\nval wrappedStream = stream {\n    ...\n    execContext.eventChannel.emit(event)\n...\nreturn wrappedStream.withEventChannel(eventChannel)",
+    "confidence": "medium"
+  },
+  {
+    "severity": "suggestion",
+    "category": "maintainability",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "line": 1765,
+    "title": "重复的 content.isEmpty() 检查，第二个分支不可达",
+    "detail": "processStreamCompletion 中第1749行 if (content.isEmpty()) 已调用 finalizeAssistantResponse 并 return，第1764-1767行又写了一次相同的 if (content.isEmpty()) { return }，永远执行不到。属于残留的死代码，应删除以免误导后续维护者以为有两种空内容处理路径。",
+    "evidence": "\n            // If content is empty, finish immediately\n            if (content.isEmpty()) {\n                return\n            }\n",
+    "confidence": "high"
+  },
+  {
+    "category": "security",
+    "confidence": "high",
+    "detail": "checkToolPermission 用模型生成的原始调用文本 invocation.rawText 是否包含子串 \"deny_tool\" 来决定是否跳过权限弹窗：一旦包含就直接放行（granted=true，reason=\"Permission check bypassed by deny_tool tag.\"）。rawText 唯一来源是 extractToolInvocations 对模型输出 XML 的原文截取（toolMatch.value），没有任何系统组件会注入该标记，因此模型（或提示注入）只需在任意参数值里塞入 deny_tool（如文件名 deny_tool.txt）即可让高危工具调用绕过用户确认直接执行。更矛盾的是注释写的是“检查是否强制拒绝权限（deny_tool标记）”，语义与实现（放行）完全相反，疑似逻辑写反。",
+    "evidence": "// 检查是否强制拒绝权限（deny_tool标记）\n        val hasPromptForPermission = !invocation.rawText.contains(\"deny_tool\")\n\n        if (hasPromptForPermission) {\n            // 检查权限，如果需要则弹出权限请求界面\n            val toolPermissionSystem = toolHandler.getToolPermissionSystem()",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ToolExecutionManager.kt",
+    "line": 458,
+    "severity": "high",
+    "title": "模型可控的 deny_tool 子串可绕过工具权限确认直接放行"
+  },
+  {
+    "category": "security",
+    "confidence": "medium",
+    "detail": "injectPackageCallContext 向 JS 包工具调用注入 __operit_package_caller_name / __operit_package_chat_id / __operit_package_caller_card_id 等调用者身份参数，但 addPackageContextParamIfMissing 只在“参数名不存在”时才注入——如果模型在调用里预先携带了同名参数，伪造的值会被原样保留并透传给包工具。这些 __operit_ 前缀参数是保留命名空间的身份上下文，模型输入未做清洗/覆盖，包工具若信任这些参数做鉴权或归因，就会发生调用者身份伪造。",
+    "evidence": "    ) {\n        if (value.isNullOrBlank()) {\n            return\n        }\n        if (params.any { it.name == name }) {\n            return\n        }\n        params.add(ToolParameter(name, value))",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ToolExecutionManager.kt",
+    "line": 113,
+    "severity": "warning",
+    "title": "保留命名空间 __operit_* 参数未清洗，模型可伪造包调用者身份"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "getServiceForFunction / getServiceForConfig / getDefaultService 直接把 ManagedService.service 交给调用方，全程不经过 acquireServiceForFunction 的 lease 计数（activeLeases 不增加）。此时若另一协程调用 refreshServiceForFunction（retire 后待 lease 归零才释放）或 refreshAllServices（直接 closeManagedServiceLocked(cancelStreaming=true)，完全无视 activeLeases），正在 sendMessage 的调用方手里的服务会被 cancel + release。明确触发路径：总结/标题生成等走 getServiceForFunction 的长耗时流式请求中途，用户在设置里切换模型触发 refreshAllServices → 流被取消且底层服务被释放。",
+    "evidence": "suspend fun getServiceForFunction(functionType: FunctionType): AIService {\n        ensureInitialized()\n        return serviceMutex.withLock {\n            getOrCreateServiceForFunctionLocked(functionType).service\n        }\n    }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/MultiServiceManager.kt",
+    "line": 81,
+    "severity": "warning",
+    "title": "非 lease 方式获取的服务可能在请求中途被 refresh 释放"
+  },
+  {
+    "category": "correctness",
+    "confidence": "high",
+    "detail": "analyzeImageWithIntent / analyzeAudioWithIntent / analyzeVideoWithIntent 先把图片/媒体加入 ImagePoolManager / MediaPoolManager，成功路径末尾才 removeImage / removeMedia。一旦中间的 service.sendMessage(...).collect { } 抛出异常（网络错误、被取消等），直接跳进 catch 返回错误串，remove 永远不会执行，池内条目永久泄漏。反复失败会撑大池子；若池子有上限，还会耗尽后续正常的图片/音视频识别配额。应使用 try-finally 包裹 remove。",
+    "evidence": "            }\n            \n            // 清理图片缓存\n            com.ai.assistance.operit.util.ImagePoolManager.removeImage(imageId)\n            \n            ChatUtils.removeThinkingContent(result.toString()).trim()\n        } catch (e: Exception) {\n            AppLogger.e(TAG, \"识图分析失败\", e)",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt",
+    "line": 1248,
+    "severity": "warning",
+    "title": "识图/音视频识别异常时媒体池条目泄漏（remove 只在成功路径执行）"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "RequestTracker.finish() 在流已完整收集、准备落库时用 require 校验 providerModel 必须形如 provider:model（separator > 0 且不在末尾）。若某个 provider 的 providerModel 不含冒号（如纯模型名、空串或冒号开头），这里抛出的 IllegalArgumentException 会从 TrackingStream.collect 的 try 块向上传播，把一次已经成功的 LLM 请求变成调用方眼中的异常。token 落库的格式假设不应以抛异常的方式污染主流程，至少应降级为跳过记录。",
+    "evidence": "val separator = providerModel.indexOf(':')\n            require(separator > 0 && separator < providerModel.lastIndex) {\n                \"provider:model is required for token usage events\"\n            }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt",
+    "line": 280,
+    "severity": "warning",
+    "title": "token 落库的 providerModel 格式断言会把成功请求变成异常"
+  },
+  {
+    "category": "performance",
+    "confidence": "high",
+    "detail": "generateSummaryFromPromptTurns 的 updateStageIfNeeded 在流的每个 chunk 回调里都执行 contentBuilder.toString() 全量拷贝，再对全文本逐个跑阶段匹配器。总结内容越长，每 chunk 的代价越大，整体呈 O(n²) 的字符串拷贝；长总结场景下这是可观的 CPU/内存开销。可改为增量匹配（只扫描新增片段，或用流式状态机推进阶段）。",
+    "evidence": "fun updateStageIfNeeded() {\n                if (lastStageIndex + 1 >= stages.size) return\n                val snapshot = contentBuilder.toString()\n                while (lastStageIndex + 1 < stages.size) {",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt",
+    "line": 256,
+    "severity": "suggestion",
+    "title": "总结进度检测每 chunk 全量 toString，O(n²) 开销"
+  },
+  {
+    "category": "performance",
+    "confidence": "medium",
+    "detail": "acquireConcurrency 用 tryAcquire() + delay(50ms) 忙轮询等待信号量，而不是直接调用可取消的 Semaphore.acquire()。50ms 轮询带来额外延迟（许可释放后平均多等 25ms）和无意义的唤醒；且 kotlinx.coroutines 的 acquire() 本身就响应取消，轮询里的 throwIfCancelled 并无必要。awaitRateLimit 的轮询因 tryAcquire 返回 retryAfterMs 尚有理由，此处可简化。",
+    "evidence": "suspend fun acquireConcurrency(semaphore: Semaphore) {\n                    while (true) {\n                        throwIfCancelled()\n                        if (semaphore.tryAcquire()) {\n                            concurrencyAcquired = true\n                            return\n                        }\n                        delay(CANCELLATION_POLL_INTERVAL_MS)",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RateLimitedAIService.kt",
+    "line": 76,
+    "severity": "suggestion",
+    "title": "并发信号量用 50ms 忙轮询而非可取消的 acquire()"
+  },
+  {
+    "category": "maintainability",
+    "confidence": "medium",
+    "detail": "cancelAllStreaming / resetAllTokenCounters 在持有 serviceMutex 的 withLock 期间，逐个调用 service.cancelStreaming() / service.resetTokenCounts()。这些是外部服务的虚方法，可能执行网络 I/O 或阻塞；一旦某个服务卡住，全局所有 getServiceForFunction / acquire 调用都会被 mutex 挡住。若某服务的 cancel 实现反过来回调 MultiServiceManager，还会形成自死锁。应先在锁内快照服务列表，出锁后再逐个取消/重置。",
+    "evidence": "suspend fun cancelAllStreaming() {\n        serviceMutex.withLock {\n            val services = mutableSetOf<AIService>()\n            services.addAll(serviceInstances.values.map { it.service })",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/MultiServiceManager.kt",
+    "line": 176,
+    "severity": "suggestion",
+    "title": "持 serviceMutex 逐个调用外部服务的 cancel/reset，易阻塞与死锁"
+  },
+  {
+    "category": "security",
+    "confidence": "high",
+    "detail": "ModelListFetcher 的共享 client 经 UnsafeModelSsl.apply() 构建，该工具类安装了空实现的 X509TrustManager（checkServerTrusted 为空）并把 hostnameVerifier 设为恒返回 true，即关闭证书链校验与主机名校验。getModelsList 会把用户 API Key 以 Authorization: Bearer 头、x-api-key 头或 ?key= 查询参数发往模型列表 URL，在不可信网络下中间人可直接截获明文 Key。触发条件：用户在任意网络环境点击“获取模型列表”，攻击者在网络路径上即可利用。",
+    "evidence": "    // 使用更长的超时时间\n    private val client =\n            UnsafeModelSsl.apply(\n                    OkHttpClient.Builder()\n                            .connectTimeout(30, TimeUnit.SECONDS)\n                            .readTimeout(30, TimeUnit.SECONDS)\n                            .writeTimeout(30, TimeUnit.SECONDS)\n            ).build()",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt",
+    "line": 49,
+    "severity": "high",
+    "title": "模型列表请求的 OkHttpClient 全局关闭 TLS 证书校验，API Key 可被中间人窃取"
+  },
+  {
+    "category": "security",
+    "confidence": "medium",
+    "detail": "getModelsListUrl 对 GOOGLE/GEMINI_GENERIC 分支：只要 apiEndpoint 不包含 generativelanguage.googleapis.com 或 aiplatform/vertex 关键字，就硬编码返回 https://generativelanguage.googleapis.com/$version/models，完全丢弃用户配置的自定义端点。随后 getModelsList 会把 API Key 以 ?key= 查询参数拼到该官方 URL 上发出。对使用 GEMINI_GENERIC + 自建代理/网关的用户，其 Key 会被发送到 Google 官方服务器而非自己的代理，既是凭证去向失控，也导致代理场景下模型列表功能实际不可用。",
+    "evidence": "                                apiEndpoint\n                            } else {\n                                // 否则构造标准模型列表URL\n                                val version = if (apiEndpoint.contains(\"/v1/\")) \"v1\" else \"v1beta\"\n                                \"https://generativelanguage.googleapis.com/$version/models\"\n                            }\n                        } else if (apiEndpoint.contains(\"aiplatform.googleapis.com\") ||",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt",
+    "line": 86,
+    "severity": "warning",
+    "title": "Gemini 自定义端点被忽略，API Key 被发往官方域名而非用户配置的代理地址"
+  },
+  {
+    "category": "correctness",
+    "confidence": "high",
+    "detail": "extractBaseUrl 在 new URL(fullUrl) 抛异常时 catch 后直接返回未经处理的 fullUrl。getModelsListUrl 会在其后拼接 /v1/models 得到非法 URL，Request.Builder().url(modelsUrl) 随即抛 IllegalArgumentException；该异常被 getModelsList 末尾的 catch (e: Exception) 捕获并按网络故障做指数退避重试 2 次。非法 URL 重试永远不会成功，白白消耗时间并延迟错误返回。应在解析失败时直接返回失败，而不是把坏 URL 继续往下传。",
+    "evidence": "        } catch (e: Exception) {\n            AppLogger.e(TAG, \"URL解析错误: $e\")\n            fullUrl\n        }\n    }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt",
+    "line": 181,
+    "severity": "warning",
+    "title": "extractBaseUrl 解析失败时返回原串，导致下游构造非法 URL 并被无意义重试"
+  },
+  {
+    "category": "security",
+    "confidence": "medium",
+    "detail": "ModelConfigData 的 apiKey: String（第100行）与 apiKeyPool: List<ApiKeyInfo>（第108行，ApiKeyInfo.key 为明文 String）均为 @Serializable 字段；ModelConfigManager.saveConfigToDataStore 直接用 json.encodeToString(config) 写入普通 Preferences DataStore（model_configs），全程无加密。App 私有目录在非 root 设备上受沙箱保护，但 root 设备、备份导出或 DataStore 文件被拷贝时所有 Key 明文可读。触发条件：用户保存任意带 Key 的模型配置即落盘明文。",
+    "evidence": "        // API设置\n        val apiKey: String = \"\",\n        val apiEndpoint: String = \"\",\n        val modelName: String = \"\",\n        val apiProviderType: ApiProviderType = ApiProviderType.DEEPSEEK,\n        val apiProviderTypeId: String = apiProviderType.name,\n\n        // 多API Key支持\n        val useMultipleApiKeys: Boolean = false, // 是否启用多API Key模式\n        val apiKeyPool: List<ApiKeyInfo> = emptyList(), // API Key池\n        val currentKeyIndex: Int = 0, // 当前使用的Key索引\n        val keyRotationMode: String = \"ROUND_ROBIN\", // 轮询模式: ROUND_ROBIN / RANDOM",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/model/ModelConfigData.kt",
+    "line": 100,
+    "severity": "warning",
+    "title": "API Key（含 Key 池）以 @Serializable 明文字段落盘，无任何加密"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "maxTokens: Int、temperature: Float、topP/topK/各类 penalty、summaryTokenThreshold: Float、requestLimitPerMinute/maxConcurrentRequests: Int 等字段在 data class 层面无任何范围校验：负数的 maxTokens、NaN/Infinity 的 temperature、超出 0~1 的 summaryTokenThreshold、负数的限流值都会被原样接受，并随 createRequestBody 拼入发往服务商的 JSON（非法值导致服务端 400），或使总结阈值逻辑恒成立/恒不成立。data class 是配置的唯一真相源，UI 层即使有限制也无法约束反序列化/导入的旧数据。应在数据层加 require 校验或钳制。",
+    "evidence": "        // 模型参数值\n        val maxTokens: Int = 4096,\n        val temperature: Float = 1.0f,\n        val topP: Float = 1.0f,\n        val topK: Int = 0,\n        val presencePenalty: Float = 0.0f,\n        val frequencyPenalty: Float = 0.0f,",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/model/ModelConfigData.kt",
+    "line": 125,
+    "severity": "warning",
+    "title": "数值型配置参数无任何取值校验，非法值会直接进入请求体"
+  },
+  {
+    "category": "maintainability",
+    "confidence": "medium",
+    "detail": "keyRotationMode: String = \"ROUND_ROBIN\" 用裸字符串表达仅有 ROUND_ROBIN / RANDOM 两种合法取值的轮询模式，注释里写了合法值但代码无任何约束。反序列化或外部导入带来拼写错误/未知取值时，消费方（ApiKeyProvider 轮询逻辑）的行为未定义。建议改为枚举类型，利用 @Serializable 天然支持枚举，保证非法值在解析期即失败。",
+    "evidence": "        val apiKeyPool: List<ApiKeyInfo> = emptyList(), // API Key池\n        val currentKeyIndex: Int = 0, // 当前使用的Key索引\n        val keyRotationMode: String = \"ROUND_ROBIN\", // 轮询模式: ROUND_ROBIN / RANDOM",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/model/ModelConfigData.kt",
+    "line": 110,
+    "severity": "suggestion",
+    "title": "keyRotationMode 用自由字符串而非枚举，非法取值行为未定义"
+  },
+  {
+    "category": "security",
+    "confidence": "low",
+    "detail": "extractBaseUrl 内两处成功路径的日志都经过 sanitizeUrlForLog 脱敏，但 catch 分支的 AppLogger.e(TAG, \"URL解析错误: $e\") 直接输出原始异常；MalformedURLException 的 message 会内嵌完整 URL。若端点 URL 中携带凭证类查询参数（部分网关把 key 放在 URL 里），会明文进日志。与其他日志行保持一致地走 sanitizeUrlForLog 即可。",
+    "evidence": "        } catch (e: Exception) {\n            AppLogger.e(TAG, \"URL解析错误: $e\")\n            fullUrl\n        }\n    }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt",
+    "line": 181,
+    "severity": "suggestion",
+    "title": "URL 解析失败的错误日志未做脱敏，与同函数其他日志不一致"
+  },
+  {
+    "category": "correctness",
+    "confidence": "high",
+    "detail": "sendMessage 中对 400..499 状态码抛出带 statusCode 的 HttpStatusException（3319-3325），但统一重试函数 handleRetryableError（1640-1689）只排除取消类异常，对所有其它异常一律重试。401（Key 无效）、403、400（请求非法）、404 等永久性错误也会被重试 5 次，按 1s/2s/4s/8s/16s 确定性退避白白等待约 31 秒，且每次重试都会经 onNonFatalError 向用户推送误导性的“重试中”提示。永久性 4xx 不应进入重试循环。",
+    "evidence": "if (response.code in 400..499) {\n throw HttpStatusException(\n context.getString(R.string.openai_error_api_request_failed_with_status, response.code, errorBody),\n statusCode = response.code\n)\n}\n// handleRetryableError 内：\nif (exception is UserCancellationException || exception is CancellationException) {\n throw exception\n}\ncheckCancellation(context, exception)\n//...无任何 statusCode/4xx 判断，直接进入 newRetryCount / delay 重试",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 3319,
+    "severity": "warning",
+    "title": "4xx 永久性错误被当作可重试错误重试 5 次"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "StreamEmitter.emitContent（1532-1543）每次输出都累加 tokenCacheManager 的 output token 估计值；重试时 onRetryAccepted 只调用 emitRollback（1581-1590），它仅把 receivedContent 截断回 savepoint，不回滚 token 计数。默认 includeUsageInStream=false，流式过程不会收到 usage 来 setOutputTokens 纠正，因此一次失败重试后输出 token 计数会把失败轮次的残缺输出重复计算一次，导致 token 统计虚高并可能影响按量计费展示。",
+    "evidence": "        suspend fun emitRollback(id: String): Boolean {\n            val savepointLength = savepointLengths[id] ?: return false\n            if (receivedContent.length > savepointLength) {\n                receivedContent.setLength(savepointLength)\n            }\n            eventChannel.emit(TextStreamEvent(TextStreamEventType.ROLLBACK, id))\n            return true\n        }",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 1581,
+    "severity": "warning",
+    "title": "重试回滚文本但不回滚输出 token 计数，导致计数虚高"
+  },
+  {
+    "category": "security",
+    "confidence": "medium",
+    "detail": "downloadBytes（415-427）直接 GET 模型响应 JSON 里的 url 字段（调用点 479、551，来自 data[].url / image_url / url），没有任何 scheme/host 校验：http 明文、内网地址（如 169.254.169.254）都会被请求。模型输出可经提示注入（网页/工具结果内容）被攻击者间接控制，构成 SSRF 面；且 body.bytes() 无大小上限，恶意端返回超大 Content-Length 可直接 OOM。同时所有异常被吞掉返回 null，调用方无法区分失败原因。",
+    "evidence": "private suspend fun downloadBytes(url: String): ByteArray? {\n return try {\n val request = Request.Builder().url(url).get().build()\n val response = withContext(Dispatchers.IO) { client.newCall(request).execute()}\n response.use {\n if (!it.isSuccessful) return null\n val body = it.body?: return null\n body.bytes() // 无大小上限，一次性载入内存\n}\n} catch (_: Exception) {\n null\n}\n}",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 415,
+    "severity": "warning",
+    "title": "下载模型返回的图片 URL 无校验、无大小上限（SSRF/OOM 风险）"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "buildContentField（974）在 supportsFiles 且文件链接缺 fileName 时抛 IllegalArgumentException。该异常发生在 sendMessage 重试循环的 try 块内（createRequestBody 调用处），会被 catch (e: Exception)（3470）捕获并送入 handleRetryableError，当作网络故障重试最多 5 次。客户端本地的确定性构造错误被重试毫无意义，还会给用户展示错误的“网络重试”提示，掩盖真正的参数问题。",
+    "evidence": "val fileName = requireNotNull(link.fileName?.takeIf { it.isNotBlank()})\n// sendMessage 重试循环：\n} catch (e: Exception) {\n lastException = e\n retryCount = handleRetryableError( // IAE 也会被当作可重试网络错误\n...\n onRetryAccepted = { emitter.emitRollback(requestSavepointId)},",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 974,
+    "severity": "warning",
+    "title": "请求构造期的 IllegalArgumentException 被误当作网络错误重试"
+  },
+  {
+    "category": "correctness",
+    "confidence": "medium",
+    "detail": "activeCall（109）、activeResponse（112）、isManuallyCancelled（115）是 Provider 实例级别的共享可变状态。若同一 Provider 实例并发执行两次 sendMessage，后一次会覆盖前一次的 activeCall/activeResponse；此时调用 cancelStreaming（246-258）会取消“当前活跃的”请求而非预期的那一路。更严重的是 sendMessage 入口无条件执行 isManuallyCancelled=false（3224），可能清除另一路并发请求已设置的取消标志，导致取消丢失。",
+    "evidence": "    protected val JSON = \"application/json\".toMediaType()\n\n    // 当前活跃的Call对象，用于取消流式传输\n    private var activeCall: Call? = null\n\n    // 当前活跃的Response对象，用于强制关闭流\n    private var activeResponse: Response? = null\n\n    @Volatile\n    private var isManuallyCancelled = false",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 109,
+    "severity": "warning",
+    "title": "取消/活跃连接状态为实例共享，并发请求下互相干扰"
+  },
+  {
+    "category": "security",
+    "confidence": "medium",
+    "detail": "完整请求体（含全部用户对话内容，经 712 行 logLargeString 全量打印）、API 错误全文（3313-3317 AppLogger.e 打印完整 errorBody）、最终模型输出（3460 logFinalOutput）都被写入 logcat。已核实 HttpLogSanitizer 对请求头是全量脱敏（name: [omitted]），API Key 本身不泄露；但用户对话原文、错误体（含可能的上游回显）在 logcat 中长期可被 adb/日志收集工具读取，是隐私泄露面。另外 errorBody 未截断就拼进用户可见的错误消息（openai_error_api_request_failed_with_status），上游返回超大 HTML 错误页时会直接污染 UI 展示。",
+    "evidence": "logLargeString(\"AIService\", sanitizedLogJson.toString(4), \"Request body: \")\n//...\nAppLogger.e(\n \"AIService\",\n \"API请求失败，状态码: ${response.code}，错误信息: $errorBody\"\n)\n//...\nlogFinalOutput(\"AIService\", receivedContent, \"Final output summary: \")",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 712,
+    "severity": "warning",
+    "title": "完整请求体/错误体/模型输出写入 logcat，错误体未截断进 UI"
+  },
+  {
+    "category": "performance",
+    "confidence": "medium",
+    "detail": "LlmRetryPolicy.nextDelayMs 采用纯确定性指数退避（1s/2s/4s/8s/16s），无 jitter。当服务端故障导致大批客户端同时失败时，所有客户端会在完全相同的时刻发起重试，形成重试风暴/惊群效应，加重服务端压力。建议加入随机抖动（如 full jitter）。",
+    "evidence": "fun nextDelayMs(retryAttempt: Int): Long {\n val normalizedAttempt = retryAttempt.coerceAtLeast(1)\n val exponent = (normalizedAttempt - 1).coerceAtMost(4)\n return (RETRY_BASE_DELAY_MS * (1L shl exponent)).coerceAtMost(RETRY_MAX_DELAY_MS)\n}",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LlmRetryPolicy.kt",
+    "line": 8,
+    "severity": "suggestion",
+    "title": "重试退避无随机抖动，存在重试风暴风险"
+  },
+  {
+    "category": "maintainability",
+    "confidence": "medium",
+    "detail": "getOutputImagesDir（OpenAIProvider.kt:373）使用 Android 10 起已废弃的 Environment.getExternalStoragePublicDirectory；同时写文件处的 fileName 仅用 System.currentTimeMillis()（:405）生成，同一毫秒内产出两张图会相互覆盖。",
+    "evidence": "private fun getOutputImagesDir(): File {\n    val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)\n    return File(downloadsDir, \"Operit/output images\")\n}",
+    "file": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt",
+    "line": 373,
+    "severity": "suggestion",
+    "title": "图片保存目录使用已废弃的外部存储 API，文件名仅用毫秒时间戳易冲突"
+  }
+]
