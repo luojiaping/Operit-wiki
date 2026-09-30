@@ -41,7 +41,7 @@ def main():
 
     entries = []
     for md in sorted(review_dir.glob("*/*.md")):
-        if md.name.endswith((".facts.json", ".lint.md")):
+        if md.name.endswith((".facts.json", ".lint.md", ".critic.md")):
             continue
         batch = md.parent.name
         entry_id = md.stem

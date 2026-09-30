@@ -20,16 +20,17 @@ def main() -> None:
     ver = d.get("version", "?")
 
     L: list[str] = []
+    is_approved = bool(d.get("approved"))
     L.append("---")
-    L.append("title: Operit-wiki 大纲（草案）")
+    L.append(f"title: Operit-wiki 大纲（{'定稿' if is_approved else '草案'}）")
     L.append("module: meta")
     L.append("sources: [repo-map.json, dep-graph.json, modules.md, outline.yaml]")
     L.append("date: 2026-09-30")
     L.append("---")
     L.append("")
-    L.append(f"# Operit-wiki 大纲（草案 v{ver}）")
+    L.append(f"# Operit-wiki 大纲（{'定稿' if is_approved else '草案'} v{ver}）")
     L.append("")
-    if d.get("approved"):
+    if is_approved:
         L.append(f"> 状态：已批准（{d['approved']}，用户评审通过，git tag `outline-v2`）。mnn/llama/mmd 等端侧推理模块已停止维护，不再覆盖。")
         L.append("")
     L.append("> 生成依据：阶段 0 确定性脚本统计（`scripts/repo_map.py`）+ 人工通读仓库补遗，全部数字来自实际扫描，未做推测。")

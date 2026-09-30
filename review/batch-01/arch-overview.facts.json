@@ -1,0 +1,110 @@
+[
+  {
+    "fact": "settings.gradle.kts 声明根项目名为 Operit",
+    "ref": "settings.gradle.kts:20"
+  },
+  {
+    "fact": "settings.gradle.kts 通过 include 声明 9 个 Gradle 模块：:app、:dragonbones、:terminal、:mnn、:llama、:mmd、:fbx、:showerclient、:quickjs",
+    "ref": "settings.gradle.kts:21"
+  },
+  {
+    "fact": ":dragonbones 模块的 projectDir 指向 avator/dragonbones，Gradle 沿用旧模块名接入子目录",
+    "ref": "settings.gradle.kts:23"
+  },
+  {
+    "fact": ":terminal 在 settings.gradle.kts 中注册；.gitmodules 显示 terminal 是 OperitTerminalCore 的 git submodule，主仓库内无代码目录",
+    "ref": ".gitmodules:1"
+  },
+  {
+    "fact": "Repo_Arch_Basic.md 列出根 settings.gradle.kts 声明的 9 个 Gradle 模块：app、avator/dragonbones、terminal、llm/mnn、llm/llama、avator/mmd、avator/fbx、showerclient、quickjs",
+    "ref": "Repo_Arch_Basic.md:102"
+  },
+  {
+    "fact": "app 是主 Android 应用模块：应用界面、业务逻辑、Android 资源、工具系统、项目模板和 ObjectBox 模型集中于此，并负责接入各个本地原生能力",
+    "ref": "Repo_Arch_Basic.md:32"
+  },
+  {
+    "fact": "app/build.gradle.kts 通过 implementation(project(...)) 依赖全部 8 个兄弟模块：dragonbones、terminal、mnn、llama、mmd、fbx、showerclient、quickjs",
+    "ref": "app/build.gradle.kts:580"
+  },
+  {
+    "fact": "app 模块 namespace 为 com.ai.assistance.operit",
+    "ref": "app/build.gradle.kts:360"
+  },
+  {
+    "fact": "app applicationId 为 com.ai.assistance.operit，versionCode 51，versionName 1.12.2",
+    "ref": "app/build.gradle.kts:401"
+  },
+  {
+    "fact": "showerclient 是 Shower 客户端 Android 库：连接 Shower server、建立虚拟显示、发送触控和按键事件、请求截图，提供可选视频解码渲染组件；宿主应用需注入 ShellRunner 并处理 Binder 广播",
+    "ref": "Repo_Arch_Basic.md:86"
+  },
+  {
+    "fact": "web-chat 是 React + Vite + TypeScript 前端，构建后的静态文件通过同步脚本放入 app/src/main/assets/web-chat",
+    "ref": "Repo_Arch_Basic.md:98"
+  },
+  {
+    "fact": "quickjs 已由 app/build.gradle.kts 的 implementation(project(\":quickjs\")) 接入 app",
+    "ref": "app/build.gradle.kts:587"
+  },
+  {
+    "fact": "app 的 JsEngine 持有 `OperitQuickJsEngine` 实例",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsEngine.kt:84"
+  },
+  {
+    "fact": "`OperitQuickJsEngine` 类定义在 quickjs 模块源码内",
+    "ref": "quickjs/src/main/java/com/ai/assistance/operit/core/tools/javascript/OperitQuickJsEngine.kt:16"
+  },
+  {
+    "fact": "avator/dragonbones 通过 C++、OpenGL 和 JNI 提供 DragonBones 骨骼动画的加载、渲染和动画控制，并向 Android View 与 Compose 封装",
+    "ref": "Repo_Arch_Basic.md:48"
+  },
+  {
+    "fact": "avator/fbx 是 FBX Android 原生运行时，通过 ufbx C 库解析 FBX 模型；ufbx 由 CMake 从上游仓库获取",
+    "ref": "Repo_Arch_Basic.md:56"
+  },
+  {
+    "fact": "dragonbones 模块的 Kotlin 侧是薄封装：object JniBridge 在 init 中 System.loadLibrary(\"dragonbones_native\")，以 @JvmStatic external fun 声明 JNI 入口",
+    "ref": "avator/dragonbones/src/main/java/com/dragonbones/JniBridge.kt:5"
+  },
+  {
+    "fact": "fbx 模块的 Kotlin 侧是薄封装：object FbxNative 经 FbxLibraryLoader.loadLibraries() 加载 native 库，以 external fun nativeIsAvailable 等声明 JNI 入口",
+    "ref": "avator/fbx/src/main/java/com/ai/assistance/fbx/FbxNative.kt:5"
+  },
+  {
+    "fact": "app 内同样用 System.loadLibrary + external fun 接原生能力：internal object NativeRipgrep 加载 operit_ripgrep，声明 external fun searchJson",
+    "ref": "app/src/main/java/com/ai/assistance/operit/util/ripgrep/NativeRipgrep.kt:9"
+  },
+  {
+    "fact": "Operit AI 是 Android 开源 AI Agent 平台，支持云端和本地模型，通过工具调用、工作流、ToolPkg、MCP、Skills 等扩展把模型接到 Android 系统能力、终端、浏览器、文件和项目工作空间",
+    "ref": "README.md:36"
+  },
+  {
+    "fact": "系统要求 Android 8.0（API 26）及以上，仅 ARM64（arm64-v8a）设备",
+    "ref": "README.md:153"
+  },
+  {
+    "fact": "仓库主代码采用 GNU LGPL v3（LGPL-3.0-only）许可证",
+    "ref": "README.md:229"
+  },
+  {
+    "fact": "Operit 2 是独立的第二代跨平台实现（共享 Rust runtime、Flutter 客户端等），本仓库是 Operit 的 Android 版本",
+    "ref": "README.md:27"
+  },
+  {
+    "fact": "最终 APK 的主要应用代码位于 app 目录",
+    "ref": "Repo_Arch_Basic.md:32"
+  },
+  {
+    "fact": "llm/llama 是 llama.cpp Android 原生集成模块，通过 CMake/JNI 接入 llama.cpp，提供 GGUF 等本地大语言模型推理能力",
+    "ref": "Repo_Arch_Basic.md:68"
+  },
+  {
+    "fact": "avator/mmd 是 MMD 模型 Android 运行时和预览模块，含模型渲染原生集成，使用 Bullet3 等第三方组件",
+    "ref": "Repo_Arch_Basic.md:72"
+  },
+  {
+    "fact": "llm/mnn 是 MNN Android 原生集成模块，通过 CMake/Gradle 集成 Alibaba MNN，提供本地模型推理及相关 AI 原生能力",
+    "ref": "Repo_Arch_Basic.md:76"
+  }
+]

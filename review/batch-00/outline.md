@@ -1,11 +1,11 @@
 ---
-title: Operit-wiki 大纲（草案）
+title: Operit-wiki 大纲（定稿）
 module: meta
 sources: [repo-map.json, dep-graph.json, modules.md, outline.yaml]
 date: 2026-09-30
 ---
 
-# Operit-wiki 大纲（草案 v2）
+# Operit-wiki 大纲（定稿 v2）
 
 > 状态：已批准（2026-09-30，用户评审通过，git tag `outline-v2`）。mnn/llama/mmd 等端侧推理模块已停止维护，不再覆盖。
 

@@ -1,0 +1,186 @@
+[
+  {
+    "fact": "AppDatabase 是 Room 数据库抽象类，@Database 注解声明了 5 个实体：ChatEntity、MessageEntity、MessageVariantEntity、TokenUsageRecordEntity、TokenStatsModelEntity",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:28"
+  },
+  {
+    "fact": "数据库版本号 APP_DATABASE_VERSION = 21",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:24"
+  },
+  {
+    "fact": "AppDatabase.getDatabase(context) 通过 INSTANCE ?: synchronized(this) 双重检查实现单例",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:442"
+  },
+  {
+    "fact": "数据库文件名固定为 app_database",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:445"
+  },
+  {
+    "fact": "buildDatabase 通过 addMigrations 注册版本迁移，迁移链从 MIGRATION_1_2 开始",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:516"
+  },
+  {
+    "fact": "迁移链末端为 MIGRATION_20_21，版本 1 到 21 共 20 次迁移",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:536"
+  },
+  {
+    "fact": "AppDatabase 暴露 5 个 DAO 访问器：chatDao、messageDao、messageVariantDao、chatContentDao、tokenUsageDao",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:40"
+  },
+  {
+    "fact": "ChatEntity 是 Room 实体，表名为 chats",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt:10"
+  },
+  {
+    "fact": "ChatEntity 主键 id 默认为 UUID.randomUUID().toString()",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt:13"
+  },
+  {
+    "fact": "ChatEntity 字段包括 title、createdAt、updatedAt、inputTokens、outputTokens、currentWindowSize、group、displayOrder、workspace、workspaceEnv、parentChatId、characterCardName、characterGroupId、locked、pinned",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt:14"
+  },
+  {
+    "fact": "ChatEntity.toChatHistory(messages) 把数据库实体转换为 UI 层使用的 ChatHistory",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt:30"
+  },
+  {
+    "fact": "ChatEntity.fromChatHistory(chatHistory) 是反向转换的 companion 工厂函数",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt:62"
+  },
+  {
+    "fact": "MessageEntity 是 Room 实体，表名为 messages",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt:10"
+  },
+  {
+    "fact": "MessageEntity 主键 messageId 为自增 Long",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt:22"
+  },
+  {
+    "fact": "messages 表通过 ForeignKey 引用 chats(id)，onDelete = CASCADE，删除会话时级联删除消息",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt:14"
+  },
+  {
+    "fact": "messages 表在 chatId 和 (chatId, timestamp) 上建有索引",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt:20"
+  },
+  {
+    "fact": "MessageEntity 字段包括 chatId、sender、content、timestamp、orderIndex、roleName、selectedVariantIndex、provider、modelName、inputTokens、outputTokens、cachedInputTokens、sentAt、outputDurationMs、waitDurationMs、completedAt、displayMode、isFavorite",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt:24"
+  },
+  {
+    "fact": "MessageEntity.toChatMessage() 转换为运行时的 ChatMessage，fromChatMessage 是反向 companion 工厂函数",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt:43"
+  },
+  {
+    "fact": "MessageVariantEntity 是 Room 实体，表名为 message_variants，用于存储同一条消息的多个回答版本",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageVariantEntity.kt:9"
+  },
+  {
+    "fact": "message_variants 表在 (chatId, messageTimestamp, variantIndex) 上有唯一索引",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageVariantEntity.kt:20"
+  },
+  {
+    "fact": "MessageVariantEntity.applyTo(baseMessage, variantCount) 把指定版本内容应用到 ChatMessage 副本上",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/MessageVariantEntity.kt:40"
+  },
+  {
+    "fact": "TokenUsageRecordEntity 是 Room 实体，表名为 token_usage_records，记录每次正式推理调用的 token 用量事实",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/TokenUsageRecordEntity.kt:10"
+  },
+  {
+    "fact": "TokenStatsModelEntity 是 Room 实体，表名为 token_stats_models，复合主键为 (configId, provider, model)，存储用户配置的模型计费价格",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/TokenStatsModelEntity.kt:11"
+  },
+  {
+    "fact": "Room 声明的 5 个实体中没有独立的工具调用记录表",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:28"
+  },
+  {
+    "fact": "ChatMessage 是运行时的可序列化数据类，sender 取值为 user 或 ai",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessage.kt:11"
+  },
+  {
+    "fact": "ChatHistory 是 UI 层使用的会话数据类",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/ChatHistory.kt:9"
+  },
+  {
+    "fact": "ChatDao 是 @Dao 接口，getAllChats 返回 Flow<List<ChatEntity>> 按 pinned 置顶、displayOrder 排序",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/ChatDao.kt:18"
+  },
+  {
+    "fact": "ChatDao.insertChat 使用 OnConflictStrategy.REPLACE 实现插入或更新",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/ChatDao.kt:33"
+  },
+  {
+    "fact": "ChatDao 通过 parentChatId 支持会话分支：getBranchesByParentId 查分支，getMainChats 查 parentChatId IS NULL 的主会话",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/ChatDao.kt:144"
+  },
+  {
+    "fact": "MessageDao.insertMessage 返回插入行的 messageId",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/MessageDao.kt:139"
+  },
+  {
+    "fact": "MessageDao.searchChatIdsByContent 按消息内容关键词反查会话 ID 列表",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/MessageDao.kt:240"
+  },
+  {
+    "fact": "MessageDao.copyMessagesToChat 用 INSERT INTO ... SELECT 把一个会话的消息复制到另一个会话",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/MessageDao.kt:191"
+  },
+  {
+    "fact": "MessageVariantDao 是独立的 @Dao 接口，负责 message_variants 表的增删改查",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/MessageVariantDao.kt:11"
+  },
+  {
+    "fact": "ChatContentDao 是 @Dao 抽象类，CONTENT_CHUNK_CHARACTER_COUNT = 65536，消息正文按 65536 字符分段读取，避免单条大消息撑爆 CursorWindow",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/ChatContentDao.kt:11"
+  },
+  {
+    "fact": "ChatContentDao 的公开读取方法包在 @Transaction 里，先取分段行再由 materializeMessages 拼出完整 content",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/ChatContentDao.kt:278"
+  },
+  {
+    "fact": "TokenUsageDao 是 @Dao 抽象类，提供 token 用量记录的插入与按 provider/model/configId/时间范围聚合查询",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/dao/TokenUsageDao.kt:36"
+  },
+  {
+    "fact": "MIGRATION_20_21 创建 token_usage_records 表",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:270"
+  },
+  {
+    "fact": "MIGRATION_20_21 用 INSERT INTO ... SELECT FROM messages 把 AI 消息的历史 token 数据回填进 token_usage_records",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:320"
+  },
+  {
+    "fact": "ObjectBoxManager 是单例 object，对外提供按 profileId 获取 BoxStore 的 get 方法",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt:13"
+  },
+  {
+    "fact": "profileId 为 default 时数据库目录名为 objectbox，其他 profile 使用 objectbox_<profileId>",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt:24"
+  },
+  {
+    "fact": "ObjectBoxManager.delete 先关闭 store 再用 deleteRecursively 物理删除数据库目录",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt:43"
+  },
+  {
+    "fact": "ObjectBoxManager.closeAll 关闭全部 store 并清空 stores 缓存",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt:54"
+  },
+  {
+    "fact": "DocumentChunk 是 ObjectBox @Entity（io.objectbox.annotation.Entity），不是 Room 实体",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/DocumentChunk.kt:13"
+  },
+  {
+    "fact": "Memory 是 ObjectBox @Entity，记忆数据走 ObjectBox 存储",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/Memory.kt:17"
+  },
+  {
+    "fact": "MemoryTag 是 ObjectBox @Entity",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/Memory.kt:75"
+  },
+  {
+    "fact": "MemoryLink 是 ObjectBox @Entity",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/model/Memory.kt:92"
+  }
+]

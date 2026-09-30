@@ -1,0 +1,8 @@
+{
+  "status": "review-pending",
+  "issue": 4,
+  "summary": "聊天与消息处理：10 步消息处理链、MessageProcessingDelegate/ChatHistoryDelegate/TokenStatisticsDelegate 分工、多轮任务状态机。",
+  "critic": "通过",
+  "refs_valid": "49/49",
+  "updated": "2026-09-30"
+}

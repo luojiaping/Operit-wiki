@@ -101,7 +101,7 @@ def main():
     src = Path(args.src)
     target_dir = Path(args.dir)
     errors, warnings = [], []
-    files = sorted(target_dir.glob("*.md"))
+    files = sorted(p for p in target_dir.glob("*.md") if not p.name.endswith(".critic.md"))
     if not files:
         print("no md files found", file=sys.stderr)
         sys.exit(2)
