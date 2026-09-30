@@ -82,7 +82,9 @@ async function load() {
 
   const box = document.getElementById("content");
   if (!e) { box.innerHTML = `<div class="empty">找不到该条目。</div>`; return; }
-  document.title = (e.issue_title || ("[评审] " + e.title)) + " · Operit-wiki";
+  // 注意：utterances 用 issue-term="title" 精确匹配 Issue 标题，
+  // document.title 必须与 issue_title 完全一致，否则会新建重复 Issue
+  document.title = e.issue_title || ("[评审] " + e.title);
 
   const md = await (await fetch("data/" + e.md)).text();
   const body = md.replace(/^---[\s\S]*?---\n/, "");
