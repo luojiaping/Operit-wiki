@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-30 14:08 UTC",
+  "updated": "2026-09-30 14:59 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
       "batch": "batch-00",
       "title": "Operit-wiki 大纲 v3（草案）",
       "module": "meta",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 7,
       "issue_title": "[评审] Operit-wiki 大纲 v3（草案）",
       "md": "review/batch-00/outline-v3.md",
@@ -15,8 +15,8 @@
       "seed_files": [],
       "facts_count": 0,
       "refs_valid": "116 页 seed 全部真实存在（脚本校验 0 缺失），id 无重复",
-      "critic": "待用户评审",
-      "summary": "大纲 v3：11 章 116 页，覆盖 app 1359/1362 kt（est. 478,237 行）；21 供应商独立页 + 7 跨供应商机制页；替代 outline-v2。用户批准后流水线正式开工。",
+      "critic": "用户已批准",
+      "summary": "大纲 v3 已批准（2026-09-30 用户确认\"通过\"）：11 章 116 页，覆盖 app 1359/1362 kt；21 供应商独立页 + 7 跨供应商机制页；替代 outline-v2。流水线 Day 1 启动。",
       "updated": "2026-09-30"
     },
     {
@@ -148,6 +148,32 @@
       "refs_valid": "46/46",
       "critic": "通过",
       "summary": "数据模型：Room AppDatabase（版本 21、20 迁移、5 DAO）、ChatEntity/MessageEntity/MessageVariantEntity、ObjectBox 记忆实体隔离。",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "batch-02/core-tools-registry",
+      "batch": "batch-02",
+      "title": "工具注册与执行框架",
+      "module": "core",
+      "status": "review-pending",
+      "issue": 9,
+      "issue_title": "[评审] 工具注册与执行框架",
+      "md": "review/batch-02/core-tools-registry.md",
+      "facts": "review/batch-02/core-tools-registry.facts.json",
+      "lint": "review/batch-02/core-tools-registry.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHandler.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHook.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolExecutionLimits.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolProgressBus.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolPackage.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolResultDataClasses.kt"
+      ],
+      "facts_count": 79,
+      "refs_valid": "79/79 引用行号真实存在（抽查 6/6），lint 硬失败 0/警告 0",
+      "critic": "待评审",
+      "summary": "工具注册与执行框架：AIToolHandler 注册表与执行调用链、Hook 机制、执行限额、进度总线、ToolPackage 数据模型、ToolResultData 结果类型体系、代理调用。",
       "updated": "2026-09-30"
     }
   ]
