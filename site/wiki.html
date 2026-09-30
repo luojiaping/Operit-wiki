@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>已发布 · Operit-wiki</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">📖 Operit-wiki</div>
+    <nav>
+      <a href="index.html">评审大厅</a>
+      <a href="wiki.html" class="active">已发布</a>
+      <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
+    </nav>
+  </header>
+  <h1>已发布的 wiki</h1>
+  <div class="sub">通过评审、正式合并的条目。QQ 群答疑机器人从这里取知识。</div>
+  <div id="content" class="markdown-body"></div>
+</div>
+<script>
+fetch("data/wiki/index.md")
+  .then(r => r.text())
+  .then(t => { document.getElementById("content").innerHTML = marked.parse(t); })
+  .catch(() => { document.getElementById("content").innerHTML = `<div class="empty">尚无已发布条目。</div>`; });
+</script>
+</body>
+</html>
