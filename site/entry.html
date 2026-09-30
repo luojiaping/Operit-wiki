@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>条目评审 · Operit-wiki</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">📖 Operit-wiki</div>
+    <nav>
+      <a href="index.html">评审大厅</a>
+      <a href="wiki.html">已发布</a>
+      <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
+    </nav>
+  </header>
+
+  <a class="back" href="index.html">← 返回评审大厅</a>
+  <div id="content"></div>
+
+  <div class="checklist">
+    <b>评审清单（评论时请给结论）</b>
+    <ul>
+      <li>☐ 事实正确 —— 抽查 3 条引用，打开代码核对</li>
+      <li>☐ 引用有效 —— lint 报告引用有效率 100%</li>
+      <li>☐ 结构合规 —— frontmatter 齐全，有"来源"小节，无禁用词</li>
+      <li>☐ 无幻觉表述 —— 没有超出引用支撑范围的发挥</li>
+    </ul>
+    <div style="margin-top:8px;color:var(--muted);font-size:13px">结论三选一：<b>通过</b> / <b>需修改</b>（注明具体位置）/ <b>打回重写</b></div>
+  </div>
+
+  <h2 style="font-size:17px;margin-top:28px">评审意见</h2>
+  <div class="sub">在下方留言，你的意见会同步到 GitHub Issue，agent 会按意见修改。</div>
+  <div id="comments"></div>
+</div>
+<script>
+const STATUS_LABEL = {
+  "review-pending": "待评审",
+  "needs-changes": "需修改",
+  "approved": "已通过"
+};
+const id = new URLSearchParams(location.search).get("id");
+
+async function load() {
+  const q = await (await fetch("data/review-queue.json")).json();
+  const e = (q.entries || []).find(x => x.id === id);
+  const box = document.getElementById("content");
+  if (!e) { box.innerHTML = `<div class="empty">找不到该条目。</div>`; return; }
+
+  document.title = e.issue_title || ("[评审] " + e.title);
+
+  const md = await (await fetch("data/" + e.md)).text();
+  const body = md.replace(/^---[\s\S]*?---\n/, "");
+  let factsHtml = "", lintHtml = "";
+  if (e.facts) {
+    try {
+      const facts = await (await fetch("data/" + e.facts)).json();
+      const rows = (Array.isArray(facts) ? facts : []).map(f =>
+        `<tr><td>${f.symbol || ""}</td><td>${f.kind || ""}</td><td><code>${f.ref || ""}</code></td><td>${f.one_line || ""}</td></tr>`
+      ).join("");
+      factsHtml = `<details class="collapse"><summary>📦 facts.json（${(Array.isArray(facts) ? facts : []).length} 条事实）</summary>
+        <div class="body"><table><tr><th>符号</th><th>类型</th><th>引用</th><th>一句话</th></tr>${rows}</table></div></details>`;
+    } catch (err) { /* ignore */ }
+  }
+  try {
+    const lint = await (await fetch("data/" + e.lint)).text();
+    lintHtml = `<details class="collapse"><summary>🔍 lint 报告</summary><div class="body markdown-body">${marked.parse(lint)}</div></details>`;
+  } catch (err) { /* ignore */ }
+
+  box.innerHTML = `
+    <h1>${e.title}</h1>
+    <div class="meta" style="margin-bottom:8px">
+      <span class="badge ${e.status}">${STATUS_LABEL[e.status] || e.status}</span>
+      ${e.issue ? `<a href="https://github.com/luojiaping/Operit-wiki/issues/${e.issue}" target="_blank">Issue #${e.issue}</a>` : ""}
+    </div>
+    ${e.summary ? `<div class="sub">${e.summary}</div>` : ""}
+    <div class="meta-grid">
+      <div class="m"><div class="k">所属模块</div><div class="v">${e.module || "—"}</div></div>
+      <div class="m"><div class="k">批次</div><div class="v">${e.batch}</div></div>
+      <div class="m"><div class="k">facts 数量</div><div class="v">${e.facts_count || 0}</div></div>
+      <div class="m"><div class="k">引用有效率</div><div class="v">${e.refs_valid || "—"}</div></div>
+      <div class="m"><div class="k">critic 结论</div><div class="v">${e.critic || "—"}</div></div>
+      <div class="m"><div class="k">seed files</div><div class="v">${(e.seed_files || []).length} 个</div></div>
+    </div>
+    <div class="markdown-body">${marked.parse(body)}</div>
+    ${factsHtml}
+    ${lintHtml}`;
+
+  // utterances 评论区：按页面标题匹配预创建的 [评审] Issue
+  const s = document.createElement("script");
+  s.src = "https://utterances.client.js";
+  s.setAttribute("repo", "luojiaping/Operit-wiki");
+  s.setAttribute("issue-term", "title");
+  s.setAttribute("label", "review");
+  s.setAttribute("theme", "github-dark");
+  s.setAttribute("crossorigin", "anonymous");
+  s.async = true;
+  document.getElementById("comments").appendChild(s);
+}
+load();
+</script>
+</body>
+</html>
