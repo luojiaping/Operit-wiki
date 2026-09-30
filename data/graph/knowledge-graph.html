@@ -170,8 +170,8 @@
       </div>
       <div class="offline-toolbar-host" data-testid="offline-toolbar-host"></div>
       <div class="offline-badges" aria-label="图谱统计">
-        <span>33 节点</span>
-        <span>157 关联</span>
+        <span>37 节点</span>
+        <span>191 关联</span>
         <span>2026-09-30</span>
         <button class="offline-theme-toggle" type="button" data-testid="offline-theme-toggle" aria-label="切换墨夜主题">墨夜</button>
       </div>
@@ -193,84 +193,279 @@
 {
   "edges": [
     {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/data-mcp.md",
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-tools.md",
       "id": "e100",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.556,
         "source_overlap": null,
-        "type_affinity": 1
+        "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.574
+      "to": "wiki/topics/core-config.md",
+      "type": "INFERRED",
+      "weight": 0.678
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/data-mcp.md",
+      "from": "wiki/topics/core-tools.md",
       "id": "e101",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.4,
+        "co_citation": 0.556,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/data-backup.md",
+      "to": "wiki/topics/core-persona.md",
       "type": "INFERRED",
-      "weight": 0.6
+      "weight": 0.678
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/data-mcp.md",
+      "from": "wiki/topics/core-tools.md",
       "id": "e102",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.4,
+        "co_citation": 0.556,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/data-model.md",
+      "to": "wiki/topics/core-workflow.md",
       "type": "INFERRED",
-      "weight": 0.6
+      "weight": 0.678
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/data-mcp.md",
+      "from": "wiki/topics/core-tools.md",
       "id": "e103",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.4,
+        "co_citation": 0.111,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-mcp.md",
+      "type": "INFERRED",
+      "weight": 0.456
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-tools.md",
+      "id": "e104",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/ext-plugins.md",
       "type": "INFERRED",
-      "weight": 0.6
+      "weight": 0.567
     },
     {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/data-model.md",
-      "id": "e104",
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-tools.md",
+      "id": "e105",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.111,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-quickjs.md",
+      "type": "INFERRED",
+      "weight": 0.456
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/core-workflow.md",
+      "id": "e106",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.161,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.556
+      "weight": 0.581
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/data-model.md",
-      "id": "e105",
+      "from": "wiki/topics/core-workflow.md",
+      "id": "e107",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-avatar.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-workflow.md",
+      "id": "e108",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.833,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-chat.md",
+      "type": "INFERRED",
+      "weight": 0.817
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-workflow.md",
+      "id": "e109",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.714,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-config.md",
+      "type": "INFERRED",
+      "weight": 0.757
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e10",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.226,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-tools.md",
+      "type": "EXTRACTED",
+      "weight": 0.613
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-workflow.md",
+      "id": "e110",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.833,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-persona.md",
+      "type": "INFERRED",
+      "weight": 0.817
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-workflow.md",
+      "id": "e111",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-tools.md",
+      "type": "INFERRED",
+      "weight": 0.678
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/data-backup.md",
+      "id": "e112",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.097,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.548
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-backup.md",
+      "id": "e113",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-mcp.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-backup.md",
+      "id": "e114",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.75,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-memory.md",
+      "type": "INFERRED",
+      "weight": 0.775
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-backup.md",
+      "id": "e115",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-model.md",
+      "type": "INFERRED",
+      "weight": 0.7
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/data-mcp.md",
+      "id": "e116",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.161,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.581
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-mcp.md",
+      "id": "e117",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -284,83 +479,263 @@
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/data-model.md",
-      "id": "e106",
+      "from": "wiki/topics/data-mcp.md",
+      "id": "e118",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.4,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/data-mcp.md",
+      "to": "wiki/topics/data-memory.md",
       "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/ext-plugins.md",
-      "id": "e107",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.111,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.556
+      "weight": 0.65
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/ext-plugins.md",
-      "id": "e108",
+      "from": "wiki/topics/data-mcp.md",
+      "id": "e119",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.4,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/data-mcp.md",
+      "to": "wiki/topics/data-model.md",
       "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ext-plugins.md",
-      "id": "e109",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.2,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ext-quickjs.md",
-      "type": "INFERRED",
-      "weight": 0.5
+      "weight": 0.65
     },
     {
       "confidence": "EXTRACTED",
       "from": "wiki/entities/app.md",
-      "id": "e10",
+      "id": "e11",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.161,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-workflow.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.581
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-mcp.md",
+      "id": "e120",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-plugins.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/data-memory.md",
+      "id": "e121",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.097,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.548
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-memory.md",
+      "id": "e122",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.75,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-backup.md",
+      "type": "INFERRED",
+      "weight": 0.775
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-memory.md",
+      "id": "e123",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-mcp.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-memory.md",
+      "id": "e124",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-model.md",
+      "type": "INFERRED",
+      "weight": 0.7
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/data-model.md",
+      "id": "e125",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-model.md",
+      "id": "e126",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-backup.md",
+      "type": "INFERRED",
+      "weight": 0.7
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-model.md",
+      "id": "e127",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-mcp.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/data-model.md",
+      "id": "e128",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-memory.md",
+      "type": "INFERRED",
+      "weight": 0.7
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/ext-plugins.md",
+      "id": "e129",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e12",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.097,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-backup.md",
+      "type": "EXTRACTED",
+      "weight": 0.548
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ext-plugins.md",
+      "id": "e130",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-mcp.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ext-plugins.md",
+      "id": "e131",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-quickjs.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ext-plugins.md",
+      "id": "e132",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-subpack.md",
+      "type": "INFERRED",
+      "weight": 0.567
     },
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/ext-quickjs.md",
-      "id": "e110",
+      "id": "e133",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -375,22 +750,37 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/ext-quickjs.md",
-      "id": "e111",
+      "id": "e134",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.125,
+        "co_citation": 0.111,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-tools.md",
       "type": "INFERRED",
-      "weight": 0.463
+      "weight": 0.456
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/ext-quickjs.md",
-      "id": "e112",
+      "id": "e135",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-plugins.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ext-quickjs.md",
+      "id": "e136",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.2,
@@ -398,14 +788,74 @@
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ext-plugins.md",
+      "to": "wiki/topics/ext-subpack.md",
       "type": "INFERRED",
       "weight": 0.5
     },
     {
       "confidence": "EXTRACTED",
+      "from": "wiki/topics/ext-subpack.md",
+      "id": "e137",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.032,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.516
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ext-subpack.md",
+      "id": "e138",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-plugins.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ext-subpack.md",
+      "id": "e139",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.2,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-quickjs.md",
+      "type": "INFERRED",
+      "weight": 0.5
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e13",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.161,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-mcp.md",
+      "type": "EXTRACTED",
+      "weight": 0.581
+    },
+    {
+      "confidence": "EXTRACTED",
       "from": "wiki/topics/llm-local.md",
-      "id": "e113",
+      "id": "e140",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -420,7 +870,7 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/llm-local.md",
-      "id": "e114",
+      "id": "e141",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -435,7 +885,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/llm-local.md",
-      "id": "e115",
+      "id": "e142",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.25,
@@ -450,7 +900,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/llm-local.md",
-      "id": "e116",
+      "id": "e143",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.4,
@@ -465,7 +915,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/llm-local.md",
-      "id": "e117",
+      "id": "e144",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.4,
@@ -480,7 +930,7 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/mod-showerclient.md",
-      "id": "e118",
+      "id": "e145",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -495,7 +945,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/mod-showerclient.md",
-      "id": "e119",
+      "id": "e146",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.25,
@@ -508,54 +958,69 @@
       "weight": 0.525
     },
     {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e11",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.074,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/data-backup.md",
-      "type": "EXTRACTED",
-      "weight": 0.537
-    },
-    {
       "confidence": "INFERRED",
       "from": "wiki/topics/mod-showerclient.md",
-      "id": "e120",
+      "id": "e147",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.2,
+        "co_citation": 0.333,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/mod-terminal.md",
       "type": "INFERRED",
-      "weight": 0.5
+      "weight": 0.567
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/mod-showerclient.md",
-      "id": "e121",
+      "id": "e148",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.2,
+        "co_citation": 0.333,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/mod-webchat.md",
       "type": "INFERRED",
-      "weight": 0.5
+      "weight": 0.567
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/mod-showerclient.md",
+      "id": "e149",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/sys-integration.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e14",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.097,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/data-memory.md",
+      "type": "EXTRACTED",
+      "weight": 0.548
     },
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/mod-terminal.md",
-      "id": "e122",
+      "id": "e150",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -570,22 +1035,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/mod-terminal.md",
-      "id": "e123",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.2,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/mod-showerclient.md",
-      "type": "INFERRED",
-      "weight": 0.5
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/mod-terminal.md",
-      "id": "e124",
+      "id": "e151",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.333,
@@ -593,14 +1043,44 @@
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/mod-webchat.md",
+      "to": "wiki/topics/mod-showerclient.md",
       "type": "INFERRED",
       "weight": 0.567
     },
     {
       "confidence": "INFERRED",
+      "from": "wiki/topics/mod-terminal.md",
+      "id": "e152",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/mod-webchat.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/mod-terminal.md",
+      "id": "e153",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/sys-integration.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
       "from": "wiki/topics/mod-webchat.md",
-      "id": "e125",
+      "id": "e154",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.125,
@@ -615,22 +1095,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/mod-webchat.md",
-      "id": "e126",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.2,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/mod-showerclient.md",
-      "type": "INFERRED",
-      "weight": 0.5
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/mod-webchat.md",
-      "id": "e127",
+      "id": "e155",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.333,
@@ -638,14 +1103,44 @@
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/mod-terminal.md",
+      "to": "wiki/topics/mod-showerclient.md",
       "type": "INFERRED",
       "weight": 0.567
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/mod-webchat.md",
-      "id": "e128",
+      "id": "e156",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/mod-terminal.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/mod-webchat.md",
+      "id": "e157",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/sys-integration.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/mod-webchat.md",
+      "id": "e158",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -659,483 +1154,18 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/topics/ui-chat.md",
-      "id": "e129",
+      "from": "wiki/topics/sys-integration.md",
+      "id": "e159",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.296,
+        "co_citation": 0,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.648
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e12",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.148,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/data-mcp.md",
-      "type": "EXTRACTED",
-      "weight": 0.574
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-chat.md",
-      "id": "e130",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.2,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-avatar.md",
-      "type": "INFERRED",
       "weight": 0.5
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-chat.md",
-      "id": "e131",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-floating.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-chat.md",
-      "id": "e132",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-misc.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-chat.md",
-      "id": "e133",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-settings.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-chat.md",
-      "id": "e134",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-toolbox.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/ui-floating.md",
-      "id": "e135",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.148,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.574
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-floating.md",
-      "id": "e136",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-chat.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-floating.md",
-      "id": "e137",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.8,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-misc.md",
-      "type": "INFERRED",
-      "weight": 0.8
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-floating.md",
-      "id": "e138",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-settings.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-floating.md",
-      "id": "e139",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.8,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-toolbox.md",
-      "type": "INFERRED",
-      "weight": 0.8
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e13",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.111,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/data-model.md",
-      "type": "EXTRACTED",
-      "weight": 0.556
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/ui-misc.md",
-      "id": "e140",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.148,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.574
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-misc.md",
-      "id": "e141",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-chat.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-misc.md",
-      "id": "e142",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.8,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-floating.md",
-      "type": "INFERRED",
-      "weight": 0.8
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-misc.md",
-      "id": "e143",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-settings.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-misc.md",
-      "id": "e144",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.8,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-toolbox.md",
-      "type": "INFERRED",
-      "weight": 0.8
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/ui-settings.md",
-      "id": "e145",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.185,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.593
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-settings.md",
-      "id": "e146",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.167,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-config.md",
-      "type": "INFERRED",
-      "weight": 0.483
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-settings.md",
-      "id": "e147",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-chat.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-settings.md",
-      "id": "e148",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-floating.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-settings.md",
-      "id": "e149",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-misc.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e14",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.111,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ext-plugins.md",
-      "type": "EXTRACTED",
-      "weight": 0.556
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-settings.md",
-      "id": "e150",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-toolbox.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e151",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.148,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.574
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e152",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.125,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-tools.md",
-      "type": "INFERRED",
-      "weight": 0.463
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e153",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.2,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ext-plugins.md",
-      "type": "INFERRED",
-      "weight": 0.5
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e154",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-chat.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e155",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.8,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-floating.md",
-      "type": "INFERRED",
-      "weight": 0.8
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e156",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.8,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-misc.md",
-      "type": "INFERRED",
-      "weight": 0.8
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/ui-toolbox.md",
-      "id": "e157",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-settings.md",
-      "type": "INFERRED",
-      "weight": 0.733
     },
     {
       "confidence": "EXTRACTED",
@@ -1143,14 +1173,164 @@
       "id": "e15",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.296,
+        "co_citation": 0.129,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ui-chat.md",
+      "to": "wiki/topics/data-model.md",
       "type": "EXTRACTED",
-      "weight": 0.648
+      "weight": 0.565
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/sys-integration.md",
+      "id": "e160",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/mod-showerclient.md",
+      "type": "INFERRED",
+      "weight": 0.567
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/sys-integration.md",
+      "id": "e161",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/mod-terminal.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/sys-integration.md",
+      "id": "e162",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/mod-webchat.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/ui-chat.md",
+      "id": "e163",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.258,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.629
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-chat.md",
+      "id": "e164",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.2,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-avatar.md",
+      "type": "INFERRED",
+      "weight": 0.5
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-chat.md",
+      "id": "e165",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-floating.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-chat.md",
+      "id": "e166",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-misc.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-chat.md",
+      "id": "e167",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-settings.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-chat.md",
+      "id": "e168",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-toolbox.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/ui-floating.md",
+      "id": "e169",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
     },
     {
       "confidence": "EXTRACTED",
@@ -1158,14 +1338,164 @@
       "id": "e16",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.129,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ui-floating.md",
+      "to": "wiki/topics/ext-plugins.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.565
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-floating.md",
+      "id": "e170",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-chat.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-floating.md",
+      "id": "e171",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.8,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-misc.md",
+      "type": "INFERRED",
+      "weight": 0.8
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-floating.md",
+      "id": "e172",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-settings.md",
+      "type": "INFERRED",
+      "weight": 0.733
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-floating.md",
+      "id": "e173",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.8,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-toolbox.md",
+      "type": "INFERRED",
+      "weight": 0.8
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/ui-misc.md",
+      "id": "e174",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-misc.md",
+      "id": "e175",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-chat.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-misc.md",
+      "id": "e176",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.8,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-floating.md",
+      "type": "INFERRED",
+      "weight": 0.8
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-misc.md",
+      "id": "e177",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-settings.md",
+      "type": "INFERRED",
+      "weight": 0.733
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-misc.md",
+      "id": "e178",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.8,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-toolbox.md",
+      "type": "INFERRED",
+      "weight": 0.8
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/ui-settings.md",
+      "id": "e179",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.161,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.581
     },
     {
       "confidence": "EXTRACTED",
@@ -1173,14 +1503,164 @@
       "id": "e17",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.032,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ui-misc.md",
+      "to": "wiki/topics/ext-subpack.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.516
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-settings.md",
+      "id": "e180",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-config.md",
+      "type": "INFERRED",
+      "weight": 0.471
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-settings.md",
+      "id": "e181",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-chat.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-settings.md",
+      "id": "e182",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-floating.md",
+      "type": "INFERRED",
+      "weight": 0.733
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-settings.md",
+      "id": "e183",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-misc.md",
+      "type": "INFERRED",
+      "weight": 0.733
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-settings.md",
+      "id": "e184",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-toolbox.md",
+      "type": "INFERRED",
+      "weight": 0.733
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e185",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e186",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-tools.md",
+      "type": "INFERRED",
+      "weight": 0.456
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e187",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-plugins.md",
+      "type": "INFERRED",
+      "weight": 0.483
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e188",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-chat.md",
+      "type": "INFERRED",
+      "weight": 0.6
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e189",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.8,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-floating.md",
+      "type": "INFERRED",
+      "weight": 0.8
     },
     {
       "confidence": "EXTRACTED",
@@ -1188,14 +1668,44 @@
       "id": "e18",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.185,
+        "co_citation": 0,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ui-settings.md",
+      "to": "wiki/topics/sys-integration.md",
       "type": "EXTRACTED",
-      "weight": 0.593
+      "weight": 0.5
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e190",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.8,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-misc.md",
+      "type": "INFERRED",
+      "weight": 0.8
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/ui-toolbox.md",
+      "id": "e191",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-settings.md",
+      "type": "INFERRED",
+      "weight": 0.733
     },
     {
       "confidence": "EXTRACTED",
@@ -1203,14 +1713,14 @@
       "id": "e19",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.258,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ui-toolbox.md",
+      "to": "wiki/topics/ui-chat.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.629
     },
     {
       "confidence": "EXTRACTED",
@@ -1218,93 +1728,93 @@
       "id": "e1",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.129,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/topics/api-chat.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.565
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/dragonbones.md",
+      "from": "wiki/entities/app.md",
       "id": "e20",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.037,
+        "co_citation": 0.129,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/entities/app.md",
+      "to": "wiki/topics/ui-floating.md",
       "type": "EXTRACTED",
-      "weight": 0.519
+      "weight": 0.565
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e21",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-misc.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e22",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.161,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-settings.md",
+      "type": "EXTRACTED",
+      "weight": 0.581
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e23",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ui-toolbox.md",
+      "type": "EXTRACTED",
+      "weight": 0.565
     },
     {
       "confidence": "EXTRACTED",
       "from": "wiki/entities/dragonbones.md",
-      "id": "e21",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-avatar.md",
-      "type": "EXTRACTED",
-      "weight": 0.5
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/fbx.md",
-      "id": "e22",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.037,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.519
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/fbx.md",
-      "id": "e23",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-avatar.md",
-      "type": "EXTRACTED",
-      "weight": 0.5
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/llama.md",
       "id": "e24",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0,
+        "co_citation": 0.032,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.5
+      "weight": 0.516
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/llama.md",
+      "from": "wiki/entities/dragonbones.md",
       "id": "e25",
       "relation_type": "依赖",
       "signals": {
@@ -1313,28 +1823,28 @@
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/llm-local.md",
+      "to": "wiki/topics/core-avatar.md",
       "type": "EXTRACTED",
       "weight": 0.5
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/mmd.md",
+      "from": "wiki/entities/fbx.md",
       "id": "e26",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.037,
+        "co_citation": 0.032,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.519
+      "weight": 0.516
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/mmd.md",
+      "from": "wiki/entities/fbx.md",
       "id": "e27",
       "relation_type": "依赖",
       "signals": {
@@ -1349,7 +1859,7 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/mnn.md",
+      "from": "wiki/entities/llama.md",
       "id": "e28",
       "relation_type": "依赖",
       "signals": {
@@ -1364,7 +1874,7 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/mnn.md",
+      "from": "wiki/entities/llama.md",
       "id": "e29",
       "relation_type": "依赖",
       "signals": {
@@ -1383,33 +1893,33 @@
       "id": "e2",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.111,
+        "co_citation": 0.097,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/topics/api-oauth.md",
       "type": "EXTRACTED",
-      "weight": 0.556
+      "weight": 0.548
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/quickjs.md",
+      "from": "wiki/entities/mmd.md",
       "id": "e30",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0,
+        "co_citation": 0.032,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.5
+      "weight": 0.516
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/quickjs.md",
+      "from": "wiki/entities/mmd.md",
       "id": "e31",
       "relation_type": "依赖",
       "signals": {
@@ -1418,13 +1928,13 @@
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ext-quickjs.md",
+      "to": "wiki/topics/core-avatar.md",
       "type": "EXTRACTED",
       "weight": 0.5
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/showerclient.md",
+      "from": "wiki/entities/mnn.md",
       "id": "e32",
       "relation_type": "依赖",
       "signals": {
@@ -1439,7 +1949,7 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/showerclient.md",
+      "from": "wiki/entities/mnn.md",
       "id": "e33",
       "relation_type": "依赖",
       "signals": {
@@ -1448,13 +1958,13 @@
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/mod-showerclient.md",
+      "to": "wiki/topics/llm-local.md",
       "type": "EXTRACTED",
       "weight": 0.5
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/terminal.md",
+      "from": "wiki/entities/quickjs.md",
       "id": "e34",
       "relation_type": "依赖",
       "signals": {
@@ -1469,8 +1979,68 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/terminal.md",
+      "from": "wiki/entities/quickjs.md",
       "id": "e35",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/ext-quickjs.md",
+      "type": "EXTRACTED",
+      "weight": 0.5
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/showerclient.md",
+      "id": "e36",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.5
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/showerclient.md",
+      "id": "e37",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/mod-showerclient.md",
+      "type": "EXTRACTED",
+      "weight": 0.5
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/terminal.md",
+      "id": "e38",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/entities/app.md",
+      "type": "EXTRACTED",
+      "weight": 0.5
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/terminal.md",
+      "id": "e39",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -1484,23 +2054,38 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/topics/api-chat.md",
-      "id": "e36",
+      "from": "wiki/entities/app.md",
+      "id": "e3",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.097,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/api-voice.md",
+      "type": "EXTRACTED",
+      "weight": 0.548
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/topics/api-chat.md",
+      "id": "e40",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.129,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.565
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-chat.md",
-      "id": "e37",
+      "id": "e41",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.375,
@@ -1515,7 +2100,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-chat.md",
-      "id": "e38",
+      "id": "e42",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -1530,7 +2115,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-chat.md",
-      "id": "e39",
+      "id": "e43",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.25,
@@ -1543,24 +2128,9 @@
       "weight": 0.525
     },
     {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e3",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.111,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/api-voice.md",
-      "type": "EXTRACTED",
-      "weight": 0.556
-    },
-    {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-chat.md",
-      "id": "e40",
+      "id": "e44",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.25,
@@ -1575,22 +2145,22 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/api-oauth.md",
-      "id": "e41",
+      "id": "e45",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.111,
+        "co_citation": 0.097,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.556
+      "weight": 0.548
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-oauth.md",
-      "id": "e42",
+      "id": "e46",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.375,
@@ -1605,7 +2175,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-oauth.md",
-      "id": "e43",
+      "id": "e47",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.6,
@@ -1620,7 +2190,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-oauth.md",
-      "id": "e44",
+      "id": "e48",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.4,
@@ -1635,22 +2205,37 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/api-voice.md",
-      "id": "e45",
+      "id": "e49",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.111,
+        "co_citation": 0.097,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.556
+      "weight": 0.548
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e4",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.032,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/appendix-util.md",
+      "type": "EXTRACTED",
+      "weight": 0.516
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-voice.md",
-      "id": "e46",
+      "id": "e50",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -1665,7 +2250,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-voice.md",
-      "id": "e47",
+      "id": "e51",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.6,
@@ -1680,7 +2265,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-voice.md",
-      "id": "e48",
+      "id": "e52",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.4,
@@ -1695,7 +2280,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/api-voice.md",
-      "id": "e49",
+      "id": "e53",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.2,
@@ -1709,38 +2294,23 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e4",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.037,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/appendix-util.md",
-      "type": "EXTRACTED",
-      "weight": 0.519
-    },
-    {
-      "confidence": "EXTRACTED",
       "from": "wiki/topics/appendix-util.md",
-      "id": "e50",
+      "id": "e54",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.037,
+        "co_citation": 0.032,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.519
+      "weight": 0.516
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/appendix-util.md",
-      "id": "e51",
+      "id": "e55",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -1755,22 +2325,22 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e52",
+      "id": "e56",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.037,
+        "co_citation": 0.032,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.519
+      "weight": 0.516
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e53",
+      "id": "e57",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.125,
@@ -1785,7 +2355,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e54",
+      "id": "e58",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -1800,37 +2370,52 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e55",
+      "id": "e59",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.125,
+        "co_citation": 0.111,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-tools.md",
       "type": "INFERRED",
-      "weight": 0.463
+      "weight": 0.456
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e5",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.032,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/arch-overview.md",
+      "type": "EXTRACTED",
+      "weight": 0.516
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e56",
+      "id": "e60",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.25,
+        "co_citation": 0.2,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/data-model.md",
       "type": "INFERRED",
-      "weight": 0.525
+      "weight": 0.5
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e57",
+      "id": "e61",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -1845,7 +2430,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e58",
+      "id": "e62",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -1860,7 +2445,7 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/arch-overview.md",
-      "id": "e59",
+      "id": "e63",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.1,
@@ -1874,38 +2459,23 @@
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e5",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.037,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/arch-overview.md",
-      "type": "EXTRACTED",
-      "weight": 0.519
-    },
-    {
-      "confidence": "EXTRACTED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e60",
+      "id": "e64",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.296,
+        "co_citation": 0.29,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.648
+      "weight": 0.645
     },
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e61",
+      "id": "e65",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -1920,7 +2490,7 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e62",
+      "id": "e66",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -1935,7 +2505,7 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e63",
+      "id": "e67",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0,
@@ -1950,67 +2520,97 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e64",
+      "id": "e68",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.444,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-chat.md",
       "type": "INFERRED",
-      "weight": 0.622
+      "weight": 0.65
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e65",
+      "id": "e69",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.444,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-config.md",
       "type": "INFERRED",
-      "weight": 0.622
+      "weight": 0.65
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e6",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.29,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-avatar.md",
+      "type": "EXTRACTED",
+      "weight": 0.645
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e66",
+      "id": "e70",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.444,
+        "co_citation": 0.5,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-persona.md",
+      "type": "INFERRED",
+      "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-avatar.md",
+      "id": "e71",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-tools.md",
       "type": "INFERRED",
-      "weight": 0.622
+      "weight": 0.65
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e67",
+      "id": "e72",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.444,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-workflow.md",
       "type": "INFERRED",
-      "weight": 0.622
+      "weight": 0.65
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-avatar.md",
-      "id": "e68",
+      "id": "e73",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.2,
@@ -2025,37 +2625,22 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/core-chat.md",
-      "id": "e69",
+      "id": "e74",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.161,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.574
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e6",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.296,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-avatar.md",
-      "type": "EXTRACTED",
-      "weight": 0.648
+      "weight": 0.581
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-chat.md",
-      "id": "e70",
+      "id": "e75",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.125,
@@ -2070,52 +2655,22 @@
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-chat.md",
-      "id": "e71",
+      "id": "e76",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.2,
+        "co_citation": 0.167,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/api-voice.md",
       "type": "INFERRED",
-      "weight": 0.5
+      "weight": 0.483
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-chat.md",
-      "id": "e72",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.444,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-avatar.md",
-      "type": "INFERRED",
-      "weight": 0.622
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-chat.md",
-      "id": "e73",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-config.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-chat.md",
-      "id": "e74",
+      "id": "e77",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -2123,29 +2678,89 @@
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/core-tools.md",
+      "to": "wiki/topics/core-avatar.md",
       "type": "INFERRED",
       "weight": 0.65
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-chat.md",
-      "id": "e75",
+      "id": "e78",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.8,
+        "co_citation": 0.714,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-config.md",
+      "type": "INFERRED",
+      "weight": 0.757
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-chat.md",
+      "id": "e79",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.833,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-persona.md",
+      "type": "INFERRED",
+      "weight": 0.817
+    },
+    {
+      "confidence": "EXTRACTED",
+      "from": "wiki/entities/app.md",
+      "id": "e7",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.161,
+        "source_overlap": null,
+        "type_affinity": 1
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-chat.md",
+      "type": "EXTRACTED",
+      "weight": 0.581
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-chat.md",
+      "id": "e80",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-tools.md",
+      "type": "INFERRED",
+      "weight": 0.678
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-chat.md",
+      "id": "e81",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.833,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-workflow.md",
       "type": "INFERRED",
-      "weight": 0.8
+      "weight": 0.817
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-chat.md",
-      "id": "e76",
+      "id": "e82",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.2,
@@ -2160,212 +2775,107 @@
     {
       "confidence": "EXTRACTED",
       "from": "wiki/topics/core-config.md",
-      "id": "e77",
+      "id": "e83",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.185,
+        "co_citation": 0.194,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.593
+      "weight": 0.597
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-config.md",
-      "id": "e78",
+      "id": "e84",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.167,
+        "co_citation": 0.143,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/api-oauth.md",
       "type": "INFERRED",
-      "weight": 0.483
+      "weight": 0.471
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-config.md",
-      "id": "e79",
+      "id": "e85",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.444,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-avatar.md",
       "type": "INFERRED",
-      "weight": 0.622
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/entities/app.md",
-      "id": "e7",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.148,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-chat.md",
-      "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.65
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-config.md",
-      "id": "e80",
+      "id": "e86",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.667,
+        "co_citation": 0.714,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-chat.md",
       "type": "INFERRED",
-      "weight": 0.733
+      "weight": 0.757
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-config.md",
-      "id": "e81",
+      "id": "e87",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.5,
+        "co_citation": 0.714,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-persona.md",
+      "type": "INFERRED",
+      "weight": 0.757
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-config.md",
+      "id": "e88",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.556,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-tools.md",
       "type": "INFERRED",
-      "weight": 0.65
+      "weight": 0.678
     },
     {
       "confidence": "INFERRED",
       "from": "wiki/topics/core-config.md",
-      "id": "e82",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.667,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-workflow.md",
-      "type": "INFERRED",
-      "weight": 0.733
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-config.md",
-      "id": "e83",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.167,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ui-settings.md",
-      "type": "INFERRED",
-      "weight": 0.483
-    },
-    {
-      "confidence": "EXTRACTED",
-      "from": "wiki/topics/core-tools.md",
-      "id": "e84",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.222,
-        "source_overlap": null,
-        "type_affinity": 1
-      },
-      "source_signal_available": false,
-      "to": "wiki/entities/app.md",
-      "type": "EXTRACTED",
-      "weight": 0.611
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
-      "id": "e85",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.444,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-avatar.md",
-      "type": "INFERRED",
-      "weight": 0.622
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
-      "id": "e86",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.5,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-chat.md",
-      "type": "INFERRED",
-      "weight": 0.65
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
-      "id": "e87",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.5,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-config.md",
-      "type": "INFERRED",
-      "weight": 0.65
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
-      "id": "e88",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.5,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/core-workflow.md",
-      "type": "INFERRED",
-      "weight": 0.65
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
       "id": "e89",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.125,
+        "co_citation": 0.714,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/data-mcp.md",
+      "to": "wiki/topics/core-workflow.md",
       "type": "INFERRED",
-      "weight": 0.463
+      "weight": 0.757
     },
     {
       "confidence": "EXTRACTED",
@@ -2373,154 +2883,139 @@
       "id": "e8",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.185,
+        "co_citation": 0.194,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-config.md",
       "type": "EXTRACTED",
-      "weight": 0.593
+      "weight": 0.597
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
+      "from": "wiki/topics/core-config.md",
       "id": "e90",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.375,
+        "co_citation": 0.143,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/ext-plugins.md",
+      "to": "wiki/topics/ui-settings.md",
       "type": "INFERRED",
-      "weight": 0.588
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/core-tools.md",
-      "id": "e91",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.125,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/ext-quickjs.md",
-      "type": "INFERRED",
-      "weight": 0.463
+      "weight": 0.471
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/topics/core-workflow.md",
-      "id": "e92",
+      "from": "wiki/topics/core-persona.md",
+      "id": "e91",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.148,
+        "co_citation": 0.161,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.574
+      "weight": 0.581
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/core-workflow.md",
-      "id": "e93",
+      "from": "wiki/topics/core-persona.md",
+      "id": "e92",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.444,
+        "co_citation": 0.5,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-avatar.md",
       "type": "INFERRED",
-      "weight": 0.622
+      "weight": 0.65
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/core-workflow.md",
-      "id": "e94",
+      "from": "wiki/topics/core-persona.md",
+      "id": "e93",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.8,
+        "co_citation": 0.833,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-chat.md",
       "type": "INFERRED",
-      "weight": 0.8
+      "weight": 0.817
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/core-workflow.md",
-      "id": "e95",
+      "from": "wiki/topics/core-persona.md",
+      "id": "e94",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.667,
+        "co_citation": 0.714,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-config.md",
       "type": "INFERRED",
-      "weight": 0.733
+      "weight": 0.757
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/core-workflow.md",
-      "id": "e96",
+      "from": "wiki/topics/core-persona.md",
+      "id": "e95",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.5,
+        "co_citation": 0.556,
         "source_overlap": null,
         "type_affinity": 0.8
       },
       "source_signal_available": false,
       "to": "wiki/topics/core-tools.md",
       "type": "INFERRED",
-      "weight": 0.65
+      "weight": 0.678
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-persona.md",
+      "id": "e96",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.833,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-workflow.md",
+      "type": "INFERRED",
+      "weight": 0.817
     },
     {
       "confidence": "EXTRACTED",
-      "from": "wiki/topics/data-backup.md",
+      "from": "wiki/topics/core-tools.md",
       "id": "e97",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.074,
+        "co_citation": 0.226,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
       "to": "wiki/entities/app.md",
       "type": "EXTRACTED",
-      "weight": 0.537
+      "weight": 0.613
     },
     {
       "confidence": "INFERRED",
-      "from": "wiki/topics/data-backup.md",
+      "from": "wiki/topics/core-tools.md",
       "id": "e98",
-      "relation_type": "依赖",
-      "signals": {
-        "co_citation": 0.4,
-        "source_overlap": null,
-        "type_affinity": 0.8
-      },
-      "source_signal_available": false,
-      "to": "wiki/topics/data-mcp.md",
-      "type": "INFERRED",
-      "weight": 0.6
-    },
-    {
-      "confidence": "INFERRED",
-      "from": "wiki/topics/data-backup.md",
-      "id": "e99",
       "relation_type": "依赖",
       "signals": {
         "co_citation": 0.5,
@@ -2528,9 +3023,24 @@
         "type_affinity": 0.8
       },
       "source_signal_available": false,
-      "to": "wiki/topics/data-model.md",
+      "to": "wiki/topics/core-avatar.md",
       "type": "INFERRED",
       "weight": 0.65
+    },
+    {
+      "confidence": "INFERRED",
+      "from": "wiki/topics/core-tools.md",
+      "id": "e99",
+      "relation_type": "依赖",
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": null,
+        "type_affinity": 0.8
+      },
+      "source_signal_available": false,
+      "to": "wiki/topics/core-chat.md",
+      "type": "INFERRED",
+      "weight": 0.678
     },
     {
       "confidence": "EXTRACTED",
@@ -2538,14 +3048,14 @@
       "id": "e9",
       "relation_type": "依赖",
       "signals": {
-        "co_citation": 0.222,
+        "co_citation": 0.161,
         "source_overlap": null,
         "type_affinity": 1
       },
       "source_signal_available": false,
-      "to": "wiki/topics/core-tools.md",
+      "to": "wiki/topics/core-persona.md",
       "type": "EXTRACTED",
-      "weight": 0.611
+      "weight": 0.581
     }
   ],
   "insights": {
@@ -2759,10 +3269,10 @@
     "isolated_nodes": [],
     "meta": {
       "degraded": false,
-      "edge_count": 157,
+      "edge_count": 191,
       "max_insight_edges": 1000,
       "max_insight_nodes": 250,
-      "node_count": 33
+      "node_count": 37
     },
     "sparse_communities": [],
     "surprising_connections": []
@@ -2771,7 +3281,7 @@
     "communities": [
       {
         "id": "wiki/entities/app.md",
-        "internal_edge_weight": 1.557,
+        "internal_edge_weight": 1.548,
         "is_primary": false,
         "is_weak": false,
         "label": "模块 app",
@@ -2782,7 +3292,7 @@
       {
         "id": "wiki/topics/api-chat.md",
         "internal_edge_weight": 9.326,
-        "is_primary": true,
+        "is_primary": false,
         "is_weak": false,
         "label": "云端 Chat API 接入",
         "node_count": 6,
@@ -2801,41 +3311,41 @@
       },
       {
         "id": "wiki/topics/core-avatar.md",
-        "internal_edge_weight": 13.408,
-        "is_primary": false,
+        "internal_edge_weight": 21.368,
+        "is_primary": true,
         "is_weak": false,
         "label": "虚拟形象（Avatar）",
-        "node_count": 5,
+        "node_count": 6,
         "recommended_start_node_id": "wiki/topics/core-avatar.md",
         "source_count": 0
       },
       {
         "id": "wiki/topics/data-mcp.md",
-        "internal_edge_weight": 3.7,
+        "internal_edge_weight": 8.25,
         "is_primary": false,
         "is_weak": false,
         "label": "MCP 集成",
-        "node_count": 3,
+        "node_count": 4,
         "recommended_start_node_id": "wiki/topics/data-mcp.md",
         "source_count": 0
       },
       {
         "id": "wiki/topics/ext-plugins.md",
-        "internal_edge_weight": 2,
+        "internal_edge_weight": 4.268,
         "is_primary": false,
         "is_weak": false,
         "label": "插件与集成",
-        "node_count": 3,
+        "node_count": 4,
         "recommended_start_node_id": "wiki/topics/ext-plugins.md",
         "source_count": 0
       },
       {
         "id": "wiki/topics/mod-showerclient.md",
-        "internal_edge_weight": 5.134,
+        "internal_edge_weight": 9.302,
         "is_primary": false,
         "is_weak": false,
         "label": "Shower 客户端库",
-        "node_count": 5,
+        "node_count": 6,
         "recommended_start_node_id": "wiki/topics/mod-showerclient.md",
         "source_count": 0
       },
@@ -2856,24 +3366,24 @@
     },
     "entry": {
       "default_mode": "global",
-      "recommended_start_node_id": "wiki/topics/api-chat.md",
+      "recommended_start_node_id": "wiki/topics/core-avatar.md",
       "recommended_start_reason": "community_hub"
     },
     "version": 1,
     "views": {
       "community": {
-        "community_id": "wiki/topics/api-chat.md",
+        "community_id": "wiki/topics/core-avatar.md",
         "degraded": false,
         "enabled": true,
         "is_weak": false,
-        "label": "云端 Chat API 接入",
+        "label": "虚拟形象（Avatar）",
         "node_ids": [
-          "wiki/entities/llama.md",
-          "wiki/entities/mnn.md",
-          "wiki/topics/api-chat.md",
-          "wiki/topics/api-oauth.md",
-          "wiki/topics/api-voice.md",
-          "wiki/topics/llm-local.md"
+          "wiki/topics/core-avatar.md",
+          "wiki/topics/core-chat.md",
+          "wiki/topics/core-config.md",
+          "wiki/topics/core-persona.md",
+          "wiki/topics/core-tools.md",
+          "wiki/topics/core-workflow.md"
         ]
       },
       "global": {
@@ -2884,26 +3394,30 @@
           "wiki/topics/core-avatar.md",
           "wiki/topics/core-tools.md",
           "wiki/topics/ui-chat.md",
-          "wiki/topics/api-chat.md",
           "wiki/topics/core-chat.md",
           "wiki/topics/core-config.md",
+          "wiki/topics/api-chat.md",
+          "wiki/topics/core-persona.md",
+          "wiki/topics/core-workflow.md",
           "wiki/topics/ui-settings.md",
           "wiki/topics/ui-toolbox.md",
+          "wiki/topics/data-mcp.md",
+          "wiki/topics/mod-showerclient.md",
           "wiki/topics/api-voice.md",
           "wiki/topics/arch-overview.md",
-          "wiki/topics/core-workflow.md",
+          "wiki/topics/ext-plugins.md",
           "wiki/topics/llm-local.md",
           "wiki/topics/ui-floating.md",
           "wiki/topics/ui-misc.md",
           "wiki/topics/api-oauth.md",
-          "wiki/topics/data-mcp.md",
-          "wiki/topics/mod-showerclient.md",
-          "wiki/topics/ext-plugins.md",
           "wiki/topics/data-model.md",
           "wiki/topics/ext-quickjs.md",
           "wiki/topics/data-backup.md",
+          "wiki/topics/data-memory.md",
           "wiki/topics/mod-terminal.md",
           "wiki/topics/mod-webchat.md",
+          "wiki/topics/sys-integration.md",
+          "wiki/topics/ext-subpack.md",
           "wiki/topics/appendix-util.md",
           "wiki/entities/dragonbones.md",
           "wiki/entities/fbx.md",
@@ -2919,17 +3433,19 @@
         "degraded": false,
         "enabled": true,
         "node_ids": [
-          "wiki/topics/api-chat.md",
-          "wiki/topics/api-oauth.md",
-          "wiki/topics/api-voice.md",
-          "wiki/topics/llm-local.md"
+          "wiki/topics/core-avatar.md",
+          "wiki/topics/core-chat.md",
+          "wiki/topics/core-config.md",
+          "wiki/topics/core-persona.md",
+          "wiki/topics/core-tools.md",
+          "wiki/topics/core-workflow.md"
         ],
-        "start_node_id": "wiki/topics/api-chat.md"
+        "start_node_id": "wiki/topics/core-avatar.md"
       }
     }
   },
   "meta": {
-    "build_date": "2026-09-30T11:17:44Z",
+    "build_date": "2026-09-30T11:43:43Z",
     "degraded": false,
     "initial_view": [
       "wiki/entities/app.md",
@@ -2943,10 +3459,11 @@
       "wiki/topics/core-tools.md",
       "wiki/topics/core-chat.md",
       "wiki/topics/core-config.md",
+      "wiki/topics/core-persona.md",
+      "wiki/topics/core-workflow.md",
       "wiki/topics/ui-settings.md",
       "wiki/topics/ui-toolbox.md",
       "wiki/topics/api-voice.md",
-      "wiki/topics/core-workflow.md",
       "wiki/topics/llm-local.md",
       "wiki/topics/ui-floating.md",
       "wiki/topics/ui-misc.md",
@@ -2954,23 +3471,22 @@
       "wiki/topics/data-model.md",
       "wiki/topics/ext-quickjs.md",
       "wiki/topics/data-backup.md",
+      "wiki/topics/data-memory.md",
       "wiki/topics/mod-terminal.md",
       "wiki/topics/mod-webchat.md",
+      "wiki/topics/sys-integration.md",
+      "wiki/topics/ext-subpack.md",
       "wiki/topics/appendix-util.md",
-      "wiki/entities/dragonbones.md",
-      "wiki/entities/fbx.md",
-      "wiki/entities/llama.md",
-      "wiki/entities/mmd.md",
-      "wiki/entities/mnn.md"
+      "wiki/entities/dragonbones.md"
     ],
     "insights_degraded": false,
-    "total_edges": 157,
-    "total_nodes": 33,
+    "total_edges": 191,
+    "total_nodes": 37,
     "warning_summary": {
-      "build_id": "5ae1e669d248b5b0cb2bea5d36c87219ee8d554b3f9edc67d883dc007273d303",
+      "build_id": "dc26ebbd73c3c3c738699a2843684626a7c4ca9ff7ab05212dbcb9cf57417c20",
       "by_code": {},
       "details_ref": "wiki/graph-warnings.json",
-      "details_sha256": "17499f5e948bcc9c34a9ddc1270d3e04c9830c5138bc80b19eefa20cae2510f2",
+      "details_sha256": "5f3a8cdd0cdb6949939b2044be490c47ae91cb5423c67ec5ffd2e203603cd9c3",
       "error_occurrences": 0,
       "total_groups": 0,
       "total_occurrences": 0,
@@ -2981,7 +3497,7 @@
   "nodes": [
     {
       "community": "wiki/entities/app.md",
-      "content": "# 模块 app\n\n\u003e 来自阶段 0 repo_map.py 确定性统计（wiki-work/modules.md）\n\n- 文件数：1815（其中 .kt 1362）\n- 顶层符号数：4961\n- 说明：主应用模块，占 Kotlin 代码约 97%\n\n## 关联条目\n\n- [[arch-overview|整体架构]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-tools|工具系统]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-model|数据模型]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-settings|设置界面]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-toolbox|工具箱与技能包界面]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-floating|悬浮窗与主界面框架]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-misc|其他功能页]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[appendix-util|工具类与后台服务]] \u003c!-- confidence: EXTRACTED --\u003e",
+      "content": "# 模块 app\n\n\u003e 来自阶段 0 repo_map.py 确定性统计（wiki-work/modules.md）\n\n- 文件数：1815（其中 .kt 1362）\n- 顶层符号数：4961\n- 说明：主应用模块，占 Kotlin 代码约 97%\n\n## 关联条目\n\n- [[arch-overview|整体架构]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-tools|工具系统]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-model|数据模型]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[data-memory|记忆系统]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-settings|设置界面]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-toolbox|工具箱与技能包界面]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-floating|悬浮窗与主界面框架]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ui-misc|其他功能页]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[ext-subpack|应用包编辑（APK/EXE）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[sys-integration|系统集成能力]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[appendix-util|工具类与后台服务]] \u003c!-- confidence: EXTRACTED --\u003e",
       "id": "wiki/entities/app.md",
       "label": "模块 app",
       "source_path": "wiki/entities/app.md",
@@ -3045,7 +3561,7 @@
     },
     {
       "community": "wiki/topics/mod-showerclient.md",
-      "content": "# 模块 terminal\n\n\u003e 来自阶段 0 repo_map.py 确定性统计（wiki-work/modules.md）\n\n- 文件数：0（其中 .kt 0）\n- 顶层符号数：0\n- 说明：空模块（settings.gradle.kts 注册但无文件）\n\n## 关联条目\n\n- [[mod-terminal|terminal 模块（空模块说明）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e",
+      "content": "# 模块 terminal\n\n\u003e 来自阶段 0 repo_map.py 确定性统计（wiki-work/modules.md）\n\n- 文件数：0（其中 .kt 0）\n- 顶层符号数：0\n- 说明：空模块（settings.gradle.kts 注册但无文件）\n\n## 关联条目\n\n- [[mod-terminal|终端模块 TerminalCore（独立仓库）]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e",
       "id": "wiki/entities/terminal.md",
       "label": "模块 terminal",
       "source_path": "wiki/entities/terminal.md",
@@ -3061,7 +3577,7 @@
     },
     {
       "community": "wiki/topics/api-chat.md",
-      "content": "# 第三方 OAuth 接入\n\n\u003e 状态：规划中｜章节：模型接入｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- Codex / GitHub OAuth 的授权流程？\n- token 如何存储与刷新？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/CodexAuthManager.kt`\n- `app/src/main/java/com/ai/assistance/operit/api/CodexOAuthClient.kt`\n- `app/src/main/java/com/ai/assistance/operit/api/GitHubOAuthBrokerService.kt`\n\n## 关联条目\n\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[llm-local|端侧推理（llama/mnn）]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 第三方 OAuth 接入\n\n\u003e 状态：规划中｜章节：模型接入｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- Codex / GitHub OAuth 的授权流程？\n- token 如何存储与刷新？\n- GitHub OAuth 中转服务（OperitWeb/docs/GITHUB_OAUTH_BROKER.md）：market-v2 Worker 的 PKCE 流程与四个端点？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/CodexAuthManager.kt`\n- `app/src/main/java/com/ai/assistance/operit/api/CodexOAuthClient.kt`\n- `app/src/main/java/com/ai/assistance/operit/api/GitHubOAuthBrokerService.kt`\n\n## 关联条目\n\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[llm-local|端侧推理（llama/mnn）]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/api-oauth.md",
       "label": "第三方 OAuth 接入",
       "source_path": "wiki/topics/api-oauth.md",
@@ -3069,7 +3585,7 @@
     },
     {
       "community": "wiki/topics/api-chat.md",
-      "content": "# 语音能力（ASR/TTS）\n\n\u003e 状态：规划中｜章节：模型接入｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 语音识别与语音合成的链路？\n- 与聊天流程如何衔接？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/voice/`\n- `app/src/main/java/com/ai/assistance/operit/api/speech/`\n\n## 关联条目\n\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[llm-local|端侧推理（llama/mnn）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 语音能力（ASR/TTS）\n\n\u003e 状态：规划中｜章节：模型接入｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 语音识别与语音合成的链路？\n- 与聊天流程如何衔接？\n- 个性化语音唤醒（PersonalWakeListener / PersonalWakeEnrollment）的注册与监听流程？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/voice/`\n- `app/src/main/java/com/ai/assistance/operit/api/speech/`\n\n## 关联条目\n\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[llm-local|端侧推理（llama/mnn）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/api-voice.md",
       "label": "语音能力（ASR/TTS）",
       "source_path": "wiki/topics/api-voice.md",
@@ -3093,7 +3609,7 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 虚拟形象（Avatar）\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- Avatar 子系统的职责边界？\n- dragonbones/mmd/fbx 三个 native 模块分别承担什么渲染能力？\n- Kotlin 层如何调用 native 渲染？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/avatar/`\n- `avator/dragonbones/README.md`\n- `avator/mmd/`\n- `avator/fbx/`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[dragonbones|模块 dragonbones]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[mmd|模块 mmd]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[fbx|模块 fbx]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 虚拟形象（Avatar）\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- Avatar 子系统的职责边界？\n- dragonbones/mmd/fbx 三个 native 模块分别承担什么渲染能力？\n- Kotlin 层如何调用 native 渲染？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/avatar/`\n- `avator/dragonbones/README.md`\n- `avator/mmd/`\n- `avator/fbx/`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[dragonbones|模块 dragonbones]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[mmd|模块 mmd]] \u003c!-- confidence: EXTRACTED --\u003e\n- [[fbx|模块 fbx]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-avatar.md",
       "label": "虚拟形象（Avatar）",
       "source_path": "wiki/topics/core-avatar.md",
@@ -3101,7 +3617,7 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 聊天与消息处理\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 一条用户消息从进入到回复的完整处理链？\n- 各 Delegate（MessageProcessing/ChatHistory/TokenStatistics）如何分工？\n- 多轮任务的状态机在哪里维护？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/chat/`\n- `app/src/main/java/com/ai/assistance/operit/core/MessageProcessingDelegate.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/CurrentChatWindowController.kt`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 聊天与消息处理\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 一条用户消息从进入到回复的完整处理链？\n- 各 Delegate（MessageProcessing/ChatHistory/TokenStatistics）如何分工？\n- 多轮任务的状态机在哪里维护？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/chat/`\n- `app/src/main/java/com/ai/assistance/operit/core/MessageProcessingDelegate.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/CurrentChatWindowController.kt`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-chat.md",
       "label": "聊天与消息处理",
       "source_path": "wiki/topics/core-chat.md",
@@ -3109,7 +3625,7 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 配置体系\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 配置项如何分层（应用/模型/功能）？\n- 配置的读写链路：UI → preferences → 生效？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/config/`\n- `app/src/main/java/com/ai/assistance/operit/data/preferences/`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-settings|设置界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 配置体系\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 配置项如何分层（应用/模型/功能）？\n- 配置的读写链路：UI → preferences → 生效？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/config/`\n- `app/src/main/java/com/ai/assistance/operit/data/preferences/`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-settings|设置界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-config.md",
       "label": "配置体系",
       "source_path": "wiki/topics/core-config.md",
@@ -3117,7 +3633,15 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 工具系统\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 工具（Tool）如何定义、注册、发现？\n- 工具调用的完整链路：模型输出 → 解析 → 执行 → 结果回填？\n- ToolPkg 格式是什么？与 MCP 的关系？\n- 185 个文件的内部分层是怎样的？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/tools/`\n- `docs/TOOLPKG_FORMAT_GUIDE.md`\n\n## 关联条目\n\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 角色卡与人设\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 角色卡（酒馆卡兼容）的数据结构：CharacterCard / CharacterGroupCard？\n- 角色卡如何与聊天绑定（模型绑定、记忆绑定）？\n- 人设生成页 PersonaCardGenerationScreen 的流程？\n- 群聊角色卡的机制？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/model/CharacterCard.kt`\n- `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt`\n- `app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/CharacterSelectorPanel.kt`\n- `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/PersonaCardGenerationScreen.kt`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "id": "wiki/topics/core-persona.md",
+      "label": "角色卡与人设",
+      "source_path": "wiki/topics/core-persona.md",
+      "type": "topic"
+    },
+    {
+      "community": "wiki/topics/core-avatar.md",
+      "content": "# 工具系统\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 工具（Tool）如何定义、注册、发现？\n- 工具调用的完整链路：模型输出 → 解析 → 执行 → 结果回填？\n- ToolPkg 格式是什么？与 MCP 的关系？\n- 185 个文件的内部分层是怎样的？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/tools/`\n- `docs/TOOLPKG_FORMAT_GUIDE.md`\n\n## 关联条目\n\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-tools.md",
       "label": "工具系统",
       "source_path": "wiki/topics/core-tools.md",
@@ -3125,7 +3649,7 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 工作流引擎\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 工作流的定义格式与执行语义？\n- 工作流与单次工具调用的区别？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/workflow/`\n- `app/src/main/java/com/ai/assistance/operit/ui/features/workflow/`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 工作流引擎\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 工作流的定义格式与执行语义？\n- 工作流与单次工具调用的区别？\n- 定时调度（WorkflowScheduler）：工作流如何被定时触发？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/workflow/`\n- `app/src/main/java/com/ai/assistance/operit/ui/features/workflow/`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-workflow.md",
       "label": "工作流引擎",
       "source_path": "wiki/topics/core-workflow.md",
@@ -3133,7 +3657,7 @@
     },
     {
       "community": "wiki/topics/data-mcp.md",
-      "content": "# 备份、恢复与导出\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 备份的数据范围与格式？\n- 恢复与导出的链路？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/backup/`\n- `app/src/main/java/com/ai/assistance/operit/data/recovery/`\n- `app/src/main/java/com/ai/assistance/operit/data/exporter/`\n\n## 关联条目\n\n- [[data-model|数据模型]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 备份、恢复与导出\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 备份的数据范围与格式？\n- 恢复与导出的链路？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/backup/`\n- `app/src/main/java/com/ai/assistance/operit/data/recovery/`\n- `app/src/main/java/com/ai/assistance/operit/data/exporter/`\n\n## 关联条目\n\n- [[data-model|数据模型]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-memory|记忆系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/data-backup.md",
       "label": "备份、恢复与导出",
       "source_path": "wiki/topics/data-backup.md",
@@ -3141,7 +3665,7 @@
     },
     {
       "community": "wiki/topics/data-mcp.md",
-      "content": "# MCP 集成\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- MCP server 如何配置与连接？\n- MCP 工具如何汇入工具系统？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/mcp/`\n\n## 关联条目\n\n- [[data-model|数据模型]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# MCP 集成\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- MCP server 如何配置与连接？\n- MCP 工具如何汇入工具系统？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/mcp/`\n\n## 关联条目\n\n- [[data-model|数据模型]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-memory|记忆系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/data-mcp.md",
       "label": "MCP 集成",
       "source_path": "wiki/topics/data-mcp.md",
@@ -3149,7 +3673,15 @@
     },
     {
       "community": "wiki/topics/data-mcp.md",
-      "content": "# 数据模型\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 核心实体（会话/消息/工具调用记录）的数据模型？\n- 数据库选型与 DAO 分层？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/model/`\n- `app/src/main/java/com/ai/assistance/operit/data/dao/`\n- `app/src/main/java/com/ai/assistance/operit/data/db/`\n\n## 关联条目\n\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 记忆系统\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 记忆空间 MemorySpace 的设计：空间如何划分与隔离？\n- 记忆自动保存的触发机制（MemoryAutoSaveScheduler）？\n- 聊天记忆重建流程（ChatMemoryRebuildManager / WindowPlanner）？\n- 语义搜索如何实现（CloudEmbeddingService）？\n- Agent 如何通过工具查询记忆（MemoryQueryToolExecutor）？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/chat/library/MemoryLibrary.kt`\n- `app/src/main/java/com/ai/assistance/operit/api/chat/library/ChatMemoryRebuildManager.kt`\n- `app/src/main/java/com/ai/assistance/operit/api/chat/library/MemoryAutoSaveScheduler.kt`\n- `app/src/main/java/com/ai/assistance/operit/data/repository/MemoryRepository.kt`\n- `app/src/main/java/com/ai/assistance/operit/data/model/MemorySpace.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/MemoryQueryToolExecutor.kt`\n- `app/src/main/java/com/ai/assistance/operit/services/CloudEmbeddingService.kt`\n\n## 关联条目\n\n- [[data-model|数据模型]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "id": "wiki/topics/data-memory.md",
+      "label": "记忆系统",
+      "source_path": "wiki/topics/data-memory.md",
+      "type": "topic"
+    },
+    {
+      "community": "wiki/topics/data-mcp.md",
+      "content": "# 数据模型\n\n\u003e 状态：规划中｜章节：数据层｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 核心实体（会话/消息/工具调用记录）的数据模型？\n- 数据库选型与 DAO 分层？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/data/model/`\n- `app/src/main/java/com/ai/assistance/operit/data/dao/`\n- `app/src/main/java/com/ai/assistance/operit/data/db/`\n\n## 关联条目\n\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-backup|备份、恢复与导出]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-memory|记忆系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/data-model.md",
       "label": "数据模型",
       "source_path": "wiki/topics/data-model.md",
@@ -3157,7 +3689,7 @@
     },
     {
       "community": "wiki/topics/ext-plugins.md",
-      "content": "# 插件与集成\n\n\u003e 状态：规划中｜章节：脚本与扩展｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- plugins 与 integrations 的区别？\n- 第三方如何开发一个插件？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/plugins/`\n- `app/src/main/java/com/ai/assistance/operit/integrations/`\n- `docs/TOOLPKG_FORMAT_GUIDE.md`\n\n## 关联条目\n\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 插件与集成\n\n\u003e 状态：规划中｜章节：脚本与扩展｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- plugins 与 integrations 的区别？\n- 第三方如何开发一个插件？\n- 插件市场 v2 接口（OperitWeb/docs/MARKET_API_ENDPOINTS.md）：域名分工 static.operit.app / api.operit.app？\n- 市场审核规范与插件拒绝名单 feed（OperitWeb/docs/MARKET_REVIEW_GUIDELINES.md、PLUGIN_DENYLIST.md）？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/plugins/`\n- `app/src/main/java/com/ai/assistance/operit/integrations/`\n- `docs/TOOLPKG_FORMAT_GUIDE.md`\n\n## 关联条目\n\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-subpack|应用包编辑（APK/EXE）]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/ext-plugins.md",
       "label": "插件与集成",
       "source_path": "wiki/topics/ext-plugins.md",
@@ -3165,10 +3697,18 @@
     },
     {
       "community": "wiki/topics/ext-plugins.md",
-      "content": "# QuickJS 脚本引擎\n\n\u003e 状态：规划中｜章节：脚本与扩展｜模块：quickjs｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- QuickJS 在 Operit 里承担什么角色？\n- 脚本如何调用 Android/工具能力？安全边界？\n\n## 种子文件\n\n- `quickjs/README.md`\n- `docs/SCRIPT_DEV_GUIDE.md`\n- `docs/SCRIPT_DEV_SKILL.md`\n\n## 关联条目\n\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[quickjs|模块 quickjs]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# QuickJS 脚本引擎\n\n\u003e 状态：规划中｜章节：脚本与扩展｜模块：quickjs｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- QuickJS 在 Operit 里承担什么角色？\n- 脚本如何调用 Android/工具能力？安全边界？\n\n## 种子文件\n\n- `quickjs/README.md`\n- `docs/SCRIPT_DEV_GUIDE.md`\n- `docs/SCRIPT_DEV_SKILL.md`\n\n## 关联条目\n\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-subpack|应用包编辑（APK/EXE）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[quickjs|模块 quickjs]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/ext-quickjs.md",
       "label": "QuickJS 脚本引擎",
       "source_path": "wiki/topics/ext-quickjs.md",
+      "type": "topic"
+    },
+    {
+      "community": "wiki/topics/ext-plugins.md",
+      "content": "# 应用包编辑（APK/EXE）\n\n\u003e 状态：规划中｜章节：脚本与扩展｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- subpack（子包）功能的定位：APK/EXE 编辑与逆向？\n- ApkEditor / ApkReverseEngineer 的能力边界？\n- ExeEditor / ExeIconChanger 在 Android 上如何改 Windows 可执行文件？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/subpack/ApkEditor.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/subpack/ApkReverseEngineer.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/subpack/ExeEditor.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/subpack/ExeIconChanger.kt`\n\n## 关联条目\n\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "id": "wiki/topics/ext-subpack.md",
+      "label": "应用包编辑（APK/EXE）",
+      "source_path": "wiki/topics/ext-subpack.md",
       "type": "topic"
     },
     {
@@ -3181,7 +3721,7 @@
     },
     {
       "community": "wiki/topics/mod-showerclient.md",
-      "content": "# Shower 客户端库\n\n\u003e 状态：规划中｜章节：周边模块｜模块：showerclient｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- showerclient 的职责？（按 README 原文）\n- app 如何依赖它（dep-graph：app→showerclient 权重 9）？\n\n## 种子文件\n\n- `showerclient/README.md`\n\n## 关联条目\n\n- [[mod-webchat|web-chat 前端]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-terminal|terminal 模块（空模块说明）]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[showerclient|模块 showerclient]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# Shower 客户端库\n\n\u003e 状态：规划中｜章节：周边模块｜模块：showerclient｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- showerclient 的职责？（按 README 原文）\n- app 如何依赖它（dep-graph：app→showerclient 权重 9）？\n\n## 种子文件\n\n- `showerclient/README.md`\n\n## 关联条目\n\n- [[mod-webchat|web-chat 前端]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-terminal|终端模块 TerminalCore（独立仓库）]] \u003c!-- confidence: INFERRED --\u003e\n- [[sys-integration|系统集成能力]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[showerclient|模块 showerclient]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/mod-showerclient.md",
       "label": "Shower 客户端库",
       "source_path": "wiki/topics/mod-showerclient.md",
@@ -3189,18 +3729,26 @@
     },
     {
       "community": "wiki/topics/mod-showerclient.md",
-      "content": "# terminal 模块（空模块说明）\n\n\u003e 状态：规划中｜章节：周边模块｜模块：terminal｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- terminal 在 settings 中注册但 0 文件：是预留占位还是已废弃？（需人工确认）\n\n## 种子文件\n\n- `settings.gradle.kts`\n\n## 关联条目\n\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-webchat|web-chat 前端]] \u003c!-- confidence: INFERRED --\u003e\n- [[terminal|模块 terminal]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 终端模块 TerminalCore（独立仓库）\n\n\u003e 状态：规划中｜章节：周边模块｜模块：terminal｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- terminal 模块代码在独立仓库 AAswordman/OperitTerminalCore（47 kt），主仓库 settings 仅注册 :terminal，目录为空：两者如何关联（submodule / composite build）？\n- TerminalManager 单例的职责边界？SessionManager / TerminalSession / Pty 各自负责什么？\n- TerminalService + AIDL（ITerminalService / ITerminalCallback）IPC 机制：UI 与终端引擎为何要分进程？\n- Kotlin Flow 在此模块中如何做状态管理与事件广播（命令输出、目录变更）？\n- provider/filesystem 与 main/TerminalScreen（Compose UI）的职责？\n\n## 种子文件\n\n- `OperitTerminalCore/src/main/java/com/ai/assistance/operit/terminal/TerminalManager.kt`\n- `OperitTerminalCore/src/main/java/com/ai/assistance/operit/terminal/SessionManager.kt`\n- `OperitTerminalCore/src/main/java/com/ai/assistance/operit/terminal/TerminalSession.kt`\n- `OperitTerminalCore/src/main/java/com/ai/assistance/operit/terminal/Pty.kt`\n- `OperitTerminalCore/src/main/aidl/com/ai/assistance/operit/terminal/ITerminalService.aidl`\n- `Operit/settings.gradle.kts`\n\n## 关联条目\n\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-webchat|web-chat 前端]] \u003c!-- confidence: INFERRED --\u003e\n- [[sys-integration|系统集成能力]] \u003c!-- confidence: INFERRED --\u003e\n- [[terminal|模块 terminal]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/mod-terminal.md",
-      "label": "terminal 模块（空模块说明）",
+      "label": "终端模块 TerminalCore（独立仓库）",
       "source_path": "wiki/topics/mod-terminal.md",
       "type": "topic"
     },
     {
       "community": "wiki/topics/mod-showerclient.md",
-      "content": "# web-chat 前端\n\n\u003e 状态：规划中｜章节：周边模块｜模块：unassigned｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- web-chat（Vite+TS）是什么？与 Android 端的关系？\n- 它消费哪些后端/API？\n\n## 种子文件\n\n- `web-chat/`\n\n## 关联条目\n\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-terminal|terminal 模块（空模块说明）]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# web-chat 前端\n\n\u003e 状态：规划中｜章节：周边模块｜模块：unassigned｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- web-chat（Vite+TS）是什么？与 Android 端的关系？\n- 它消费哪些后端/API？\n\n## 种子文件\n\n- `web-chat/`\n\n## 关联条目\n\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-terminal|终端模块 TerminalCore（独立仓库）]] \u003c!-- confidence: INFERRED --\u003e\n- [[sys-integration|系统集成能力]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/mod-webchat.md",
       "label": "web-chat 前端",
       "source_path": "wiki/topics/mod-webchat.md",
+      "type": "topic"
+    },
+    {
+      "community": "wiki/topics/mod-showerclient.md",
+      "content": "# 系统集成能力\n\n\u003e 状态：规划中｜章节：周边模块｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- DocumentsProvider 把哪些数据暴露给系统文件管理器？\n- 桌面小部件（工具包小部件、语音助手小部件）的能力与配置流程？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/provider/MemoryDocumentsProvider.kt`\n- `app/src/main/java/com/ai/assistance/operit/provider/OperitDataDocumentsProvider.kt`\n- `app/src/main/java/com/ai/assistance/operit/provider/WorkspaceDocumentsProvider.kt`\n- `app/src/main/java/com/ai/assistance/operit/widget/ToolPkgDesktopWidget.kt`\n- `app/src/main/java/com/ai/assistance/operit/widget/VoiceAssistantGlanceWidget.kt`\n\n## 关联条目\n\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-webchat|web-chat 前端]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-terminal|终端模块 TerminalCore（独立仓库）]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "id": "wiki/topics/sys-integration.md",
+      "label": "系统集成能力",
+      "source_path": "wiki/topics/sys-integration.md",
       "type": "topic"
     },
     {
@@ -3247,7 +3795,7 @@
 }
   </script>
   <script id="graph-warning-data" type="application/json">
-{"bundle":{"build_id":"5ae1e669d248b5b0cb2bea5d36c87219ee8d554b3f9edc67d883dc007273d303","candidate_sets":[],"groups":[],"summary":{"build_id":"5ae1e669d248b5b0cb2bea5d36c87219ee8d554b3f9edc67d883dc007273d303","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"17499f5e948bcc9c34a9ddc1270d3e04c9830c5138bc80b19eefa20cae2510f2","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"version":1},"details_status":"available","details_unavailable_reason":null,"omitted_candidate_set_count":0,"omitted_group_count":0,"summary":{"build_id":"5ae1e669d248b5b0cb2bea5d36c87219ee8d554b3f9edc67d883dc007273d303","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"17499f5e948bcc9c34a9ddc1270d3e04c9830c5138bc80b19eefa20cae2510f2","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"warning_details_truncated":false}  </script>
+{"bundle":{"build_id":"dc26ebbd73c3c3c738699a2843684626a7c4ca9ff7ab05212dbcb9cf57417c20","candidate_sets":[],"groups":[],"summary":{"build_id":"dc26ebbd73c3c3c738699a2843684626a7c4ca9ff7ab05212dbcb9cf57417c20","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"5f3a8cdd0cdb6949939b2044be490c47ae91cb5423c67ec5ffd2e203603cd9c3","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"version":1},"details_status":"available","details_unavailable_reason":null,"omitted_candidate_set_count":0,"omitted_group_count":0,"summary":{"build_id":"dc26ebbd73c3c3c738699a2843684626a7c4ca9ff7ab05212dbcb9cf57417c20","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"5f3a8cdd0cdb6949939b2044be490c47ae91cb5423c67ec5ffd2e203603cd9c3","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"warning_details_truncated":false}  </script>
   <script id="graph-layout" type="application/json">
 {"version":2,"pins":{},"updatedAt":""}
   </script>

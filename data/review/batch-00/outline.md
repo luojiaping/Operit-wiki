@@ -1,63 +1,69 @@
 ---
 title: Operit-wiki 大纲（草案）
 module: meta
-sources: [repo-map.json, dep-graph.json, modules.md]
+sources: [repo-map.json, dep-graph.json, modules.md, outline.yaml]
 date: 2026-09-30
 ---
 
-# Operit-wiki 大纲（草案 v1）
+# Operit-wiki 大纲（草案 v2）
 
-> 生成依据：阶段 0 确定性脚本统计（`scripts/repo_map.py`），全部数字来自实际扫描，未做推测。
+> 生成依据：阶段 0 确定性脚本统计（`scripts/repo_map.py`）+ 人工通读仓库补遗，全部数字来自实际扫描，未做推测。
 > 仓库事实：**app 模块占 1362/1402 个 kt 文件、4961/5039 个符号**，是绝对主体；其余 8 个模块合计 40 个 kt 文件。
+> terminal 模块代码在独立仓库 `AAswordman/OperitTerminalCore`（47 kt），主仓库 settings 仅注册 `:terminal`。
 
-## 章节与页面（共 24 页）
+## 章节与页面（共 28 页）
 
 ### 架构总览
-1. **整体架构** —— 模块划分、依赖方向（全部以 app 为起点）、native 模块在 Kotlin 层为何几乎无依赖
+1. **整体架构** —— Gradle 模块如何划分？各模块职责是什么？；模块间依赖方向是怎样的（dep-graph 显示全部以 app 为起点）？
 
 ### Agent 核心
-2. **工具系统** —— 工具定义/注册/发现、调用链路、ToolPkg 格式（`core/tools`，185 文件）
-3. **聊天与消息处理** —— 消息处理链、各 Delegate 分工、多轮任务状态机
-4. **工作流引擎** —— 定义格式、执行语义、与单次工具调用的区别
-5. **虚拟形象（Avatar）** —— 子系统边界、dragonbones/mmd/fbx 分工、Kotlin→native 调用
-6. **配置体系** —— 配置分层、UI→preferences→生效链路
+2. **工具系统** —— 工具（Tool）如何定义、注册、发现？；工具调用的完整链路：模型输出 → 解析 → 执行 → 结果回填？
+3. **聊天与消息处理** —— 一条用户消息从进入到回复的完整处理链？；各 Delegate（MessageProcessing/ChatHistory/TokenStatistics）如何分工？
+4. **工作流引擎** —— 工作流的定义格式与执行语义？；工作流与单次工具调用的区别？
+5. **虚拟形象（Avatar）** —— Avatar 子系统的职责边界？；dragonbones/mmd/fbx 三个 native 模块分别承担什么渲染能力？
+6. **配置体系** —— 配置项如何分层（应用/模型/功能）？；配置的读写链路：UI → preferences → 生效？
+7. **角色卡与人设** —— 角色卡（酒馆卡兼容）的数据结构：CharacterCard / CharacterGroupCard？；角色卡如何与聊天绑定（模型绑定、记忆绑定）？
 
 ### 模型接入
-7. **云端 Chat API 接入** —— 渠道扩展、流式响应链路（`api/chat`，110 文件）
-8. **语音能力（ASR/TTS）** —— 识别/合成链路、与聊天流程衔接
-9. **第三方 OAuth 接入** —— Codex/GitHub 授权流程、token 存储刷新
-10. **端侧推理（llama/mnn）** —— 双模块分工、模型加载、JNI 边界
+8. **云端 Chat API 接入** —— 支持哪些云端模型渠道？如何新增一个渠道？；请求构造、流式响应的处理链路？
+9. **语音能力（ASR/TTS）** —— 语音识别与语音合成的链路？；与聊天流程如何衔接？
+10. **第三方 OAuth 接入** —— Codex / GitHub OAuth 的授权流程？；token 如何存储与刷新？
+11. **端侧推理（llama/mnn）** —— llama 与 mnn 两个模块的分工？；端侧模型如何加载、推理、与云端渠道切换？
 
 ### 数据层
-11. **数据模型** —— 会话/消息/工具调用记录、数据库选型
-12. **MCP 集成** —— server 配置连接、MCP 工具汇入工具系统
-13. **备份、恢复与导出** —— 数据范围格式、恢复导出链路
+12. **数据模型** —— 核心实体（会话/消息/工具调用记录）的数据模型？；数据库选型与 DAO 分层？
+13. **MCP 集成** —— MCP server 如何配置与连接？；MCP 工具如何汇入工具系统？
+14. **备份、恢复与导出** —— 备份的数据范围与格式？；恢复与导出的链路？
+15. **记忆系统** —— 记忆空间 MemorySpace 的设计：空间如何划分与隔离？；记忆自动保存的触发机制（MemoryAutoSaveScheduler）？
 
 ### 界面
-14. **聊天界面** —— 组件与状态管理（`features/chat`，175 文件）
-15. **设置界面** —— 信息架构、与配置体系绑定
-16. **工具箱与技能包界面** —— 两者区别、技能包安装管理链路
-17. **悬浮窗与主界面框架** —— 悬浮窗权限生命周期、主界面导航
-18. **其他功能页** —— memory/websession/assistant/tokenstats
+16. **聊天界面** —— 聊天界面的主要组件与状态管理？；175 个文件按什么粒度组织？
+17. **设置界面** —— 设置页的信息架构？；设置项与 core-config 的绑定方式？
+18. **工具箱与技能包界面** —— 工具箱与 packages（技能包）两个功能的区别？；技能包的安装、管理、启用链路？
+19. **悬浮窗与主界面框架** —— 悬浮窗的启动、权限、生命周期？；主界面的导航结构？
+20. **其他功能页** —— memory / websession / assistant / tokenstats 各自解决什么问题？；记忆（memory）功能的数据链路？
 
 ### 脚本与扩展
-19. **QuickJS 脚本引擎** —— 角色、脚本能力边界、安全边界
-20. **插件与集成** —— plugins vs integrations、第三方开发插件流程
+21. **QuickJS 脚本引擎** —— QuickJS 在 Operit 里承担什么角色？；脚本如何调用 Android/工具能力？安全边界？
+22. **插件与集成** —— plugins 与 integrations 的区别？；第三方如何开发一个插件？
+23. **应用包编辑（APK/EXE）** —— subpack（子包）功能的定位：APK/EXE 编辑与逆向？；ApkEditor / ApkReverseEngineer 的能力边界？
 
 ### 周边模块
-21. **Shower 客户端库** —— 按 README 职责、app→showerclient 依赖
-22. **web-chat 前端** —— Vite+TS 项目定位、与 Android 端关系
-23. **terminal 模块（空模块说明）** —— settings 注册但 0 文件，需人工确认意图
+24. **Shower 客户端库** —— showerclient 的职责？（按 README 原文）；app 如何依赖它（dep-graph：app→showerclient 权重 9）？
+25. **web-chat 前端** —— web-chat（Vite+TS）是什么？与 Android 端的关系？；它消费哪些后端/API？
+26. **终端模块 TerminalCore（独立仓库）** —— terminal 模块代码在独立仓库 AAswordman/OperitTerminalCore（47 kt），主仓库 settings 仅注册 :terminal，目录为空：两者如何关联（submodule / composite build）？；TerminalManager 单例的职责边界？SessionManager / TerminalSession / Pty 各自负责什么？
+27. **系统集成能力** —— DocumentsProvider 把哪些数据暴露给系统文件管理器？；桌面小部件（工具包小部件、语音助手小部件）的能力与配置流程？
 
 ### 附录
-24. **工具类与后台服务** —— util 分组、services 触发条件
+28. **工具类与后台服务** —— util 下 131 个文件的主要分组？；services 下的后台服务有哪些？各自的触发条件？
 
 ## 请你重点评审
 
 1. 章节切分是否合理？有没有漏掉你关心的部分？
-2. `terminal` 空模块：保留一页说明还是直接不列？
-3. `ui/features` 下 21 个功能目录合并为 5 页，粒度合适吗？
-4. 以下模块职责脚本找不到出处，标了"未知，需人工确认"，你方便各补一句话吗：**app、mnn、llama、mmd、fbx**
+2. v2 新增的 4 页（记忆系统、角色卡与人设、应用包编辑、系统集成）粒度合适吗？
+3. `terminal` 现已确认为独立仓库 `AAswordman/OperitTerminalCore`，说明页这样写可以吗？
+4. `ui/features` 下 21 个功能目录合并为 5 页，粒度合适吗？
+5. 以下模块职责脚本找不到出处，标了"未知，需人工确认"，你方便各补一句话吗：**app、mnn、llama、mmd、fbx**
 
 ## 来源
 
@@ -65,3 +71,5 @@ date: 2026-09-30
 - `wiki-work/dep-graph.json`（8 条模块依赖边，全部以 app 为起点）
 - `wiki-work/modules.md`
 - `~/workspace/Operit/Repo_Arch_Basic.md`、`README.md`（项目介绍原文引用）
+- `AAswordman/OperitTerminalCore` 的 README（终端模块职责原文）
+- `AAswordman/OperitWeb/docs/`（插件市场接口、审核规范、拒绝名单、GitHub OAuth Broker）
