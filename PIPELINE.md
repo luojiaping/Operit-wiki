@@ -80,3 +80,13 @@ Operit 仓库有新 commit → 跑 `check_staleness.py`，STALE 页的命中 fac
   没有 issue 号的条目评论区无处可评，视为未完成同步。
 - 同步完成的定义：公网 entry 页能打开、评论区连通到对应 Issue（live browser 实地验证为准，
   不只看本地构建成功）。
+
+## 9. 评审批准自动检测（2026-09-30 用户需求）
+- 条目页右侧新增「评审动态」栏：从 GitHub 公开 API 实时读取 Issue 评论数与 owner 最新表态。
+- owner 在评论区发表「通过/批准/LGTM」即批准（「不通过/需修改/打回」不算）。
+- `scripts/watch_reviews.py` 每 15 分钟由 cron（wiki-review-watcher）运行：检测到新批准评论后自动
+  `.status.json` -> approved（含 approved_by_comment_id 水位线，防重复翻转）-> Issue 留言确认
+  -> git push -> build_queue.py -> deploy_site.sh。
+- 注意：gh 留言用的 token 即 owner 本人身份，bot 留言与 owner 留言无法区分；
+  因此 Issue 留言正文禁止出现"通过/批准/LGTM"字样（确认留言已改写），且回炉重写把条目
+  打回 review-pending 时，必须把 approved_by_comment_id 重置为当时最新评论 id。
