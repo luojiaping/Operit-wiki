@@ -12,6 +12,8 @@ WORK=$(mktemp -d)
 git worktree add -q "$WORK" gh-pages
 rm -rf "$WORK"/*
 cp -r site/* "$WORK"/
+# .nojekyll：关闭 Jekyll 处理，否则 .md 文件会被转成 .html 导致原路径 404
+touch "$WORK/.nojekyll"
 mkdir -p "$WORK/data"
 cp review-queue.json "$WORK/data/"
 [ -d review ] && cp -r review "$WORK/data/" || true
