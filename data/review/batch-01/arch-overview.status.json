@@ -4,5 +4,7 @@
   "summary": "整体架构：app 模块总览：9 模块注册、依赖方向、quickjs 已接入 app（过期 README 纠正）、97% 代码集中 app 的原因。",
   "critic": "通过",
   "refs_valid": "27/27",
-  "updated": "2026-09-30"
+  "updated": "2026-09-30",
+  "source_repo": "operit",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb"
 }

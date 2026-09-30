@@ -4,5 +4,7 @@
   "summary": "数据模型：Room AppDatabase（版本 21、20 迁移、5 DAO）、ChatEntity/MessageEntity/MessageVariantEntity、ObjectBox 记忆实体隔离。",
   "critic": "通过",
   "refs_valid": "46/46",
-  "updated": "2026-09-30"
+  "updated": "2026-09-30",
+  "source_repo": "operit",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb"
 }
