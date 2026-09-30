@@ -8,9 +8,10 @@ cd "$ROOT"
 
 python3 scripts/build_queue.py --root .
 
-# Wiki 预览数据 + 知识图谱（失败不阻断部署，保留上次产物）
+# Wiki 预览数据 + 知识图谱 + 覆盖进度（失败不阻断部署，保留上次产物）
 python3 scripts/build_wiki_data.py || echo "WARN: build_wiki_data.py failed, keep old pages.json"
 python3 scripts/build_graph.py || echo "WARN: build_graph.py failed, keep old graph"
+python3 scripts/build_coverage.py --root . || echo "WARN: build_coverage.py failed, keep old coverage.json"
 
 WORK=$(mktemp -d)
 git worktree add -q "$WORK" gh-pages

@@ -30,6 +30,25 @@
   <div class="filters" id="filters"></div>
   <div class="entry-cards" id="list"></div>
   <div class="updated" id="updated"></div>
+
+  <div class="coverage" id="coverage">
+    <h2>Wiki 覆盖进度 <span class="cov-updated" id="covUpdated"></span></h2>
+    <p class="cov-desc">全仓库文件逐个对照 wiki 覆盖情况：已读 = 被某条目 facts 引用或列为 seed；已审批 = 归属已通过条目。目标：88 万行无死角。</p>
+    <div class="cov-bars" id="covBars"></div>
+    <div class="cov-mods" id="covMods"></div>
+    <div class="cov-tools">
+      <input id="covSearch" class="cov-search" placeholder="搜索文件路径…">
+      <div class="cov-chips" id="covStatusChips"></div>
+      <select id="covModSel" class="cov-sel"></select>
+      <label class="cov-kt"><input type="checkbox" id="covKt"> 仅 kt</label>
+    </div>
+    <div class="cov-count" id="covCount"></div>
+    <table class="cov-table">
+      <thead><tr><th>状态</th><th>文件</th><th>模块</th><th>行数</th><th>覆盖条目</th></tr></thead>
+      <tbody id="covBody"></tbody>
+    </table>
+  </div>
+
   <div class="credit">纸墨设计参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
 </div>
 
@@ -79,6 +98,76 @@ function renderList() {
     </a>`).join("");
 }
 load();
+loadCoverage();
+
+/* ---- Wiki 覆盖进度 ---- */
+const COV_LABEL = ["未读", "已读", "已审批"];
+let covData = null, covStatus = "all", covMod = "all";
+async function loadCoverage() {
+  try {
+    covData = await (await fetch("data/coverage.json")).json();
+  } catch (e) { return; }
+  document.getElementById("covUpdated").textContent = "· 数据更新 " + (covData.updated || "—");
+  renderCovBars(); renderCovMods(); renderCovTools(); renderCovTable();
+}
+function pct(a, b) { return b ? (100 * a / b) : 0; }
+function renderCovBars() {
+  const t = covData.totals;
+  const rows = [
+    ["已读", t.read_files, t.files, t.read_loc, t.loc, "read"],
+    ["已审批", t.approved_files, t.files, t.approved_loc, t.loc, "approved"],
+  ];
+  document.getElementById("covBars").innerHTML = rows.map(([l, rf, f, rl, tl, cls]) => `
+    <div class="cov-bar-row">
+      <div class="cov-bar-label">${l} <b>${rf}</b>/${f} 文件 · ${rl.toLocaleString()}/${tl.toLocaleString()} 行</div>
+      <div class="cov-bar"><div class="cov-fill ${cls}" style="width:${pct(rf, f).toFixed(2)}%"></div></div>
+      <div class="cov-pct">${pct(rf, f).toFixed(1)}%</div>
+    </div>`).join("");
+}
+function renderCovMods() {
+  document.getElementById("covMods").innerHTML = covData.modules.map(m => `
+    <div class="cov-mod">
+      <div class="cov-mod-name">${m.name}<span>${m.dir}</span></div>
+      <div class="cov-bar slim"><div class="cov-fill read" style="width:${pct(m.read_files, m.files).toFixed(2)}%"></div></div>
+      <div class="cov-mod-nums">已读 ${m.read_files}/${m.files} · 已审批 ${m.approved_files}</div>
+    </div>`).join("");
+}
+function renderCovTools() {
+  const defs = [["all", "全部"], ["0", "未读"], ["1", "已读"], ["2", "已审批"]];
+  document.getElementById("covStatusChips").innerHTML = defs.map(([v, l]) =>
+    `<button class="chip ${v === covStatus ? "active" : ""}" data-s="${v}">${l}</button>`).join("");
+  document.querySelectorAll("#covStatusChips .chip").forEach(b =>
+    b.onclick = () => { covStatus = b.dataset.s; renderCovTools(); renderCovTable(); });
+  const sel = document.getElementById("covModSel");
+  sel.innerHTML = `<option value="all">全部模块</option>` + covData.modules.map(m =>
+    `<option value="${m.name}" ${m.name === covMod ? "selected" : ""}>${m.name} (${m.files})</option>`).join("");
+  sel.onchange = () => { covMod = sel.value; renderCovTable(); };
+  document.getElementById("covSearch").oninput = renderCovTable;
+  document.getElementById("covKt").onchange = renderCovTable;
+}
+function covFiltered() {
+  const q = document.getElementById("covSearch").value.trim().toLowerCase();
+  const ktOnly = document.getElementById("covKt").checked;
+  return covData.files.filter(f =>
+    (covStatus === "all" || String(f.s) === covStatus) &&
+    (covMod === "all" || f.m === covMod) &&
+    (!ktOnly || f.kt) &&
+    (!q || f.p.toLowerCase().includes(q)));
+}
+function renderCovTable() {
+  const rows = covFiltered();
+  const LIMIT = 400;
+  document.getElementById("covCount").textContent =
+    `共 ${rows.length} 个文件${rows.length > LIMIT ? `，显示前 ${LIMIT} 个，请用搜索 / 筛选缩小范围` : ""}`;
+  document.getElementById("covBody").innerHTML = rows.slice(0, LIMIT).map(f => `
+    <tr>
+      <td><span class="seal cov-s${f.s}">${COV_LABEL[f.s]}</span></td>
+      <td class="mono">${f.p}</td>
+      <td>${f.m}</td>
+      <td class="num">${f.loc.toLocaleString()}</td>
+      <td>${f.page ? `<a href="entry.html?id=${encodeURIComponent(f.page)}">${f.page}</a>` : "—"}</td>
+    </tr>`).join("");
+}
 </script>
 </body>
 </html>

@@ -221,3 +221,37 @@ details.collapse .body { padding: 0 16px 16px; }
   .rail-right { margin-top: 18px; }
   .hero h1 { font-size: 24px; }
 }
+
+/* ---- Wiki 覆盖进度 ---- */
+.coverage { margin: 44px 0 8px; border-top: 2px solid var(--app-border); padding-top: 26px; }
+.coverage h2 { font-family: var(--font-song); font-size: 22px; letter-spacing: 3px; margin: 0 0 6px; text-align: center; }
+.cov-updated { font-family: var(--font-sans); font-size: 12px; color: var(--app-muted); letter-spacing: 0; font-weight: 400; }
+.cov-desc { text-align: center; color: var(--app-muted); font-size: 13px; margin: 0 0 18px; }
+.cov-bars { max-width: 720px; margin: 0 auto 20px; }
+.cov-bar-row { display: grid; grid-template-columns: 1fr; gap: 6px; margin-bottom: 14px; }
+.cov-bar-label { font-size: 13px; }
+.cov-bar-label b { font-family: var(--font-song); font-size: 16px; }
+.cov-bar { height: 14px; background: var(--app-raised); border: 1px solid var(--app-border); border-radius: 7px; overflow: hidden; position: relative; }
+.cov-bar.slim { height: 8px; border-radius: 4px; }
+.cov-fill { height: 100%; width: 0; transition: width .6s ease; }
+.cov-fill.read { background: #3a3530; }
+.cov-fill.approved { background: var(--app-accent-deep); }
+.cov-pct { font-family: var(--font-song); font-size: 13px; color: var(--app-muted); text-align: right; }
+.cov-mods { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px 18px; margin-bottom: 22px; }
+.cov-mod-name { font-family: var(--font-song); font-size: 14px; margin-bottom: 4px; }
+.cov-mod-name span { font-family: var(--font-sans); font-size: 11px; color: var(--app-muted); margin-left: 6px; }
+.cov-mod-nums { font-size: 11px; color: var(--app-muted); margin-top: 3px; }
+.cov-tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.cov-search { flex: 1; min-width: 180px; padding: 8px 12px; border: 1px solid var(--app-border); border-radius: 6px; background: var(--app-surface); font-family: var(--font-mono); font-size: 13px; color: var(--app-fg); }
+.cov-sel { padding: 8px 10px; border: 1px solid var(--app-border); border-radius: 6px; background: var(--app-surface); font-size: 13px; color: var(--app-fg); }
+.cov-kt { font-size: 13px; color: var(--app-muted); display: flex; align-items: center; gap: 5px; }
+.cov-chips { display: flex; gap: 6px; }
+.cov-count { font-size: 12px; color: var(--app-muted); margin-bottom: 8px; }
+.cov-table { width: 100%; border-collapse: collapse; font-size: 12.5px; background: var(--app-surface); border: 1px solid var(--app-border); }
+.cov-table th, .cov-table td { padding: 7px 10px; border-bottom: 1px solid var(--app-border); text-align: left; }
+.cov-table th { font-family: var(--font-song); letter-spacing: 2px; background: var(--app-raised); }
+.cov-table .mono { font-family: var(--font-mono); font-size: 12px; word-break: break-all; }
+.cov-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.seal.cov-s0 { background: #8a8175; }
+.seal.cov-s1 { background: #3a3530; }
+.seal.cov-s2 { background: var(--app-accent-deep); }
