@@ -29,6 +29,9 @@ def main() -> None:
     L.append("")
     L.append(f"# Operit-wiki 大纲（草案 v{ver}）")
     L.append("")
+    if d.get("approved"):
+        L.append(f"> 状态：已批准（{d['approved']}，用户评审通过，git tag `outline-v2`）。mnn/llama/mmd 等端侧推理模块已停止维护，不再覆盖。")
+        L.append("")
     L.append("> 生成依据：阶段 0 确定性脚本统计（`scripts/repo_map.py`）+ 人工通读仓库补遗，全部数字来自实际扫描，未做推测。")
     L.append("> 仓库事实：**app 模块占 1362/1402 个 kt 文件、4961/5039 个符号**，是绝对主体；其余 8 个模块合计 40 个 kt 文件。")
     L.append("> terminal 模块代码在独立仓库 `AAswordman/OperitTerminalCore`（47 kt），主仓库 settings 仅注册 `:terminal`。")

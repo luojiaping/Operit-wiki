@@ -63,7 +63,7 @@ CROSS_LINKS: dict[str, list[str]] = {
     "core-workflow": ["core-chat"],
     "core-avatar": ["ui-chat"],
     "core-config": ["ui-settings", "api-oauth"],
-    "api-chat": ["llm-local", "api-oauth", "mod-showerclient"],
+    "api-chat": ["api-oauth", "mod-showerclient"],
     "api-voice": ["ui-chat"],
     "data-model": ["data-mcp", "data-backup"],
     "data-mcp": ["ext-plugins"],
