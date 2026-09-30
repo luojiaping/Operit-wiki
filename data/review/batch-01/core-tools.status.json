@@ -1,0 +1,8 @@
+{
+  "status": "review-pending",
+  "issue": 3,
+  "summary": "工具系统：AIToolHandler 注册/发现/调用链、ToolPkg 格式、MCP 转换、javascript/skill 等内部分层。",
+  "critic": "通过",
+  "refs_valid": "35/35",
+  "updated": "2026-09-30"
+}

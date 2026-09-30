@@ -3307,7 +3307,7 @@
     }
   },
   "meta": {
-    "build_date": "2026-09-30T12:11:54Z",
+    "build_date": "2026-09-30T12:22:34Z",
     "degraded": false,
     "initial_view": [
       "wiki/entities/app.md",
@@ -3345,10 +3345,10 @@
     "total_edges": 181,
     "total_nodes": 36,
     "warning_summary": {
-      "build_id": "f22fb503fffce48113d0d0359331f64c970f0c8bb4df218e3f7a607e2695abab",
+      "build_id": "a0335d5fcbdc4cabf000de347e819a5d9813fba9d828a5179d07567669a34658",
       "by_code": {},
       "details_ref": "wiki/graph-warnings.json",
-      "details_sha256": "aaa91fc4930df4af63cdcf11762598226f0b97204c54a5c24b10fcf08241158b",
+      "details_sha256": "b56d935d2e8078c4bd9e48f8aebef02dfdca17e46e99cea86d16c3ed1e175903",
       "error_occurrences": 0,
       "total_groups": 0,
       "total_occurrences": 0,
@@ -3431,7 +3431,7 @@
     },
     {
       "community": "wiki/topics/api-chat.md",
-      "content": "# 云端 Chat API 接入\n\n\u003e 状态：规划中｜章节：模型接入｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 支持哪些云端模型渠道？如何新增一个渠道？\n- 请求构造、流式响应的处理链路？\n- 110 个文件的内部分层？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/chat/`\n\n## 关联条目\n\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 云端 Chat API 接入\n\n\u003e 状态：规划中｜章节：模型接入｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 支持哪些云端模型渠道？如何新增一个渠道？\n- 请求构造、流式响应的处理链路？\n- api/chat 的内部分层？（约 61 kt）\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/api/chat/`\n\n## 关联条目\n\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-oauth|第三方 OAuth 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[mod-showerclient|Shower 客户端库]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/api-chat.md",
       "label": "云端 Chat API 接入",
       "source_path": "wiki/topics/api-chat.md",
@@ -3479,7 +3479,7 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 聊天与消息处理\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 一条用户消息从进入到回复的完整处理链？\n- 各 Delegate（MessageProcessing/ChatHistory/TokenStatistics）如何分工？\n- 多轮任务的状态机在哪里维护？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/chat/`\n- `app/src/main/java/com/ai/assistance/operit/core/MessageProcessingDelegate.kt`\n- `app/src/main/java/com/ai/assistance/operit/core/CurrentChatWindowController.kt`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 聊天与消息处理\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 一条用户消息从进入到回复的完整处理链？\n- 各 Delegate（MessageProcessing/ChatHistory/TokenStatistics）如何分工？\n- 多轮任务的状态机在哪里维护？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/chat/`\n- `app/src/main/java/com/ai/assistance/operit/services/core/MessageProcessingDelegate.kt`\n- `app/src/main/java/com/ai/assistance/operit/services/core/CurrentChatWindowController.kt`\n\n## 关联条目\n\n- [[core-tools|工具系统]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-chat|云端 Chat API 接入]] \u003c!-- confidence: INFERRED --\u003e\n- [[api-voice|语音能力（ASR/TTS）]] \u003c!-- confidence: INFERRED --\u003e\n- [[ui-chat|聊天界面]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-chat.md",
       "label": "聊天与消息处理",
       "source_path": "wiki/topics/core-chat.md",
@@ -3503,7 +3503,7 @@
     },
     {
       "community": "wiki/topics/core-avatar.md",
-      "content": "# 工具系统\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 工具（Tool）如何定义、注册、发现？\n- 工具调用的完整链路：模型输出 → 解析 → 执行 → 结果回填？\n- ToolPkg 格式是什么？与 MCP 的关系？\n- 185 个文件的内部分层是怎样的？\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/tools/`\n- `docs/TOOLPKG_FORMAT_GUIDE.md`\n\n## 关联条目\n\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
+      "content": "# 工具系统\n\n\u003e 状态：规划中｜章节：Agent 核心｜模块：app｜大纲 v1（待人评审，2026-09-30）\n\n## 计划覆盖的问题\n\n- 工具（Tool）如何定义、注册、发现？\n- 工具调用的完整链路：模型输出 → 解析 → 执行 → 结果回填？\n- ToolPkg 格式是什么？与 MCP 的关系？\n- 工具的内部分层是怎样的？（core/tools 约 165 文件）\n\n## 种子文件\n\n- `app/src/main/java/com/ai/assistance/operit/core/tools/`\n- `docs/TOOLPKG_FORMAT_GUIDE.md`\n\n## 关联条目\n\n- [[core-chat|聊天与消息处理]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-workflow|工作流引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-avatar|虚拟形象（Avatar）]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-config|配置体系]] \u003c!-- confidence: INFERRED --\u003e\n- [[core-persona|角色卡与人设]] \u003c!-- confidence: INFERRED --\u003e\n- [[data-mcp|MCP 集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-plugins|插件与集成]] \u003c!-- confidence: INFERRED --\u003e\n- [[ext-quickjs|QuickJS 脚本引擎]] \u003c!-- confidence: INFERRED --\u003e\n- [[app|模块 app]] \u003c!-- confidence: EXTRACTED --\u003e\n\n\u003e 本页为大纲规划占位：正文尚未生成，内容仅来自 outline.yaml 的确定性字段，未引入任何推测。",
       "id": "wiki/topics/core-tools.md",
       "label": "工具系统",
       "source_path": "wiki/topics/core-tools.md",
@@ -3649,7 +3649,7 @@
 }
   </script>
   <script id="graph-warning-data" type="application/json">
-{"bundle":{"build_id":"f22fb503fffce48113d0d0359331f64c970f0c8bb4df218e3f7a607e2695abab","candidate_sets":[],"groups":[],"summary":{"build_id":"f22fb503fffce48113d0d0359331f64c970f0c8bb4df218e3f7a607e2695abab","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"aaa91fc4930df4af63cdcf11762598226f0b97204c54a5c24b10fcf08241158b","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"version":1},"details_status":"available","details_unavailable_reason":null,"omitted_candidate_set_count":0,"omitted_group_count":0,"summary":{"build_id":"f22fb503fffce48113d0d0359331f64c970f0c8bb4df218e3f7a607e2695abab","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"aaa91fc4930df4af63cdcf11762598226f0b97204c54a5c24b10fcf08241158b","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"warning_details_truncated":false}  </script>
+{"bundle":{"build_id":"a0335d5fcbdc4cabf000de347e819a5d9813fba9d828a5179d07567669a34658","candidate_sets":[],"groups":[],"summary":{"build_id":"a0335d5fcbdc4cabf000de347e819a5d9813fba9d828a5179d07567669a34658","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"b56d935d2e8078c4bd9e48f8aebef02dfdca17e46e99cea86d16c3ed1e175903","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"version":1},"details_status":"available","details_unavailable_reason":null,"omitted_candidate_set_count":0,"omitted_group_count":0,"summary":{"build_id":"a0335d5fcbdc4cabf000de347e819a5d9813fba9d828a5179d07567669a34658","by_code":{},"details_ref":"wiki/graph-warnings.json","details_sha256":"b56d935d2e8078c4bd9e48f8aebef02dfdca17e46e99cea86d16c3ed1e175903","error_occurrences":0,"total_groups":0,"total_occurrences":0,"warning_occurrences":0},"warning_details_truncated":false}  </script>
   <script id="graph-layout" type="application/json">
 {"version":2,"pins":{},"updatedAt":""}
   </script>
