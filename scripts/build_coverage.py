@@ -74,17 +74,30 @@ def main() -> None:
             if pid not in ref_pages[s]:
                 ref_pages[s].append(pid)
 
+    # 严格阅读状态：tracking/read-status.json（complete = 整文件 100% 读完，有证据）
+    read_status: dict[str, dict] = {}
+    rs_path = root / "tracking" / "read-status.json"
+    if rs_path.exists():
+        try:
+            read_status = json.loads(rs_path.read_text(encoding="utf-8")).get("files", {})
+        except Exception as ex:
+            print(f"WARN: 读 read-status.json 失败: {ex}")
+
     files_out = []
     mod_stats: dict[str, dict] = {}
     for mod, info in rmap["modules"].items():
         mod_stats[mod] = {"name": mod, "dir": info.get("dir", mod),
                           "files": 0, "kt_files": 0, "loc": 0,
                           "read_files": 0, "approved_files": 0,
-                          "read_loc": 0, "approved_loc": 0}
+                          "read_loc": 0, "approved_loc": 0,
+                          "complete_files": 0, "complete_loc": 0,
+                          "touched_files": 0, "touched_loc": 0}
 
     totals = {"files": 0, "kt_files": 0, "loc": 0,
               "read_files": 0, "approved_files": 0,
-              "read_loc": 0, "approved_loc": 0}
+              "read_loc": 0, "approved_loc": 0,
+              "complete_files": 0, "complete_loc": 0,
+              "touched_files": 0, "touched_loc": 0}
 
     for fpath, mod in sorted(all_files.items()):
         is_kt = fpath.endswith(".kt")
@@ -96,6 +109,12 @@ def main() -> None:
             approved = [p for p in pages if page_status.get(p) == "approved"]
             status = 2 if approved else 1
             cover_page = (approved or pages)[0]
+        # 阅读口径：complete（严格全读）> touched（被引用/seed 但未证全读）> unread
+        rs = "unread"
+        if read_status.get(fpath, {}).get("status") == "complete":
+            rs = "complete"
+        elif pages:
+            rs = "touched"
         ms = mod_stats[mod]
         ms["files"] += 1
         ms["loc"] += loc
@@ -107,6 +126,16 @@ def main() -> None:
         if status >= 1:
             ms["read_files"] += 1
             ms["read_loc"] += loc
+        if rs == "complete":
+            ms["complete_files"] += 1
+            ms["complete_loc"] += loc
+            totals["complete_files"] += 1
+            totals["complete_loc"] += loc
+        elif rs == "touched":
+            ms["touched_files"] += 1
+            ms["touched_loc"] += loc
+            totals["touched_files"] += 1
+            totals["touched_loc"] += loc
             totals["read_files"] += 1
             totals["read_loc"] += loc
         if status == 2:
@@ -115,7 +144,7 @@ def main() -> None:
             totals["approved_files"] += 1
             totals["approved_loc"] += loc
         files_out.append({"p": fpath, "m": mod, "kt": 1 if is_kt else 0,
-                          "loc": loc, "s": status, "page": cover_page})
+                          "loc": loc, "s": status, "page": cover_page, "rs": rs})
 
     cov = {
         "updated": queue.get("updated", ""),
@@ -127,9 +156,9 @@ def main() -> None:
     out = root / "site/data/coverage.json"
     out.write_text(json.dumps(cov, ensure_ascii=False), encoding="utf-8")
     t = totals
-    print(f"coverage: {t['read_files']}/{t['files']} 文件已读, "
-          f"{t['approved_files']}/{t['files']} 已审批, "
-          f"{t['read_loc']}/{t['loc']} 行已读 -> {out}")
+    print(f"coverage: 严格已读 {t['complete_files']}/{t['files']} 文件, "
+          f"已触及 {t['touched_files']}/{t['files']}, 已审批 {t['approved_files']}/{t['files']}, "
+          f"{t['complete_loc']}/{t['loc']} 行严格已读 -> {out}")
 
 
 if __name__ == "__main__":

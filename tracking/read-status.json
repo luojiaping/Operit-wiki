@@ -1,0 +1,454 @@
+{
+ "repo_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+ "updated": "2026-09-30 13:55 UTC",
+ "files": {
+  "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 2021
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/ChatRuntimeHolder.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 266
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 3221
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 1342
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/MultiServiceManager.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 421
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ToolExecutionManager.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 793
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIService.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 104
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIServiceFactory.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 696
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 1462
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleter.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 130
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LlmRetryPolicy.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 13
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 684
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 3509
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RateLimitedAIService.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 126
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 360
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/FunctionType.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 16
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ModelConfigData.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/api-chat.quality.json",
+   "lines": 245
+  },
+  ".gitmodules": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 6
+  },
+  "README.md": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 247
+  },
+  "Repo_Arch_Basic.md": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 103
+  },
+  "app/build.gradle.kts": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 845
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsEngine.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 2767
+  },
+  "app/src/main/java/com/ai/assistance/operit/util/ripgrep/NativeRipgrep.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 18
+  },
+  "avator/dragonbones/src/main/java/com/dragonbones/JniBridge.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 46
+  },
+  "avator/fbx/src/main/java/com/ai/assistance/fbx/FbxNative.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 33
+  },
+  "quickjs/src/main/java/com/ai/assistance/operit/core/tools/javascript/OperitQuickJsEngine.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 230
+  },
+  "settings.gradle.kts": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/arch-overview.quality.json",
+   "lines": 34
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/AIMessageManager.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 1454
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/ChatRuntimeHookRegistry.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 80
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/plugins/MessageProcessingPluginRegistry.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 63
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatTurnOptions.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 8
+  },
+  "app/src/main/java/com/ai/assistance/operit/services/core/ChatHistoryDelegate.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 1696
+  },
+  "app/src/main/java/com/ai/assistance/operit/services/core/CurrentChatWindowController.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 101
+  },
+  "app/src/main/java/com/ai/assistance/operit/services/core/MessageProcessingDelegate.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 1985
+  },
+  "app/src/main/java/com/ai/assistance/operit/services/core/TokenStatisticsDelegate.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-chat.quality.json",
+   "lines": 250
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHandler.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 491
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHook.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 37
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 2745
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/PhoneAgent.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 1297
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardShellToolExecutor.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 102
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPPackage.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 181
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPTool.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 13
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPToolExecutor.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 610
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManager.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 4101
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/skill/SkillManager.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 431
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/AndroidShellExecutor.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 144
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/AITool.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 37
+  },
+  "docs/TOOLPKG_FORMAT_GUIDE.md": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/core-tools.quality.json",
+   "lines": 1598
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/dao/ChatContentDao.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 471
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/dao/ChatDao.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 287
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/dao/MessageDao.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 245
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/dao/MessageVariantDao.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 82
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/dao/TokenUsageDao.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 192
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 558
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 60
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 94
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatHistory.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 29
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessage.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 109
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/DocumentChunk.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 28
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/Memory.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 113
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 97
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MessageVariantEntity.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 85
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/TokenStatsModelEntity.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 21
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/TokenUsageRecordEntity.kt": {
+   "status": "complete",
+   "batch": "quality-scan-01",
+   "date": "2026-09-30",
+   "evidence": "review/batch-01/data-model.quality.json",
+   "lines": 32
+  }
+ }
+}

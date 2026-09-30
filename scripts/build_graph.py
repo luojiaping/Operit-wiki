@@ -28,7 +28,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / "wiki-work"
-OUTLINE = WORK / "outline.yaml"
+def _canonical_outline() -> Path:
+    v3 = ROOT / "outline" / "outline-v3.yaml"
+    return v3 if v3.exists() else (WORK / "outline.yaml")
+
+
+OUTLINE = _canonical_outline()
 KB = WORK / "graph-kb"
 SITE_GRAPH = ROOT / "site" / "data" / "graph"
 VENDOR = Path.home() / "workspace" / "vendor" / "llm-wiki-skill"

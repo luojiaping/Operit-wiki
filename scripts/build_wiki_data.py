@@ -37,7 +37,9 @@ def stub_md(info: dict) -> str:
 
 
 def main() -> None:
-    outline = yaml.safe_load((ROOT / "wiki-work" / "outline.yaml").read_text(encoding="utf-8"))
+    v3 = ROOT / "outline" / "outline-v3.yaml"
+    op = v3 if v3.exists() else (ROOT / "wiki-work" / "outline.yaml")
+    outline = yaml.safe_load(op.read_text(encoding="utf-8"))
     queue = json.loads((ROOT / "review-queue.json").read_text(encoding="utf-8"))
     review_ids = {e.get("page_id") for e in queue.get("entries", []) if e.get("page_id")}
 
@@ -63,7 +65,8 @@ def main() -> None:
             })
         chapters.append({"chapter": ch["chapter"], "pages": pages})
 
-    outline_status = queue["entries"][0]["status"] if queue.get("entries") else "none"
+    v3e = next((e for e in queue.get("entries", []) if e["id"] == "batch-00/outline-v3"), None)
+    outline_status = (v3e or queue["entries"][0])["status"] if queue.get("entries") else "none"
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
         "built": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),

@@ -285,3 +285,9 @@ details.collapse .body { padding: 0 16px 16px; }
 .stat.q-high .n { color: #a33327; }
 .stat.q-warn .n { color: var(--app-amber); }
 .stat.q-sug .n { color: var(--app-muted); }
+
+/* ---- 覆盖双口径 ---- */
+.cov-fill.touched { background: repeating-linear-gradient(45deg, var(--app-amber), var(--app-amber) 6px, #c9a227 6px, #c9a227 12px); }
+.seal.rs-complete { background: var(--app-accent-deep); }
+.seal.rs-touched { background: var(--app-amber); }
+.seal.rs-unread { background: #b9b2a4; }
