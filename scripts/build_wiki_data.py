@@ -41,7 +41,12 @@ def main() -> None:
     op = v3 if v3.exists() else (ROOT / "wiki-work" / "outline.yaml")
     outline = yaml.safe_load(op.read_text(encoding="utf-8"))
     queue = json.loads((ROOT / "review-queue.json").read_text(encoding="utf-8"))
-    review_ids = {e.get("page_id") for e in queue.get("entries", []) if e.get("page_id")}
+    # queue 的 id 形如 batch-01/arch-overview；去掉 batch 前缀得到大纲 page id
+    review_of: dict[str, str] = {}
+    for e in queue.get("entries", []):
+        eid = e.get("id", "")
+        page_id = eid.split("/", 1)[1] if "/" in eid else eid
+        review_of[page_id] = eid
 
     chapters = []
     counts = {"published": 0, "review": 0, "planned": 0}
@@ -53,8 +58,10 @@ def main() -> None:
             if wiki_md.exists():
                 status, md = "published", wiki_md.read_text(encoding="utf-8")
                 counts["published"] += 1
-            elif pid in review_ids:
-                status, md = "review", stub_md({**p, "chapter": ch["chapter"]})
+            elif pid in review_of:
+                status = "review"
+                md = (f"> 本页正在评审中，[去评审页](entry.html?id={review_of[pid]})。\n\n"
+                      + stub_md({**p, "chapter": ch["chapter"]}))
                 counts["review"] += 1
             else:
                 status, md = "planned", stub_md({**p, "chapter": ch["chapter"]})
