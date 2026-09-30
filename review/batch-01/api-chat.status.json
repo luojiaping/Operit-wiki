@@ -4,5 +4,7 @@
   "summary": "云端 Chat API 接入：ApiProviderType 38 渠道全名单、新增渠道流程、13 步请求构造与流式链路、api/chat 内部分层。",
   "critic": "通过",
   "refs_valid": "48/48",
-  "updated": "2026-09-30"
+  "updated": "2026-09-30",
+  "source_repo": "operit",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb"
 }

@@ -78,3 +78,15 @@ date: 2026-09-30
 - `wiki/index.md`：内容目录，每次合并更新——每页一句话摘要
 - `wiki/log.md`：只追加，`## [日期] <ingest|update|lint> | 标题`，记录影响页面
 - wiki 本身是 git 仓库：版本历史、回滚免费
+
+## 7. 覆盖目标与版本钉住
+
+- **覆盖目标是全面**：wiki 穷尽"所有用户可感知行为 + 所有扩展点"（渠道、工具包、插件、配置项、错误处理），
+  不是 FAQ 只答常问。AI 时代阅读解析代码的成本不是瓶颈，一次重投入、长期复用。
+  全面 ≠ 逐行复读代码：不写无用户/开发者意义的内部 helper。
+- **每页钉住源码版本**：`<id>.status.json` 记录 `source_repo`（`operit`|`wiki`）和 `source_commit`
+ （抓取事实时源码仓库的 commit）。新页生成时必须填写。
+- **过期检查**：`python3 scripts/check_staleness.py --root .`，对每页的 seed_files 做
+  `git diff --name-only <source_commit>..HEAD`，变更文件映射回 facts.json 中引用该文件的 facts，
+  输出 OK / STALE（附受影响 facts 清单）/ UNKNOWN。源码仓库更新后必跑一次，
+  STALE 页的命中 facts 必须重核引用（走 critic）后才能标回 OK。
