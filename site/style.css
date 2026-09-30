@@ -111,6 +111,7 @@ a { color: var(--app-accent-deep); text-decoration: none; }
 .seal.approved { background: var(--app-accent-deep); color: #fffdf7; }
 .seal.review-pending { border: 1.5px solid var(--app-fg); color: var(--app-fg); background: transparent; }
 .seal.needs-changes { border: 1.5px solid var(--app-amber); color: var(--app-amber); background: transparent; }
+.seal.planned { border: 1.5px dashed var(--app-muted); color: var(--app-muted); background: transparent; }
 
 /* ---- 队列列表 ---- */
 .queue-item {

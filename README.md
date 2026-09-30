@@ -31,7 +31,7 @@ Operit-wiki/
 │       └── <entry>.lint.md     # 机器 lint 报告
 ├── review-queue.json  # 评审队列（网站数据源，脚本生成）
 ├── scripts/           # lint.py、build_queue.py、repo-map 工具
-└── site/              # GitHub Pages 评审网站源码
+├── site/              # GitHub Pages 网站源码（评审大厅 / Wiki 预览 / 知识图谱）
 ```
 
 ## 工作流
