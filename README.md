@@ -1,6 +1,11 @@
 # Operit-wiki
 
+[![评审大厅](https://img.shields.io/badge/📖-条目评审大厅-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5)](https://luojiaping.github.io/Operit-wiki/)
+[![license](https://img.shields.io/badge/MIT-license-5a6e5c?style=flat-square&labelColor=3a3026)](LICENSE)
+
 Operit 的 AI 维护知识库：**既是文档，也是官方答疑的知识源头**。
+
+👉 **评审入口：https://luojiaping.github.io/Operit-wiki/**
 
 - 全部条目由 AI agent 按 [SCHEMA.md](SCHEMA.md) 生成与维护，人只做评审
 - 每个事实断言都带 `file:line` 引用，可机器验证

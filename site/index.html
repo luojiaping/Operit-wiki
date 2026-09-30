@@ -7,83 +7,76 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="logo">📖 Operit-wiki</div>
+<div class="topbar">
+  <div class="inner">
+    <div class="brand"><span class="seal-mini">審</span>Operit-wiki</div>
     <nav>
       <a href="index.html" class="active">评审大厅</a>
       <a href="wiki.html">已发布</a>
       <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
     </nav>
-  </header>
+  </div>
+</div>
 
-  <h1>条目评审大厅</h1>
-  <div class="sub">AI 生成的 wiki 条目在这里接受评审。点进条目，读完后在评论区留下评审意见（结论：通过 / 需修改 / 打回重写）。</div>
+<div class="layout">
+  <div class="hero">
+    <h1>条目评审大厅</h1>
+    <div class="rule"><span>審閱</span></div>
+    <p>AI 生成的 wiki 条目在此接受评审。点进条目细读，在评论区留下评审意见——结论三选一：通过 / 需修改 / 打回重写。</p>
+  </div>
 
   <div class="stats" id="stats"></div>
   <div class="filters" id="filters"></div>
-  <div id="list"></div>
+  <div class="entry-cards" id="list"></div>
   <div class="updated" id="updated"></div>
+  <div class="credit">纸墨设计参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
 </div>
+
 <script>
-const STATUS_LABEL = {
-  "review-pending": "待评审",
-  "needs-changes": "需修改",
-  "approved": "已通过"
-};
-let entries = [];
-let activeFilter = "all";
+const STATUS_LABEL = { "review-pending": "待评审", "needs-changes": "需修改", "approved": "已通过" };
+let entries = [], activeFilter = "all";
 
 async function load() {
-  const res = await fetch("data/review-queue.json");
-  const q = await res.json();
+  const q = await (await fetch("data/review-queue.json")).json();
   entries = q.entries || [];
-  document.getElementById("updated").textContent =
-    "队列更新时间：" + (q.updated || "—");
-  renderStats();
-  renderFilters();
-  renderList();
+  document.getElementById("updated").textContent = "队列更新时间：" + (q.updated || "—");
+  renderStats(); renderFilters(); renderList();
 }
-
 function renderStats() {
   const c = { "review-pending": 0, "needs-changes": 0, "approved": 0 };
   entries.forEach(e => { if (c[e.status] !== undefined) c[e.status]++; });
-  document.getElementById("stats").innerHTML = `
-    <div class="stat"><div class="n">${c["review-pending"]}</div><div class="l">待评审</div></div>
-    <div class="stat"><div class="n">${c["needs-changes"]}</div><div class="l">需修改</div></div>
-    <div class="stat"><div class="n">${c["approved"]}</div><div class="l">已通过</div></div>`;
+  document.getElementById("stats").innerHTML =
+    `<div class="stat pending"><div class="n">${c["review-pending"]}</div><div class="l">待评审</div></div>` +
+    `<div class="stat changes"><div class="n">${c["needs-changes"]}</div><div class="l">需修改</div></div>` +
+    `<div class="stat done"><div class="n">${c["approved"]}</div><div class="l">已通过</div></div>`;
 }
-
 function renderFilters() {
-  const defs = [["all", "全部"], ["review-pending", "待评审"], ["needs-changes", "需修改"], ["approved", "已通过"]];
-  document.getElementById("filters").innerHTML = defs.map(([v, l]) =>
-    `<button class="chip ${v === activeFilter ? "active" : ""}" data-f="${v}">${l}</button>`
-  ).join("");
+  const defs = [["all","全部"],["review-pending","待评审"],["needs-changes","需修改"],["approved","已通过"]];
+  document.getElementById("filters").innerHTML = defs.map(([v,l]) =>
+    `<button class="chip ${v===activeFilter?"active":""}" data-f="${v}">${l}</button>`).join("");
   document.querySelectorAll(".chip").forEach(b =>
     b.onclick = () => { activeFilter = b.dataset.f; renderFilters(); renderList(); });
 }
-
 function renderList() {
   const box = document.getElementById("list");
-  const items = entries.filter(e => activeFilter === "all" || e.status === activeFilter);
+  const items = entries.filter(e => activeFilter==="all" || e.status===activeFilter);
   if (!items.length) {
     box.innerHTML = `<div class="empty">暂无条目。<br>新条目生成后会自动出现在这里。</div>`;
     return;
   }
   box.innerHTML = items.map(e => `
-    <a class="card" href="entry.html?id=${encodeURIComponent(e.id)}">
+    <a class="entry-card" href="entry.html?id=${encodeURIComponent(e.id)}">
+      <span class="seal ${e.status}">${STATUS_LABEL[e.status]||e.status}</span>
       <div class="t">${e.title}</div>
+      ${e.summary ? `<div class="d">${e.summary}</div>` : ""}
       <div class="meta">
-        <span class="badge ${e.status}">${STATUS_LABEL[e.status] || e.status}</span>
-        <span>模块 ${e.module || "—"}</span>
-        <span>批次 ${e.batch}</span>
-        <span>facts ${e.facts_count || 0}</span>
-        ${e.refs_valid ? `<span>引用 ${e.refs_valid}</span>` : ""}
-        ${e.critic ? `<span>critic ${e.critic}</span>` : ""}
+        <span>模块 ${e.module||"—"}</span><span>批次 ${e.batch}</span>
+        <span>facts ${e.facts_count||0}</span>
+        ${e.refs_valid?`<span>引用 ${e.refs_valid}</span>`:""}
+        ${e.critic?`<span>critic ${e.critic}</span>`:""}
       </div>
     </a>`).join("");
 }
-
 load();
 </script>
 </body>

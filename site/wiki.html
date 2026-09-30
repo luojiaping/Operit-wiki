@@ -8,19 +8,29 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="logo">📖 Operit-wiki</div>
+<div class="topbar">
+  <div class="inner">
+    <div class="brand"><span class="seal-mini">審</span>Operit-wiki</div>
     <nav>
       <a href="index.html">评审大厅</a>
       <a href="wiki.html" class="active">已发布</a>
       <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
     </nav>
-  </header>
-  <h1>已发布的 wiki</h1>
-  <div class="sub">通过评审、正式合并的条目。QQ 群答疑机器人从这里取知识。</div>
-  <div id="content" class="markdown-body"></div>
+  </div>
 </div>
+
+<div class="layout">
+  <div class="hero">
+    <h1>已发布的 wiki</h1>
+    <div class="rule"><span>正編</span></div>
+    <p>通过评审、正式合并的条目。QQ 群官方答疑机器人从这里取知识——文档与答疑是同一份源头。</p>
+  </div>
+  <div class="paper-card">
+    <div class="markdown-body" id="content"></div>
+  </div>
+  <div class="credit">纸墨设计参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
+</div>
+
 <script>
 fetch("data/wiki/index.md")
   .then(r => r.text())
