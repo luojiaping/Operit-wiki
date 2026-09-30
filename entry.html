@@ -86,7 +86,13 @@ async function load() {
   // document.title 必须与 issue_title 完全一致，否则会新建重复 Issue
   document.title = e.issue_title || ("[评审] " + e.title);
 
-  const md = await (await fetch("data/" + e.md)).text();
+  // 取正文：校验 HTTP 状态，失败时给友好占位，绝不把错误页原文注入
+  const mdResp = await fetch("data/" + e.md);
+  if (!mdResp.ok) {
+    box.innerHTML = `<div class="empty">条目文件加载失败（${mdResp.status}）。<br>请稍后重试或联系管理员检查部署。</div>`;
+    return;
+  }
+  const md = await mdResp.text();
   const body = md.replace(/^---[\s\S]*?---\n/, "");
   box.innerHTML = `
     <span class="seal ${e.status}">${STATUS_LABEL[e.status]||e.status}</span>
@@ -106,8 +112,11 @@ async function load() {
     } catch (err) {}
   }
   try {
-    const lint = await (await fetch("data/" + e.lint)).text();
-    extras += `<details class="collapse"><summary>🔍 lint 报告</summary><div class="body markdown-body">${marked.parse(lint)}</div></details>`;
+    const lintResp = await fetch("data/" + e.lint);
+    if (lintResp.ok) {
+      const lint = await lintResp.text();
+      extras += `<details class="collapse"><summary>🔍 lint 报告</summary><div class="body markdown-body">${marked.parse(lint)}</div></details>`;
+    }
   } catch (err) {}
   document.getElementById("extras").innerHTML = extras;
 
@@ -126,7 +135,7 @@ async function load() {
 
   // utterances 评论区（浅色主题配宣纸）
   const s = document.createElement("script");
-  s.src = "https://utterances.client.js";
+  s.src = "https://utteranc.es/client.js";
   s.setAttribute("repo", "luojiaping/Operit-wiki");
   s.setAttribute("issue-term", "title");
   s.setAttribute("label", "review");
