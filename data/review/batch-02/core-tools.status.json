@@ -1,1 +1,13 @@
-{"critic":"待评审","issue":3,"refs_valid":"facts 120 条引用行号真实存在，lint 硬失败 0/警告 0","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","summary":"工具系统（总览）：AITool/ToolParameter/ToolInvocation/ToolResult 数据模型与 ToolExecutionManager 执行编排（解析→三关拦截→并行/串行执行→有序聚合）。","updated":"2026-09-30"}
+{
+  "critic": "待评审",
+  "issue": 3,
+  "refs_valid": "facts 120 条引用行号真实存在，lint 硬失败 0/警告 0",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "approved",
+  "summary": "工具系统（总览）：AITool/ToolParameter/ToolInvocation/ToolResult 数据模型与 ToolExecutionManager 执行编排（解析→三关拦截→并行/串行执行→有序聚合）。",
+  "updated": "2026-09-30",
+  "approved_by": "luojiaping",
+  "approved_by_comment_id": 5914319636,
+  "approved_at": "2026-09-30 15:58 UTC"
+}
