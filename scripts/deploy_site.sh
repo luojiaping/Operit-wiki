@@ -12,6 +12,7 @@ python3 scripts/build_queue.py --root .
 python3 scripts/build_wiki_data.py || echo "WARN: build_wiki_data.py failed, keep old pages.json"
 python3 scripts/build_graph.py || echo "WARN: build_graph.py failed, keep old graph"
 python3 scripts/build_coverage.py --root . || echo "WARN: build_coverage.py failed, keep old coverage.json"
+python3 scripts/build_quality.py --root . || echo "WARN: build_quality.py failed, keep old quality.json"
 
 WORK=$(mktemp -d)
 git worktree add -q "$WORK" gh-pages

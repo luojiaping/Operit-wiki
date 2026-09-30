@@ -255,3 +255,33 @@ details.collapse .body { padding: 0 16px 16px; }
 .seal.cov-s0 { background: #8a8175; }
 .seal.cov-s1 { background: #3a3530; }
 .seal.cov-s2 { background: var(--app-accent-deep); }
+
+/* ---- 代码走查 ---- */
+.q-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+.q-card { background: var(--app-surface); border: 1px solid var(--app-border); border-left-width: 4px; border-radius: 8px; padding: 14px 16px; box-shadow: var(--shadow); }
+.q-card.sev-high { border-left-color: #a33327; }
+.q-card.sev-warning { border-left-color: var(--app-amber); }
+.q-card.sev-suggestion { border-left-color: #8a8175; }
+.q-card.q-done { opacity: 0.62; }
+.q-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.seal.q-high { background: #a33327; }
+.seal.q-warning { background: var(--app-amber); }
+.seal.q-suggestion { background: #8a8175; }
+.q-cat { font-size: 12px; color: var(--app-muted); border: 1px solid var(--app-border); border-radius: 4px; padding: 2px 8px; }
+.q-conf { font-size: 12px; color: var(--app-muted); }
+.q-state { font-size: 12px; border-radius: 4px; padding: 2px 8px; letter-spacing: 1px; }
+.q-state.st-pending { background: var(--app-raised); color: var(--app-muted); }
+.q-state.st-confirmed { background: var(--app-accent-deep); color: #fffdf7; }
+.q-state.st-false-positive { background: #8a8175; color: #fffdf7; }
+.q-title { font-family: var(--font-song); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.q-file.mono { font-family: var(--font-mono); font-size: 12px; color: var(--app-accent-deep); margin-bottom: 8px; word-break: break-all; }
+.q-detail { font-size: 13.5px; line-height: 1.7; margin-bottom: 8px; white-space: pre-wrap; }
+.q-ev { margin-bottom: 8px; }
+.q-ev summary { cursor: pointer; font-size: 12.5px; color: var(--app-muted); }
+.q-ev pre { background: var(--app-raised); border: 1px solid var(--app-border); border-radius: 6px; padding: 10px 12px; font-family: var(--font-mono); font-size: 12px; overflow-x: auto; white-space: pre; }
+.q-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12.5px; }
+.q-actions { display: flex; gap: 6px; }
+.chip.sm { font-size: 12px; padding: 3px 10px; }
+.stat.q-high .n { color: #a33327; }
+.stat.q-warn .n { color: var(--app-amber); }
+.stat.q-sug .n { color: var(--app-muted); }

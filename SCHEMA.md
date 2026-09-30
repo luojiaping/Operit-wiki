@@ -90,3 +90,17 @@ date: 2026-09-30
   `git diff --name-only <source_commit>..HEAD`，变更文件映射回 facts.json 中引用该文件的 facts，
   输出 OK / STALE（附受影响 facts 清单）/ UNKNOWN。源码仓库更新后必跑一次，
   STALE 页的命中 facts 必须重核引用（走 critic）后才能标回 OK。
+
+## 8. 代码走查轨道（不进 wiki 正文）
+
+- wiki 全仓库阅读的副产品：AI 扫描潜在问题/漏洞，**绝不写入 wiki 正文**。
+- 采集：writer 读代码时顺手产出 `<id>.quality.json`（与 facts.json 平级），数组，每条字段：
+  `severity`（high|warning|suggestion）、`category`（security|correctness|maintainability|performance）、
+  `file`、`line`、`title`、`detail`（中文，说明问题与触发条件）、`evidence`（3-8 行代码摘录）、
+  `confidence`（high|medium|low）。
+- 纪律：每条必须有 file:line 且 ±5 行内可见证据；宁可零条不凑数；只写实质问题不写风格偏好。
+  critic 不评审 quality.json（标准不同：文档是"可验证"，走查是"需判断"）。
+- 呈现：评审站「代码走查」tab（`site/quality.html` ← `scripts/build_quality.py` 聚合），
+  全部标注"AI 走查发现，待人工确认"，绝不与 critic 验证事实同等口径呈现。
+- 流转：人工逐条评审 → 确认（转 issue / 修 bug）/ 误报（永久标记）。评审状态存浏览器 localStorage，
+  不进仓库。

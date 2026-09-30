@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>代码走查 · Operit-wiki</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="inner">
+    <div class="brand"><span class="seal-mini">審</span>Operit-wiki</div>
+    <nav>
+      <a href="index.html">评审大厅</a>
+      <a href="wiki.html">Wiki 预览</a>
+      <a href="graph.html">知识图谱</a>
+      <a href="quality.html" class="active">代码走查</a>
+      <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
+    </nav>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="hero">
+    <h1>代码走查</h1>
+    <div class="rule"><span>校勘</span></div>
+    <p>wiki 全仓库阅读的副产品：AI 扫描发现的潜在问题与漏洞。<b>不进 wiki 正文</b>，全部为"待人工确认"状态——确认后转 issue / 修 bug，误报则标记不再提示。</p>
+  </div>
+
+  <div class="stats" id="qStats"></div>
+
+  <div class="cov-tools">
+    <input id="qSearch" class="cov-search" placeholder="搜索标题 / 文件路径…">
+    <div class="cov-chips" id="qSevChips"></div>
+    <select id="qCatSel" class="cov-sel"></select>
+    <select id="qStateSel" class="cov-sel">
+      <option value="all">全部状态</option>
+      <option value="pending">待审</option>
+      <option value="confirmed">已确认</option>
+      <option value="false-positive">误报</option>
+    </select>
+  </div>
+  <div class="cov-count" id="qCount"></div>
+  <div class="q-list" id="qList"></div>
+  <div class="updated" id="qUpdated"></div>
+</div>
+
+<script>
+const SEV_LABEL = { high: "高危", warning: "警告", suggestion: "建议" };
+const CAT_LABEL = { security: "安全", correctness: "正确性", maintainability: "可维护性", performance: "性能" };
+const CONF_LABEL = { high: "确信", medium: "较确定", low: "存疑" };
+const STATE_LABEL = { pending: "待审", confirmed: "已确认", "false-positive": "误报" };
+const LS_KEY = "operit-quality-review-v1";
+
+let findings = [], sevFilter = "all", catFilter = "all", stateFilter = "all";
+let reviewState = {};
+try { reviewState = JSON.parse(localStorage.getItem(LS_KEY) || "{}"); } catch (e) { reviewState = {}; }
+
+async function load() {
+  let q;
+  try { q = await (await fetch("data/quality.json")).json(); }
+  catch (e) {
+    document.getElementById("qList").innerHTML = `<div class="empty">走查数据尚未生成。</div>`;
+    return;
+  }
+  findings = q.findings || [];
+  document.getElementById("qUpdated").textContent = "数据更新时间：" + (q.updated || "—");
+  renderStats(q.totals || {}); renderTools(); renderList();
+}
+function saveState() { try { localStorage.setItem(LS_KEY, JSON.stringify(reviewState)); } catch (e) {} }
+function fState(f) { return reviewState[f.id] || "pending"; }
+
+function renderStats(t) {
+  const defs = [["high", "高危", "q-high"], ["warning", "警告", "q-warn"], ["suggestion", "建议", "q-sug"]];
+  document.getElementById("qStats").innerHTML = defs.map(([k, l, cls]) =>
+    `<div class="stat ${cls}"><div class="n">${t[k] || 0}</div><div class="l">${l}</div></div>`).join("") +
+    `<div class="stat"><div class="n">${t.total || 0}</div><div class="l">总计</div></div>`;
+}
+function renderTools() {
+  const sevDefs = [["all", "全部严重度"], ["high", "高危"], ["warning", "警告"], ["suggestion", "建议"]];
+  document.getElementById("qSevChips").innerHTML = sevDefs.map(([v, l]) =>
+    `<button class="chip ${v === sevFilter ? "active" : ""}" data-v="${v}">${l}</button>`).join("");
+  document.querySelectorAll("#qSevChips .chip").forEach(b =>
+    b.onclick = () => { sevFilter = b.dataset.v; renderTools(); renderList(); });
+  const cats = [...new Set(findings.map(f => f.category))];
+  document.getElementById("qCatSel").innerHTML =
+    `<option value="all">全部分类</option>` + cats.map(c =>
+      `<option value="${c}" ${c === catFilter ? "selected" : ""}>${CAT_LABEL[c] || c}</option>`).join("");
+  document.getElementById("qCatSel").onchange = e => { catFilter = e.target.value; renderList(); };
+  document.getElementById("qStateSel").onchange = e => { stateFilter = e.target.value; renderList(); };
+  document.getElementById("qSearch").oninput = renderList;
+}
+function filtered() {
+  const q = document.getElementById("qSearch").value.trim().toLowerCase();
+  return findings.filter(f =>
+    (sevFilter === "all" || f.severity === sevFilter) &&
+    (catFilter === "all" || f.category === catFilter) &&
+    (stateFilter === "all" || fState(f) === stateFilter) &&
+    (!q || (f.title + " " + f.file).toLowerCase().includes(q)));
+}
+function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function renderList() {
+  const rows = filtered();
+  document.getElementById("qCount").textContent = `共 ${rows.length} 条`;
+  const box = document.getElementById("qList");
+  if (!rows.length) { box.innerHTML = `<div class="empty">没有符合条件的条目。</div>`; return; }
+  box.innerHTML = rows.map(f => {
+    const st = fState(f);
+    return `
+    <div class="q-card sev-${f.severity} ${st !== "pending" ? "q-done" : ""}" id="card-${f.id.replace(/[^a-zA-Z0-9]/g, "_")}">
+      <div class="q-head">
+        <span class="seal q-${f.severity}">${SEV_LABEL[f.severity] || f.severity}</span>
+        <span class="q-cat">${CAT_LABEL[f.category] || f.category}</span>
+        <span class="q-conf">AI ${CONF_LABEL[f.confidence] || f.confidence}</span>
+        <span class="q-state st-${st}">${STATE_LABEL[st]}</span>
+      </div>
+      <div class="q-title">${esc(f.title)}</div>
+      <div class="q-file mono">${esc(f.file)}:${f.line}</div>
+      <div class="q-detail">${esc(f.detail)}</div>
+      ${f.evidence ? `<details class="q-ev"><summary>证据代码</summary><pre>${esc(f.evidence)}</pre></details>` : ""}
+      <div class="q-foot">
+        <a href="entry.html?id=${encodeURIComponent(f.page)}">来源条目：${esc(f.page_title)}</a>
+        <span class="q-actions">
+          <button class="chip sm" onclick="markState('${f.id}','confirmed')">确认</button>
+          <button class="chip sm" onclick="markState('${f.id}','false-positive')">误报</button>
+          ${st !== "pending" ? `<button class="chip sm" onclick="markState('${f.id}','pending')">撤回</button>` : ""}
+        </span>
+      </div>
+    </div>`;
+  }).join("");
+}
+function markState(id, st) {
+  if (st === "pending") delete reviewState[id]; else reviewState[id] = st;
+  saveState(); renderList();
+}
+load();
+</script>
+</body>
+</html>
