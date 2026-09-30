@@ -1,0 +1,223 @@
+{
+ "day": 6,
+ "pages": [
+  {
+   "id": "ui-packages-manager",
+   "title": "扩展包管理界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 6395,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/PackageManagerScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/PackageTabContent.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/PluginTabContent.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/PackageSearch.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/PackageManagerDialogs.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/dialogs/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/components/EmptyState.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/components/MCPInstallProgressDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/components/MarketManageComponents.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/components/PackageItem.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/components/PackageTab.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/viewmodel/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/model/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/lists/"
+   ],
+   "questions": [
+    "扩展包管理屏的列表/搜索/对话框？"
+   ],
+   "notes": "packages/components/ 根文件以实际为准；components/dialogs/ 归属 ui-packages-mcp"
+  },
+  {
+   "id": "ui-packages-market",
+   "title": "扩展市场浏览界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 7527,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/UnifiedMarketScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/UnifiedMarketDetailEntryScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/UnifiedMarketManageScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/UnifiedMarketAuthorScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/MarketAgreementDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketBrowseList.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketBrowseControls.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketBrowseSection.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketBrowseEntryMappers.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketTopBarSearchSupport.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/UnifiedMarketDetailScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketInteractionController.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketEntryInstallController.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketInstallMarker.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketInstallStateStore.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketReviewStatus.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketStatsSupport.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/market/viewmodel/UnifiedMarketBrowseViewModel.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/market/viewmodel/UnifiedMarketDetailViewModel.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/market/viewmodel/UnifiedMarketManageViewModel.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/market/viewmodel/UnifiedMarketAuthorViewModel.kt"
+   ],
+   "questions": [
+    "市场浏览列表/详情/作者页的组织？",
+    "市场条目安装状态机？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-packages-publish",
+   "title": "扩展发布界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 5450,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/ArtifactPublishScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/RepoMarketPublishScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/MarketPublishPreview.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/QuickPluginCreatorSetupSupport.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/artifact/viewmodel/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/market/viewmodel/RepoMarketPublishViewModel.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/ArtifactMarketModels.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/GitHubForgePublishService.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/ArtifactLocalInstallSupport.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/PluginCreationIntent.kt"
+   ],
+   "questions": [
+    "扩展发布流程（Artifact/Market）？",
+    "GitHub 发布服务的实现？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-packages-mcp",
+   "title": "MCP 配置与部署界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 5097,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/MCPConfigScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/SkillConfigScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/components/dialogs/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/packages/screens/mcp/"
+   ],
+   "questions": [
+    "MCP 配置屏（2090 行）的分区？",
+    "Skill 配置与 MCP 部署组件？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-toolbox-filemanager",
+   "title": "文件管理器界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 3533,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/filemanager/"
+   ],
+   "questions": [
+    "文件管理器的浏览/操作实现？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-toolbox-dev",
+   "title": "开发调试工具界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 5035,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/shellexecutor/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/sqlviewer/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/logcat/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/uidebugger/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/tooltester/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/StreamMarkdownDemo.kt"
+   ],
+   "questions": [
+    "Shell 执行/SQL 查看/Logcat/UI 调试/工具测试屏？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-toolbox-apps",
+   "title": "系统与媒体工具界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 6046,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/apppermissions/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/defaultassistant/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/autoglm/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/htmlpackager/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/processlimit/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/ffmpegtoolbox/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/speechtotext/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/texttospeech/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/ToolboxScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/ProcessLimitRemoverToolScreen.kt"
+   ],
+   "questions": [
+    "工具箱主页的聚合方式？",
+    "各小工具屏（权限/默认助手/AutoGLM/FFmpeg/语音）的实现？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-common-dsl",
+   "title": "工具包 Compose DSL 渲染",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 11098,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/common/composedsl/"
+   ],
+   "questions": [
+    "工具包 Compose DSL 的渲染管线？",
+    "自动生成 registry 的作用？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-common-markdown",
+   "title": "Markdown 与富文本渲染",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 10947,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/common/markdown/",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/displays/"
+   ],
+   "questions": [
+    "流式 Markdown/代码块/表格/音视频渲染？",
+    "LaTeX/消息解析/虚拟屏/自动化浮层？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-main",
+   "title": "主界面框架与导航",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 7568,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/main/",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/NavItem.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/OperitUtilityTheme.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/RememberLocal.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/WaveVisualizer.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/animations/",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/browser/",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/icons/",
+    "app/src/main/java/com/ai/assistance/operit/ui/common/input/"
+   ],
+   "questions": [
+    "MainActivity/App 入口与导航注册表？",
+    "手机/平板布局与返回守卫？"
+   ],
+   "notes": ""
+  }
+ ],
+ "page_count": 10,
+ "est_lines": 68696,
+ "status": "pending"
+}

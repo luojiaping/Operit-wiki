@@ -1,0 +1,360 @@
+{
+ "day": 4,
+ "pages": [
+  {
+   "id": "services-system",
+   "title": "系统服务与悬浮窗",
+   "chapter": "系统服务与集成",
+   "module": "app",
+   "est_lines": 3728,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/services/ChatServiceCore.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/ChatServiceUiBridge.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/ServiceLifecycleOwner.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/FloatingChatService.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/UIDebuggerService.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/CloudEmbeddingService.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/TermuxCommandResultService.kt",
+    "app/src/main/java/com/ai/assistance/operit/services/assistant/",
+    "app/src/main/java/com/ai/assistance/operit/services/floating/",
+    "app/src/main/java/com/ai/assistance/operit/services/notification/"
+   ],
+   "questions": [
+    "前台服务入口的职责划分？",
+    "悬浮窗管理器的窗口生命周期？",
+    "系统助手语音入口与通知监听？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "plugins",
+   "title": "插件机制与工具包桥接",
+   "chapter": "系统服务与集成",
+   "module": "app",
+   "est_lines": 3911,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/plugins/"
+   ],
+   "questions": [
+    "PluginRegistry 的插件注册与发现？",
+    "5 类 Hook 点注册表（chatmessage/chatview/lifecycle/toolbox/workflow）？",
+    "ToolPkg 13 个 Hook 桥接（ChatInput/Prompt/Summary/ChatMessage/MenuItem/Runtime/ChatView/AiProvider/ToolLifecycle）？",
+    "如何写一个插件（OperitPlugin 接口实现示例）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "integrations-webchat",
+   "title": "WebChat 本地 HTTP 服务",
+   "chapter": "系统服务与集成",
+   "module": "app",
+   "est_lines": 4671,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/integrations/http/"
+   ],
+   "questions": [
+    "WebChatHttpBridge（2959 行）本地 HTTP 聊天桥接的实现？",
+    "ExternalChatHttpServer 的请求处理？",
+    "网页端接入通道的鉴权与会话管理？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "integrations-external",
+   "title": "外部聊天入口与自动化集成",
+   "chapter": "系统服务与集成",
+   "module": "app",
+   "est_lines": 2018,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/integrations/a2a/",
+    "app/src/main/java/com/ai/assistance/operit/integrations/externalchat/",
+    "app/src/main/java/com/ai/assistance/operit/integrations/intent/",
+    "app/src/main/java/com/ai/assistance/operit/integrations/tasker/"
+   ],
+   "questions": [
+    "A2A 协议接入的实现？",
+    "ExternalChatRequestExecutor 如何被 http/a2a/intent 共用？",
+    "Tasker 自动化集成的能力？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "widget-provider",
+   "title": "桌面小组件与文档提供器",
+   "chapter": "系统服务与集成",
+   "module": "app",
+   "est_lines": 2977,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/widget/",
+    "app/src/main/java/com/ai/assistance/operit/provider/"
+   ],
+   "questions": [
+    "Glance 桌面小组件的实现？",
+    "DocumentsProvider 文件系统接入（Memory/OperitData/Workspace）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "util-file-media",
+   "title": "文件、媒体与文档处理工具",
+   "chapter": "工具函数库",
+   "module": "app",
+   "est_lines": 5819,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/util/FileUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ArchiveUtil.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/OperitPaths.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/PathMapper.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/AssetCopyUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/AndroidUserPathUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/DocumentConversionUtil.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/HttpMultiPartDownloader.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/SkillRepoZipPoolManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ToolPkgArtifactMinifier.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ToolPkgJsAstMinifier.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ToolPkgWasmRuntime.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ImagePoolManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/MediaPoolManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ImageBitmapLimiter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/MediaBase64Limiter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ColorQrCodeUtil.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/OCRUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/FFmpegUtil.kt"
+   ],
+   "questions": [
+    "FileUtils/ArchiveUtil/OperitPaths/PathMapper 的文件能力？",
+    "图片/媒体池与限流（ImagePoolManager/MediaBase64Limiter）？",
+    "文档转换与工具包产物压缩？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "util-text-chat",
+   "title": "消息渲染与文本处理",
+   "chapter": "工具函数库",
+   "module": "app",
+   "est_lines": 3263,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ChatMarkupRegex.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ChatUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/StructuredAssistantContentParser.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/StreamingJsonXmlConverter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/HtmlParserUtil.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/TextSegmenter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/TokenCacheManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/LatexMathMlConverter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/MathMlPlainTextConverter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/TtsCleaner.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/TtsSegmenter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/markdown/"
+   ],
+   "questions": [
+    "聊天标记正则（ChatMarkupRegex）与消息处理？",
+    "流式 JSON→XML 转换（工具调用）？",
+    "TTS 文本清洗/分句与 LaTeX 转换？",
+    "Markdown 数据模型（MarkdownProcessor）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "util-stream-core",
+   "title": "响应式流框架",
+   "chapter": "工具函数库",
+   "module": "app",
+   "est_lines": 2689,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/util/stream/HotStream.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/RevisableTextStream.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/Stream.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/StreamBuilders.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/StreamGroup.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/StreamKmpGraph.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/StreamKmpMatchResult.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/StreamOperators.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/StringExtensions.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/stream/TextStreamRevisionTracker.kt"
+   ],
+   "questions": [
+    "自研 Stream/SharedStream/StateStream/HotStream 的设计？",
+    "操作符与修订追踪机制？"
+   ],
+   "notes": "stream/plugins/ 归属 util-stream-parse"
+  },
+  {
+   "id": "util-stream-parse",
+   "title": "流式内容解析插件与原生实现",
+   "chapter": "工具函数库",
+   "module": "app",
+   "est_lines": 2551,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/util/stream/plugins/",
+    "app/src/main/java/com/ai/assistance/operit/util/streamnative/"
+   ],
+   "questions": [
+    "JSON/Markdown/XML 字符流处理插件？",
+    "JNI 原生流式切分的实现？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "util-system",
+   "title": "系统诊断、日志与平台服务",
+   "chapter": "工具函数库",
+   "module": "app",
+   "est_lines": 2001,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/util/AppLogger.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/AnrMonitor.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/CrashRecoveryState.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/GlobalExceptionHandler.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/ThrowableTextFormatter.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/HttpLogSanitizer.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/PortProcessKiller.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/NetworkUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/GithubReleaseUtil.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/LocaleUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/LocationUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/SerializationSetup.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/IntRangeSerializer.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/LocalDateTimeSerializer.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/UriSerializer.kt",
+    "app/src/main/java/com/ai/assistance/operit/util/exceptions/"
+   ],
+   "questions": [
+    "AppLogger/ANR 监控/崩溃恢复的实现？",
+    "HTTP 日志脱敏（HttpLogSanitizer）？",
+    "更新检查（GithubReleaseUtil）与定位/国际化？",
+    "UserCancellationException 的取消语义？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "util-search",
+   "title": "向量索引与本地检索",
+   "chapter": "工具函数库",
+   "module": "app",
+   "est_lines": 143,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/util/vector/",
+    "app/src/main/java/com/ai/assistance/operit/util/ripgrep/"
+   ],
+   "questions": [
+    "精简 HNSW 向量索引的实现（记忆/RAG 检索用）？",
+    "ripgrep JNI 声明与代码搜索？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-chat-screen",
+   "title": "聊天主界面与状态管理",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 9081,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/screens/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/viewmodel/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/util/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/attachments/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatHistorySelector.kt"
+   ],
+   "questions": [
+    "聊天主界面的布局结构与状态管理（ViewModel）？",
+    "附件处理流程？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-chat-components",
+   "title": "聊天消息内容区与交互组件",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 10817,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/AttachmentChip.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/AttachmentPreview.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/AttachmentSelector.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/CharacterSelectorPanel.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatArea.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatHeader.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatMessageHeightMemory.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatScreenContent.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatScreenHeader.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatScrollExtensions.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatScrollNavigator.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ChatToastHost.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/CompactDialogLayout.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ExportDialogs.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/FullscreenInputDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/LinkPreviewDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/MemoryFolderSelectionDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/MessageEditor.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/MessageInfoDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/PastedTextAttachment.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ReferencesDisplay.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/RevisableTextStreamRemember.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ScrollToBottomButton.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ShareImagePreviewDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/SharedFileTargetDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/SimpleLinearProgressIndicator.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/TokenHitRateFormat.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/WorkspaceChangeConfirmDialog.kt"
+   ],
+   "questions": [
+    "聊天消息内容区与交互组件？"
+   ],
+   "notes": "components/ 根目录 28 文件（ChatHistorySelector.kt 归属 ui-chat-screen；lazy/part/style/input/attachments/config 子目录各有独立页）"
+  },
+  {
+   "id": "ui-chat-input",
+   "title": "聊天输入区",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 7037,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/style/input/"
+   ],
+   "questions": [
+    "输入区三种样式（agent/classic/common）的差异？",
+    "输入增强（语音/附件/工具快捷入口）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-chat-styles",
+   "title": "消息气泡与样式",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 4023,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/style/bubble/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/style/common/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/style/cursor/"
+   ],
+   "questions": [
+    "消息气泡/光标/通用样式的实现？"
+   ],
+   "notes": "style/input/ 归属 ui-chat-input"
+  },
+  {
+   "id": "ui-chat-parts",
+   "title": "消息体渲染（XML/工具调用/文件差异）",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 5282,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/part/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/attachments/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/config/"
+   ],
+   "questions": [
+    "消息体 XML 渲染与工具调用卡片？",
+    "文件差异（diff）展示？"
+   ],
+   "notes": ""
+  }
+ ],
+ "page_count": 16,
+ "est_lines": 70011,
+ "status": "pending"
+}

@@ -69,3 +69,14 @@ Operit 仓库有新 commit → 跑 `check_staleness.py`，STALE 页的命中 fac
 - 阅读记录：`tracking/read-status.json`（Git 跟踪）
 - 分片计划：`tracking/shards/`（流水线启动时生成）
 - 机制宪法：`SCHEMA.md`；单页产物规范见 `review/batch-01/` 样例
+
+## 8. 评审站同步铁律（2026-09-30 用户指令，长期有效）
+
+- writer 交付的每个条目必须同步上网页评审：`review/batch-NN/<id>.*` 落盘后，依次跑
+  `scripts/build_queue.py` → `scripts/build_wiki_data.py`（由 deploy_site.sh 自动调）→ `scripts/deploy_site.sh`，
+  全部成功后才能汇报"已上评审站"。
+- 状态唯一来源是各条目的 `<id>.status.json`；**禁止手工改 `review-queue.json`**（每次 deploy 会被 build_queue.py 重建覆盖）。
+- 新条目落盘前必须先建 GitHub Issue（label `review`），issue 号写进 `.status.json` 的 `issue` 字段；
+  没有 issue 号的条目评论区无处可评，视为未完成同步。
+- 同步完成的定义：公网 entry 页能打开、评论区连通到对应 Issue（live browser 实地验证为准，
+  不只看本地构建成功）。

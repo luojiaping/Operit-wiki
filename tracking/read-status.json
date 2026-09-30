@@ -1,6 +1,6 @@
 {
  "repo_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
- "updated": "2026-09-30 13:55 UTC",
+ "updated": "2026-09-30 14:46 UTC",
  "files": {
   "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt": {
    "status": "complete",
@@ -249,23 +249,23 @@
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHandler.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
+   "batch": "batch-02",
    "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
    "lines": 491
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHook.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
+   "batch": "batch-02",
    "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
    "lines": 37
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
+   "batch": "batch-02",
    "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
    "lines": 2745
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/agent/PhoneAgent.kt": {
@@ -449,6 +449,34 @@
    "date": "2026-09-30",
    "evidence": "review/batch-01/data-model.quality.json",
    "lines": 32
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/ToolExecutionLimits.kt": {
+   "status": "complete",
+   "batch": "batch-02",
+   "date": "2026-09-30",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/ToolProgressBus.kt": {
+   "status": "complete",
+   "batch": "batch-02",
+   "date": "2026-09-30",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
+   "lines": 60
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/ToolPackage.kt": {
+   "status": "complete",
+   "batch": "batch-02",
+   "date": "2026-09-30",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
+   "lines": 497
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/ToolResultDataClasses.kt": {
+   "status": "complete",
+   "batch": "batch-02",
+   "date": "2026-09-30",
+   "evidence": "review/batch-02/core-tools-registry.quality.json",
+   "lines": 2729
   }
  }
 }

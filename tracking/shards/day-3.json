@@ -1,0 +1,285 @@
+{
+ "day": 3,
+ "pages": [
+  {
+   "id": "data-repo-memory",
+   "title": "记忆仓库",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 2939,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/repository/MemoryRepository.kt",
+    "app/src/main/java/com/ai/assistance/operit/data/repository/MemoryAutoSaveCandidateRepository.kt"
+   ],
+   "questions": [
+    "MemoryRepository 的记忆 CRUD 与检索？",
+    "自动保存候选的筛选逻辑？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-repo-chat",
+   "title": "聊天历史仓库",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 2889,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt"
+   ],
+   "questions": [
+    "聊天历史的加载/保存/删除流程？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-repo-misc",
+   "title": "扩展仓库（Avatar/表情/工作流/Skill/插件黑名单/UI 层级）",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 3856,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/repository/",
+    "app/src/main/java/com/ai/assistance/operit/data/skill/",
+    "app/src/main/java/com/ai/assistance/operit/data/security/"
+   ],
+   "questions": [
+    "Avatar/表情/工作流仓库的持久化方式？",
+    "Skill 仓库与插件黑名单的作用？",
+    "UIHierarchyManager 的用途？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": "repository/ 下 MemoryRepository、MemoryAutoSaveCandidateRepository、ChatHistoryManager 归属 data-repo-memory / data-repo-chat，本页为其余 5 文件"
+  },
+  {
+   "id": "data-prefs-model",
+   "title": "模型与 API 配置（偏好设置）",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 2802,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/preferences/"
+   ],
+   "questions": [
+    "ModelConfigManager 的模型配置管理？",
+    "API Key 与渠道配置的存储？",
+    "GitHub/Codex OAuth 凭证管理？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": "本页仅覆盖 preferences/ 下模型与 API 配置 9 文件（ModelConfigManager、ApiPreferences、GitHubAuthPreferences 等）"
+  },
+  {
+   "id": "data-prefs-character",
+   "title": "角色卡与人格配置",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 3687,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/preferences/"
+   ],
+   "questions": [
+    "角色卡（CharacterCard）的数据结构与管理？",
+    "提示词标签与版本管理？",
+    "Waifu/唤醒词偏好的存储？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": "本页仅覆盖 preferences/ 下角色卡与人格 10 文件（CharacterCardManager、PromptTagManager 等）"
+  },
+  {
+   "id": "data-prefs-app",
+   "title": "应用基础/主题/语音/记忆搜索配置",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 3843,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/preferences/"
+   ],
+   "questions": [
+    "用户偏好（UserPreferencesManager）的组织？",
+    "主题/显示/语音服务的配置项？",
+    "版本化 DataStore 迁移策略？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": "本页覆盖 preferences/ 下其余 18 文件"
+  },
+  {
+   "id": "data-stats-pricing",
+   "title": "Token 用量统计与模型定价数据",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 3416,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/stats/",
+    "app/src/main/java/com/ai/assistance/operit/data/collects/"
+   ],
+   "questions": [
+    "Token 用量统计的采集与聚合？",
+    "模型定价数据的内置默认集？",
+    "计费价格解析逻辑？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-backup-export",
+   "title": "数据备份、恢复与导入导出",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 4796,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/backup/",
+    "app/src/main/java/com/ai/assistance/operit/data/recovery/",
+    "app/src/main/java/com/ai/assistance/operit/data/exporter/",
+    "app/src/main/java/com/ai/assistance/operit/data/converter/"
+   ],
+   "questions": [
+    "Room 备份/恢复管理器与调度 Worker？",
+    "聊天记录格式转换（ChatGPT/CSV/Markdown/JSON）？",
+    "导出 HTML/Markdown/Text 的实现？",
+    "健康检查与修复机制？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-mcp",
+   "title": "MCP 服务与插件桥接",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 6973,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/mcp/"
+   ],
+   "questions": [
+    "MCP 本地服务的实现？",
+    "MCP 仓库与配置导入解析？",
+    "MCP 桥接的部署/启动/运行时会话？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-api-oauth",
+   "title": "OAuth 与外部 API 客户端",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 2885,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/api/"
+   ],
+   "questions": [
+    "Codex/GitHub OAuth 流程的客户端实现？",
+    "Market 统计 API 客户端？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-update-announce",
+   "title": "应用更新与公告",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 1890,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/updates/",
+    "app/src/main/java/com/ai/assistance/operit/data/announcement/"
+   ],
+   "questions": [
+    "全量/增量更新安装器的工作流程？",
+    "公告指针数据的拉取与展示？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-avatar",
+   "title": "虚拟形象引擎",
+   "chapter": "引擎其他",
+   "module": "app",
+   "est_lines": 4777,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/common/",
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/impl/dragonbones/",
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/impl/fbx/",
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/impl/gltf/",
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/impl/mp4/",
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/impl/webp/",
+    "app/src/main/java/com/ai/assistance/operit/core/avatar/impl/factory/"
+   ],
+   "questions": [
+    "虚拟形象的控制/工厂/模型/状态/视图抽象？",
+    "dragonbones/fbx/gltf/mp4/webp 四种渲染实现？",
+    "总览见 batch-01/arch-overview（mmd 相关已标注停止维护）"
+   ],
+   "notes": "avatar/impl/mmd/（3 文件/373 行）已停止维护，不在 seed 内"
+  },
+  {
+   "id": "core-config-prompts",
+   "title": "系统提示词与功能提示配置",
+   "chapter": "引擎其他",
+   "module": "app",
+   "est_lines": 9063,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/config/"
+   ],
+   "questions": [
+    "SystemToolPromptsInternal 的提示词组织？",
+    "各功能提示如何按场景装配？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-app-workflow",
+   "title": "应用生命周期、性能监控与工作流调度",
+   "chapter": "引擎其他",
+   "module": "app",
+   "est_lines": 3421,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/application/",
+    "app/src/main/java/com/ai/assistance/operit/core/performance/",
+    "app/src/main/java/com/ai/assistance/operit/core/workflow/"
+   ],
+   "questions": [
+    "Application 生命周期与前台服务管理？",
+    "性能监控的指标采集？",
+    "工作流执行与调度引擎？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-subpack",
+   "title": "安装包编辑与逆向（APK/EXE）",
+   "chapter": "引擎其他",
+   "module": "app",
+   "est_lines": 1539,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/subpack/"
+   ],
+   "questions": [
+    "APK 编辑与逆向引擎的实现？",
+    "EXE 编辑与签名处理？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "services-chatservice",
+   "title": "聊天服务核心 Delegate 群",
+   "chapter": "系统服务与集成",
+   "module": "app",
+   "est_lines": 7954,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/services/core/"
+   ],
+   "questions": [
+    "9 个 Delegate（MessageProcessing/MessageCoordination/ChatHistory/Attachment/ApiConfig/TokenStatistics…）的分工？",
+    "MessageCoordinationDelegate 的多轮协调逻辑？",
+    "总览见 batch-01/core-chat"
+   ],
+   "notes": "与 batch-01/core-chat 有重叠，本页深挖 Delegate 级实现细节"
+  }
+ ],
+ "page_count": 16,
+ "est_lines": 66730,
+ "status": "pending"
+}

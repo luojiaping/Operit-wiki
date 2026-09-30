@@ -1,0 +1,653 @@
+{
+ "day": 2,
+ "pages": [
+  {
+   "id": "core-tools-packtool",
+   "title": "插件包（ToolPkg）管理与解析",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 9791,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/"
+   ],
+   "questions": [
+    "ToolPkg 包的解析与加载流程？",
+    "插件包运行时监控机制？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-tools-system",
+   "title": "系统底层能力（Shell 执行器/Action 监听器/终端/截屏投屏）",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 6145,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/system/"
+   ],
+   "questions": [
+    "Shell 执行器按权限模式如何分层（Standard/Root/Debugger/Accessibility/Admin）？",
+    "Action 监听器的事件来源与分发？",
+    "终端管理与截屏/投屏实现？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-tools-misc",
+   "title": "专项工具（PhoneAgent/计算器/MCP/Skill/CLI 模式/条件）",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 5923,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/agent/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/climode/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/condition/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/skill/"
+   ],
+   "questions": [
+    "PhoneAgent 与 Shower 远控投屏服务的关系？",
+    "MCP 工具如何桥接外部 MCP 服务？",
+    "Skill 工具与 CLI 模式的用途？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-chat-runtime",
+   "title": "聊天运行时（消息管理/Hook/插件）",
+   "chapter": "聊天与消息",
+   "module": "app",
+   "est_lines": 2184,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/chat/"
+   ],
+   "questions": [
+    "AIMessageManager 的消息处理主循环？",
+    "ChatRuntimeHook 的注册与分发机制（prompt/summary 钩子）？",
+    "消息处理插件的匹配与执行？",
+    "总览见 batch-01/core-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-openai",
+   "title": "OpenAI 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 3509,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt"
+   ],
+   "questions": [
+    "请求体构造与 Responses/Chat Completions 的选择？",
+    "thinking 参数如何映射到 OpenAI 字段？",
+    "工具调用（function calling）格式处理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-gemini",
+   "title": "Gemini 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 2252,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/GeminiProvider.kt"
+   ],
+   "questions": [
+    "Gemini API 的请求/响应格式适配？",
+    "thinking 配置如何映射？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-claude",
+   "title": "Claude 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 2080,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ClaudeProvider.kt"
+   ],
+   "questions": [
+    "Anthropic Messages API 的适配细节？",
+    "工具调用与 thinking 参数映射？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-deepseek",
+   "title": "DeepSeek 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 1462,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt"
+   ],
+   "questions": [
+    "DeepSeek 推理模型的参数适配？",
+    "自定义参数处理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-mnn",
+   "title": "MNN 端侧供应商（已停止维护）",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 1021,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MNNProvider.kt"
+   ],
+   "questions": [
+    "MNN 端侧推理的接入方式？（已停止维护，仅存档）",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "端侧 MNN 引擎已长期停止维护，本页仅存档封装层实现"
+  },
+  {
+   "id": "api-chat-openai-responses",
+   "title": "OpenAI Responses 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 791,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIResponsesProvider.kt"
+   ],
+   "questions": [
+    "Responses API 与 Chat Completions 的差异处理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-kimi",
+   "title": "Kimi 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 512,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/KimiProvider.kt"
+   ],
+   "questions": [
+    "Kimi（Moonshot）接口适配与 thinking 映射？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-opencode",
+   "title": "OpenCode 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 434,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenCodeProvider.kt"
+   ],
+   "questions": [
+    "OpenCode 接入方式与特殊处理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-llama",
+   "title": "Llama 端侧供应商（已停止维护）",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 410,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LlamaProvider.kt"
+   ],
+   "questions": [
+    "Llama 端侧推理的接入方式？（已停止维护，仅存档）",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "端侧 Llama 引擎已长期停止维护，本页仅存档封装层实现"
+  },
+  {
+   "id": "api-chat-codex",
+   "title": "Codex 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 303,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/CodexProvider.kt"
+   ],
+   "questions": [
+    "Codex 接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-openrouter",
+   "title": "OpenRouter 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 129,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenRouterProvider.kt"
+   ],
+   "questions": [
+    "OpenAI 兼容封装的薄适配层内容？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-qwen",
+   "title": "通义千问供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 125,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/QwenAIProvider.kt"
+   ],
+   "questions": [
+    "通义千问接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-mistral",
+   "title": "Mistral 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 95,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MistralProvider.kt"
+   ],
+   "questions": [
+    "Mistral 接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-nvidia",
+   "title": "NVIDIA AI 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 81,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/NvidiaAIProvider.kt"
+   ],
+   "questions": [
+    "NVIDIA 接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-xai",
+   "title": "xAI 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 75,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/XaiProvider.kt"
+   ],
+   "questions": [
+    "xAI 接口适配与 thinking 映射？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-doubao",
+   "title": "豆包供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 73,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DoubaoAIProvider.kt"
+   ],
+   "questions": [
+    "豆包接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-mimo",
+   "title": "小米 Mimo 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 48,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MimoProvider.kt"
+   ],
+   "questions": [
+    "Mimo 接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-ollama",
+   "title": "Ollama 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 36,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OllamaProvider.kt"
+   ],
+   "questions": [
+    "Ollama 本地服务接口适配？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-nousportal",
+   "title": "NousPortal 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 32,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/NousPortalProvider.kt"
+   ],
+   "questions": [
+    "NousPortal 接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-fourrouter",
+   "title": "FourRouter 供应商",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 32,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/FourRouterProvider.kt"
+   ],
+   "questions": [
+    "FourRouter 接口适配细节？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "小体量供应商，多为 OpenAI 兼容接口的薄封装"
+  },
+  {
+   "id": "api-chat-keypool",
+   "title": "Key 池轮询（ApiKeyProvider）",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 317,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ApiKeyProvider.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ApiKeyPoolAvailabilityTester.kt"
+   ],
+   "questions": [
+    "多 Key 池的数据结构与轮询策略（ROUND_ROBIN/RANDOM）？",
+    "Key 可用性探测机制？",
+    "429 时如何隐藏中间提示并切换 Key？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "ApiKeyProvider 不是供应商而是密钥池机制，独立成页"
+  },
+  {
+   "id": "api-chat-providers-base",
+   "title": "供应商接入基础设施",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 1736,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIService.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIServiceFactory.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleter.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LocalGenerationEnd.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/UnsafeModelSsl.kt"
+   ],
+   "questions": [
+    "AIService 接口契约与工厂的供应商装配？",
+    "端点补全与模型列表拉取流程？",
+    "本地生成结束契约的作用？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-thinking",
+   "title": "thinking 配置机制",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 581,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ThinkingQualityMapping.kt"
+   ],
+   "questions": [
+    "ThinkingQualityMappingRegistry 的规则匹配顺序？",
+    "LEVELS/TOGGLE_ONLY/UNSUPPORTED 三种控件类型？",
+    "wire value 如何写入供应商请求体（JSON path action）？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-params",
+   "title": "统一参数模型与自定义参数",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 411,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ChatConfigReadiness.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelConfigConnectionTester.kt"
+   ],
+   "questions": [
+    "以 AIService.sendMessage 签名为统一契约的参数有哪些？",
+    "自定义参数如何以内联方式散落在各 Provider？",
+    "配置就绪检查与连接测试流程？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": "api/ 内无独立统一参数模型文件，自定义参数以内联方式散落在各 Provider"
+  },
+  {
+   "id": "api-chat-errors",
+   "title": "错误/限流/重试",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 256,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RateLimitedAIService.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RateLimiterRegistry.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/SlidingWindowRateLimiter.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RequestConcurrencyRegistry.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LlmRetryPolicy.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/HttpStatusCodeException.kt"
+   ],
+   "questions": [
+    "HttpStatusCodeException 的统一状态码封装？",
+    "滑动窗口限流器的算法与注册表？",
+    "重试策略（LlmRetryPolicy）与并发控制？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-tools-stream",
+   "title": "工具调用与流式协议",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 1572,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/StructuredToolCallBridge.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ToolPkgJsAiProviderService.kt"
+   ],
+   "questions": [
+    "结构化工具调用桥接的转换逻辑？",
+    "ToolPkg JS 如何作为 AI Provider？",
+    "流式协议（SSE/分块）的统一处理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-tokens",
+   "title": "Token 统计与 usage 上报",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 360,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt"
+   ],
+   "questions": [
+    "Token 用量如何从供应商响应中提取与上报？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-media",
+   "title": "多模态媒体链接与能力探测",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 321,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MediaCapabilityProbe.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkBuilder.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParser.kt"
+   ],
+   "questions": [
+    "媒体链接的构造与解析？",
+    "供应商多模态能力探测机制？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-runtime",
+   "title": "对话编排运行时",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 5514,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/ChatRuntimeHolder.kt",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/ChatRuntimeSlot.kt"
+   ],
+   "questions": [
+    "EnhancedAIService 的对话编排主流程？",
+    "前台服务保活与运行时槽管理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-enhance",
+   "title": "对话增强管线",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 3763,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/"
+   ],
+   "questions": [
+    "输入处理/多服务管理/工具执行的增强链路？",
+    "总结机制（generateSummary）如何挂接 SummaryHook？",
+    "文件绑定与引用处理？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-chat-memory",
+   "title": "会话记忆与上下文总结",
+   "chapter": "云端 Chat API",
+   "module": "app",
+   "est_lines": 1594,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/chat/library/"
+   ],
+   "questions": [
+    "记忆库的读写与重建流程？",
+    "自动保存与时间窗规划？",
+    "上下文总结的触发条件与默认值（64k 上下文/70% 阈值/16 条消息）？",
+    "总览见 batch-01/api-chat"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-speech",
+   "title": "语音识别流水线",
+   "chapter": "语音服务",
+   "module": "app",
+   "est_lines": 4147,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/speech/"
+   ],
+   "questions": [
+    "SpeechService 接口与工厂的 STT 供应商装配？",
+    "VAD（Silero）与个性化唤醒词流程？",
+    "云端（Deepgram/OpenAI）与端侧（Sherpa/MNN）STT 的差异？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "api-voice",
+   "title": "语音合成（TTS）服务",
+   "chapter": "语音服务",
+   "module": "app",
+   "est_lines": 5708,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/api/voice/"
+   ],
+   "questions": [
+    "VoiceService 接口与多 TTS 供应商（OpenAI/SiliconFlow/MiniMax/豆包/Mimo/端侧 VITS/系统 TTS）？",
+    "队列播放与 HTTP TTS 响应管线？",
+    "语音列表拉取与异常处理？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-room-db",
+   "title": "Room 数据库与 DAO",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 1901,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/db/",
+    "app/src/main/java/com/ai/assistance/operit/data/dao/"
+   ],
+   "questions": [
+    "AppDatabase（版本 21）的表结构与迁移链？",
+    "5 个 DAO 的职责划分？",
+    "ObjectBox 记忆实体管理器的职责？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "data-models",
+   "title": "数据模型与实体类",
+   "chapter": "数据层",
+   "module": "app",
+   "est_lines": 3669,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/data/model/",
+    "app/src/main/java/com/ai/assistance/operit/data/mnn/"
+   ],
+   "questions": [
+    "53 个数据类/实体的组织逻辑？",
+    "@Entity 标注的 10 个实体的关系？",
+    "总览见 batch-01/data-model"
+   ],
+   "notes": ""
+  }
+ ],
+ "page_count": 39,
+ "est_lines": 69393,
+ "status": "pending"
+}

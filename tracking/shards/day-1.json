@@ -1,0 +1,172 @@
+{
+ "day": 1,
+ "pages": [
+  {
+   "id": "core-tools-registry",
+   "title": "工具注册与执行框架",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 6568,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHandler.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/AIToolHook.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/ToolExecutionLimits.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/ToolPackage.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/ToolProgressBus.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/ToolResultDataClasses.kt"
+   ],
+   "questions": [
+    "工具注册表的数据结构与查询方式？",
+    "AIToolHandler 如何调度工具执行？",
+    "工具执行的并发上限与进度上报机制？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-tools-standard-filesystem",
+   "title": "标准工具·文件系统",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 7808,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/"
+   ],
+   "questions": [
+    "标准文件系统工具集包含哪些操作（读写/搜索/归档/SAF）？",
+    "路径校验与沙箱边界如何实现？",
+    "Linux 路径与 Android 路径如何映射？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": "本页仅覆盖 standard/ 下文件系统 3 件（StandardFileSystemTools/SafFileSystemTools/LinuxFileSystemTools）；目录内其他文件归属 core-tools-standard-webchat / core-tools-standard-system"
+  },
+  {
+   "id": "core-tools-standard-webchat",
+   "title": "标准工具·浏览器/网络/聊天/工作流",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 9430,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/"
+   ],
+   "questions": [
+    "浏览器会话工具与网页访问工具的能力边界？",
+    "HTTP 工具的请求构造与响应处理？",
+    "聊天管理工具如何操作会话？",
+    "工作流工具与记忆查询工具的职责？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": "本页仅覆盖 standard/ 下 StandardBrowserSessionTools、StandardWebVisitTool、StandardHttpTools、StandardChatManagerTool、StandardWorkflowTools、MemoryQueryToolExecutor 6 件；目录内其他文件归属 core-tools-standard-filesystem / core-tools-standard-system"
+  },
+  {
+   "id": "core-tools-standard-system",
+   "title": "标准工具·系统操作/多媒体/UI",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 8164,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/"
+   ],
+   "questions": [
+    "系统操作工具覆盖哪些 Android 系统能力？",
+    "Shell/终端工具的执行权限模型？",
+    "多媒体（蓝牙/音乐/FFmpeg）工具如何调用？",
+    "UI 自动化工具的可用操作？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": "本页覆盖 standard/ 下其余 13 件（系统操作/软件设置/设备信息/广播/Intent/终端/Shell/蓝牙/音乐/FFmpeg/UI/计算器/Cookie）"
+  },
+  {
+   "id": "core-tools-websession-browser",
+   "title": "网页会话·浏览器宿主",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 8225,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/"
+   ],
+   "questions": [
+    "WebView 浏览器宿主的架构？",
+    "页面执行/下载/历史/权限如何管理？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-tools-websession-userscript",
+   "title": "网页会话·用户脚本引擎",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 5522,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/"
+   ],
+   "questions": [
+    "Tampermonkey 式用户脚本如何解析与匹配？",
+    "脚本存储与运行时注入机制？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-tools-execmodes",
+   "title": "工具执行模式（Debugger/Root/无障碍/Admin）",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 6578,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/debugger/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/root/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/admin/",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/PathValidator.kt",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/ToolGetter.kt"
+   ],
+   "questions": [
+    "四种权限模式下同一工具的行为有何差异？",
+    "权限模式如何选择与降级？",
+    "PathValidator 的路径校验规则？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "core-tools-jsengine",
+   "title": "JS 引擎与 Java 互操作桥",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 10061,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/"
+   ],
+   "questions": [
+    "QuickJS 引擎的初始化与脚本执行流程？",
+    "JsJavaBridge 如何暴露 Java 能力给 JS？",
+    "Compose DSL 脚本桥的工作原理？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": "本页仅覆盖 javascript/ 下引擎与桥接 12 件（JsEngine/JsJavaBridge/JsJavaBridgeDelegates 等）；脚本执行与注册 9 件归属 core-tools-jstools"
+  },
+  {
+   "id": "core-tools-jstools",
+   "title": "JS 工具脚本执行与注册",
+   "chapter": "工具系统",
+   "module": "app",
+   "est_lines": 5077,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/"
+   ],
+   "questions": [
+    "JS 工具如何注册为模型可调用工具？",
+    "脚本执行上下文与结果协议？",
+    "执行超时与追踪机制？",
+    "总览见 batch-01/core-tools"
+   ],
+   "notes": "本页仅覆盖 javascript/ 下 JsTools/JsExecutionScriptBuilder/JsToolPkgExecutionContext/JsToolPkgRegistration/JsToolManager/JsExecutionResultProtocol/JsExecutionTrace/ScriptExecutionReceiver/JsTimeoutConfig 9 件"
+  }
+ ],
+ "page_count": 9,
+ "est_lines": 67433,
+ "status": "pending"
+}

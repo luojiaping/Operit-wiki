@@ -1,0 +1,229 @@
+{
+ "day": 7,
+ "pages": [
+  {
+   "id": "ui-floating",
+   "title": "悬浮窗界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 8093,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/floating/"
+   ],
+   "questions": [
+    "全屏/窗口/悬浮球三种形态？",
+    "屏幕 OCR 与语音入口？"
+   ],
+   "notes": "floating/ui/pet/AvatarEmotionManager.kt（108 行，avatar 相关）已排除"
+  },
+  {
+   "id": "ui-memory",
+   "title": "记忆/知识库界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 5150,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/memory/"
+   ],
+   "questions": [
+    "记忆屏/知识库对话框/记忆图谱？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-tokenstats",
+   "title": "Token 用量统计界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 4862,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/"
+   ],
+   "questions": [
+    "用量统计屏与图表实现？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-workflow",
+   "title": "工作流界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 7032,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/workflow/"
+   ],
+   "questions": [
+    "工作流列表/详情/组件？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-websession",
+   "title": "内置浏览器界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 3531,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/websession/"
+   ],
+   "questions": [
+    "WebSession 内置浏览器的标签/书签/下载/历史？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-assistant",
+   "title": "助手配置界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 3118,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/assistant/"
+   ],
+   "questions": [
+    "助手配置屏（avatar/语音/导入）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-demo",
+   "title": "权限引导与演示界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 4761,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/demo/"
+   ],
+   "questions": [
+    "Shizuku 演示与权限向导卡（Root/无障碍/Shizuku/终端）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-permission",
+   "title": "权限与 Token 配置界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 3208,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/permissions/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/permission/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/token/"
+   ],
+   "questions": [
+    "工具权限请求 overlay/对话框？",
+    "第三方 Token/URL 配置（DeepSeek 网页版 WebView）？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-about",
+   "title": "关于/更新/登录/帮助界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 4123,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/about/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/update/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/agreement/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/announcement/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/help/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/codex/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/github/",
+    "app/src/main/java/com/ai/assistance/operit/ui/error/"
+   ],
+   "questions": [
+    "关于页与开源许可证？",
+    "GitHub/Codex OAuth 登录屏？",
+    "崩溃上报 Activity？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-startup",
+   "title": "启动/恢复/性能界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 3492,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/startup/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/performance/",
+    "app/src/main/java/com/ai/assistance/operit/ui/recovery/"
+   ],
+   "questions": [
+    "启动插件加载屏？",
+    "数据恢复 Activity 与性能监控图表？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "appendix-tests-unit-api-core",
+   "title": "单元测试·api/core（附录）",
+   "chapter": "附录",
+   "module": "app",
+   "est_lines": 7608,
+   "seed_files": [
+    "app/src/test/java/com/ai/assistance/operit/api/",
+    "app/src/test/java/com/ai/assistance/operit/core/"
+   ],
+   "questions": [
+    "api/core 模块的测试覆盖重点？"
+   ],
+   "notes": "附录页，非产品代码"
+  },
+  {
+   "id": "appendix-tests-unit-data",
+   "title": "单元测试·data（附录）",
+   "chapter": "附录",
+   "module": "app",
+   "est_lines": 4343,
+   "seed_files": [
+    "app/src/test/java/com/ai/assistance/operit/data/",
+    "app/src/test/java/com/ai/assistance/operit/plugins/",
+    "app/src/test/java/com/ai/assistance/operit/services/"
+   ],
+   "questions": [
+    "data 模块的测试覆盖重点？"
+   ],
+   "notes": "附录页，非产品代码"
+  },
+  {
+   "id": "appendix-tests-unit-ui-util",
+   "title": "单元测试·ui/util（附录）",
+   "chapter": "附录",
+   "module": "app",
+   "est_lines": 3248,
+   "seed_files": [
+    "app/src/test/java/com/ai/assistance/operit/ui/",
+    "app/src/test/java/com/ai/assistance/operit/util/"
+   ],
+   "questions": [
+    "ui/util 模块的测试覆盖重点？"
+   ],
+   "notes": "附录页，非产品代码"
+  },
+  {
+   "id": "appendix-tests-android",
+   "title": "插桩测试、模板与本地化三方源码（附录）",
+   "chapter": "附录",
+   "module": "app",
+   "est_lines": 5339,
+   "seed_files": [
+    "app/src/androidTest/",
+    "app/src/main/assets/templates/",
+    "app/src/main/java/com/k2fsa/",
+    "app/src/main/java/kotlin/",
+    "app/src/main/java/androidx/"
+   ],
+   "questions": [
+    "插桩测试的覆盖范围？",
+    "assets 模板与本地化三方源码（sherpa 等）的作用？"
+   ],
+   "notes": "附录页，非产品代码"
+  }
+ ],
+ "page_count": 14,
+ "est_lines": 67908,
+ "status": "pending"
+}

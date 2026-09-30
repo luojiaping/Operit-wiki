@@ -1,0 +1,177 @@
+{
+ "day": 5,
+ "pages": [
+  {
+   "id": "ui-chat-lazylist",
+   "title": "本地化 LazyColumn 聊天列表",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 10029,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/lazy/"
+   ],
+   "questions": [
+    "为何本地化 LazyColumn 源码（魔改点）？",
+    "聊天列表的性能优化？"
+   ],
+   "notes": "本地化的 androidx LazyColumn 源码，抽取时聚焦\"魔改点/为何本地化\"而非复读上游逻辑"
+  },
+  {
+   "id": "ui-chat-workspace",
+   "title": "工作区与 WebView 基础设施",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 9758,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/LocalWebServer.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/WebViewHandler.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/WorkspaceFileSelector.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/WorkspaceUtils.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/FileManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceBackupManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceCommandExecutionState.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceConfig.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceFilePreviewSupport.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceImagePreview.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceManager.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspacePreviewRefreshBus.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceReadOnlyDocumentPreview.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/WorkspaceSetup.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/process/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/computer/"
+   ],
+   "questions": [
+    "本地 WebServer 与 WebView 桥接？",
+    "工作区文件管理与后台进程？"
+   ],
+   "notes": "webview/ 根 4 文件（LocalWebServer/WebViewHandler 等）+ workspace 根文件 + workspace/process + webview/computer；editor/ 归属 ui-chat-editor"
+  },
+  {
+   "id": "ui-chat-editor",
+   "title": "内置代码编辑器",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 5416,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/workspace/editor/"
+   ],
+   "questions": [
+    "代码补全/语言/主题/语法高亮的实现？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-settings-model",
+   "title": "模型与提示词配置界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 11349,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ModelConfigScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ModelPromptsSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/MnnModelDownloadScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ModelApiSettingsSection.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ModelParametersSection.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/AdvancedSettingsSection.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ApiKeyVisualTransformation.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/ModelConfigAutoSaveSupport.kt"
+   ],
+   "questions": [
+    "模型配置屏的参数项组织？",
+    "提示词配置屏的结构？",
+    "API Key 输入的视觉转换与自动保存？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-settings-theme",
+   "title": "主题与显示设置界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 12184,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/theme/",
+    "app/src/main/java/com/ai/assistance/operit/ui/components/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ThemeSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/GlobalDisplaySettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/LayoutAdjustmentSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/LanguageSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/CustomEmojiManagementScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/theme/",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/viewmodels/CustomEmojiViewModel.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsBackgroundSection.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsColorSection.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsCoreSections.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsFontAvatarSections.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ThemeSettingsComponents.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ColorPickerDialog.kt"
+   ],
+   "questions": [
+    "主题基础设施（配色/字体/液态玻璃/背景层）？",
+    "主题设置屏的分区组织？",
+    "颜色选择器与自定义表情管理？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-settings-chat",
+   "title": "聊天/备份/历史设置界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 9341,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ChatBackupSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ChatHistorySettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ContextSummarySettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/FunctionalConfigScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/BackupCards.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/BackupManagementCards.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/BackupDialogs.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/RoomDbBackupComponents.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/BackupMemoryImportStrategyStrings.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/BackupOperationTypes.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ChatStyleOption.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/MarkdownSyntaxHighlighting.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ExpandableStatusText.kt"
+   ],
+   "questions": [
+    "备份管理卡片与备份对话框的流程？",
+    "聊天历史/上下文总结设置项？"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "ui-settings-misc",
+   "title": "偏好与其他设置界面",
+   "chapter": "用户界面",
+   "module": "app",
+   "est_lines": 9989,
+   "seed_files": [
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/SettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ExternalHttpChatSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/GitHubAccountScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/PersonaCardGenerationScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/TagMarketScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/TagMarketBilingualData.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ToolPermissionSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/UserPreferencesSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/SpeechServicesSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/WaifuModeSettingsScreen.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/CharacterCardDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/CharacterCardAssignDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/CharacterGroupAssignDialog.kt",
+    "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/AvatarPicker.kt"
+   ],
+   "questions": [
+    "设置主页的入口组织？",
+    "角色卡对话框与分配流程？",
+    "工具权限设置屏？"
+   ],
+   "notes": ""
+  }
+ ],
+ "page_count": 7,
+ "est_lines": 68066,
+ "status": "pending"
+}
