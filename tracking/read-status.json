@@ -1,6 +1,6 @@
 {
  "repo_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
- "updated": "2026-09-30",
+ "updated": "2026-09-30 16:24 UTC",
  "files": {
   "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt": {
    "status": "complete",
@@ -151,9 +151,9 @@
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsEngine.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
+   "batch": "batch-03",
    "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
    "lines": 2767
   },
   "app/src/main/java/com/ai/assistance/operit/util/ripgrep/NativeRipgrep.kt": {
@@ -277,9 +277,9 @@
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardShellToolExecutor.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
+   "batch": "batch-03",
    "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
    "lines": 102
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPPackage.kt": {
@@ -477,6 +477,601 @@
    "date": "2026-09-30",
    "evidence": "review/batch-02/core-tools-registry.quality.json",
    "lines": 2729
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/WebSessionBrowserHostState.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 132
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/WebSessionWebViewHost.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 157
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/WebSessionPermissionRequestActivity.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 162
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/WebSessionHistoryStore.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 248
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/WebSessionBrowserHost.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 864
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/BrowserToolSupport.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 1216
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/BrowserWebViewSupport.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 1406
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/BrowserDownloadSupport.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 1357
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/browser/BrowserPageExecutionSupport.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-browser.quality.json",
+   "lines": 2883
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/ToolGetter.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 219
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/PathValidator.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-filesystem.quality.json",
+   "lines": 58
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/debugger/DebuggerDeviceInfoToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 10
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/debugger/DebuggerFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 2955
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/debugger/DebuggerSystemOperationTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 498
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/debugger/DebuggerUITools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 1345
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/root/RootDeviceInfoToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/root/RootFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/root/RootSystemOperationTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/root/RootUITools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 614
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/admin/AdminDeviceInfoToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/admin/AdminFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/admin/AdminSystemOperationTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/admin/AdminUITools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/AccessibilityDeviceInfoToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/AccessibilityFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/AccessibilitySystemOperationTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 10
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/AccessibilityUITools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-execmodes.quality.json",
+   "lines": 788
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsJavaBridge.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 1332
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsJavaBridgeDelegates.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 2103
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsComposeDslBridge.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 921
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsComposeDslRuntimeScript.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 355
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsEmbeddedLibraryLoader.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 17
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsAssetLoader.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 28
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExternalJavaCodeLoader.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 390
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsInitRuntimeScriptBuilder.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 526
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsLibraries.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 178
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsNativeInterfaceDelegates.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 1099
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsToolPkgApiRuntime.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jsengine.quality.json",
+   "lines": 202
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/BluetoothSessionManager.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 661
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/CookiePrivacyManager.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 26
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardCalculator.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 101
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardDeviceInfoToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 178
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardFFmpegTool.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 365
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardIntentToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 294
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardMusicPlaybackTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 638
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardSendBroadcastToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 149
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardSoftwareSettingsModifyTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 2517
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardSystemOperationTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 1683
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardTerminalCommandExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 770
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardUITools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-system.quality.json",
+   "lines": 680
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/UserscriptModels.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 191
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/UserscriptMetadataParser.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 100
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/UserscriptMatcher.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 160
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/UserscriptCapabilityRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 244
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/storage/UserscriptRepository.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 692
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/storage/UserscriptJsonStore.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 293
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/storage/UserscriptEntities.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 67
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/install/UserscriptImportCoordinator.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 78
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/install/UserscriptImportPickerActivity.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 96
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/runtime/WebSessionUserscriptManager.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 1640
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/runtime/UserscriptBootstrapScript.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 1202
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/runtime/UserscriptCookieService.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 226
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/runtime/UserscriptWebRequestEngine.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 234
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/runtime/UserscriptStorageNotifier.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 23
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/runtime/UserscriptTabStateStore.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 30
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/websession/userscript/ui/WebSessionUserscriptUiStateStore.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-websession-userscript.quality.json",
+   "lines": 46
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-filesystem.quality.json",
+   "lines": 4872
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/SafFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-filesystem.quality.json",
+   "lines": 1679
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/LinuxFileSystemTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-filesystem.quality.json",
+   "lines": 1257
+  },
+  "app/src/main/java/com/ai/assistance/operit/util/PathMapper.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-filesystem.quality.json",
+   "lines": 63
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsTimeoutConfig.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 8
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExecutionResultProtocol.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 54
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsToolPkgExecutionContext.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 158
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsToolManager.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 477
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExecutionTrace.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 256
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/ScriptExecutionReceiver.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 450
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsToolPkgRegistration.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 669
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExecutionScriptBuilder.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 1412
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-jstools.quality.json",
+   "lines": 1593
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardBrowserSessionTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
+   "lines": 1805
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardWebVisitTool.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
+   "lines": 1830
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardHttpTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
+   "lines": 830
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardChatManagerTool.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
+   "lines": 2254
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardWorkflowTools.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
+   "lines": 1328
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/MemoryQueryToolExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-03",
+   "date": "2026-09-30",
+   "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
+   "lines": 1383
   }
  },
  "app/src/main/java/com/ai/assistance/operit/core/chat/AIMessageManager.kt": {
