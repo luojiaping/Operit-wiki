@@ -94,7 +94,12 @@ def load_outline() -> dict:
 
 
 def page_title(pages: dict[str, dict], pid: str) -> str:
-    return pages[pid]["title"]
+    return pages.get(pid, {}).get("title", pid)
+
+
+def _known(pages: dict[str, dict], ids: list[str]) -> list[str]:
+    """只保留大纲中真实存在的 id（v2->v3 换页时旧关联自动失效）。"""
+    return [i for i in ids if i in pages]
 
 
 def link_line(target: str, display: str, conf: str) -> str:
@@ -112,10 +117,10 @@ def write_topic(path: Path, info: dict, pages: dict[str, dict],
             links.append((other, page_title(pages, other), "INFERRED"))
     # 2. 章节枢纽（INFERRED）
     if pid == "arch-overview":
-        for hub in CHAPTER_HUBS:
+        for hub in _known(pages, CHAPTER_HUBS):
             links.append((hub, page_title(pages, hub), "INFERRED"))
     # 3. 跨章语义关联（INFERRED）
-    for other in CROSS_LINKS.get(pid, []):
+    for other in _known(pages, CROSS_LINKS.get(pid, [])):
         links.append((other, page_title(pages, other), "INFERRED"))
     # 4. 所属模块实体（EXTRACTED）
     for ent in MODULE_OF.get(info["module"], []):
@@ -213,7 +218,7 @@ def stage_kb(outline: dict) -> tuple[dict[str, dict], int, int]:
 
     n_edges = sum(
         1 for pid in pages
-        for _ in CROSS_LINKS.get(pid, [])
+        for _ in _known(pages, CROSS_LINKS.get(pid, []))
     )
     return pages, len(pages), len(MODULES)
 
