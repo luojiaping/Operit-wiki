@@ -39,7 +39,7 @@
     </div>
     <div class="paper-card">
       <h3>评审意见</h3>
-      <p style="font-size:13px;color:var(--app-muted)">在下方留言，你的意见会同步到 GitHub Issue，agent 会按意见修改条目。</p>
+      <p style="font-size:13px;color:var(--app-muted)">在下方留言，你的意见会同步到 GitHub Issue，agent 会按意见修改条目。<b>评论「通过」即批准</b>，约 15 分钟内状态自动翻转；写「需修改」请注明位置。</p>
       <div id="comments"></div>
     </div>
   </main>
@@ -50,6 +50,10 @@
       <h3>条目信息</h3>
       <div id="meta"></div>
       <div id="issuebox"></div>
+    </div>
+    <div class="paper-card" id="verdict-card" style="display:none">
+      <h3>评审动态</h3>
+      <div id="verdict-live" style="font-size:13px;color:var(--app-muted)">正在读取评论…</div>
     </div>
     <div class="verdict">
       <h3>朱砂批注 · 评审清单</h3>
@@ -134,6 +138,30 @@ async function load() {
   </div>`;
   document.getElementById("issuebox").innerHTML = e.issue
     ? `<a class="issue-link" href="https://github.com/luojiaping/Operit-wiki/issues/${e.issue}" target="_blank">在 GitHub 上查看 Issue #${e.issue}</a>` : "";
+
+  // 评审动态：从 GitHub 公开 API 读取 Issue 评论，展示评论数与 owner 最新表态
+  if (e.issue) {
+    document.getElementById("verdict-card").style.display = "block";
+    fetch(`https://api.github.com/repos/luojiaping/Operit-wiki/issues/${e.issue}/comments`)
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(cs => {
+        const owner = cs.filter(c => c.user && c.user.login === "luojiaping");
+        const lastOwner = owner[owner.length - 1];
+        const approved = owner.some(c => /通过|批准|LGTM/i.test(c.body || "")
+          && !/(不|没|未)\s*(通过|批准)/.test(c.body || "")
+          && !/需修改|打回/.test(c.body || ""));
+        document.getElementById("verdict-live").innerHTML =
+          `<div>💬 评论 ${cs.length} 条${owner.length ? `（你 ${owner.length} 条）` : ""}</div>` +
+          (approved
+            ? `<div style="margin-top:6px">✅ <b>你已批准</b>，状态约 15 分钟内自动翻转</div>`
+            : lastOwner
+              ? `<div style="margin-top:6px">你最近表态（${new Date(lastOwner.created_at).toLocaleString()}）：<br>「${(lastOwner.body || "").slice(0, 60)}${(lastOwner.body || "").length > 60 ? "…" : ""}」</div>`
+              : `<div style="margin-top:6px">你尚未表态，在下方评论「通过」即批准</div>`);
+      })
+      .catch(() => {
+        document.getElementById("verdict-live").textContent = "评论读取失败（GitHub API 限流），稍后刷新重试。";
+      });
+  }
 
   // utterances 评论区（浅色主题配宣纸）
   const s = document.createElement("script");
