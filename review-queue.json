@@ -1,4 +1,23 @@
 {
-  "updated": "2026-09-30 10:40 UTC",
-  "entries": []
+  "updated": "2026-09-30 10:57 UTC",
+  "entries": [
+    {
+      "id": "batch-00/outline",
+      "batch": "batch-00",
+      "title": "Operit-wiki 大纲（草案）",
+      "module": "meta",
+      "status": "review-pending",
+      "issue": 1,
+      "issue_title": "[评审] Operit-wiki 大纲（草案）",
+      "md": "review/batch-00/outline.md",
+      "facts": "",
+      "lint": "review/batch-00/outline.lint.md",
+      "seed_files": [],
+      "facts_count": 0,
+      "refs_valid": "24/24 页 seed 可定位",
+      "critic": "待评审",
+      "summary": "首版大纲草案：8 章 24 页，app 模块为主体。待确认章节切分、terminal 空模块去留、6 个模块职责补述。",
+      "updated": ""
+    }
+  ]
 }
