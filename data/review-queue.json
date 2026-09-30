@@ -1,6 +1,24 @@
 {
-  "updated": "2026-09-30 13:14 UTC",
+  "updated": "2026-09-30 14:05 UTC",
   "entries": [
+    {
+      "id": "batch-00/outline-v3",
+      "batch": "batch-00",
+      "title": "Operit-wiki 大纲 v3（草案）",
+      "module": "meta",
+      "status": "review-pending",
+      "issue": null,
+      "issue_title": "[评审] Operit-wiki 大纲 v3（草案）",
+      "md": "review/batch-00/outline-v3.md",
+      "facts": "",
+      "lint": "review/batch-00/outline-v3.lint.md",
+      "seed_files": [],
+      "facts_count": 0,
+      "refs_valid": "",
+      "critic": "",
+      "summary": "",
+      "updated": ""
+    },
     {
       "id": "batch-00/outline",
       "batch": "batch-00",
