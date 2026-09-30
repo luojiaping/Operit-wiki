@@ -1,0 +1,8 @@
+{
+  "built": "2026-09-30",
+  "nodes": 33,
+  "edges": 157,
+  "isolated_nodes": 0,
+  "bridge_nodes": 18,
+  "source": "outline.yaml v1 + repo-map.json（确定性生成）"
+}
