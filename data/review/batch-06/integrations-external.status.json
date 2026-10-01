@@ -2,7 +2,7 @@
   "critic": "critic2-verified-6-anchors-fixed-by-parent",
   "id": "integrations-external",
   "issue": 81,
-  "refs_valid": 155,
+  "refs_valid": "161/161 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）",
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
   "status": "review-pending",

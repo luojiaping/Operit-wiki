@@ -618,5 +618,29 @@
   {
     "fact": "AI Agent Action 配置 Activity 在 Tasker 中显示为 AI Agent Action 事件。",
     "ref": "app/src/main/java/com/ai/assistance/operit/integrations/tasker/AIAgentTasker.kt:101"
+  },
+  {
+    "fact": "ToolRegistration.registerAllTools 是全部 AI 工具的集中注册入口（自 AIToolHandler 抽离为独立文件）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt:36"
+  },
+  {
+    "fact": "代理调用的参数白名单只有 tool_name/params 加 __operit_package_caller_name/__operit_package_chat_id/__operit_package_caller_card_id，未知参数直接返回错误。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt:80"
+  },
+  {
+    "fact": "代理执行有三道门：isReservedProxyTarget 拒绝保留目标、角色卡工具权限校验（isProxyTargetAllowedForRoleCard）、权限系统 checkToolPermission，任一失败都不执行。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt:1104"
+  },
+  {
+    "fact": "executeUiToolWithVisibility 在 UI 类工具执行期间隐藏悬浮窗、finally 块中恢复，避免工具操作与悬浮窗互相遮挡。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt:39"
+  },
+  {
+    "fact": "WorkflowRepository 以文件形式存工作流（非 Room）：写盘用 AtomicFile 保证崩溃安全，全库操作经 workflowStoreMutex 串行化。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:216"
+  },
+  {
+    "fact": "WorkflowRepository 为每个工作流维护独立的执行日志目录（getExecutionLogDirectory/saveExecutionRecord），执行记录与定义分离存储。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:242"
   }
 ]
