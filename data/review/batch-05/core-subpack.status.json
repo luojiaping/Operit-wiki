@@ -1,0 +1,1 @@
+{"critic":"","id":"core-subpack","issue":76,"refs_valid":"107/107 引用行号真实存在，lint 硬失败 0/警告 0（修错后，待独立 critic 复核）","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"安装包编辑与逆向（APK/EXE）"}

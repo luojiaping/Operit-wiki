@@ -1,0 +1,10 @@
+{
+ "id": "data-stats-pricing",
+ "title": "Token 用量统计与模型定价数据",
+ "issue": 68,
+ "status": "review-pending",
+ "source_repo": "operit",
+ "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+ "critic": "",
+ "refs_valid": "85/85 引用行号真实存在，lint 硬失败 0/警告 0"
+}

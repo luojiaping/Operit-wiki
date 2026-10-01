@@ -1,0 +1,10 @@
+{
+  "critic": "",
+  "id": "data-update-announce",
+  "issue": 72,
+  "refs_valid": "123/123 引用行号真实存在（自查逐批核验），lint 硬失败 0/警告 0",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "title": "应用更新与公告"
+}
