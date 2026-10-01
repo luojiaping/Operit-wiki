@@ -84,6 +84,8 @@ Operit 仓库有新 commit → 跑 `check_staleness.py`，STALE 页的命中 fac
 ## 9. 评审批准自动检测（2026-09-30 用户需求）
 - 条目页右侧新增「评审动态」栏：从 GitHub 公开 API 实时读取 Issue 评论数与 owner 最新表态。
 - owner 在评论区发表「通过/批准/LGTM」即批准（「不通过/需修改/打回」不算）。
+- **批准唯一口径（2026-10-01 用户铁律）：最终是否通过，只以 owner（luojiaping）账号的意见为准；**
+  **其他任何人的评论（包括审核人）只作参考，不触发状态翻转。**`watch_reviews.py` 已硬编码按评论作者 login == luojiaping 过滤。
 - `scripts/watch_reviews.py` 每 15 分钟由 cron（wiki-review-watcher）运行：检测到新批准评论后自动
   `.status.json` -> approved（含 approved_by_comment_id 水位线，防重复翻转）-> Issue 留言确认
   -> git push -> build_queue.py -> deploy_site.sh。
