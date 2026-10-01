@@ -5,10 +5,10 @@
   "refs_valid": 173,
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "review-pending",
+  "status": "approved",
   "title": "记忆仓库",
-  "approved_by_comment_id": "",
-  "approved_by": "",
-  "approved_at": "",
+  "approved_by_comment_id": 5929094562,
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-01 11:23 UTC",
   "updated": "2026-10-01"
 }
