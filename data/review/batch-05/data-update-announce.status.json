@@ -1,8 +1,8 @@
 {
-  "critic": "",
+  "critic": "独立 critic 初验打回后修错，独立复验通过（data-update-announce.critic.md）",
   "id": "data-update-announce",
   "issue": 72,
-  "refs_valid": "123/123 引用行号真实存在（自查逐批核验），lint 硬失败 0/警告 0",
+  "refs_valid": "125/125 引用行号真实存在且 ±5 窗口有支撑原文，lint 硬失败 0/警告 0（复验后顺手修 facts[54] ref :137→:139、Q2 line 141→136，复跑 0/0）",
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
   "status": "review-pending",

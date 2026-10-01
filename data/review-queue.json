@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 06:52 UTC",
+  "updated": "2026-10-01 07:07 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -1320,9 +1320,9 @@
         "app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt"
       ],
-      "facts_count": 108,
-      "refs_valid": "108/108 引用行号真实存在（repo @ dbf71916），已逐条验真",
-      "critic": "",
+      "facts_count": 113,
+      "refs_valid": "113/113 引用行号真实存在且 ±5 窗口有支撑原文（critic 打回 20 处已修正：5 条复合拆分、14 条重锚、1 条归因重写；quality Q4/Q7 已修正），lint 硬失败 0/警告 0（单页隔离重跑，修错后）",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（core-app-workflow.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1332,19 +1332,46 @@
       "title": "虚拟形象引擎",
       "module": "app",
       "status": "review-pending",
-      "issue": null,
+      "issue": 73,
       "issue_title": "[评审] 虚拟形象引擎",
       "md": "review/batch-05/core-avatar.md",
-      "facts": "",
+      "facts": "review/batch-05/core-avatar.facts.json",
       "lint": "review/batch-05/core-avatar.lint.md",
       "seed_files": [
         "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/assistant/components/AvatarPreviewSection.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/floating/ui/fullscreen/screen/FloatingFullscreenScreen.kt"
       ],
-      "facts_count": 0,
-      "refs_valid": "",
-      "critic": "",
+      "facts_count": 113,
+      "refs_valid": "113/113 引用行号真实存在（脚本逐条核验：文件存在+行号在界+断言符号在±5行窗口内），lint 硬失败 0/警告 0",
+      "critic": "独立 critic 逐条核引用全过（113/113 facts、7/7 evidence、MMD 未停维专项确认），结论通过（core-avatar.critic.md）",
+      "summary": "虚拟形象引擎：6 种形象路线（DragonBones/WebP/MP4/glTF/FBX/MMD）统一为模型-控制器-渲染器三层；AvatarController 以 StateFlow 发布情绪/动画/循环/nonce 状态；AvatarMoodTypes 内置 5 mood 并解析模型返回的 <mood> 标签；三工厂负责模型/控制器/渲染器构造；各路线原生渲染（JNI/ImageDecoder/ExoPlayer/Filament/MMD native）；走查 7 条（警告 3：渲染错误被吞、angry 别名误映射 SAD、MMD 双发射中间态）。",
+      "updated": ""
+    },
+    {
+      "id": "batch-05/core-config-prompts",
+      "batch": "batch-05",
+      "title": "系统提示词与功能提示配置",
+      "module": "引擎核心",
+      "status": "review-pending",
+      "issue": 74,
+      "issue_title": "[评审] 系统提示词与功能提示配置",
+      "md": "review/batch-05/core-config-prompts.md",
+      "facts": "review/batch-05/core-config-prompts.facts.json",
+      "lint": "review/batch-05/core-config-prompts.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/core/config/SystemPromptConfig.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/config/FunctionalPrompts.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/config/SystemToolPrompts.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/config/SystemToolPromptsInternal.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/preferences/PromptTagManager.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/preferences/PromptVersionManager.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/model/PromptTag.kt",
+        "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt"
+      ],
+      "facts_count": 84,
+      "refs_valid": "84/84 引用行号真实存在且 ±5 窗口有支撑原文（第三轮独立复验：[59] 拆 2 条、[72] 移 :17），lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，经多轮独立复验通过（core-config-prompts.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1368,8 +1395,8 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ExportDialogs.kt"
       ],
       "facts_count": 107,
-      "refs_valid": "100/100 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "refs_valid": "107/107 引用行号真实存在，lint 硬失败 0/警告 0（修错后，独立 critic 复验通过）",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（core-subpack.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1429,9 +1456,9 @@
         "app/src/main/java/com/ai/assistance/operit/data/exporter/MarkdownExporter.kt",
         "app/src/main/java/com/ai/assistance/operit/data/exporter/TextExporter.kt"
       ],
-      "facts_count": 182,
-      "refs_valid": "182/182 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 183,
+      "refs_valid": "183/183 引用行号真实存在，lint 硬失败 0/警告 0（修错后，待独立 critic 复验）",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-backup-export.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1453,9 +1480,9 @@
         "core/tools/mcp/McpRuntimeSession.kt",
         "core/tools/mcp/MCPToolExecutor.kt"
       ],
-      "facts_count": 320,
-      "refs_valid": "320/320 引用行号真实存在（脚本逐条校验通过），lint 硬失败 0/警告 0（单页隔离重跑）",
-      "critic": "",
+      "facts_count": 324,
+      "refs_valid": "324/324 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0（单页隔离重跑，修错后）",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-mcp.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1483,8 +1510,8 @@
         "ui/theme/ThemePreferenceLocals.kt"
       ],
       "facts_count": 230,
-      "refs_valid": "229/229 引用行号真实存在，quality 19 条证据逐字命中源码，lint 硬失败 0/警告 0",
-      "critic": "",
+      "refs_valid": "230/230 引用行号真实存在且不越界，0 复合事实；独立复验确认 facts[171]:721、quality 第11条:38、facts[164]:590/[165]:382 锚点正确，quality 19 条证据逐字命中，高危 2 条定级不夸大，lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-app.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1513,9 +1540,9 @@
         "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt",
         "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt"
       ],
-      "facts_count": 143,
-      "refs_valid": "143/143 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 149,
+      "refs_valid": "149/149 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-character.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1545,8 +1572,8 @@
         "app/src/main/java/com/ai/assistance/operit/data/preferences/VersionedPreferencesDataStore.kt"
       ],
       "facts_count": 181,
-      "refs_valid": "181/181 引用行号真实存在（脚本逐条验真），lint 硬失败 0/警告 0",
-      "critic": "",
+      "refs_valid": "181/181 引用行号真实存在且 ±5 窗口经独立复验确认有支撑原文，lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-model.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1575,9 +1602,9 @@
         "app/src/main/java/com/ai/assistance/operit/data/model/OperitChatArchive.kt",
         "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageTimestampAllocator.kt"
       ],
-      "facts_count": 125,
-      "refs_valid": "248 个引用行号真实存在（140 去重），lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 132,
+      "refs_valid": "132 facts 引用锚点已按 critic 报告逐条修正并验真，lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-chat.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1604,7 +1631,7 @@
       ],
       "facts_count": 156,
       "refs_valid": "156/156 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-memory.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1632,9 +1659,9 @@
         "app/src/main/java/com/ai/assistance/operit/ui/main/OperitApp.kt",
         "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/AccessibilityUITools.kt"
       ],
-      "facts_count": 157,
-      "refs_valid": "157/157 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 168,
+      "refs_valid": "168/168 引用行号真实存在且 ±5 窗口逐条手工复验均有支撑原文（含复验员修正的 3 处更优锚点），quality 20 条 evidence 逐字命中，lint 硬失败 0/警告 0（单页隔离重跑，独立复验通过后）",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-misc.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1654,9 +1681,9 @@
         "data/preferences/ApiPreferences.kt",
         "data/dao/TokenUsageDao.kt"
       ],
-      "facts_count": 208,
-      "refs_valid": "85/85 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 209,
+      "refs_valid": "209/209 引用行号真实存在且 ±5 窗口有支撑原文，lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-stats-pricing.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1684,9 +1711,9 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/announcement/RemoteAnnouncementDialog.kt",
         "app/src/main/java/com/ai/assistance/operit/data/preferences/RemoteAnnouncementPreferences.kt"
       ],
-      "facts_count": 123,
-      "refs_valid": "123/123 引用行号真实存在（自查逐批核验），lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 125,
+      "refs_valid": "125/125 引用行号真实存在且 ±5 窗口有支撑原文，lint 硬失败 0/警告 0（复验后顺手修 facts[54] ref :137→:139、Q2 line 141→136，复跑 0/0）",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（data-update-announce.critic.md）",
       "summary": "",
       "updated": ""
     },
@@ -1713,9 +1740,9 @@
         "app/src/main/java/com/ai/assistance/operit/services/core/TokenStatisticsDelegate.kt",
         "app/src/main/java/com/ai/assistance/operit/services/ChatServiceCore.kt"
       ],
-      "facts_count": 174,
-      "refs_valid": "174/174 引用行号真实存在，lint 硬失败 0/警告 0",
-      "critic": "",
+      "facts_count": 181,
+      "refs_valid": "181/181 引用行号真实存在且 ±5 窗口有支撑，quality 14/14 证据逐字，lint 硬失败 0/警告 0",
+      "critic": "独立 critic 初验打回后修错，独立复验通过（services-chatservice.critic.md）",
       "summary": "",
       "updated": ""
     }

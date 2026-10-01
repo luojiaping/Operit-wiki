@@ -1,1 +1,10 @@
-{"critic":"","id":"data-prefs-character","issue":66,"refs_valid":"143/143 引用行号真实存在，lint 硬失败 0/警告 0","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"角色卡与人格配置"}
+{
+  "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-character.critic.md）",
+  "id": "data-prefs-character",
+  "issue": 66,
+  "refs_valid": "149/149 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "title": "角色卡与人格配置"
+}

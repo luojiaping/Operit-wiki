@@ -13,7 +13,7 @@ date: 2026-10-01
 
 这一页讲的是：Operit 聊天记录在"数据层"的总管——`ChatHistoryManager`。
 
-它是 Room 数据库和上层业务之间的唯一读写门面：会话元数据（标题、分组、锁定、置顶、角色卡绑定、工作区）、消息、AI 回答的多版本（variants）、导入导出，全部走它。全 App 通过 `ChatHistoryManager.getInstance(context)` 拿到全局单例；业务侧的主要调用方是 `ChatHistoryDelegate`（`services/core`）。
+它是 Room 数据库和上层业务之间的唯一读写门面：会话元数据（标题、分组、锁定、置顶、角色卡绑定、工作区）、消息、AI 回答的多版本（variants）、导入导出，全部走它。全 App 经由 `ChatHistoryManager.getInstance(context)` 拿到全局单例；业务侧的主要调用方是 `ChatHistoryDelegate`（`services/core`）。
 
 底层是三张 Room 表：`chats`（会话）、`messages`（消息）、`message_variants`（AI 回答的再生版本）。读走 `ChatContentDao` 的分片查询（单条消息按 65_536 字符分片，防止 CursorWindow 溢出）；写走四个 DAO；并发控制用"全局锁 + 按会话锁"两级 `Mutex`。另有一条"当前会话 ID"通道：用 DataStore（`current_chat_id`）持久化，对外暴露 `currentChatIdFlow` 响应式流。
 
@@ -328,7 +328,8 @@ date: 2026-10-01
    `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:2164`
 2. 处理：`importOperitChatHistoriesStream` 用 `JsonReader` 流式逐会话解码（归档对象读 `chats` 数组，旧版读顶层数组）；`consumeImportedChat` 按 ID 判 new/updated，空消息会话记 skipped；`saveArchivedChat` → `saveChatHistoryInternal` 在会话锁内先删后插。
    `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:355`
-   `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:294`
+   `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:303`
+   `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:311`
    `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:609`
 3. 输出：`ChatImportResult(new, updated, skipped)`。
    `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:2882`
@@ -338,7 +339,7 @@ date: 2026-10-01
 1. 输入：`exportChatHistoriesToDownloads(selectedChatIds, ExportFormat.MARKDOWN, onProgress)`。
    `app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:1894`
 2. 处理：`loadDisplayHistories` 补全消息 → `MarkdownExporter.exportSingle` 逐会话生成 Markdown（含 `chat-info` 注释和 YAML front matter）→ 写入 `backup/chat/chat_backup_<时间>.zip`，文件名做非法字符替换、50 字符截断、重名去重。
-   `app/src/main/java/com/ai/assistance/operit/data/exporter/MarkdownExporter.kt:19`
+   `app/src/main/java/com/ai/assistance/operit/data/exporter/MarkdownExporter.kt:32`
 3. 输出：`ChatExportResult(filePath, chatCount)`；异常时删除残留文件并返回 null。
 
 ## 来源

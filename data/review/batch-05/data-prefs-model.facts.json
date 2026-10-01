@@ -269,7 +269,7 @@
   },
   {
     "fact": "自定义参数解析失败时只记日志 AppLogger.e，不抛异常。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:1089"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:1105"
   },
   {
     "fact": "ApiProviderType 枚举共 38 个值，覆盖 OpenAI、Anthropic、Google、国产厂商、聚合网关与本地引擎。",
@@ -333,19 +333,19 @@
   },
   {
     "fact": "迁移 v0 会在配置列表为空时创建全新默认配置。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:97"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:103"
   },
   {
     "fact": "迁移 v1 为思考规则为空的配置按供应商补齐内置规则与首个档位。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:147"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:161"
   },
   {
     "fact": "迁移 v2 把 OpenAI Chat 旧版无匹配器的 reasoning 规则替换为带模型匹配器的新规则。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:182"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:199"
   },
   {
     "fact": "迁移 v3 为 DeepSeek 配置追加 deepseek-responses-reasoning-effort 规则。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:293"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:305"
   },
   {
     "fact": "内置思考规则常量包含 openai-chat-reasoning-effort、deepseek-reasoning-effort 与 deepseek-responses-reasoning-effort 三个 ID。",
@@ -533,7 +533,7 @@
   },
   {
     "fact": "importConfigs 导入失败时记日志并抛出带 model_config_import_failed 文案的异常。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:1166"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt:1174"
   },
   {
     "fact": "FunctionalConfigManager 把 FunctionType 映射到 FunctionConfigMapping（配置 ID 加模型索引）。",
@@ -593,7 +593,7 @@
   },
   {
     "fact": "CodexAuthPreferences.getInstance 是双重检查单例。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/CodexAuthPreferences.kt:131"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/CodexAuthPreferences.kt:119"
   },
   {
     "fact": "CodexAuthManager.getValidAccessToken 在 token 距过期不足 5 分钟时才刷新，刷新过程用 Mutex 互斥。",
@@ -664,7 +664,7 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/FreeUsagePreferences.kt:125"
   },
   {
-    "fact": "FreeUsagePreferences 把校验文件写在公共下载目录的 Operit/usage_verification.dat。",
+    "fact": "FreeUsagePreferences 把校验文件写在公共下载目录的 Operit/usage_verification.dat（目录名与文件名常量 EXTERNAL_DIRECTORY/EXTERNAL_VERIFY_FILENAME 定义于 FreeUsagePreferences.kt:22-23）。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/FreeUsagePreferences.kt:93"
   },
   {
@@ -673,7 +673,7 @@
   },
   {
     "fact": "FreeUsagePreferences 启动时比对外部校验文件：不一致时取外部与本地使用次数的最大值恢复。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/FreeUsagePreferences.kt:44"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/FreeUsagePreferences.kt:63"
   },
   {
     "fact": "FreeUsagePreferences.resetUsage 只用于调试，会清零使用记录。",

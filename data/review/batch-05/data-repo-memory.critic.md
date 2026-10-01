@@ -83,3 +83,40 @@
 ## 复检要求
 
 writer 修正 H1（正文入队方两处）+ H2（6 条 ref 行号）后，critic 对修正条目复检窗口支撑，确认后方可关闭。轻微问题建议同批顺手修。
+
+---
+
+## 复验（第二轮）——2026-10-01
+
+- 复验身份：独立于第一轮 critic 的复验 critic，全程独立核源码，未采信修错员报告。
+- 源码版本：`git rev-parse HEAD` = `dbf71916fae9750cfdc9f9a774f5a0fee56633fb`，与钉死 commit 一致。
+
+### 复验结论：通过
+
+修错员对第一轮报告的全部硬问题 + 轻微问题已逐项修复，经独立核验确认：
+
+**H1（正文入队方断言）——修好。** 自己 grep 三文件源码：`MemoryAutoSaveScheduler.kt` 全文件 `enqueue` 0 命中（只做 `getPendingAndFailedCandidates` 拉取）；`EnhancedAIService.kt:2049` 有 `.enqueue(` 调用（上下文日志"自动保存长期记忆入队"）；`MessageCoordinationDelegate.kt:1502` 有 `.enqueueSelectedUserMessages(` 调用。正文 §9 已改成"入队方有两处：EnhancedAIService（回复定稿）、MessageCoordinationDelegate（消息协调流程）；MemoryAutoSaveScheduler 只拉取 pending/failed 候选，不负责入队"，断言与代码一致。
+
+**H2（6 条 ref 重新锚定）——全部逐行核实，±5 窗口均有支撑原文：**
+- [104]→MemoryRepository.kt:1908：窗口 1903–1913 见 `memory.embedding = null`（1909），与"内容为空但仍有 embedding 的记忆的 embedding 清空为 null"断言一致
+- [121]→MemoryExportModel.kt:80：窗口见 `enum class ImportStrategy`（80），三种策略在 80–94
+- [122]→MemoryRepository.kt:2777：窗口见 `uuid = if (forceNewUuid) UUID.randomUUID().toString() else serializable.uuid`
+- [123]→MemoryExportModel.kt:101：窗口见 `data class MemoryImportResult` 及四个计数字段（102–105）
+- [149]→MemoryAutoSaveCandidate.kt:21：窗口见 STATUS_PENDING/PROCESSING/FAILED（21–23）
+- [150]→MemoryAutoSaveCandidate.kt:25：窗口见 SOURCE_TYPE_REPLY_FINALIZED_AUTO（25）、SOURCE_TYPE_SELECTED_USER_MESSAGE（26）
+
+**轻微项——全部确认：**
+- [37]→:934：窗口见 `sourceId <= 0L`（935）等悬空判定条件
+- [74]→:1398：窗口见注释"长安大学"原例（1397）与 `textMatchesLexicalToken(query, memory.title)`（1399）
+- [128]→:2341：窗口见 `source = "merged_from_memory"`（2341）
+- 正文"来源"小节 4 文件行数已纠正，自己 `wc -l` 核实：MemoryExportModel 107、CloudEmbeddingConfig 24、DocumentChunk 27、MemorySearchDebugInfo 38，标注与实际一致
+- `.lint.md` 自身模糊词"可能"已清除（全文 grep 0 命中）
+- Q0 与 Q1 同类数据丢失问题均已为 **high**，分级一致、无夸大
+- 新增 suggestion 项（CloudEmbeddingConfig.apiKey 经 MemorySearchSettingsPreferences.kt:101 `.putString(KEY_CLOUD_API_KEY, normalized.apiKey)` 明文存普通 SharedPreferences）：evidence 与源码逐字一致，suggestion 分级恰当
+
+**全量复查：**
+- 156 条 facts ref 程序化校验：文件存在、行号不越界，156/156 通过
+- 人工抽样 20 条 ±5 窗口语义核对（含 RRF 公式 1.0/(60.0+rank)、deleteMemory 删区块、30 秒节流、merge 至少两源记忆等）：全部支撑成立
+- 5 文件全文 grep"通过/批准/LGTM"：0 命中
+- status.json：issue 62（整数）、review-pending、source_repo operit、source_commit 一致；refs_valid"156/156 引用行号真实存在，lint 硬失败 0/警告 0"与实测一致
+- lint.py 独立隔离重跑（输出放目录外，避免自扫 quirk）：检查文件 1，硬失败 0 / 警告 0

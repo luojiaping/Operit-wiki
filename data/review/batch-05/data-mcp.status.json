@@ -1,1 +1,10 @@
-{"critic":"","id":"data-mcp","issue":70,"refs_valid":"320/320 引用行号真实存在（脚本逐条校验通过），lint 硬失败 0/警告 0（单页隔离重跑）","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"MCP 服务与插件桥接"}
+{
+  "critic": "独立 critic 初验打回后修错，独立复验通过（data-mcp.critic.md）",
+  "id": "data-mcp",
+  "issue": 70,
+  "refs_valid": "324/324 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0（单页隔离重跑，修错后）",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "title": "MCP 服务与插件桥接"
+}

@@ -1,7 +1,11 @@
 [
   {
-    "fact": "UpdateStatus 是密封类，表达更新检查的六种状态：Initial、Checking、Available、PatchAvailable、UpToDate、Error，且已移除下载相关状态。",
+    "fact": "UpdateStatus 是密封类，表达更新检查状态：Initial、Checking、Available；已移除下载相关状态。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:16"
+  },
+  {
+    "fact": "UpdateStatus 另有 PatchAvailable、UpToDate、Error 三种状态。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:28"
   },
   {
     "fact": "UpdateStatus.Available 携带 newVersion、updateUrl、releaseNotes、downloadUrl 四个字段，downloadUrl 保留用于浏览器打开。",
@@ -24,8 +28,12 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:41"
   },
   {
-    "fact": "UpdateManager.compareVersions 支持 1.7.0+1 形式的版本号，先去 v 前缀与 + 后缀，再按 major、minor、patch、patchIndex 依次比较。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:87"
+    "fact": "parseVersion 支持 1.7.0+1 形式的版本号：先去 v 前缀，再取 + 后缀作 patchIndex。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:72"
+  },
+  {
+    "fact": "compareVersions 按 major、minor、patch、patchIndex 依次比较两个版本号。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:91"
   },
   {
     "fact": "UpdateManager 伴生对象提供 checkForUpdates(context, currentVersion) 静态入口，供 MainActivity 直接检查更新。",
@@ -45,7 +53,7 @@
   },
   {
     "fact": "checkForUpdatesInternal 在 IO 线程执行，beta 开关读取自 UserPreferencesManager.isBetaPlanEnabled()。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:141"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:134"
   },
   {
     "fact": "beta 开关读取抛异常时静默视为未开启，跳过补丁通道检查。",
@@ -73,7 +81,7 @@
   },
   {
     "fact": "tryFetchLatestPatchUpdate 只查询 AAswordman/OperitNightlyRelease 仓库第 1 页前 20 个 release。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:223"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:228"
   },
   {
     "fact": "补丁源仓库的 owner 与 repo 硬编码为 AAswordman 与 OperitNightlyRelease。",
@@ -85,7 +93,7 @@
   },
   {
     "fact": "补丁只在与当前版本相同 base version（x.y.z）内有效，防止跨基础版本打补丁。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:271"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/UpdateManager.kt:255"
   },
   {
     "fact": "补丁 meta 附件优先匹配 patch_ 开头 .json 结尾，否则退为任意 .json 附件。",
@@ -153,7 +161,7 @@
   },
   {
     "fact": "分片按总量除以线程数均分，余数字节补给前几个分片。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/FullUpdateInstaller.kt:129"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/FullUpdateInstaller.kt:186"
   },
   {
     "fact": "任一分片请求返回非 206 即抛异常，中断整个下载。",
@@ -209,7 +217,7 @@
   },
   {
     "fact": "downloadAndPreparePatchUpdateWithProgress 先测速选镜像，再走内部补丁流程。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/PatchUpdateInstaller.kt:125"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/PatchUpdateInstaller.kt:139"
   },
   {
     "fact": "downloadAndPreparePatchUpdateWithProgressUsingMirror 跳过测速，直接使用调用方指定的镜像。",
@@ -313,7 +321,7 @@
   },
   {
     "fact": "readCentralDirectory 从基底 APK 末尾 65557 字节反向扫描 EOCD 签名定位中央目录。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/PatchUpdateInstaller.kt:962"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/updates/PatchUpdateInstaller.kt:956"
   },
   {
     "fact": "找不到 EOCD 签名时抛 EOCD not found 异常。",

@@ -13,7 +13,7 @@ date: 2026-10-01
 
 这一页讲的是：Operit 助手那个"虚拟形象"是怎么动起来的。
 
-整个引擎住在 `core/avatar`，共 38 个 Kotlin 文件、约 5150 行。它抽象了 6 种形象技术路线：DragonBones 骨骼动画、WebP 逐帧动画、MP4 视频、glTF 3D 模型、FBX 3D 模型、MMD 3D 模型（`avator/` 目录下是 DragonBones/MMD/FBX 的 native 渲染库）。
+整个引擎住在 `core/avatar`，共 35 个 Kotlin 文件、5150 行。它抽象了 6 种形象技术路线：DragonBones 骨骼动画、WebP 逐帧动画、MP4 视频、glTF 3D 模型、FBX 3D 模型、MMD 3D 模型（`avator/` 目录下是 DragonBones/MMD/FBX 的 native 渲染库）。
 
 架构是经典的三层：**模型**（`AvatarModel`，描述形象是什么、资源在哪）→ **控制器**（`AvatarController`，管"播什么情绪、播哪个动画"）→ **渲染器**（Composable，把画面画出来）。上层业务（悬浮窗语音界面、助手配置页）只跟控制器对话，不碰渲染细节——换一种形象技术，业务代码不用改。
 
@@ -173,7 +173,7 @@ WebP/MP4 默认模型会按文件名别名推断情绪映射：文件名含 idle
 
 ## 来源
 
-- `app/src/main/java/com/ai/assistance/operit/core/avatar/`（common + impl/dragonbones + impl/fbx + impl/gltf + impl/mmd + impl/mp4 + impl/webp + impl/factory，共 38 个 Kotlin 文件）
+- `app/src/main/java/com/ai/assistance/operit/core/avatar/`（common + impl/dragonbones + impl/fbx + impl/gltf + impl/mmd + impl/mp4 + impl/webp + impl/factory，共 35 个 Kotlin 文件）
 - `app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt`（AvatarRepository 初始化）
 - `app/src/main/java/com/ai/assistance/operit/ui/features/assistant/components/AvatarPreviewSection.kt`（配置页预览）
 - `app/src/main/java/com/ai/assistance/operit/ui/floating/ui/fullscreen/screen/FloatingFullscreenScreen.kt`（语音界面调用）

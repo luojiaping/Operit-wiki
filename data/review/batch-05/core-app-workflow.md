@@ -48,9 +48,9 @@ date: 2026-10-01
 15. 按偏好决定 Room 数据库每日备份的排期或取消（`:370`）
 16. 预绑定无障碍服务（`:386`）
 
-每一步都用 `AppLogger.d` 输出""打点，方便排查启动慢的原因。
+每一步都用 `AppLogger.d` 输出"【启动计时】…"打点，方便排查启动慢的原因。
 
-全局异常处理通过 `Thread.setDefaultUncaughtExceptionHandler(GlobalExceptionHandler(this))` 安装（`:129`）。`configureOpenMpEnvironment()` 在 Android 5.0+ 上设置 `KMP_AFFINITY=disabled` 与 `OMP_PROC_BIND=false`，禁用 OpenMP 线程亲和（`:108`）。
+全局异常处理调用 `Thread.setDefaultUncaughtExceptionHandler(GlobalExceptionHandler(this))` 安装（`:129`）。`configureOpenMpEnvironment()` 在 Android 5.0+ 上设置 `KMP_AFFINITY=disabled` 与 `OMP_PROC_BIND=false`，禁用 OpenMP 线程亲和（`:108`）。
 
 图片加载器配置：OkHttp 连接 30s / 读取 60s / 写入 30s 并自动重试（`:302`）；磁盘缓存 `filesDir/image_cache` 上限 50MB（`:322`）；内存缓存上限为可用内存 15%（`:327`）；Android P+ 用 `ImageDecoderDecoder` 解 GIF，旧版本用 `GifDecoder`（`:310`）。
 
@@ -62,7 +62,7 @@ date: 2026-10-01
 
 `ActivityLifecycleManager` 是实现 `Application.ActivityLifecycleCallbacks` 的单例对象（`app/src/main/java/com/ai/assistance/operit/core/application/ActivityLifecycleManager.kt:26`），用标准回调跟踪前台 Activity，当前 Activity 以 `WeakReference` 持有（`:165`），暂停或销毁时清空，避免泄漏。
 
-前后台判定用 `startedActivityCount` 计数：从 0 变为大于 0 视为进入前台（`:137`），派发 `APPLICATION_FOREGROUND` 插件钩子并调用 `ExternalChatHttpAutoStarter.ensureRunningIfEnabled`（reason=`application_foreground`，`:152`）；回落到 0 视为进入后台（`:206`），派发 `APPLICATION_BACKGROUND`。
+前后台判定用 `startedActivityCount` 计数：从 0 变为大于 0 视为进入前台（`:150`），派发 `APPLICATION_FOREGROUND` 插件钩子并调用 `ExternalChatHttpAutoStarter.ensureRunningIfEnabled`（reason=`application_foreground`，`:152`）；回落到 0 视为进入后台（`:219`），派发 `APPLICATION_BACKGROUND`。
 
 `onActivityResumed` 时节流（2500ms）调用 `AIForegroundService.ensureMicrophoneForeground` 保活麦克风前台服务（`:163`）。每个生命周期回调都会向 `AppLifecycleHookPluginRegistry` 派发对应钩子并附带 Activity 类名（`:121`）。
 
@@ -72,60 +72,80 @@ date: 2026-10-01
 
 ### 前台服务兼容（ForegroundServiceCompat）
 
-`ForegroundServiceCompat` 是纯工具对象（`app/src/main/java/com/ai/assistance/operit/core/application/ForegroundServiceCompat.kt:10`）：`buildTypes` 按 `dataSync`/`microphone`/`specialUse` 参数拼装前台服务类型位掩码，Android Q 以下直接返回 0（`:15`），`specialUse` 仅 Android 14+ 拼入（`:25`）。`startForeground` 在 Q+ 且类型非 0 时用三参数重载（`:30`）；`startForegroundWithFallback` 在主类型抛 `SecurityException` 时降级到备用类型或无类型启动（`:38`）——防止因缺少类型声明权限导致服务起不来。
+`ForegroundServiceCompat` 是纯工具对象（`app/src/main/java/com/ai/assistance/operit/core/application/ForegroundServiceCompat.kt:9`）：`buildTypes` 按 `dataSync`/`microphone`/`specialUse` 参数拼装前台服务类型位掩码，Android Q 以下直接返回 0（`:15`），`specialUse` 仅 Android 14+ 拼入（`:25`）。
+
+`startForeground` 在 Q+ 且类型非 0 时用三参数重载（`app/src/main/java/com/ai/assistance/operit/core/application/ForegroundServiceCompat.kt:30`）。
+
+`startForegroundWithFallback` 先用主类型启动前台服务（`app/src/main/java/com/ai/assistance/operit/core/application/ForegroundServiceCompat.kt:38`），失败时降级到备用类型或无类型。
+
+主类型启动抛 `SecurityException` 时记警告日志并走降级分支（`app/src/main/java/com/ai/assistance/operit/core/application/ForegroundServiceCompat.kt:51`）——防止因缺少类型声明权限导致服务起不来。
 
 ### 性能采样（PerformanceMonitorManager）
 
-`PerformanceMonitorManager` 是性能分析界面的采样引擎单例（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:76`）。采样实体分三类（`:33`）：`APP`（主进程）、`PLUGIN`（ToolPkg 容器）、`TERMINAL`（PTY 会话进程树）。
+`PerformanceMonitorManager` 是性能分析界面的采样引擎单例（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:76`）。采样实体分三类：主进程、插件容器、终端会话。
 
-采样周期固定 1000ms（`:84`），历史窗口上限 180 条快照（`:85`）。`start()` 在界面打开时由 `PerformanceMonitorScreen` 调用（`app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:90`），关闭时 `onDispose` 调用 `stop()`（`:91`），暂停按钮调用 `setPaused()`（`:106`）。
+三类实体对应枚举值 `APP`、`PLUGIN`、`TERMINAL`（`:33`）。
+
+采样周期固定 1000ms（`:84`），历史窗口上限 180 条快照（`:85`）。`start()` 在界面打开时被调用（`app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:90`），界面关闭时 `onDispose` 回调里调 `stop()`（`:91`），暂停按钮调 `setPaused()`（`:106`）。
 
 指标口径：
 
 - **CPU**：占整机全部核心的百分比（与 Windows 任务管理器一致），上限 100（`:37`）。主进程读 `/proc/self/stat` 的 `utime/stime` 差分（`:241`），按 100Hz 时钟滴答换算（`:87`）。
-- **内存**：APP 用 PSS（`Debug.MemoryInfo.totalPss`，`:267`）；PLUGIN 用 QuickJS JS 堆已用字节数（`:291`）；TERMINAL 用进程树 RSS 页数之和（`:316`）。
+- **内存**：APP 用 PSS（`Debug.MemoryInfo.totalPss`，`:267`）；PLUGIN 用 QuickJS JS 堆已用字节数（`:291`）；TERMINAL 用进程树 RSS 页数之和（`:322`）。
 - **网络**：只有软件（UID）与整机有值；插件与终端和主进程共享同一 UID，Linux 没有按进程网络计量，流量天然计入软件（`:40`）。
 
-差分有效性：采样间隔超过 5000ms（暂停恢复、进程被冻结）时差分失去"当前值"意义，只重置基数（`:91`）。stat 解析从最后一个右括号之后取字段，进程名含空格也能正确定位（`:333`）。注释特别提醒 `/proc` 路径必须用绝对路径——相对路径会被解析到应用工作目录导致读取失败（`:238`）。
+差分有效性：采样间隔超过 5000ms（暂停恢复、进程被冻结）时差分失去"当前值"意义，只重置基数（`:91`）。stat 解析从最后一个右括号之后取字段，进程名含空格也能正确定位（`:381`）。注释特别提醒 `/proc` 路径必须用绝对路径——相对路径会被解析到应用工作目录导致读取失败（`:238`）。
 
-插件采样按引擎线程 tid 读取 `/proc/self/task/<tid>/stat`，差分基数按 tid 记录，线程销毁重建不会把旧线程的累计量带进差分（`:274`）。终端采样先枚举本 UID 可读的进程树，再按 PTY 会话 pid 收集后代进程（`:300`）。所有状态通过 `MutableStateFlow` 发布，历史用 `ArrayDeque` 维护（`:116`）。
+插件采样按引擎线程 tid 读取 `/proc/self/task/<tid>/stat`，差分基数按 tid 记录，线程销毁重建不会把旧线程的累计量带进差分（`:274`）。终端采样先枚举本 UID 可读的进程树，再按 PTY 会话 pid 收集后代进程（`:300`）。所有状态经由 `MutableStateFlow` 发布，历史用 `ArrayDeque` 维护（`:116`）。
 
 ### 工作流调度（WorkflowScheduler / WorkflowWorker / WorkflowSchedulerInitializer）
 
-`WorkflowScheduler` 基于 WorkManager 管理工作流定时（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:54`），支持三种调度类型（`:30`）：
+`WorkflowScheduler` 基于 WorkManager 管理工作流定时（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:22`），支持三种调度类型（`:30`）：
 
 - `interval`：固定间隔，用 `PeriodicWorkRequestBuilder`；最小间隔钳制为 15 分钟（WorkManager 限制，`:97`）
-- `specific_time`：一次性定时，用 `OneTimeWorkRequestBuilder` 加初始延迟；支持 4 种日期格式（`:420`），目标时间已过则拒绝排期
-- `cron`：简化实现，只支持每日定时、每 N 小时、每 N 分钟三种模式（`:396`），其他模式返回 null 并记警告；周期模式下间隔小于 15 分钟降级为一次性任务（`:260`）
+- `specific_time`：一次性定时，用 `OneTimeWorkRequestBuilder` 加初始延迟；支持 4 种日期格式（`:318`），目标时间已过则拒绝排期（`:147`）
+- `cron`：简化实现，只支持每日定时、每 N 小时、每 N 分钟三种模式（`:396`），其他模式返回 null 并记警告；周期模式下间隔小于 15 分钟降级为一次性任务（`:214`）
 
-任务以 `workflow_<workflowId>` 为唯一名入队，冲突策略 `REPLACE`（`:129`），重试退避为指数退避、基准 1 分钟（`:27`）。`cancelWorkflow` 按唯一名取消（`:290`），`isWorkflowScheduled` 查 `ENQUEUED`/`RUNNING` 状态（`:298`），`getNextExecutionTime` 按类型计算下次执行时间（`:449`）。
+任务以 `workflow_<workflowId>` 为唯一名入队，冲突策略 `REPLACE`（`:121`），重试退避为指数退避、基准 1 分钟（`:27`）。`cancelWorkflow` 按唯一名取消（`:290`），`isWorkflowScheduled` 查 `ENQUEUED`/`RUNNING` 状态（`:298`），`getNextExecutionTime` 按类型计算下次执行时间（`:462`）。
 
-`WorkflowWorker` 是 `CoroutineWorker` 子类（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:17`），从 `inputData` 读 `workflow_id` 与 `trigger_node_id`（`:22`）。`workflow_id` 缺失直接 `Result.failure()`（`:29`）；执行抛 `WorkflowExecutionRetryableException` 返回 `Result.retry()`（`:46`），其他失败返回 `Result.failure()`（`:49`）。
+`WorkflowWorker` 是 `CoroutineWorker` 子类（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:17`）。
 
-`WorkflowSchedulerInitializer.initialize` 在 IO 协程中读取全部工作流，为每个 `enabled` 的工作流调用 `scheduleWorkflow`，并统计成功重排数量（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:25`）——应用被强杀或升级后定时任务不丢失。
+它从 `inputData` 读取 `workflow_id` 与 `trigger_node_id`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:22`）。
+
+`workflowId` 为空时直接返回 `Result.failure()`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:30`）。
+
+执行抛 `WorkflowExecutionRetryableException` 时返回 `Result.retry()`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:46`），其他失败返回 `Result.failure()`（`:49`）。
+
+`WorkflowSchedulerInitializer.initialize` 在 IO 协程中读取全部工作流（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:25`）。
+
+为每个 `enabled` 的工作流调用 `scheduleWorkflow` 并统计成功重排数量（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:38`）——应用被强杀或升级后定时任务不丢失。
 
 ### 工作流执行（WorkflowExecutor）
 
-`WorkflowExecutor.executeWorkflow` 是 `suspend` 函数，整个执行跑在 `Dispatchers.IO`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:527`）。每次运行生成唯一 `runId`（`:534`），产出 `WorkflowExecutionRecord`（起止时间、日志条目、失败阶段）。
+`WorkflowExecutor.executeWorkflow` 是 `suspend` 函数，整个执行跑在 `Dispatchers.IO`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:527`）。
+
+每次运行生成唯一 `runId`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:534`）。
+
+产出 `WorkflowExecutionRecord` 记录起止时间、日志条目与失败阶段（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:548`）。
 
 执行流程：
 
-1. `prepareRuntime`：注册默认工具；当 `ExecuteNode.actionType` 含冒号（包工具）时预热包管理器可用包列表（`:153`）。失败返回 `shouldRetry=true`、失败阶段 `RUNTIME_INITIALIZATION`（`:555`）。
-2. 确定触发节点：指定 `triggerNodeId` 则只执行该节点（定时触发），否则只执行 `triggerType=manual` 的节点（手动触发）（`:560`）。触发节点本身不执行，直接标记 `Success`，结果为 `triggerExtras` 的 JSON（`:669`）。
+1. `prepareRuntime`：注册默认工具；当 `ExecuteNode.actionType` 含冒号（包工具）时预热包管理器可用包列表（`:165`）。失败返回 `shouldRetry=true`、失败阶段 `RUNTIME_INITIALIZATION`（`:585`）。
+2. 确定触发节点：指定 `triggerNodeId` 则只执行该节点（定时触发），否则只执行 `triggerType=manual` 的节点（手动触发）（`:622`）。触发节点本身不执行，直接标记 `Success`，结果为 `triggerExtras` 的 JSON（`:669`）。
 3. `buildDependencyGraph` 把显式连接与参数引用依赖合并建边，过滤自环与重复边（`:726`）。
 4. `detectCycle` 用 DFS 三色标记检测有向环，有环拒绝执行（`:760`）。
 5. `executeTopologicalOrder`：先算触发节点可达子图，再用 Kahn 算法按入度逐个执行（`:801`）。
 
 节点状态机 `NodeExecutionState` 五态：`Pending` / `Running` / `Success` / `Skipped` / `Failed`（`:44`）。
 
-入边条件语义：`success`/`ok`/`on_success` 要求源成功；`error`/`failed`/`on_error` 要求源失败；`true`/`false` 按布尔匹配；空白默认要求源成功（`:878`）；也支持正则表达式直接作用于源节点结果字符串（`:912`）。条件不满足的节点标记 `Skipped`，后继入度照常递减（`:918`）。
+入边条件语义：`success`/`ok`/`on_success` 要求源成功；`error`/`failed`/`on_error` 要求源失败；`true`/`false` 按布尔匹配；空白默认要求源成功（`:895`）；也支持正则表达式直接作用于源节点结果字符串（`:912`）。条件不满足的节点标记 `Skipped`，后继入度照常递减（`:940`）。
 
-失败处理：失败节点若存在 `error` 条件边且目标节点最终执行成功，该失败视为已处理，不再导致整体失败（`:992`）——支持"错误分支"兜底流程。
+失败处理：失败节点若存在 `error` 条件边且目标节点最终执行成功，该失败视为已处理，不再导致整体失败（`:1005`）——支持"错误分支"兜底流程。
 
 节点类型：
 
-- `ExecuteNode`：通过 `AIToolHandler.executeTool` 执行工具，参数由 `resolveParameters` 解析静态值与节点引用（`:1275`）。引用已失败或未完成的节点直接抛 `IllegalStateException`（`:178`）。
-- `ConditionNode`：支持 `EQ/NE/GT/GTE/LT/LTE/CONTAINS/NOT_CONTAINS/IN/NOT_IN`，数值可解析时优先按数字比较（`:199`）；`IN` 支持 JSON 数组或逗号分隔列表，数字与字符串混用抛类型不匹配（`:248`）。
+- `ExecuteNode`：经由 `AIToolHandler.executeTool` 执行工具，参数由 `resolveParameters` 解析静态值与节点引用（`:1275`）。引用已失败或未完成的节点直接抛 `IllegalStateException`（`:190`）。
+- `ConditionNode`：支持 `EQ/NE/GT/GTE/LT/LTE/CONTAINS/NOT_CONTAINS/IN/NOT_IN`，数值可解析时优先按数字比较（`:199`）；`IN` 支持 JSON 数组或逗号分隔列表，数字与字符串混用抛类型不匹配（`:278`）。
 - `LogicNode`：对入边成功节点结果做 `AND`/`OR` 布尔聚合（`:1147`）。
 - `ExtractNode`：`REGEX` / `JSON` 路径 / `SUB` 子串 / `CONCAT` 拼接 / `RANDOM_INT` / `RANDOM_STRING` 六种模式（`:1189`）。
 
@@ -141,12 +161,12 @@ date: 2026-10-01
 | `ForegroundServiceCompat` | `app/src/main/java/com/ai/assistance/operit/core/application/ForegroundServiceCompat.kt:10` | 前台服务跨版本兼容工具 |
 | `PerformanceMonitorManager` | `app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:76` | 性能采样引擎单例 |
 | `PerformanceEntityKind` | `app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:33` | 采样实体类别枚举 |
-| `PerformanceSnapshot` | `app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:47` | 单次完整采样快照 |
-| `WorkflowExecutor` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:75` | 工作流执行器 |
+| `PerformanceSnapshot` | `app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:49` | 单次完整采样快照 |
+| `WorkflowExecutor` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:79` | 工作流执行器 |
 | `NodeExecutionState` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:44` | 节点执行状态五态机 |
-| `WorkflowScheduler` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:49` | 基于 WorkManager 的调度器 |
+| `WorkflowScheduler` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:22` | 基于 WorkManager 的调度器 |
 | `WorkflowWorker` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:17` | 后台执行的 CoroutineWorker |
-| `WorkflowSchedulerInitializer` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:18` | 启动时重排调度的初始化器 |
+| `WorkflowSchedulerInitializer` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:17` | 启动时重排调度的初始化器 |
 | `WorkflowExecutionRetryableException` | `app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:73` | 可重试异常标记 |
 
 ## 输入→处理→输出调用链
@@ -159,20 +179,32 @@ date: 2026-10-01
 
 ### 链路 2：前后台跟踪
 
-1. **输入**：Activity 生命周期回调进入 `ActivityLifecycleManager`（`app/src/main/java/com/ai/assistance/operit/core/application/ActivityLifecycleManager.kt:121`）
+1. **输入**：Activity 的 `onActivityCreated` 等生命周期回调进入管理器（`app/src/main/java/com/ai/assistance/operit/core/application/ActivityLifecycleManager.kt:121`）
 2. **处理**：`startedActivityCount` 计数判定前后台切换 → 派发插件钩子 → 前台时启动外部 HTTP 自动拉起；`onActivityResumed` 更新 `WeakReference` 当前 Activity 并节流保活麦克风前台服务
 3. **输出**：`getCurrentActivity()` 随时返回前台 Activity；插件收到 `APPLICATION_FOREGROUND`/`BACKGROUND` 钩子
 
 ### 链路 3：性能采样
 
-1. **输入**：用户打开性能分析界面 → `PerformanceMonitorScreen` 调用 `PerformanceMonitorManager.start()`（`app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:90`）
-2. **处理**：1s 周期的 `samplingLoop`（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:181`）→ `sampleOnce` 分别读取主进程 `/proc/self/stat`、插件引擎线程 `/proc/self/task/<tid>/stat`、终端 PTY 进程树 → 差分计算 CPU/内存/网络 → `ArrayDeque` 保留最近 180 条
-3. **输出**：`stateFlow` 发布 `PerformanceMonitorState`，界面三个分析页从同一份快照序列取数；界面关闭 `onDispose` 调用 `stop()`（`app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:91`）
+1. **输入**：用户打开性能分析界面，界面层调用 `PerformanceMonitorManager.start()`（`app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:90`）
+2. **处理**：
+   - 1s 周期的 `samplingLoop` 循环采样（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:181`）
+   - `sampleOnce` 分别读取主进程、插件引擎线程、终端 PTY 进程树三类指标（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:211`）
+   - 差分计算 CPU/内存/网络后，用 `ArrayDeque` 保留最近 180 条快照（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:120`）
+3. **输出**：
+   - `stateFlow` 发布 `PerformanceMonitorState`，界面三个分析页从同一份快照序列取数（`app/src/main/java/com/ai/assistance/operit/core/performance/PerformanceMonitorManager.kt:122`）
+   - 界面关闭时 `onDispose` 回调调用 `stop()`（`app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:91`）
 
 ### 链路 4：工作流定时调度与执行
 
-1. **输入**：应用启动 → `WorkflowSchedulerInitializer.initialize` 重排所有启用的工作流（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:25`）；或用户新建/修改工作流 → `WorkflowScheduler.scheduleWorkflow`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:54`）
-2. **处理**：按 `interval`/`specific_time`/`cron` 生成 WorkManager 请求并以 `workflow_<id>` 唯一名入队 → 到时 `WorkflowWorker.doWork` 被唤醒（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:26`）→ `WorkflowRepository.triggerWorkflow` → `WorkflowExecutor.executeWorkflow`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:527`）→ 构建依赖图 → 环检测 → Kahn 拓扑执行 → 节点经 `AIToolHandler` 调工具
+1. **输入**：
+   - 应用启动 → `WorkflowSchedulerInitializer.initialize` 重排所有启用的工作流（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowSchedulerInitializer.kt:25`）
+   - 用户新建/修改工作流 → `WorkflowScheduler.scheduleWorkflow`（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:54`）
+2. **处理**：
+   - 按 `interval`/`specific_time`/`cron` 三种类型生成 WorkManager 请求（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:30`）
+   - 以 `workflow_<id>` 为唯一名入队（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowScheduler.kt:129`）
+   - 到时 `WorkflowWorker.doWork` 被唤醒，经数据层仓库触发执行（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:26`）
+   - `WorkflowExecutor.executeWorkflow` 构建依赖图、做环检测、按 Kahn 拓扑顺序执行节点（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:527`）
+   - `executeTool` 经 `toolHandler` 调用具体工具执行节点（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:1275`）
 3. **输出**：`WorkflowExecutionResult`（成功/失败/是否重试）与 `WorkflowExecutionRecord`（完整日志）；可重试失败经 `WorkflowExecutionRetryableException` → `Result.retry()` 由 WorkManager 指数退避重试
 
 ## 来源

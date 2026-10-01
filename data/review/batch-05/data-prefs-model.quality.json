@@ -13,7 +13,7 @@
     "evidence": "return json.encodeToString(allConfigs)",
     "severity": "high",
     "confidence": "high",
-    "description": "exportAllConfigs 把全部模型配置（含所有 API Key 明文）导出为 JSON 字符串。调用方若将其写入文件或经分享通道发出，等于一次性泄露用户全部供应商密钥；函数本身无任何脱敏或二次确认。"
+    "description": "exportAllConfigs 把全部模型配置（含所有 API Key 明文）导出为 JSON 字符串。调用方若将其写入文件或经分享通道发出，等于一次性泄露用户全部供应商密钥；函数本身无任何脱敏或二次确认。 调用方 ChatBackupSettingsScreen.kt:648-662 点导出即直接落盘（model_config_backup_<时间戳>.json），安全警告对话框（ModelConfigExportWarningDialog）仅在导出完成后弹出（:1376），无导出前二次确认。"
   },
   {
     "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/ModelConfigManager.kt",
@@ -105,8 +105,8 @@
   },
   {
     "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/EnvPreferences.kt",
-    "line": 61,
-    "evidence": "}.mapNotNull { (k, v) ->\n            val key = k.trim()\n            val value = v as? String",
+    "line": 56,
+    "evidence": "return prefs.all.mapNotNull { (k, v) ->\n            val key = k.trim()\n            val value = v as? String",
     "severity": "suggestion",
     "confidence": "medium",
     "description": "getAllEnv 对 SharedPreferences 全量条目做 v as? String 过滤：若有其他代码往 env_preferences 写入非字符串值会被静默丢弃。建议写入侧统一约束类型或在丢弃时记日志。"

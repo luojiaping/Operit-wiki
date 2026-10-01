@@ -96,8 +96,12 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPLocalServer.kt:125"
   },
   {
-    "fact": "PluginMetadata 包含 id、name、description、logoUrl、author、isInstalled、version、updatedAt、longDescription、repoUrl。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPLocalServer.kt:141"
+    "fact": "PluginMetadata 包含 id、name、description、logoUrl、author。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPLocalServer.kt:147"
+  },
+  {
+    "fact": "PluginMetadata 还包含 isInstalled、version、updatedAt、longDescription、repoUrl。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPLocalServer.kt:157"
   },
   {
     "fact": "PluginMetadata.type 取值 \"local\" 或 \"remote\"，默认为 \"local\"。",
@@ -360,7 +364,7 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:565"
   },
   {
-    "fact": "仓库默认分支通过 GitHub API https://api.github.com/repos/$owner/$repoName 查询。",
+    "fact": "仓库默认分支经由 GitHub API https://api.github.com/repos/$owner/$repoName 查询。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:582"
   },
   {
@@ -389,7 +393,7 @@
   },
   {
     "fact": "updateRemoteServer 只更新 remote 类型的 endpoint、connectionType、bearerToken、headers。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:879"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:893"
   },
   {
     "fact": "removeRemoteServer 删除远程服务器配置。",
@@ -397,7 +401,7 @@
   },
   {
     "fact": "syncBridgeStatus 把 bridge 的服务活跃态同步回本地状态（lastStartTime/lastStopTime）。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPLocalServer.kt:925"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:970"
   },
   {
     "fact": "syncInstalledStatus 重新从 MCPLocalServer 加载插件安装状态。",
@@ -456,8 +460,12 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:1267"
   },
   {
-    "fact": "getToolsForPlugin 优先用缓存，无缓存则经 MCPPackage.loadFromServer 动态获取。",
+    "fact": "getToolsForPlugin 优先用缓存：getCachedTools 返回非空即直接返回。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:1293"
+  },
+  {
+    "fact": "无缓存时经 MCPPackage.loadFromServer 动态获取工具列表。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/MCPRepository.kt:1311"
   },
   {
     "fact": "createRuntimeDescriptor：local 生成 McpRuntimeDescriptor.Local，remote 生成 Remote，其他类型抛错。",
@@ -661,7 +669,7 @@
   },
   {
     "fact": "callTool 遇到连接类错误时标记断开、重连并重试一次。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPBridgeClient.kt:400"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPBridgeClient.kt:435"
   },
   {
     "fact": "getTools 解析响应 result.tools 数组为工具列表。",
@@ -753,7 +761,7 @@
   },
   {
     "fact": "RemoteMcpRuntimeSession.callTool 的 success 取值为 isError != true。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/RemoteMcpRuntimeSession.kt:109"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/RemoteMcpRuntimeSession.kt:117"
   },
   {
     "fact": "RemoteMcpRuntimeSession.callTool 异常时置 connected=false 并重抛。",
@@ -856,7 +864,7 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPStarter.kt:292"
   },
   {
-    "fact": "本地插件通过 bridge.registerMcpService 用 command、args、env、cwd 注册。",
+    "fact": "本地插件经由 bridge.registerMcpService 用 command、args、env、cwd 注册。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPStarter.kt:340"
   },
   {
@@ -889,7 +897,7 @@
   },
   {
     "fact": "generateMissingDescriptions 用 EnhancedAIService.generatePackageDescription 为空描述插件生成描述。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPStarter.kt:745"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPStarter.kt:769"
   },
   {
     "fact": "verifyAllMcpPlugins 逐个检查已启用插件是否响应。",
@@ -916,7 +924,7 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPDeployer.kt:40"
   },
   {
-    "fact": "部署输出按 3500 字符分块通过状态回调上报。",
+    "fact": "部署输出按 3500 字符分块，借助状态回调上报。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPDeployer.kt:50"
   },
   {
@@ -968,8 +976,12 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPDeployer.kt:347"
   },
   {
-    "fact": "pnpm config、含 || true、pnpm install -g 视为非关键命令，失败也继续。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPDeployer.kt:350"
+    "fact": "pnpm config（含 set 与前缀匹配）、含 || true、pnpm install -g 的命令被视为非关键命令。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPDeployer.kt:362"
+  },
+  {
+    "fact": "非关键命令执行失败也继续部署。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPDeployer.kt:383"
   },
   {
     "fact": "部署结束无论成败都会延迟后关闭部署会话。",
@@ -1016,8 +1028,12 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPCommandGenerator.kt:70"
   },
   {
-    "fact": "TYPESCRIPT 优先转换 prepare 脚本，其次 build、compile、tsc。",
+    "fact": "TYPESCRIPT 优先转换 prepare 脚本。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPCommandGenerator.kt:77"
+  },
+  {
+    "fact": "prepare 脚本缺失时，按 build、compile、tsc 的顺序兜底转换。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPCommandGenerator.kt:107"
   },
   {
     "fact": "无可用脚本时默认执行 node ./node_modules/typescript/bin/tsc -p ./tsconfig.json。",
@@ -1177,11 +1193,11 @@
   },
   {
     "fact": "找不到主 TS 文件时使用 $outDir/index.js 作为默认路径。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPConfigGenerator.kt:185"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPConfigGenerator.kt:176"
   },
   {
     "fact": "NODEJS 项目 command=node，args 为 mainJsFile 或 index.js。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPConfigGenerator.kt:197"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/mcp/plugins/MCPConfigGenerator.kt:191"
   },
   {
     "fact": "UNKNOWN 类型默认使用 venv 中的 python。",

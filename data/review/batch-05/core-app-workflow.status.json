@@ -1,1 +1,10 @@
-{"critic":"","id":"core-app-workflow","issue":75,"refs_valid":"108/108 引用行号真实存在（repo @ dbf71916），已逐条验真","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"应用生命周期、性能监控与工作流调度"}
+{
+  "critic": "独立 critic 初验打回后修错，独立复验通过（core-app-workflow.critic.md）",
+  "id": "core-app-workflow",
+  "issue": 75,
+  "refs_valid": "113/113 引用行号真实存在且 ±5 窗口有支撑原文（critic 打回 20 处已修正：5 条复合拆分、14 条重锚、1 条归因重写；quality Q4/Q7 已修正），lint 硬失败 0/警告 0（单页隔离重跑，修错后）",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "title": "应用生命周期、性能监控与工作流调度"
+}
