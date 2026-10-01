@@ -1,0 +1,9 @@
+{
+  "critic": "critic2-verified-PASS-1-anchor-fixed-by-parent",
+  "id": "ui-settings-model",
+  "issue": 97,
+  "refs_valid": 126,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending"
+}
