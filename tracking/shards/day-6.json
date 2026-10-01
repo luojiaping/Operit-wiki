@@ -26,7 +26,9 @@
    "questions": [
     "扩展包管理屏的列表/搜索/对话框？"
    ],
-   "notes": "packages/components/ 根文件以实际为准；components/dialogs/ 归属 ui-packages-mcp"
+   "notes": "packages/components/ 根文件以实际为准；components/dialogs/ 归属 ui-packages-mcp",
+   "issue": 101,
+   "batch": "batch-08"
   },
   {
    "id": "ui-packages-market",
@@ -61,7 +63,9 @@
     "市场浏览列表/详情/作者页的组织？",
     "市场条目安装状态机？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 102,
+   "batch": "batch-08"
   },
   {
    "id": "ui-packages-publish",
@@ -85,7 +89,9 @@
     "扩展发布流程（Artifact/Market）？",
     "GitHub 发布服务的实现？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 103,
+   "batch": "batch-08"
   },
   {
    "id": "ui-packages-mcp",
@@ -103,7 +109,9 @@
     "MCP 配置屏（2090 行）的分区？",
     "Skill 配置与 MCP 部署组件？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 104,
+   "batch": "batch-08"
   },
   {
    "id": "ui-toolbox-filemanager",
@@ -117,7 +125,9 @@
    "questions": [
     "文件管理器的浏览/操作实现？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 105,
+   "batch": "batch-08"
   },
   {
    "id": "ui-toolbox-dev",
@@ -136,7 +146,9 @@
    "questions": [
     "Shell 执行/SQL 查看/Logcat/UI 调试/工具测试屏？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 106,
+   "batch": "batch-08"
   },
   {
    "id": "ui-toolbox-apps",
@@ -160,7 +172,9 @@
     "工具箱主页的聚合方式？",
     "各小工具屏（权限/默认助手/AutoGLM/FFmpeg/语音）的实现？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 107,
+   "batch": "batch-08"
   },
   {
    "id": "ui-common-dsl",
@@ -175,7 +189,9 @@
     "工具包 Compose DSL 的渲染管线？",
     "自动生成 registry 的作用？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 108,
+   "batch": "batch-08"
   },
   {
    "id": "ui-common-markdown",
@@ -191,7 +207,9 @@
     "流式 Markdown/代码块/表格/音视频渲染？",
     "LaTeX/消息解析/虚拟屏/自动化浮层？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 109,
+   "batch": "batch-08"
   },
   {
    "id": "ui-main",
@@ -214,7 +232,9 @@
     "MainActivity/App 入口与导航注册表？",
     "手机/平板布局与返回守卫？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 110,
+   "batch": "batch-08"
   }
  ],
  "page_count": 10,
