@@ -1,1 +1,10 @@
-{"critic":"","id":"ui-toolbox-dev","issue":106,"refs_valid":137,"source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending"}
+{
+  "critic": "",
+  "id": "ui-toolbox-dev",
+  "issue": 106,
+  "refs_valid": 137,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "approved_by_comment_id": 5929124345
+}

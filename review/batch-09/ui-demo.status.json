@@ -2,12 +2,12 @@
   "critic": "",
   "id": "ui-demo",
   "issue": 117,
-  "refs_valid": 160,
+  "refs_valid": "160；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "approved",
-  "approved_by_comment_id": 5929886503,
-  "approved_by": "luojiaping",
-  "approved_at": "2026-10-01 11:08 UTC",
+  "status": "review-pending",
+  "approved_by_comment_id": 5930088682,
+  "approved_by": null,
+  "approved_at": null,
   "updated": "2026-10-01"
 }

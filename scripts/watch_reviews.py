@@ -27,6 +27,13 @@ QUEUE = ROOT / "review-queue.json"
 APPROVE_RE = re.compile(r"通过|批准|LGTM", re.IGNORECASE)
 NEG_RE = re.compile(r"(不|没|未)\s*(通过|批准)")
 REJECT_RE = re.compile(r"需修改|打回")
+# 流水线自己的留言也是用 owner 身份发的，必须排除，否则 watcher 会把
+# "critic 独立复验结论通过""v3 重写版已完成并上评审站"等自家留言误判为用户批准。
+# 判定：凡带评审页链接（entry.html?id=）或命中流水线前缀的，一律不是用户批准。
+PIPELINE_RE = re.compile(
+    r"luojiaping\.github\.io/Operit-wiki/entry\.html\?id="
+    r"|^(Day |v\d*\s*重写版|✅\s*收到|覆盖率扫尾|已按您的|waifu\s*已补充|评审页已上站|交付更新|大纲已更新)"
+)
 
 
 def sh(*args, check=True):
@@ -40,6 +47,8 @@ def gh_api(path):
 
 def is_approval(body: str) -> bool:
     if not body:
+        return False
+    if PIPELINE_RE.search(body):
         return False
     if NEG_RE.search(body):
         return False
@@ -76,6 +85,9 @@ def main() -> int:
         st = json.loads(sp.read_text(encoding="utf-8"))
         if st.get("status") != "review-pending":
             continue
+        # 水位线初始化：null/0 表示"回炉后未定位"，必须先以前移到当前最新评论，
+        # 否则旧批准评论会被重新误判（2026-10-01 事故：or 0 导致已批准页被反复翻转）。
+        # 注意：这里只做内存初始化，不写回文件；真正的批准仍以后续新评论为准。
         seen_id = st.get("approved_by_comment_id") or 0
 
         try:
@@ -83,6 +95,12 @@ def main() -> int:
         except subprocess.CalledProcessError as ex:
             print(f"WARN: Issue #{issue} 评论拉取失败: {ex}", file=sys.stderr)
             continue
+
+        if seen_id == 0 and comments:
+            # 回炉/新页尚未定位水位线：前移到最新评论，避免历史评论误触发。
+            seen_id = max(c.get("id", 0) for c in comments)
+            st["approved_by_comment_id"] = seen_id
+            sp.write_text(json.dumps(st, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
         hit = None
         for c in comments:

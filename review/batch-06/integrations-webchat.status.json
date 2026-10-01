@@ -5,5 +5,6 @@
   "source_repo": "operit",
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "refs_valid": 153,
-  "critic": "critic3-verified-6-items-fixed-by-parent"
+  "critic": "critic3-verified-6-items-fixed-by-parent",
+  "approved_by_comment_id": 5927192127
 }

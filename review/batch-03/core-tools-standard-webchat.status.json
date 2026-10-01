@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "标准工具·浏览器/网络/聊天/工作流：22 个 browser_* 会话操控、visit_web 一次性抓取、http_request/multipart_request/manage_cookies、15 个聊天管理工具、工作流 CRUD/patch/触发、12 个记忆查询与管理工具。",
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "approved_by_comment_id": 5915592468
 }

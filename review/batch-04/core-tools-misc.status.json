@@ -7,5 +7,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "专项工具：PhoneAgent 自动操控循环与 8 种动作、Shower 屏幕操控链（服务端 jar/广播 binder/虚拟屏/H.264 渲染）、自研表达式计算器（解析器/函数库/单位换算）、MCP 外部工具桥（server:tool 调用/结果截断存文件/U+FFFD 拦截）、Skill 技能包（扫描/zip 导入/ZipSlip 防护）、CLI 工具模式（search+proxy 双工具）、条件表达式求值器。",
-  "title": "专项工具（PhoneAgent/计算器/MCP/Skill/CLI 模式/条件）"
+  "title": "专项工具（PhoneAgent/计算器/MCP/Skill/CLI 模式/条件）",
+  "approved_by_comment_id": 5925857270
 }

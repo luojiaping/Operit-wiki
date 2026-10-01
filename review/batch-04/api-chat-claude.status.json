@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "Claude 供应商：ClaudeProvider 历史序列化与 system 参数、XML tool call 桥接、prompt cache 断点、token 用量解析、thinking、OpenAI 兼容回退、重试/取消。",
-  "title": "Claude 供应商"
+  "title": "Claude 供应商",
+  "approved_by_comment_id": 5929025113
 }

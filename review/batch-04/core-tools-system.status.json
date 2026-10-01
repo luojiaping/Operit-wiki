@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "title": "系统底层能力（Shell 执行器/Action 监听器/终端/截屏投屏）",
-  "refs_valid": "136/136 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0"
+  "refs_valid": "136/136 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
+  "approved_by_comment_id": 5925856974
 }

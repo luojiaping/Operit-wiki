@@ -1,1 +1,10 @@
-{"id":"ui-packages-manager","issue":101,"status":"review-pending","source_repo":"operit","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","refs_valid":130,"critic":""}
+{
+  "id": "ui-packages-manager",
+  "issue": 101,
+  "status": "review-pending",
+  "source_repo": "operit",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "refs_valid": 130,
+  "critic": "",
+  "approved_by_comment_id": 5929122653
+}

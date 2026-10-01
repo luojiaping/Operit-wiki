@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "title": "语音合成（TTS）服务",
-  "refs_valid": "222/222 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0"
+  "refs_valid": "222/222 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
+  "approved_by_comment_id": 5925866261
 }

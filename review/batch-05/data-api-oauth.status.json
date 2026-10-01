@@ -6,5 +6,6 @@
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
   "status": "review-pending",
-  "title": "OAuth 与外部 API 客户端"
+  "title": "OAuth 与外部 API 客户端",
+  "approved_by_comment_id": 5926577387
 }
