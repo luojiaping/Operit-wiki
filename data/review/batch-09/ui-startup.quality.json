@@ -1,0 +1,65 @@
+[
+ {
+  "confidence": "high",
+  "evidence": "if (isQueryStatement(sql)) {\n    val result = executeQuery(sql)\n    ...\n} else {\n    writableDatabase().execSQL(sql)\n    val affectedRows = queryChanges()",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt",
+  "line": 64,
+  "severity": "high",
+  "title": "导出的恢复 Activity 可执行任意 SQL 写正式库",
+  "detail": "DataRecoveryActivity 在 manifest 中 android:exported=\"true\"（且跑在独立 :repair 进程），Activity 内无任何身份校验。runSql() 把用户输入的 SQL 经 sanitizeSql（仅 trim + 去末尾分号）后直接 writableDatabase().execSQL 执行，非查询语句无二次确认即可改写生产数据库。"
+ },
+ {
+  "confidence": "medium",
+  "evidence": "private fun writableDatabase() = AppDatabase.getDatabase(context).openHelper.writableDatabase",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt",
+  "line": 317,
+  "severity": "warn",
+  "title": ":repair 进程与主进程双开 Room 数据库",
+  "detail": "DataRecoveryActivity 声明 android:process=\":repair\"，而 DataRecoveryViewModel.writableDatabase() 直接打开 AppDatabase。若主进程同时持有同一数据库，Room 不支持多进程访问，存在锁竞争与数据损坏风险。"
+ },
+ {
+  "confidence": "medium",
+  "evidence": "fun restoreRawSnapshot(uri: Uri) {\n    _state.value = _state.value.copy(isRunning = true, ...)\n    viewModelScope.launch {\n        try {\n            RawSnapshotBackupManager.restoreFromBackupUri(context, uri) { progress ->",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt",
+  "line": 137,
+  "severity": "warn",
+  "title": "原始快照恢复时未先停主进程",
+  "detail": "restoreRawSnapshot 直接替换数据库与文件（REPLACING_DATABASES 等阶段），界面只在恢复完成后才提供“启动主应用”（杀进程重启）。恢复期间主进程可能仍在读写同一批文件，存在写坏风险。"
+ },
+ {
+  "confidence": "medium",
+  "evidence": "onClick = { snapshotPicker.launch(arrayOf(\"application/zip\", \"application/octet-stream\", \"*/*\")) },",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt",
+  "line": 159,
+  "severity": "warn",
+  "title": "导入快照允许选择任意文件类型",
+  "detail": "OpenDocument 选择器 mime 限定为 application/zip、application/octet-stream、*/*，用户可挑任意文件触发 restoreRawSnapshot。压缩包内容校验完全依赖 RawSnapshotBackupManager（本页种子外未验证），恶意 zip 可覆盖应用数据。"
+ },
+ {
+  "confidence": "medium",
+  "evidence": "private fun appendPluginLog(pluginId: String, message: String) {\n    if (message.isBlank()) return\n    synchronized(pluginStateLock) {\n        val maxCharsPerPlugin = 2_000_000",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/startup/screens/PluginLoadingScreen.kt",
+  "line": 602,
+  "severity": "warn",
+  "title": "单插件日志上限 200 万字符常驻内存",
+  "detail": "appendPluginLog 把每个插件最多 2_000_000 字符的日志保存在 _pluginLogs StateFlow 中。插件数量多且输出冗长时，日志字符串常驻内存带来内存压力；takeLast 修剪只在追加时触发。"
+ },
+ {
+  "confidence": "high",
+  "evidence": "when (tab) {\n    PerformanceTab.CPU -> entity.cpuPercent\n    PerformanceTab.MEMORY -> entity.memoryKb.toDouble()\n    PerformanceTab.NETWORK -> 0.0\n}",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt",
+  "line": 384,
+  "severity": "suggestion",
+  "title": "网络 tab 实体列表排序为无操作",
+  "detail": "entityListItems 在 NETWORK tab 下排序键恒为 0.0，compareByDescending 实际不改变顺序，实体保持原序展示。与 CPU/内存 tab 的降序行为不一致，用户可能误以为已按流量排序。"
+ },
+ {
+  "confidence": "high",
+  "evidence": "private fun sanitizeSql(sql: String) {\n    return sql.trim().removeSuffix(\";\")\n}",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt",
+  "line": 361,
+  "severity": "suggestion",
+  "title": "sanitizeSql 仅去掉末尾一个分号，防护名不副实",
+  "detail": "sanitizeSql 只做 trim().removeSuffix(\";\")，对 SQL 注入或多语句无任何实质防护（实际防护依赖 execSQL 单语句行为与页面本身的可达性）。函数名容易让人误以为输入已被净化。"
+ }
+]
