@@ -1,0 +1,1 @@
+{"critic":"","id":"data-prefs-model","issue":65,"refs_valid":"181/181 引用行号真实存在（脚本逐条验真），lint 硬失败 0/警告 0","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"模型与 API 配置（偏好设置）"}

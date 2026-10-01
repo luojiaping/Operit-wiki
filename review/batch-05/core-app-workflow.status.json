@@ -1,0 +1,1 @@
+{"critic":"","id":"core-app-workflow","issue":75,"refs_valid":"108/108 引用行号真实存在（repo @ dbf71916），已逐条验真","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"应用生命周期、性能监控与工作流调度"}

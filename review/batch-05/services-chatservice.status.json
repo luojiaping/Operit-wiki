@@ -1,0 +1,1 @@
+{"critic":"","id":"services-chatservice","issue":77,"refs_valid":"174/174 引用行号真实存在，lint 硬失败 0/警告 0","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"聊天服务核心 Delegate 群"}
