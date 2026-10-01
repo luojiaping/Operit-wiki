@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "JS 工具脚本执行与注册：JsToolManager 调度与引擎池、执行脚本组装与 __operitExecuteScriptFunction 入口、ToolPkg 注册桥接与 23 个注册桶、结果判定协议、双层超时、执行追踪、广播触发执行、JS 侧 Tools 门面。",
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "approved_by_comment_id": 5915591791
 }

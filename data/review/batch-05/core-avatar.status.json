@@ -7,5 +7,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "虚拟形象引擎：6 种形象路线（DragonBones/WebP/MP4/glTF/FBX/MMD）统一为模型-控制器-渲染器三层；AvatarController 以 StateFlow 发布情绪/动画/循环/nonce 状态；AvatarMoodTypes 内置 5 mood 并解析模型返回的 <mood> 标签；三工厂负责模型/控制器/渲染器构造；各路线原生渲染（JNI/ImageDecoder/ExoPlayer/Filament/MMD native）；走查 7 条（警告 3：渲染错误被吞、angry 别名误映射 SAD、MMD 双发射中间态）。",
-  "title": "虚拟形象引擎"
+  "title": "虚拟形象引擎",
+  "approved_by_comment_id": 5926577946
 }

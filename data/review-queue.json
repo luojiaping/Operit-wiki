@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 11:24 UTC",
+  "updated": "2026-10-01 11:28 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -464,7 +464,7 @@
       "batch": "batch-04",
       "title": "DeepSeek 供应商",
       "module": "app",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 30,
       "issue_title": "[评审] DeepSeek 供应商",
       "md": "review/batch-04/api-chat-deepseek.md",
@@ -472,7 +472,7 @@
       "lint": "review/batch-04/api-chat-deepseek.lint.md",
       "seed_files": [],
       "facts_count": 78,
-      "refs_valid": "78/78 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #30 端点反馈新增 5 条，lint 硬失败 0/警告 0）",
+      "refs_valid": "78/78 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #30 端点反馈新增 5 条，lint 硬失败 0/警告 0）；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -1613,7 +1613,7 @@
       "batch": "batch-05",
       "title": "记忆仓库",
       "module": "数据层",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 62,
       "issue_title": "[评审] 记忆仓库",
       "md": "review/batch-05/data-repo-memory.md",
@@ -1631,7 +1631,7 @@
         "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt"
       ],
       "facts_count": 173,
-      "refs_valid": 173,
+      "refs_valid": "173；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-memory.critic.md）",
       "summary": "",
       "updated": "2026-10-01"
@@ -2549,7 +2549,7 @@
       "batch": "batch-09",
       "title": "插桩测试、模板与本地化",
       "module": "附录",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 124,
       "issue_title": "[评审] 插桩测试、模板与本地化",
       "md": "review/batch-09/appendix-tests-android.md",
@@ -2559,7 +2559,7 @@
         "app/src/main/res/xml/locales_config.xml"
       ],
       "facts_count": 174,
-      "refs_valid": 174,
+      "refs_valid": "174；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2569,7 +2569,7 @@
       "batch": "batch-09",
       "title": "单元测试·api/core",
       "module": "附录",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 121,
       "issue_title": "[评审] 单元测试·api/core",
       "md": "review/batch-09/appendix-tests-unit-api-core.md",
@@ -2577,7 +2577,7 @@
       "lint": "review/batch-09/appendix-tests-unit-api-core.lint.md",
       "seed_files": [],
       "facts_count": 151,
-      "refs_valid": 151,
+      "refs_valid": "151；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2587,7 +2587,7 @@
       "batch": "batch-09",
       "title": "单元测试·data（测试覆盖附录）",
       "module": "附录",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 122,
       "issue_title": "[评审] 单元测试·data（测试覆盖附录）",
       "md": "review/batch-09/appendix-tests-unit-data.md",
@@ -2604,7 +2604,7 @@
         "app/build.gradle.kts"
       ],
       "facts_count": 144,
-      "refs_valid": 144,
+      "refs_valid": "144；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2614,7 +2614,7 @@
       "batch": "batch-09",
       "title": "单元测试·ui/util",
       "module": "附录",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 123,
       "issue_title": "[评审] 单元测试·ui/util",
       "md": "review/batch-09/appendix-tests-unit-ui-util.md",
@@ -2622,7 +2622,7 @@
       "lint": "review/batch-09/appendix-tests-unit-ui-util.lint.md",
       "seed_files": [],
       "facts_count": 149,
-      "refs_valid": 149,
+      "refs_valid": "149；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2632,7 +2632,7 @@
       "batch": "batch-09",
       "title": "关于/更新/帮助界面",
       "module": "UI / 关于与更新",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 119,
       "issue_title": "[评审] 关于/更新/帮助界面",
       "md": "review/batch-09/ui-about.md",
@@ -2648,7 +2648,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt"
       ],
       "facts_count": 126,
-      "refs_valid": 126,
+      "refs_valid": "126；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2658,7 +2658,7 @@
       "batch": "batch-09",
       "title": "助手配置界面",
       "module": "UI / 助手配置",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 116,
       "issue_title": "[评审] 助手配置界面",
       "md": "review/batch-09/ui-assistant.md",
@@ -2674,7 +2674,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/assistant/components/SettingItem.kt"
       ],
       "facts_count": 143,
-      "refs_valid": 143,
+      "refs_valid": "143；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2684,7 +2684,7 @@
       "batch": "batch-09",
       "title": "权限引导与演示界面",
       "module": "UI / 权限与演示",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 117,
       "issue_title": "[评审] 权限引导与演示界面",
       "md": "review/batch-09/ui-demo.md",
@@ -2703,7 +2703,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/demo/wizards/OperitTerminalWizardCard.kt"
       ],
       "facts_count": 160,
-      "refs_valid": 160,
+      "refs_valid": "160；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2713,7 +2713,7 @@
       "batch": "batch-09",
       "title": "悬浮窗界面",
       "module": "UI / 悬浮窗",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 111,
       "issue_title": "[评审] 悬浮窗界面",
       "md": "review/batch-09/ui-floating.md",
@@ -2734,7 +2734,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/floating/ui/fullscreen/screen/FloatingFullscreenScreen.kt"
       ],
       "facts_count": 148,
-      "refs_valid": 148,
+      "refs_valid": "148；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2744,7 +2744,7 @@
       "batch": "batch-09",
       "title": "记忆与知识库界面",
       "module": "UI / 记忆",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 112,
       "issue_title": "[评审] 记忆与知识库界面",
       "md": "review/batch-09/ui-memory.md",
@@ -2765,7 +2765,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/memory/viewmodel/MemoryViewModel.kt"
       ],
       "facts_count": 210,
-      "refs_valid": 210,
+      "refs_valid": "210；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2775,7 +2775,7 @@
       "batch": "batch-09",
       "title": "权限与 Token 配置界面",
       "module": "UI / 权限与 Token",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 118,
       "issue_title": "[评审] 权限与 Token 配置界面",
       "md": "review/batch-09/ui-permission.md",
@@ -2788,7 +2788,7 @@
         "features/token/TokenConfigWebViewScreen.kt"
       ],
       "facts_count": 153,
-      "refs_valid": 153,
+      "refs_valid": "153；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2798,7 +2798,7 @@
       "batch": "batch-09",
       "title": "启动/恢复/性能界面",
       "module": "UI / 启动与恢复",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 120,
       "issue_title": "[评审] 启动/恢复/性能界面",
       "md": "review/batch-09/ui-startup.md",
@@ -2815,7 +2815,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt"
       ],
       "facts_count": 174,
-      "refs_valid": 174,
+      "refs_valid": "174；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2825,7 +2825,7 @@
       "batch": "batch-09",
       "title": "Token 用量统计界面",
       "module": "UI / 统计",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 113,
       "issue_title": "[评审] Token 用量统计界面",
       "md": "review/batch-09/ui-tokenstats.md",
@@ -2846,7 +2846,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt"
       ],
       "facts_count": 228,
-      "refs_valid": 228,
+      "refs_valid": "228；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2856,7 +2856,7 @@
       "batch": "batch-09",
       "title": "内置浏览器界面",
       "module": "app",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 115,
       "issue_title": "[评审] 内置浏览器界面",
       "md": "review/batch-09/ui-websession.md",
@@ -2877,7 +2877,7 @@
         "WebSessionMinimizedIndicator.kt"
       ],
       "facts_count": 111,
-      "refs_valid": 111,
+      "refs_valid": "111；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2887,7 +2887,7 @@
       "batch": "batch-09",
       "title": "工作流界面",
       "module": "UI / 工作流",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 114,
       "issue_title": "[评审] 工作流界面",
       "md": "review/batch-09/ui-workflow.md",
@@ -2904,7 +2904,7 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/workflow/viewmodel/WorkflowViewModel.kt"
       ],
       "facts_count": 169,
-      "refs_valid": 169,
+      "refs_valid": "169；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"

@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "工具执行模式：ToolGetter 按 ROOT/ADMIN/DEBUGGER/ACCESSIBILITY/STANDARD 五级分发，Standard→Accessibility→Debugger→Admin→Root 继承链的行为差异与三级降级策略（linux/SAF/内部路径回退 super），PathValidator 路径校验规则（Android 要求 / 开头，Linux 允许 / 或 ~）。",
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "approved_by_comment_id": 5915590426
 }

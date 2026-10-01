@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "critic": "",
-  "refs_valid": "65/65 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0"
+  "refs_valid": "65/65 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
+  "approved_by_comment_id": 5925860049
 }

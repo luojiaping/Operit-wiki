@@ -6,5 +6,6 @@
   "source_repo": "operit",
   "status": "review-pending",
   "summary": "Tampermonkey 式用户脚本引擎：元数据解析、URL 匹配（@match/@include/@exclude/@connect）、33 个 grant 能力注册表、JSON 文件存储（scripts/cache/state）、安装三入口、document-start 注入 + OperitUserscriptBridge RPC、GM.* 特权 API（cookie/XHR/通知/下载/标签页/webRequest 拦截改写）。走查 4 条：高危 1（桥接消息无来源与授权校验）、中 1（安装失败无回滚）、低 2。",
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "approved_by_comment_id": 5915591158
 }

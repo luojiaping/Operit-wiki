@@ -1,1 +1,10 @@
-{"critic":"","id":"ui-main","issue":110,"refs_valid":173,"source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending"}
+{
+  "critic": "",
+  "id": "ui-main",
+  "issue": 110,
+  "refs_valid": 173,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "approved_by_comment_id": 5929125780
+}

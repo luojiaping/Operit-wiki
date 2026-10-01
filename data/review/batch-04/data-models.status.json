@@ -8,5 +8,6 @@
   "status": "review-pending",
   "summary": "数据模型与实体类：data/model 53 个文件 + data/mnn 1 个文件。聊天线（ChatMessage/UI 类与 ChatEntity/MessageEntity/MessageVariantEntity Room 实体分离、时间戳分配器）、记忆线（Memory ObjectBox 图谱、Embedding/EmbeddingConverter 向量字节存取）、配置线（ModelConfigData 38 供应商、StandardModelParameters 7 标准参数）、工作流 sealed 节点树、角色卡酒馆格式兼容、MnnModelDownloadManager 下载状态机与断点续传、归档导出。走查 5 条（警告 3/建议 2）。",
   "title": "数据模型与实体类",
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "approved_by_comment_id": 5925866800
 }
