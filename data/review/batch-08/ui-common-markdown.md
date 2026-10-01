@@ -208,6 +208,6 @@ finally 块调用 `synchronizeRenderNodes`（`app/src/main/java/com/ai/assistanc
 
 ## 来源
 
-- 原子事实 189 条：`review/batch-08/ui-common-markdown.facts.json`，每条带 `文件:行号` 引用（ref ±5 行内可验证）。
+- 原子事实 209 条：`review/batch-08/ui-common-markdown.facts.json`，每条带 `文件:行号` 引用（ref ±5 行内可验证）。
 - 代码走查 12 条：`review/batch-08/ui-common-markdown.quality.json`（warn 7：XML 流无界重放、Mermaid WebView 混合内容放行、反射脆弱性×2、bitmap 缓存配额、ExoPlayer 多实例、表格双遍测量；suggestion 5：FpsCounter 空循环、isLargeImage 死代码、hideAll 吞异常、下载无超时、500ms 轮询）。
 - 种子文件 24 个（`app/src/main/java/com/ai/assistance/operit/ui/common/markdown/` 14 个 + `app/src/main/java/com/ai/assistance/operit/ui/common/displays/` 10 个），源码版本 `dbf71916`（v1.12.2），阅读状态已登记。

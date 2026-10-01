@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 09:53 UTC",
+  "updated": "2026-10-01 09:54 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -2350,8 +2350,8 @@
       "facts": "review/batch-08/ui-common-markdown.facts.json",
       "lint": "review/batch-08/ui-common-markdown.lint.md",
       "seed_files": [],
-      "facts_count": 189,
-      "refs_valid": 189,
+      "facts_count": 209,
+      "refs_valid": 209,
       "critic": "",
       "summary": "",
       "updated": ""
