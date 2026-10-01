@@ -1,0 +1,52 @@
+[
+ {
+  "category": "performance",
+  "confidence": "medium",
+  "evidence": "if (show) {\n    drawContext.canvas.nativeCanvas.drawText(\n        label, x + barW / 2, chartBottomPx + labelReservePx - 4f * d,\n        android.graphics.Paint().apply {\n            color = style.labelColor.toArgb()\n            textSize = (if (tooltipCard) 10f else 7f) * d * density.fontScale\n            textAlign = android.graphics.Paint.Align.CENTER\n            isAntiAlias = true\n        }\n    )\n}",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenStatsCharts.kt",
+  "line": 205,
+  "severity": "suggestion",
+  "title": "图表绘制时每个可见桶标签都新建一个 Paint 对象",
+  "detail": "TokenStatsStackedBarChart 与 TokenStatsLineChart 在 Canvas draw 作用域的 buckets.forEachIndexed 循环内，对每个可见标签执行 android.graphics.Paint().apply{...} 再调 nativeCanvas.drawText。draw 作用域每帧都会重跑，等于每帧按标签数分配 Paint（含 native 对象），可用 remember 或复用单个 Paint 避免。"
+ },
+ {
+  "category": "correctness",
+  "confidence": "low",
+  "evidence": "LaunchedEffect(actionMessage) {\n    actionMessage?.let { message ->\n        Toast.makeText(context, message.text, Toast.LENGTH_SHORT).show()\n        viewModel.consumeActionMessage()\n    }\n}",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenUsageStatisticsScreen.kt",
+  "line": 90,
+  "severity": "suggestion",
+  "title": "连续两条 actionMessage 会吞掉第一条",
+  "detail": "LaunchedEffect(actionMessage) 里 Toast 显示后才 consumeActionMessage。若第二条消息在 effect 执行前到达，_actionMessage.value 被直接覆盖，第一条 Toast 永远不会显示。错误提示（如定价保存失败）可能因此丢失。"
+ },
+ {
+  "category": "correctness",
+  "confidence": "medium",
+  "evidence": "fun setManualRate(rate: Double): Boolean {\n    if (!rate.isFinite() || rate <= 0.0) return false\n    viewModelScope.launch(dispatcher) {\n        settings.saveRate(rate)\n        load()\n    }",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenUsageStatisticsViewModel.kt",
+  "line": 362,
+  "severity": "suggestion",
+  "title": "手动汇率只有下限校验，没有上限",
+  "detail": "setManualRate 只拒绝非有限或 <=0 的汇率，1e308 这类极大值会被接受并持久化。费用按 manualRate 换算后可能溢出为 Infinity，formatMoney 会直接打出 \"¥Infinity\" 之类的文案。"
+ },
+ {
+  "category": "maintainability",
+  "confidence": "medium",
+  "evidence": "Text(\n    text = summary,\n    style = MaterialTheme.typography.titleMedium,\n    fontWeight = FontWeight.SemiBold,\n    color = colors.cardAccent,\n    maxLines = 1,\n    modifier = Modifier.clickable(onClick = onClick),\n)",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenUsageStatisticsScreen.kt",
+  "line": 668,
+  "severity": "suggestion",
+  "title": "趋势卡汇总数字可点击但无无障碍语义",
+  "detail": "TokenStatsTrendMetricSummary 的汇总 Text 用 Modifier.clickable(onClick = onClick) 触发指标详情弹窗，但没有 role 也没有 contentDescription，无障碍服务会把它当普通文本朗读，用户不知道可点。"
+ },
+ {
+  "category": "performance",
+  "confidence": "medium",
+  "evidence": "val (label, show) = bucketLabel(\n    bucket.bucketStartMs, granularity, zone, i, buckets.size, maxLabels,\n)\nif (show) {\n    drawContext.canvas.nativeCanvas.drawText(\n        label, i * barAreaPx + barAreaPx / 2, chartBottomPx + labelReservePx - 4f * d,\n        android.graphics.Paint().apply {",
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenStatsCharts.kt",
+  "line": 384,
+  "severity": "suggestion",
+  "title": "折线图同样在循环内逐标签新建 Paint",
+  "detail": "TokenStatsLineChart 与堆叠柱状图存在同一模式：第 384 行在 buckets.forEachIndexed 内为每个可见 X 轴标签新建 android.graphics.Paint()。两处可一并复用。"
+ }
+]

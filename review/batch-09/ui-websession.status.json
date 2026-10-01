@@ -1,0 +1,12 @@
+{
+ "id": "ui-websession",
+ "title": "内置浏览器界面",
+ "status": "review-pending",
+ "issue": 115,
+ "batch": "batch-09",
+ "refs_valid": 111,
+ "source_repo": "~/workspace/Operit",
+ "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+ "critic": "",
+ "critic_conclusion": ""
+}

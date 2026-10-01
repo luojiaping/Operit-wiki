@@ -1,0 +1,9 @@
+{
+ "critic": "",
+ "id": "ui-startup",
+ "issue": 120,
+ "refs_valid": 160,
+ "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+ "source_repo": "operit",
+ "status": "review-pending"
+}

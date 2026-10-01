@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 09:54 UTC",
+  "updated": "2026-10-01 10:07 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -779,7 +779,7 @@
       "batch": "batch-04",
       "title": "NVIDIA AI 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 40,
       "issue_title": "[评审] NVIDIA AI 供应商",
       "md": "review/batch-04/api-chat-nvidia.md",
@@ -796,7 +796,7 @@
       "refs_valid": "16/16 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-04/api-chat-ollama",
@@ -1613,7 +1613,7 @@
       "batch": "batch-05",
       "title": "记忆仓库",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 62,
       "issue_title": "[评审] 记忆仓库",
       "md": "review/batch-05/data-repo-memory.md",
@@ -1633,7 +1633,7 @@
       "refs_valid": "156/156 引用行号真实存在，lint 硬失败 0/警告 0",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-memory.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-05/data-repo-misc",

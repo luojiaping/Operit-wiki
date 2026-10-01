@@ -14,7 +14,8 @@
     "全屏/窗口/悬浮球三种形态？",
     "屏幕 OCR 与语音入口？"
    ],
-   "notes": "floating/ui/pet/AvatarEmotionManager.kt（108 行，avatar 相关）已排除"
+   "notes": "floating/ui/pet/AvatarEmotionManager.kt（108 行，avatar 相关）已排除",
+   "issue": 111
   },
   {
    "id": "ui-memory",
@@ -28,7 +29,8 @@
    "questions": [
     "记忆屏/知识库对话框/记忆图谱？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 112
   },
   {
    "id": "ui-tokenstats",
@@ -42,7 +44,8 @@
    "questions": [
     "用量统计屏与图表实现？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 113
   },
   {
    "id": "ui-workflow",
@@ -56,7 +59,8 @@
    "questions": [
     "工作流列表/详情/组件？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 114
   },
   {
    "id": "ui-websession",
@@ -70,7 +74,8 @@
    "questions": [
     "WebSession 内置浏览器的标签/书签/下载/历史？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 115
   },
   {
    "id": "ui-assistant",
@@ -84,7 +89,8 @@
    "questions": [
     "助手配置屏（avatar/语音/导入）？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 116
   },
   {
    "id": "ui-demo",
@@ -98,7 +104,8 @@
    "questions": [
     "Shizuku 演示与权限向导卡（Root/无障碍/Shizuku/终端）？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 117
   },
   {
    "id": "ui-permission",
@@ -115,7 +122,8 @@
     "工具权限请求 overlay/对话框？",
     "第三方 Token/URL 配置（DeepSeek 网页版 WebView）？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 118
   },
   {
    "id": "ui-about",
@@ -138,7 +146,8 @@
     "GitHub/Codex OAuth 登录屏？",
     "崩溃上报 Activity？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 119
   },
   {
    "id": "ui-startup",
@@ -155,7 +164,8 @@
     "启动插件加载屏？",
     "数据恢复 Activity 与性能监控图表？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 120
   },
   {
    "id": "appendix-tests-unit-api-core",
@@ -170,7 +180,8 @@
    "questions": [
     "api/core 模块的测试覆盖重点？"
    ],
-   "notes": "附录页，非产品代码"
+   "notes": "附录页，非产品代码",
+   "issue": 121
   },
   {
    "id": "appendix-tests-unit-data",
@@ -186,7 +197,8 @@
    "questions": [
     "data 模块的测试覆盖重点？"
    ],
-   "notes": "附录页，非产品代码"
+   "notes": "附录页，非产品代码",
+   "issue": 122
   },
   {
    "id": "appendix-tests-unit-ui-util",
@@ -201,7 +213,8 @@
    "questions": [
     "ui/util 模块的测试覆盖重点？"
    ],
-   "notes": "附录页，非产品代码"
+   "notes": "附录页，非产品代码",
+   "issue": 123
   },
   {
    "id": "appendix-tests-android",
@@ -220,7 +233,8 @@
     "插桩测试的覆盖范围？",
     "assets 模板与本地化三方源码（sherpa 等）的作用？"
    ],
-   "notes": "附录页，非产品代码"
+   "notes": "附录页，非产品代码",
+   "issue": 124
   }
  ],
  "page_count": 14,
