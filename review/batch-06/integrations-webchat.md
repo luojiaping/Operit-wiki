@@ -154,5 +154,5 @@ CORS 全开：`Access-Control-Allow-Origin: *`，允许方法 GET/POST/PATCH/DEL
 - `app/src/main/java/com/ai/assistance/operit/integrations/http/ExternalChatHttpAutoStarter.kt`
 - `app/src/main/java/com/ai/assistance/operit/integrations/http/ExternalChatHttpNetworkInfo.kt`
 - `app/src/main/java/com/ai/assistance/operit/integrations/http/ExternalChatHttpState.kt`
-- 机器可读事实：`integrations-webchat.facts.json`（139 条，引用逐条验真）
+- 机器可读事实：`integrations-webchat.facts.json`（153 条，引用逐条验真）
 - 代码走查：`integrations-webchat.quality.json`

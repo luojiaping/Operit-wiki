@@ -182,4 +182,4 @@ date: 2026-10-01
 
 - 源码版本：Operit @ `dbf71916fae9750cfdc9f9a774f5a0fee56633fb`
 - `services/` 15 文件已全文阅读：`ChatServiceCore.kt`、`ChatServiceUiBridge.kt`、`ServiceLifecycleOwner.kt`、`FloatingChatService.kt`、`UIDebuggerService.kt`、`CloudEmbeddingService.kt`、`TermuxCommandResultService.kt`、`assistant/` 下 3 个、`floating/` 下 3 个、`notification/OperitNotificationListenerService.kt`；相邻 `ui/floating/FloatingMode.kt` 一并阅读
-- 原子事实：`services-system.facts.json`（127 条），代码走查：`services-system.quality.json`（11 条：警告 5 / 建议 6）
+- 原子事实：`services-system.facts.json`（131 条），代码走查：`services-system.quality.json`（11 条：警告 5 / 建议 6）
