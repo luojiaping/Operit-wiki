@@ -638,5 +638,157 @@
   {
     "fact": "getUserRepositories 不传用户名（查当前用户仓库）时必须登录，否则直接返回失败。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/api/GitHubApiService.kt:304"
+  },
+  {
+    "fact": "CodexLoginDialog 在 LaunchedEffect(Unit) 内于 Dispatchers.IO 上调 coordinator.startLogin() 生成登录会话。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:61"
+  },
+  {
+    "fact": "CodexLoginDialog 拿到 authorizationUrl 后用 Intent.ACTION_VIEW + FLAG_ACTIVITY_NEW_TASK 启动系统浏览器。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:64"
+  },
+  {
+    "fact": "CodexLoginDialog 用 withTimeout(remainingMillis) 等待回环服务器的 awaitCallback()，超时则抛 TimeoutCancellationException。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:73"
+  },
+  {
+    "fact": "CodexLoginDialog 等到回调 Uri 后先置 isCompleting=true，进入收尾阶段。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:76"
+  },
+  {
+    "fact": "CodexLoginDialog 调 coordinator.completeLogin(activeSession, callbackUri) 换 token 并返回 CodexAuthState。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:77"
+  },
+  {
+    "fact": "CodexLoginDialog 登录成功弹 codex_login_success Toast（Toast.LENGTH_LONG）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:80"
+  },
+  {
+    "fact": "CodexLoginDialog 登录成功后调 onLoginSuccess(state)，再调 onDismissRequest() 关对话框。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:83"
+  },
+  {
+    "fact": "CodexLoginDialog 的 finally 关闭 callbackServer，并在 NonCancellable 上下文里清空 session。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:98"
+  },
+  {
+    "fact": "CodexLoginDialog 的取消按钮置 cancelRequested=true 并关闭回环服务器。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:106"
+  },
+  {
+    "fact": "CodexLoginDialog 的 onDismissRequest 在 isCompleting 阶段不再触发取消。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:113"
+  },
+  {
+    "fact": "CodexLoginDialog 对话框按 isLaunching 显示 codex_login_starting / codex_login_waiting 文案，配 CircularProgressIndicator 与 OpenInBrowser 图标。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:126"
+  },
+  {
+    "fact": "GitHubLoginMode 为私有枚举，仅含 CHOOSER / EMBEDDED / EXTERNAL 三种。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:50"
+  },
+  {
+    "fact": "GitHubLoginDialog 用 rememberSaveable 保存 loginMode，默认 CHOOSER，先弹登录方式选单。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:61"
+  },
+  {
+    "fact": "GitHubLoginMethodDialog 用 Button（配 Language 图标）提供内嵌登录入口。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:99"
+  },
+  {
+    "fact": "GitHubLoginMethodDialog 用 OutlinedButton（配 OpenInBrowser 图标）提供外部浏览器登录入口。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:108"
+  },
+  {
+    "fact": "GitHubEmbeddedLoginDialog 用 coordinator.startEmbeddedLogin() 开启 broker 事务，拿到 GitHubOAuthBrokerStartResponse。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:133"
+  },
+  {
+    "fact": "内嵌登录事务未就绪时显示加载框，关闭时调 coordinator.cancelLogin()。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:151"
+  },
+  {
+    "fact": "GitHubEmbeddedLoginDialog 用 BrowserCallbackDialog（ui.common.browser 包）加载 authorizationUrl，传入 completionRedirectUri 与 expiresAt。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:181"
+  },
+  {
+    "fact": "内嵌登录的 onCompletion 调 coordinator.completeLogin(completionUri) 完成登录。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:188"
+  },
+  {
+    "fact": "内嵌登录成功后弹 main_github_login_success(user.login) Toast。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:192"
+  },
+  {
+    "fact": "GitHubExternalLoginDialog 在 Dispatchers.IO 上用 GitHubOAuthLoopbackCallbackServer.open() 打开回环服务器。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:244"
+  },
+  {
+    "fact": "GitHubExternalLoginDialog 用 startLogin(loopbackServer.completionRedirectUri) 开启 broker 事务，再用外部浏览器打开 transaction.authorizationUrl。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:247"
+  },
+  {
+    "fact": "GitHubExternalLoginDialog 用 withTimeout 等待 loopbackServer.awaitCompletion()。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:262"
+  },
+  {
+    "fact": "外部登录回调到达后调 coordinator.completeLogin(completionUri) 拿 user。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:265"
+  },
+  {
+    "fact": "外部登录成功后弹 main_github_login_success(user.login) Toast。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:268"
+  },
+  {
+    "fact": "GitHubExternalLoginDialog 的 finally 关闭回环服务器，并在 NonCancellable 上下文调 coordinator.cancelLogin()。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:296"
+  },
+  {
+    "fact": "GitHubExternalLoginDialog 的取消按钮在 isCompleting 阶段禁用（enabled = !isCompleting）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:336"
+  },
+  {
+    "fact": "外部登录对话框按 isLaunching 显示 github_login_starting / github_login_external_waiting 文案。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:326"
+  },
+  {
+    "fact": "clearGitHubOAuthBrowserSession 在 Dispatchers.Main.immediate 上清除 WebStorage 全部数据。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthBrowserSession.kt:11"
+  },
+  {
+    "fact": "clearGitHubOAuthBrowserSession 调 CookieManager.removeAllCookies 并 flush，仅在 continuation.isActive 时 resume，保证挂起点只恢复一次。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthBrowserSession.kt:16"
+  },
+  {
+    "fact": "GitHubOAuthLoopbackCallbackServer 的 completionRedirectUri 为 http://127.0.0.1:{serverSocket.localPort}/oauth/github/complete。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:15"
+  },
+  {
+    "fact": "GitHubOAuthLoopbackCallbackServer.open() 在 127.0.0.1 上绑定 ServerSocket(0, 1, …)，端口由内核分配。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:110"
+  },
+  {
+    "fact": "open() 要求分配到的端口不小于 MIN_LOOPBACK_PORT（1024），否则关闭并抛异常。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:112"
+  },
+  {
+    "fact": "awaitCompletion() 循环 accept 连接，只接受 GET 且路径恰为 /oauth/github/complete 的请求，把查询串拼回回调 Uri。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:24"
+  },
+  {
+    "fact": "GitHub 回环服务器的请求行读取设置了 5 秒超时（REQUEST_READ_TIMEOUT_MILLIS）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:29"
+  },
+  {
+    "fact": "readCompletionUri 拒绝带 scheme 或 authority 的绝对 URI。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:59"
+  },
+  {
+    "fact": "请求路径与回调路径不一致时 readCompletionUri 返回 null，随后回 404。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:64"
+  },
+  {
+    "fact": "命中回调时回环服务器回 200 与 GitHub login complete. Return to Operit. 页面。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:100"
   }
 ]

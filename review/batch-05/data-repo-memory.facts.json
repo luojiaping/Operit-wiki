@@ -622,5 +622,73 @@
   {
     "fact": "ClassicChatSettingsBar 读取 countPendingAndFailedCandidates() 展示待处理记忆数量。",
     "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/style/input/classic/ClassicChatSettingsBar.kt:267"
+  },
+  {
+    "fact": "MemorySpaceProfileDocumentRepository.getInstance 用 @Volatile 加 synchronized 双重检查创建单例。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:34"
+  },
+  {
+    "fact": "单例构造时保存的是 context.applicationContext（取不到才用原 context），防 Activity 泄漏。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:37"
+  },
+  {
+    "fact": "画像文档的存储目录名为 `memory-space-profiles`，位于 filesDir 下。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:23"
+  },
+  {
+    "fact": "documentFile 要求 memorySpaceId 非空，否则 require 抛错；画像文档路径为 `memory-space-profiles/<memorySpaceId>/user.md`。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:228"
+  },
+  {
+    "fact": "画像文档内容上限 MAX_CONTENT_CHARS = 12_000 字符。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:20"
+  },
+  {
+    "fact": "save 在内容超 12_000 字符时 require 抛 IllegalArgumentException。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:85"
+  },
+  {
+    "fact": "load 在文件不存在时先在写锁内创建空文件，再以 UTF-8 读出全文。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:73"
+  },
+  {
+    "fact": "所有写入走 writeAtomically：用 Android AtomicFile 先 startWrite 写 UTF-8 字节再 finishWrite，失败走 failWrite 并重抛异常。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:299"
+  },
+  {
+    "fact": "saveAutomatic 先读该记忆空间的配置：profileAutoUpdateEnabled 未开或 profileAutoUpdateLocked 已锁定时返回 false 不写入，否则写入并返回 true。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:94"
+  },
+  {
+    "fact": "initialize 用 Mutex 保证只执行一次；schema_version 小于 CURRENT_SCHEMA_VERSION（2）时跑迁移，并用 SharedPreferences commit() 同步写回版本号。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:54"
+  },
+  {
+    "fact": "迁移走三分支：有旧结构化画像元数据走 migrateLegacyStructuredProfiles；有记忆空间元数据走 migratePublishedGlobalDocuments 并为每个空间补空文档；否则也跑旧画像迁移。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:114"
+  },
+  {
+    "fact": "migratePublishedGlobalDocuments 用“归档名是其余空间名列表的子序列”来唯一确定根 user.md 的归属空间。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:167"
+  },
+  {
+    "fact": "根 user.md 归属候选多于 1 个时只记警告并保留源文件，不做迁移。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:175"
+  },
+  {
+    "fact": "旧结构化画像转 Markdown 时生成 `# About me` 标题及 `## Basic information` / `## Personality` / `## Preferred assistant style` 三节。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:256"
+  },
+  {
+    "fact": "画像生日按 `yyyy-MM-dd`（Locale.ROOT）格式化写入。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:274"
+  },
+  {
+    "fact": "parsePublishedArchive 按 `## ` 标题切分归档，但把 `Basic information`、`Personality`、`Preferred assistant style` 三节视为内容而非新画像。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:238"
+  },
+  {
+    "fact": "delete 同时删除该空间的 user.md 文件和整个空间目录。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:106"
   }
 ]

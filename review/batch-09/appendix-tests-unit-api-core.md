@@ -1,7 +1,7 @@
 ---
 title: 单元测试·api/core
 module: 附录
-sources: 56
+sources: 74
 date: 2026-10-01
 issue: 121
 ---
@@ -61,6 +61,12 @@ trim 行为独立 3 个用例：外层空白先去除再补全（`app/src/test/j
 Anthropic 路径：以 `anthropic/` 结尾补 `messages`，已有 `messages` 不变（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleterAnthropicPathTest.kt:9`）。
 
 Provider 特化：OpenAI 通用走 Responses 补全，Anthropic 通用走 messages 补全，Google 带 hash 返回去 hash 裸 URL（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleterProviderSpecificTest.kt:9`）。
+
+`completeEndpoint_keepsFullChatPathUntouched`：已有完整 `/v1/chat/completions` 路径原样返回；非 http(s) 的 `file:///tmp/test` 与非法带空格输入 `" invalid "` 同样不动（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleterDefaultPathTest.kt:8`）。该文件共 4 个用例。
+
+hash bypass 细化 3 个用例：默认、Anthropic、Responses 三种补全下，末尾 `#` 只被去掉，不再触发任何补全（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleterHashControlTest.kt:9`）。
+
+`baseUrlWithCustomPort_completesNormally`：带自定义端口的 `http://localhost:8080` 正常补全，嵌套路径 `/proxy/v1` 也能补；已有自定义路径 `/custom/chat` 保持不变（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleterOpenAiStyleTest.kt:8`）。该文件共 3 个用例。
 
 ### 2. 配置就绪检查（ChatConfigReadiness）
 
@@ -128,6 +134,22 @@ DataStore 迁移测试用 `mutablePreferencesOf` 构造内存偏好验证（`app
 
 MediaLinkParser 拆成 8 个文件：image / media / file / noop / replacement / tag-order 分测（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserTest.kt:10`）。
 
+image-ops（4 个用例）：替换图片链接后前后文本顺序保留（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserImageOpsTest.kt:10`）；多图片 id 按出现顺序提取（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserImageOpsTest.kt:23`）。
+
+`hasImageLinks_ignoresAudioLinks`：`audio` 标签不被误判为图片链接（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserImageOpsTest.kt:19`）。
+
+media-ops（4 个用例）：`replaceMediaLinks_skipsErrorIds`——id 为 `error` 的媒体标签替换结果为空字符串（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserMediaOpsTest.kt:10`）。
+
+`hasMediaLinks_detectsVideoLink`：`video` 被计入媒体链接（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserMediaOpsTest.kt:19`）。
+
+`hasMediaLinks_ignoresImageLink`：`image` 不被计入媒体链接（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserMediaOpsTest.kt:23`）。
+
+file（1 个用例）：`extractsPdfFilenameAndRemovesFileLink`——解析 `file` 标签的 filename 并做 HTML 实体解码（`report&amp;one.pdf` → `report&one.pdf`），删除标签后前后文本只剩双空格（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserFileTest.kt:8`）。
+
+noop（3 个用例）：纯文本无链接时，提取图片 id、提取标签、替换都原样返回（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserNoopTest.kt:9`）。
+
+replacement（2 个用例）：替换回调后前后非链接文本原样保留；多个不同 id 的图片标签各被替换一次、顺序保留（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserReplacementTest.kt:8`）。
+
 `extractImageLinkIds_supportsAttributesInEitherOrder`：标签属性顺序任意（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParserTagOrderTest.kt:7`）。
 
 `DeepSeek keeps history images readable through user image inputs`：DeepSeek 历史图片经 user image 输入保持可读（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProviderMediaRoleTest.kt:56`）。图片池用临时目录隔离，`@Before` 建、`@After` 删（`app/src/test/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProviderMediaRoleTest.kt:38`）。
@@ -184,6 +206,16 @@ MediaLinkParser 拆成 8 个文件：image / media / file / noop / replacement /
 
 `clearVariables resets state`：清变量后 PI 恢复（`app/src/test/java/com/ai/assistance/operit/core/tools/calculator/CalculatorTest.kt:50`）。
 
+ExpressionNodeEdgeCaseTest（27 个用例）：`binary operation with NaN left`——NaN 参与二元运算仍为 NaN（`app/src/test/java/com/ai/assistance/operit/core/tools/calculator/ExpressionNodeEdgeCaseTest.kt:23`）。
+
+`array access with negative index returns NaN`：数组负索引访问返回 NaN（`app/src/test/java/com/ai/assistance/operit/core/tools/calculator/ExpressionNodeEdgeCaseTest.kt:72`）。
+
+`function call node with unknown function throws`：调用未知函数抛 `IllegalArgumentException`（`app/src/test/java/com/ai/assistance/operit/core/tools/calculator/ExpressionNodeEdgeCaseTest.kt:102`）。
+
+`variable node with PI constant`：VariableNode("PI") 求值为 Math.PI（`app/src/test/java/com/ai/assistance/operit/core/tools/calculator/ExpressionNodeEdgeCaseTest.kt:89`）。
+
+模板字符串 "prefix42.0" 不可解析为 double 时求值为 NaN（`app/src/test/java/com/ai/assistance/operit/core/tools/calculator/ExpressionNodeEdgeCaseTest.kt:77`）。
+
 ### 10. condition 条件求值（7 个文件）
 
 `emptyExpression_defaultsToTrue`：空表达式默认 true（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorTest.kt:11`）。
@@ -193,6 +225,18 @@ MediaLinkParser 拆成 8 个文件：image / media / file / noop / replacement /
 `loneOperator_returnsFalse`：解析失败返回 false 而非抛异常（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorParseFailureTest.kt:10`）。
 
 `nullIsFalsyInBooleanContext`：null 在布尔上下文为 falsy（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorBooleanLogicTest.kt:21`）。
+
+collection（4 个用例）：`in` 运算符支持 Kotlin 数组与字面集合；空集合为 falsy；集合缺值时 `in` 返回 false（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorCollectionTest.kt:9`）。
+
+comparison（4 个用例）：数值 `<=` / `>` 与字符串 `==` / `!=` 的正反断言（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorComparisonTest.kt:9`）。
+
+identifier（3 个用例）：非空字符串标识符为 truthy，空字符串为 falsy，非零数值为 truthy（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorIdentifierTest.kt:9`）。
+
+literal-truthiness（3 个用例）：字面量 0 为 falsy（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorLiteralTruthinessTest.kt:9`）。
+
+`nullLiteral_isFalsy`：null 字面量为 falsy（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorLiteralTruthinessTest.kt:17`）。
+
+`nonZeroNumber_isTruthy`：字面量 1 为 truthy（`app/src/test/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluatorLiteralTruthinessTest.kt:13`）。
 
 ### 11. JS 运行时 / MCP / toolpkg
 
@@ -216,11 +260,13 @@ MediaLinkParser 拆成 8 个文件：image / media / file / noop / replacement /
 
 `encodes an ascii xor marker without readable author data`：marketplace origin 编码为无可读作者数据的 xor marker（`app/src/test/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgMarketOriginCodecTest.kt:10`）。
 
+`buildChatMessageEventPayload contains all required message fields including variant index`：消息钩子发给 toolpkg 的事件 payload 含 chatId、sender、content、tokens、displayMode（序列化为 `"NORMAL"`）、selectedVariantIndex 等全部字段并逐一断言；第二个用例验证持久化后派发给 toolpkg 监听的是物化后的 variant 消息内容，而非占位原消息（`app/src/test/java/com/ai/assistance/operit/plugins/toolpkg/ToolPkgChatMessageHookBridgeTest.kt:12`）。
+
 ### 12. core/chat 与 core/config
 
 `formatDialogueReviewHeader_usesDefaultHeaderWhenTitleIsBlank`：空标题用默认回顾头（`app/src/test/java/com/ai/assistance/operit/core/chat/AIMessageManagerDialogueReviewTest.kt:8`）。
 
-PromptTurn 6 个文件：
+PromptTurn 共 9 个文件（原 6 + 本次补 3）：
 
 `fromRole_preservesToolName`（`app/src/test/java/com/ai/assistance/operit/core/chat/hooks/PromptTurnConversionTest.kt:8`）
 
@@ -228,7 +274,23 @@ PromptTurn 6 个文件：
 
 `mergeAdjacentTurns_mergesAssistantTurns`（`app/src/test/java/com/ai/assistance/operit/core/chat/hooks/PromptTurnMergeTest.kt:18`）
 
+`appendUserTurnIfMissing_doesNothingForBlankMessage`：空消息不追加轮次（`app/src/test/java/com/ai/assistance/operit/core/chat/hooks/PromptTurnAppendTest.kt:8`）
+
+`mergeAdjacentTurns_mergesUserTurns`：相邻 user 轮内容以换行拼接成一轮（`app/src/test/java/com/ai/assistance/operit/core/chat/hooks/PromptTurnListOpsTest.kt:20`）
+
+`mergeAdjacentTurns_mergesMetadataMaps`：合并相邻轮时两轮 metadata 字典按键合并（`app/src/test/java/com/ai/assistance/operit/core/chat/hooks/PromptTurnMetadataMergeTest.kt:16`）
+
 `buildSummarySystemPrompt_withoutOverridesKeepsLegacyPrompt`：无覆盖保持 legacy 摘要提示词（`app/src/test/java/com/ai/assistance/operit/core/config/FunctionalPromptsSummaryTest.kt:12`）。
+
+### 13. services/core 消息处理
+
+`completeInterruptedMessage_appliesTurnSnapshotAndCompletesPartialContent`：中断的流式消息收尾测试（`app/src/test/java/com/ai/assistance/operit/services/core/MessageProcessingDelegateTest.kt:10`）。
+
+用 TurnCancellationSnapshot 的 inputTokens / outputTokens / sentAt 等快照字段收尾（`app/src/test/java/com/ai/assistance/operit/services/core/MessageProcessingDelegateTest.kt:21`）。
+
+finalContent 成为最终内容（`app/src/test/java/com/ai/assistance/operit/services/core/MessageProcessingDelegateTest.kt:33`）。
+
+收尾后 `contentStream` 置 null（`app/src/test/java/com/ai/assistance/operit/services/core/MessageProcessingDelegateTest.kt:39`）。
 
 ## 关键符号
 

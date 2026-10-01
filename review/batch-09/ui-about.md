@@ -1,14 +1,14 @@
 ---
 title: 关于/更新/帮助界面
 module: UI / 关于与更新
-sources: 6
+sources: 7
 date: 2026-10-01
 issue: 119
 ---
 
 # ui-about（关于/更新/帮助界面）
 
-> 种子：`app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/`（AboutScreen.kt、OpenSourceLicenses.kt）+ `ui/features/update/screens/`（UpdateScreen.kt、UpdateViewModel.kt、UpdateInfo.kt）+ `ui/features/help/screens/HelpScreen.kt`，共 6 文件、约 2,536 行 @ `dbf71916`
+> 种子：`app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/`（AboutScreen.kt、OpenSourceLicenses.kt）+ `ui/features/update/screens/`（UpdateScreen.kt、UpdateViewModel.kt、UpdateInfo.kt）+ `ui/features/help/screens/HelpScreen.kt` + `ui/features/agreement/screens/AgreementScreen.kt`（186 行，首次启动用户协议页），共 7 文件、约 2,722 行 @ `dbf71916`
 
 > 范围说明：本 commit 的 `ui/features/settings/screens/` 下不存在 LoginScreen.kt、FeedbackScreen.kt、ChangelogScreen.kt、PrivacyScreen.kt（git ls-tree 查无此文件），登录入口由 GitHubAccountScreen 等其他页面承担，不在本页范围内。
 
@@ -24,7 +24,7 @@ issue: 119
 
 ## AI 速览
 
-- **核心符号清单**：AboutScreen、UpdateDialog、PatchUpdateProgressDialog、FullUpdateProgressDialog、FullUpdateMethodDialog、DownloadSourceDialog、PatchDownloadSourceDialog、PatchUpdatePhase、PatchUpdateDialogState、FullUpdatePhase、FullUpdateDialogState、HtmlText、SettingsGroup、SettingsRow、InfoItem、UpdateScreen、UpdateViewModel、UpdateUiState、UpdateInfo、UpdateCard、UpdateList、ErrorState、HelpScreen、LicenseDialog、OpenSourceLibrary、reducePatchUpdateState、reduceFullUpdateState、pickBestMirrorKey、mapPatchStage、formatBytes、formatSpeed、viewModelFactory。
+- **核心符号清单**：AboutScreen、UpdateDialog、PatchUpdateProgressDialog、FullUpdateProgressDialog、FullUpdateMethodDialog、DownloadSourceDialog、PatchDownloadSourceDialog、PatchUpdatePhase、PatchUpdateDialogState、FullUpdatePhase、FullUpdateDialogState、HtmlText、SettingsGroup、SettingsRow、InfoItem、UpdateScreen、UpdateViewModel、UpdateUiState、UpdateInfo、UpdateCard、UpdateList、ErrorState、HelpScreen、LicenseDialog、OpenSourceLibrary、reducePatchUpdateState、reduceFullUpdateState、pickBestMirrorKey、mapPatchStage、formatBytes、formatSpeed、viewModelFactory、AgreementScreen。
 - **主入口**：AboutScreen(navigateToUpdateHistory)；更新历史独立入口 UpdateScreen(onNavigateToThemeSettings)；帮助独立入口 HelpScreen(onBackPressed)。
 - **数据流向一句话**：用户点"检查更新" → UpdateManager.checkForUpdates(appVersion) → LiveData<UpdateStatus> 变化 → AboutScreen 的 observer 更新 updateStatus → 自动弹窗 → 用户选下载方式 → PatchUpdateInstaller/FullUpdateInstaller 下载并回调 ProgressEvent → reducer 折叠为对话框状态 → 下载完成调 installApk 调起系统安装。
 
@@ -115,6 +115,15 @@ HelpScreen 全屏 WebView 打开 `https://operit.app`（`app/src/main/java/com/a
 
 HtmlText 是关于页复用的小组件：AndroidView 嵌入原生 TextView 渲染 HTML 并支持链接点击（`app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/AboutScreen.kt:107`）。
 
+### 8. 首次启动的用户协议页
+
+打开 App 第一次会先看到用户协议页（`AgreementScreen`），不是一上来就能点"同意"（`app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt:24`）。
+按钮要等 5 秒强制阅读倒计时走完才亮，倒计时里按钮上直接显示剩余秒数：`repeat(5)` 每次 `delay(1000)` 递减（`app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt:31`），这 5 秒是写死的、不可配置。
+
+协议内容分三块：先是一段"人话版"（大白话讲要点），然后是"严肃版"（正式条款，HTML 格式、用原生 TextView 渲染以支持富文本）（`app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt:131`），最后是免责声明。
+页面顶部还标了协议版本号（`AgreementPreferences.CURRENT_AGREEMENT_VERSION`）（`app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt:67`）。
+点同意后只调 `onAgreementAccepted` 回调——记版本号、下次不再弹这些事由调用方处理，本页不管（`app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt:24`）。
+
 ## 关键符号
 
 | 符号 | 职责 | 引用 |
@@ -141,6 +150,7 @@ HtmlText 是关于页复用的小组件：AndroidView 嵌入原生 TextView 渲�
 | HelpScreen | 全屏 WebView 打开官网帮助页 | `app/src/main/java/com/ai/assistance/operit/ui/features/help/screens/HelpScreen.kt:24` |
 | LicenseDialog | 开源许可清单对话框 | `app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/OpenSourceLicenses.kt:139` |
 | OpenSourceLibrary | 开源库条目数据类 | `app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/OpenSourceLicenses.kt:27` |
+| AgreementScreen | 首次启动用户协议页：5 秒强制阅读倒计时、人话版/严肃版（HTML）/免责声明三段正文 | `app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt:24` |
 
 ## 调用链
 
@@ -167,5 +177,6 @@ HtmlText 是关于页复用的小组件：AndroidView 嵌入原生 TextView 渲�
 - `app/src/main/java/com/ai/assistance/operit/ui/features/update/screens/UpdateViewModel.kt`（104 行）：GitHub releases 拉取与转换
 - `app/src/main/java/com/ai/assistance/operit/ui/features/update/screens/UpdateInfo.kt`（13 行）：版本条目数据模型
 - `app/src/main/java/com/ai/assistance/operit/ui/features/help/screens/HelpScreen.kt`（113 行）：官网 WebView 帮助页
+- `app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt`（186 行）：首次启动用户协议页、5 秒强制阅读倒计时、三段式协议正文
 
 关联数据层（非种子，供追溯）：`data/updates/UpdateManager`、`data/updates/PatchUpdateInstaller`、`data/updates/FullUpdateInstaller`、`util/GithubReleaseUtil`、`data/api/GitHubApiService`。

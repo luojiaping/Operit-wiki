@@ -70,5 +70,25 @@
     "file": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt",
     "line": 662,
     "severity": "suggestion"
+  },
+  {
+    "title": "BOM 头的 JSON 文件会被误判为纯文本",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt",
+    "line": 34,
+    "severity": "suggestion",
+    "category": "边界条件",
+    "detail": "detectFormat 只对内容做 trim()，而 Kotlin 的 trim() 不去除 UTF-8 BOM（U+FEFF）。带 BOM 的 JSON 文件 `startsWith(\"{\")` 为 false，会一路落到 PLAIN_TEXT，而不是走 JSON 检测。",
+    "evidence": "        val trimmedContent = content.trim()\n\n        // 检测 Markdown 格式\n        if (isMarkdownFormat(trimmedContent)) {",
+    "confidence": "medium"
+  },
+  {
+    "title": "CSV 头检测用子串匹配，英文散文可能被误判",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt",
+    "line": 158,
+    "severity": "suggestion",
+    "category": "启发式误判",
+    "detail": "isCsvFormat 用 `firstLine.contains(\"role\")` 这类子串匹配判 CSV 头；一段含逗号较多的英文文本（如 \"the role of, ...\"）首行恰好含 role/content 等词时，可能被误判为 CSV。",
+    "evidence": "        val firstLine = lines.first().lowercase()\n        val hasCsvHeaders = firstLine.contains(\"timestamp\") ||\n                           firstLine.contains(\"role\") ||\n                           firstLine.contains(\"content\") ||\n                           firstLine.contains(\"sender\")",
+    "confidence": "medium"
   }
 ]

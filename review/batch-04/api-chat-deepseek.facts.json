@@ -290,5 +290,25 @@
   {
     "fact": "escapeXmlAttribute 转义 & < > \" ' 五个字符",
     "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:1447"
+  },
+  {
+    "fact": "DEEPSEEK 供应商的默认端点是 https://api.deepseek.com/v1/chat/completions（Chat Completions 协议）",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt:75"
+  },
+  {
+    "fact": "DEEPSEEK 在配置页只提供两个端点选项：Chat Completions（…/v1/chat/completions）和 Responses（…/v1/responses）",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt:76"
+  },
+  {
+    "fact": "Responses 端点选项为 https://api.deepseek.com/v1/responses，走 Responses 协议并支持联网搜索等 responses 专属能力",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt:82"
+  },
+  {
+    "fact": "create() 按 DeepseekRouting.protocolFor(config.apiEndpoint) 的结果选择实例化 DeepseekProvider 或 DeepseekResponsesProvider，端点选错则协议走错",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:65"
+  },
+  {
+    "fact": "protocolFor 先规范化 endpoint（trim、去 # 后缀、截掉 query 和 fragment、去尾部斜杠），以 /responses 结尾（忽略大小写）走 RESPONSES，否则走 CHAT_COMPLETIONS",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:572"
   }
 ]

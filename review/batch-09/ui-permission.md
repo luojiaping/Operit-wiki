@@ -1,14 +1,14 @@
 ---
 title: 权限与 Token 配置界面
 module: UI / 权限与 Token
-sources: 7
+sources: 11
 date: 2026-10-01
 issue: 118
 ---
 
 # ui-permission（权限与 Token 配置界面）
 
-> 种子：`app/src/main/java/com/ai/assistance/operit/ui/features/permission/`（2 个 Kotlin 文件）+ `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ToolPermissionSettingsScreen.kt` + `app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/apppermissions/AppPermissionsScreen.kt` + `app/src/main/java/com/ai/assistance/operit/ui/features/token/TokenConfigWebViewScreen.kt`，共 5 个种子文件、约 3,400 行 @ `dbf71916`；路由挂载另引 `app/src/main/java/com/ai/assistance/operit/ui/main/screens/OperitScreens.kt` 与 `app/src/main/java/com/ai/assistance/operit/ui/main/MainActivity.kt`
+> 种子：`app/src/main/java/com/ai/assistance/operit/ui/features/permission/`（2 个 Kotlin 文件）+ `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ToolPermissionSettingsScreen.kt` + `app/src/main/java/com/ai/assistance/operit/ui/features/toolbox/screens/apppermissions/AppPermissionsScreen.kt` + `app/src/main/java/com/ai/assistance/operit/ui/features/token/TokenConfigWebViewScreen.kt` + `app/src/main/java/com/ai/assistance/operit/ui/permissions/`（4 个 Kotlin 文件：PermissionRequestOverlay.kt、ToolPermissionCheckResult.kt、ToolPermissionDialog.kt、ToolPermissionSystem.kt，约 810 行），共 9 个种子文件、约 4,200 行 @ `dbf71916`；路由挂载另引 `app/src/main/java/com/ai/assistance/operit/ui/main/screens/OperitScreens.kt` 与 `app/src/main/java/com/ai/assistance/operit/ui/main/MainActivity.kt`
 
 > 覆盖五块界面：首次启动的权限引导向导（系统权限申请 + AI 能力权限级别选择）、设置里的工具权限总开关（全局主开关 + 按工具逐个允许/禁止）、工具箱里的第三方应用权限管理（查任意 App 的权限并开关）、Token/签到页的 WebView 承载与 URL 配置。
 
@@ -20,7 +20,7 @@ Token 配置界面（TokenConfigWebViewScreen）是一个可配 URL 的 WebView 
 
 ## AI 速览
 
-- **核心符号清单**：PermissionGuideScreen、PermissionGuideViewModel、PermissionGuideViewModel.Step、PermissionGuideViewModel.UiState、IntroductionPage、WelcomePage、BasicPermissionsPage、PermissionItem、PermissionLevelPage、PermissionLevelItem、ToolPermissionSettingsScreen、PermissionGroup、ToolChip、ToolSelectorDialog、CompactPermissionLevelSelector、handlePermissionChange、AppPermissionsScreen、AppInfo、PermissionInfo、togglePermission、resetAppPermissions、loadInstalledApps、getAppPermissions、extractSectionContent、extractPermissionsFromSection、TokenConfigWebViewScreen、UrlConfigManager、UrlConfigDialog、WebViewConfig、navigateTo。
+- **核心符号清单**：PermissionGuideScreen、PermissionGuideViewModel、PermissionGuideViewModel.Step、PermissionGuideViewModel.UiState、IntroductionPage、WelcomePage、BasicPermissionsPage、PermissionItem、PermissionLevelPage、PermissionLevelItem、ToolPermissionSettingsScreen、PermissionGroup、ToolChip、ToolSelectorDialog、CompactPermissionLevelSelector、handlePermissionChange、AppPermissionsScreen、AppInfo、PermissionInfo、togglePermission、resetAppPermissions、loadInstalledApps、getAppPermissions、extractSectionContent、extractPermissionsFromSection、TokenConfigWebViewScreen、UrlConfigManager、UrlConfigDialog、WebViewConfig、navigateTo、ToolPermissionSystem、PermissionLevel、PermissionRequestOverlay、PermissionRequestResult、ToolPermissionCheckResult、PermissionRequestContent、PermissionDetails。
 - **主入口**：MainActivity 引导流程 → PermissionGuideScreen（onComplete 回调）；Screen.TokenConfig → TokenConfigWebViewScreen；Screen.ToolPermissions → ToolPermissionSettingsScreen。
 - **数据流向一句话**：用户操作界面 → ViewModel/ToolPermissionSystem/UrlConfigManager 更新状态或落盘 → 界面 collectAsState 重组；第三方 App 权限走 `dumpsys/pm` shell 命令直改系统。
 
@@ -146,6 +146,25 @@ ToolPermissionSettingsScreen 挂在 Screen.ToolPermissions 的 Content，navigat
 
 PermissionGuideScreen 在 MainActivity 引导流程中展示（`app/src/main/java/com/ai/assistance/operit/ui/main/MainActivity.kt:620`）。
 
+### 8. 工具执行确认：悬浮窗弹窗
+
+AI 每次要调用工具之前，先过一遍"权限门禁"——这就是 `ToolPermissionSystem` 管的事：双重检查锁单例，拿 applicationContext 防泄漏（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:55`）。
+权限数据存在 DataStore 文件 `tool_permissions` 里（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:29`）。
+判断逻辑很简单：先看这个工具有没有单独设置过（键名 `tool_permission_<工具名>`）（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:78`）。
+没有就看全局主开关（`master_switch`，默认 ASK 每次询问）（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:62`）。
+三档：`ALLOW` 直接放行、`ASK` 弹窗问你、`FORBID` 直接拒绝（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:34`）。
+`PermissionLevel.fromString` 还把历史值 `CAUTION` 归一成 `ASK`，未知字符串也默认 `ASK`（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:43`）。
+
+ASK 时怎么问你？它在屏幕上盖一个悬浮窗（`PermissionRequestOverlay`）（`app/src/main/java/com/ai/assistance/operit/ui/permissions/PermissionRequestOverlay.kt:332`）。
+那就是你在任何界面上看到的确认卡片：写着 AI 想做什么操作、用的哪个工具，还把这次调用的工具参数一条条列出来（参数名 + 参数值）（`app/src/main/java/com/ai/assistance/operit/ui/permissions/PermissionRequestOverlay.kt:247`）。
+三个选项：拒绝、允许、"总是允许"——点"总是允许"会把这个工具永久记成 `ALLOW` 存进 DataStore（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:273`）。
+弹窗 60 秒没人理就自动算超时拒绝（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:59`）。
+
+实现上：弹窗是 `TYPE_APPLICATION_OVERLAY` 全屏透明窗口，Android O 以下用 `TYPE_PHONE`（`app/src/main/java/com/ai/assistance/operit/ui/permissions/PermissionRequestOverlay.kt:400`）。
+内容是一个 ComposeView，用 `ServiceLifecycleOwner` 依次发送 `ON_CREATE`/`ON_START`/`ON_RESUME` 假装给了它完整生命周期（`app/src/main/java/com/ai/assistance/operit/ui/permissions/PermissionRequestOverlay.kt:435`）。
+因为走的是悬浮窗通道，所以需要"显示在其他应用上层"权限；没有的话会直接跳系统设置让你开——但注意，原来那次工具调用就直接判失败了，开完权限回来得重新触发一次（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionSystem.kt:243`）。
+门禁的四种结果是 `GRANTED`、`DENIED`、`OVERLAY_PERMISSION_REQUIRED`（缺悬浮窗权限）、`CONFIRMATION_TIMEOUT`（60 秒超时）（`app/src/main/java/com/ai/assistance/operit/ui/permissions/ToolPermissionCheckResult.kt:16`）。
+
 ## 关键符号
 
 | 符号 | 一句话 |
@@ -169,6 +188,13 @@ PermissionGuideScreen 在 MainActivity 引导流程中展示（`app/src/main/jav
 | UrlConfigManager / UrlConfigDialog | URL 配置读写 / 顶栏设置按钮弹出的配置对话框 |
 | WebViewConfig.createWebView | 创建并复用的 WebView 实例 |
 | navigateTo | 切标签：isLoading → loadUrl → 更新选中索引 |
+| ToolPermissionSystem | 工具执行权限门禁单例：DataStore 存档、checkToolPermission 按"逐工具覆盖→全局主开关"判定 |
+| PermissionLevel | ALLOW（自动放行）/ ASK（每次询问）/ FORBID（永不放行）三档，fromString 归一 CAUTION 与未知值 |
+| PermissionRequestOverlay | 悬浮窗确认卡片：TYPE_APPLICATION_OVERLAY 全屏窗口 + ComposeView，拒绝/允许/总是允许三选一 |
+| PermissionRequestResult | 弹窗回执三值枚举：ALLOW、DENY、ALWAYS_ALLOW（实际只在 ToolPermissionDialog.kt 中定义） |
+| ToolPermissionCheckResult | 门禁结果四值枚举：GRANTED、DENIED、OVERLAY_PERMISSION_REQUIRED、CONFIRMATION_TIMEOUT |
+| PermissionRequestContent | 确认卡片 UI：100ms 延迟后淡入缩放，85%×65% 卡片 + 参数明细列表 |
+| PermissionDetails | 卡片内的操作描述/工具名/参数明细展示区 |
 
 ## 调用链
 
@@ -180,6 +206,6 @@ PermissionGuideScreen 在 MainActivity 引导流程中展示（`app/src/main/jav
 
 ## 来源
 
-- 原子事实 124 条（`ui-permission.facts.json`），引用全部实地验真：文件存在、行号在界、断言符号落在引用行 ±5 行内。
-- 代码走查 8 条（`ui-permission.quality.json`）：警告 5（pm 命令字符串拼接、调试占位行可拨动执行 pm、URL 未校验 scheme 即 loadUrl、非白名单协议放行 WebView、保存失败仅打日志）、建议 3（底栏硬编码白色、设置返回不自动重检、标签子串匹配易误命中）。
+- 原子事实 153 条（`ui-permission.facts.json`），引用全部实地验真：文件存在、行号在界、断言符号落在引用行 ±5 行内。
+- 代码走查 11 条（`ui-permission.quality.json`）：警告 6（pm 命令字符串拼接、调试占位行可拨动执行 pm、URL 未校验 scheme 即 loadUrl、非白名单协议放行 WebView、保存失败仅打日志、并发确认请求被静默丢弃致 60 秒超时）、建议 5（底栏硬编码白色、设置返回不自动重检、标签子串匹配易误命中、无悬浮窗权限跳设置后原请求直接失败、返回键无法关闭确认弹窗）。
 - 注：任务给定的 `settings/screens/PermissionScreen.kt` 与 `settings/screens/TokenConfigScreen.kt` 在源码仓库中不存在（find 全仓库无同名文件）；本页实际覆盖同职能文件 `toolbox/screens/apppermissions/AppPermissionsScreen.kt`（应用权限管理）与 `features/token/TokenConfigWebViewScreen.kt`（Token 配置）。

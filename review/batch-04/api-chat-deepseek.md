@@ -1,7 +1,7 @@
 ---
 title: DeepSeek 供应商
 module: app
-sources: app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt
+sources: 2
 date: 2026-10-01
 ---
 
@@ -31,6 +31,19 @@ date: 2026-10-01
 数据流向一句话：内部 `PromptTurn` 历史 → 提取 thinking 标签为 `reasoning_content`（或转成 responses 的 input 数组）→ 发 HTTP 请求 → responses 响应的 output 条目按类型解析回文本/推理/工具调用。
 
 ## 核心机制
+
+### 端点选择（接入必读）
+
+- 在 Operit 里接入 DeepSeek，必须选对端点：使用 DeepSeek 官方提供的两个端点之一，不能拿其它通用 OpenAI 兼容接口冒充——配置页给 `DEEPSEEK` 供应商只准备了这两个选项。
+  `app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt:76`
+- 默认端点是 `https://api.deepseek.com/v1/chat/completions`，走 Chat Completions 协议。
+  `app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt:75`
+- 另一个选项是 `https://api.deepseek.com/v1/responses`，走 Responses 协议（支持联网搜索等 responses 专属能力）。
+  `app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt:82`
+- 选哪个端点，决定了代码走哪条路：`create()` 按 `DeepseekRouting.protocolFor(config.apiEndpoint)` 的结果实例化 `DeepseekProvider` 或 `DeepseekResponsesProvider`，不存在"通用接口自动适配"这回事。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:65`
+- 判定规则只看 endpoint 尾缀：规范化（去空格、去 `#` 后缀、截掉 query/fragment、去尾部斜杠）后以 `/responses` 结尾（忽略大小写）走 Responses，否则一律走 Chat Completions。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:572`
 
 ### 双协议路由
 

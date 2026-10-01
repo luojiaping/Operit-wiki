@@ -1,7 +1,7 @@
 ---
 title: OAuth 与外部 API 客户端
 module: 数据层
-sources: CodexAuthManager.kt, CodexOAuthClient.kt, CodexUsageClient.kt, GitHubApiService.kt, GitHubOAuthBrokerService.kt, MarketStatsApiService.kt
+sources: CodexAuthManager.kt, CodexOAuthClient.kt, CodexUsageClient.kt, GitHubApiService.kt, GitHubOAuthBrokerService.kt, MarketStatsApiService.kt, CodexLoginDialog.kt, GitHubLoginDialog.kt, GitHubOAuthBrowserSession.kt, GitHubOAuthLoopbackCallbackServer.kt
 date: 2026-10-01
 ---
 
@@ -143,6 +143,28 @@ GitHub OAuth 的 client_secret 不能进 App，所以 Operit 自建了一个 bro
 返回的 `rate_limit.primary_window` / `secondary_window` 按 `windowDurationSeconds` 匹配：18000 秒的是 5 小时窗，604800 秒的是 7 天窗；`used_percent` 缺失或为负则丢弃该窗口，超过 100 钳制为 100。
 `app/src/main/java/com/ai/assistance/operit/data/api/CodexUsageClient.kt:70`
 
+### 7. 登录对话框 UI：Codex / GitHub 双入口
+
+上面几节讲的是"怎么换 token"，这一节讲"用户看到的登录框"。Codex 与 GitHub 各有一个 `@Composable` 对话框，把"开浏览器 → 等回调 → 收尾"的流程包成弹窗，登录中显示转圈和两段文案（启动中 / 等待中），取消按钮在收尾阶段自动禁用。
+
+Codex 侧：`CodexLoginDialog` 在 `LaunchedEffect` 里调 `coordinator.startLogin()` 生成会话，用 `ACTION_VIEW` 意图打开系统浏览器，再用 `withTimeout(剩余有效期)` 等回环服务器的回调；回调一到先置 `isCompleting=true`，再 `completeLogin` 换 token，成功弹 Toast 并回调 `onLoginSuccess`。
+`app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt:61`
+
+GitHub 侧：`GitHubLoginDialog` 先让用户选方式——`GitHubLoginMode` 枚举只有 `CHOOSER` / `EMBEDDED` / `EXTERNAL` 三档，`rememberSaveable` 存住，旋转屏幕不丢。
+`app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:50`
+
+内嵌登录（EMBEDDED）用 `BrowserCallbackDialog` 在应用内嵌浏览器完成授权，事务没建好前先显示加载框，关掉即 `cancelLogin()`。
+`app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:181`
+
+外部登录（EXTERNAL）在 IO 线程上 `GitHubOAuthLoopbackCallbackServer.open()` 打开回环服务器，用服务器的 `completionRedirectUri` 开 broker 事务，再用外部浏览器打开授权页；`withTimeout` 等 `awaitCompletion()`，回调到后 `completeLogin` 拿 user，`finally` 里关服务器并 `cancelLogin()`。
+`app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt:244`
+
+GitHub 的回环服务器和 Codex 的那台是两套实现：`GitHubOAuthLoopbackCallbackServer.open()` 在 `127.0.0.1` 上让内核分配随机端口（但要求 ≥1024），回调路径固定为 `/oauth/github/complete`；只认 GET、拒绝带 scheme/authority 的绝对 URI、路径不对回 404，请求行读取 5 秒超时。
+`app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt:110`
+
+`clearGitHubOAuthBrowserSession()` 是个顶层挂起函数：在主线程清掉 WebView 的全部存储数据与所有 cookie（含 `flush()`），供用户重新登录 GitHub 前抹掉上一次的浏览器会话。
+`app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthBrowserSession.kt:11`
+
 `CodexAuthManager.fetchUsage` 拉成功后才把快照（含 accountId 与拉取时间）存进 `CodexUsagePreferences`（明文 DataStore），UI 从 `usageSnapshotFlow` 读。
 `app/src/main/java/com/ai/assistance/operit/data/api/CodexAuthManager.kt:115`
 
@@ -156,6 +178,10 @@ GitHub OAuth 的 client_secret 不能进 App，所以 Operit 自建了一个 bro
 | `CodexPkceCodes` / `CodexJwtClaims` / `CodexOAuthTokenResponse` | PKCE 码对、JWT claims、token 响应的数据类 |
 | `CodexUsageClient` | 查 Codex 5 小时 / 7 天用量窗口 |
 | `CodexOAuthCoordinator` | Codex 登录编排：起回环服务器 → 拼授权 URL → 校验回调 → 落库 |
+| `CodexLoginDialog` | Codex 登录对话框 UI：开浏览器 → 等回调 → 收尾，取消按钮收尾时禁用 |
+| `GitHubLoginDialog` | GitHub 登录对话框 UI：CHOOSER / EMBEDDED / EXTERNAL 三模式选单 |
+| `GitHubOAuthLoopbackCallbackServer` | GitHub 版回环回调服务器：127.0.0.1 随机端口，`/oauth/github/complete` |
+| `clearGitHubOAuthBrowserSession` | 顶层函数：重登 GitHub 前清空 WebView 存储与 cookie |
 | `CodexOAuthLoopbackCallbackServer` | 127.0.0.1:1455 的一次性 OAuth 回调接收器 |
 | `CodexAuthPreferences` | Codex 凭证的加密存储（EncryptedSharedPreferences） |
 | `CodexUsagePreferences` | 用量快照的明文 DataStore |
@@ -192,6 +218,12 @@ GitHub OAuth 的 client_secret 不能进 App，所以 Operit 自建了一个 bro
 2. 处理：`requestDynamic` 先经 `ensureMarketSession`（无缓存时用 GitHub token 换市场会话），请求自动带 `Bearer {marketSession}`。
 3. 输出：返回 `MarketV2Entry`；服务端无条目返回时本地拼 pending 条目；`publishNewVersion` / `withdrawEntry` / 评论接口走同一动态通道。
 
+**链路五：登录对话框 UI**
+
+1. 输入：用户在设置页点"登录 Codex"或"GitHub 登录"。Codex 直接进 `CodexLoginDialog`；GitHub 先弹 `GitHubLoginDialog` 的方式选单（内嵌 / 外部浏览器）。
+2. 处理：对话框在 `LaunchedEffect` 里驱动 coordinator：开回环服务器（Codex 固定 1455 端口，GitHub 随机端口）→ 打开授权 URL → `withTimeout(剩余有效期)` 等待回调；取消按钮把服务器关掉，收尾阶段（`isCompleting=true`）禁用取消。
+3. 输出：回调到达后 `completeLogin` 换 token 落库（走链路一 / 链路三），弹成功 Toast，关对话框。
+
 ## 来源
 
 - `app/src/main/java/com/ai/assistance/operit/data/api/CodexAuthManager.kt`（148 行）：Codex 登录态、token 刷新、登出、用量快照调度
@@ -205,5 +237,9 @@ GitHub OAuth 的 client_secret 不能进 App，所以 Operit 自建了一个 bro
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/GitHubAuthPreferences.kt`：GitHub 凭证与 OAuth 事务存储
 - `app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexOAuthCoordinator.kt`：Codex 登录编排
 - `app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexOAuthLoopbackCallbackServer.kt`：回环回调服务器
+- `app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt`（154 行）：Codex 登录对话框 UI
 - `app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthCoordinator.kt`：GitHub 登录编排
+- `app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubLoginDialog.kt`（344 行）：GitHub 登录对话框 UI（三模式选单）
+- `app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthBrowserSession.kt`（24 行）：重登前清空 WebView 会话
+- `app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthLoopbackCallbackServer.kt`（122 行）：GitHub 版回环回调服务器
 - `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/CodexProvider.kt:20`：OAuth token 充当 API key 的使用点

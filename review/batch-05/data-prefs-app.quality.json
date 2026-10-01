@@ -150,5 +150,25 @@
     "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySearchSettingsPreferences.kt",
     "line": 21,
     "severity": "suggestion"
+  },
+  {
+    "title": "DataStore 被用于多进程场景，官方明确不支持",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt",
+    "line": 17,
+    "severity": "warn",
+    "category": "并发/数据安全",
+    "detail": "initAndroidPermissionPreferences 的文档注释写\"该入口可被多个进程组件重复调用\"，但 DataStore 官方明确不支持多进程访问；各进程各自创建 DataStore 实例读写同一文件，可能写丢失或读到过期数据。跨进程配置应走 ContentProvider/MMkv 等多进程安全机制，或收敛到单进程写。",
+    "evidence": "private val Context.androidPermissionDataStore: DataStore<Preferences> by\n        preferencesDataStore(name = \"android_permission_preferences\")\n\n/** 初始化Android权限偏好管理器。该入口可被多个进程组件重复调用。 */",
+    "confidence": "high"
+  },
+  {
+    "title": "runBlocking 同步读偏好，主线程误调会 ANR",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt",
+    "line": 117,
+    "severity": "suggestion",
+    "category": "线程/性能",
+    "detail": "getPreferredPermissionLevel 等四个同步 getter 用 runBlocking 阻塞等待 Flow.first()；文档虽注明应在非 UI 线程使用，但无编译期约束，调用方散落各处，主线程误调即 ANR。可考虑只暴露 Flow/suspend 接口。",
+    "evidence": "    /**\n     * 获取当前首选的权限级别 这是一个阻塞调用，应在非UI线程使用或谨慎使用\n     * @return 当前配置的首选权限级别，如果未设置则返回null\n     */\n    fun getPreferredPermissionLevel(): AndroidPermissionLevel? {\n        return runBlocking {",
+    "confidence": "medium"
   }
 ]

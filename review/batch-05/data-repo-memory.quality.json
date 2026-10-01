@@ -102,5 +102,25 @@
     "severity": "suggestion",
     "confidence": 0.8,
     "description": "云向量服务的 apiKey 经 MemorySearchSettingsPreferences 明文写入普通 SharedPreferences（\"cloud_embedding_settings_<profileId>\"，MODE_PRIVATE）。app 私有目录、非 world-readable，属常规做法；但敏感密钥未用加密存储，同一仓库内 Codex 凭证已用 EncryptedSharedPreferences，可考虑对齐。"
+  },
+  {
+    "title": "归档切分用 `## ` 正则，用户正文含同形标题会被误切",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt",
+    "line": 238,
+    "severity": "suggestion",
+    "category": "解析鲁棒性",
+    "detail": "parsePublishedArchive 用 `(?m)^## ([^\\r\\n]+)\\r?$` 把归档按二级标题切成多个画像；若某画像正文本身写了 `## ` 开头的行，会被误判为新画像的边界导致切错。只有 Basic information / Personality / Preferred assistant style 三个固定节名被排除。",
+    "evidence": "    private fun parsePublishedArchive(archiveContent: String): List<ArchivedProfileDocument> {\n        val sectionNames =\n            setOf(\"Basic information\", \"Personality\", \"Preferred assistant style\")\n        val headers =\n            Regex(\"(?m)^## ([^\\\\r\\\\n]+)\\\\r?$\")\n                .findAll(archiveContent)\n                .filter { it.groupValues[1] !in sectionNames }\n                .toList()",
+    "confidence": "medium"
+  },
+  {
+    "title": "delete() 删非空目录静默失败",
+    "file": "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt",
+    "line": 106,
+    "severity": "suggestion",
+    "category": "错误处理",
+    "detail": "delete() 先删 user.md 再删整个空间目录；java.io.File.delete() 对非空目录返回 false 且不抛错——若目录里残留其他文件，删除会静默失败，调用方无从得知。",
+    "evidence": "    suspend fun delete(memorySpaceId: String) {\n        initialize()\n        writeMutex.withLock {\n            documentFile(memorySpaceId).delete()\n            profileDirectory(memorySpaceId).delete()\n        }\n    }",
+    "confidence": "high"
   }
 ]

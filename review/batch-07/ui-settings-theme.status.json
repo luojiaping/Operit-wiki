@@ -2,7 +2,7 @@
   "critic": "critic2-verified-PASS-10-anchors-fixed-by-parent",
   "id": "ui-settings-theme",
   "issue": 98,
-  "refs_valid": 164,
+  "refs_valid": 234,
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
   "status": "review-pending"

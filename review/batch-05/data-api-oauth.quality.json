@@ -110,5 +110,13 @@
     "file": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexOAuthCoordinator.kt",
     "line": 25,
     "severity": "suggestion"
+  },
+  {
+    "confidence": "medium",
+    "description": "CodexLoginDialog 声明了 val scope = rememberCoroutineScope() 但全文件从未使用（登录全流程走 LaunchedEffect）。死代码会误导后续维护者以为有协程作用域可用；且 rememberCoroutineScope 的导入也可一并清理。",
+    "evidence": "    val coordinator = remember { CodexOAuthCoordinator(context) }\n    val scope = rememberCoroutineScope()\n    var session by remember { mutableStateOf<CodexOAuthLoginSession?>(null) }",
+    "file": "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt",
+    "line": 51,
+    "severity": "suggestion"
   }
 ]

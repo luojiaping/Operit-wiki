@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 10:48 UTC",
+  "updated": "2026-10-01 11:09 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -2548,7 +2548,7 @@
       "batch": "batch-09",
       "title": "插桩测试、模板与本地化",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 124,
       "issue_title": "[评审] 插桩测试、模板与本地化",
       "md": "review/batch-09/appendix-tests-android.md",
@@ -2561,14 +2561,14 @@
       "refs_valid": 174,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/appendix-tests-unit-api-core",
       "batch": "batch-09",
       "title": "单元测试·api/core",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 121,
       "issue_title": "[评审] 单元测试·api/core",
       "md": "review/batch-09/appendix-tests-unit-api-core.md",
@@ -2579,14 +2579,14 @@
       "refs_valid": 89,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/appendix-tests-unit-data",
       "batch": "batch-09",
       "title": "单元测试·data（测试覆盖附录）",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 122,
       "issue_title": "[评审] 单元测试·data（测试覆盖附录）",
       "md": "review/batch-09/appendix-tests-unit-data.md",
@@ -2606,14 +2606,14 @@
       "refs_valid": 144,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/appendix-tests-unit-ui-util",
       "batch": "batch-09",
       "title": "单元测试·ui/util",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 123,
       "issue_title": "[评审] 单元测试·ui/util",
       "md": "review/batch-09/appendix-tests-unit-ui-util.md",
@@ -2624,14 +2624,14 @@
       "refs_valid": 149,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-about",
       "batch": "batch-09",
       "title": "关于/更新/帮助界面",
       "module": "UI / 关于与更新",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 119,
       "issue_title": "[评审] 关于/更新/帮助界面",
       "md": "review/batch-09/ui-about.md",
@@ -2649,14 +2649,14 @@
       "refs_valid": 118,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-assistant",
       "batch": "batch-09",
       "title": "助手配置界面",
       "module": "UI / 助手配置",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 116,
       "issue_title": "[评审] 助手配置界面",
       "md": "review/batch-09/ui-assistant.md",
@@ -2675,14 +2675,14 @@
       "refs_valid": 143,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-demo",
       "batch": "batch-09",
       "title": "权限引导与演示界面",
       "module": "UI / 权限与演示",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 117,
       "issue_title": "[评审] 权限引导与演示界面",
       "md": "review/batch-09/ui-demo.md",
@@ -2704,14 +2704,14 @@
       "refs_valid": 160,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-floating",
       "batch": "batch-09",
       "title": "悬浮窗界面",
       "module": "UI / 悬浮窗",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 111,
       "issue_title": "[评审] 悬浮窗界面",
       "md": "review/batch-09/ui-floating.md",
@@ -2735,14 +2735,14 @@
       "refs_valid": 141,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-memory",
       "batch": "batch-09",
       "title": "记忆与知识库界面",
       "module": "UI / 记忆",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 112,
       "issue_title": "[评审] 记忆与知识库界面",
       "md": "review/batch-09/ui-memory.md",
@@ -2766,14 +2766,14 @@
       "refs_valid": 210,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-permission",
       "batch": "batch-09",
       "title": "权限与 Token 配置界面",
       "module": "UI / 权限与 Token",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 118,
       "issue_title": "[评审] 权限与 Token 配置界面",
       "md": "review/batch-09/ui-permission.md",
@@ -2789,14 +2789,14 @@
       "refs_valid": 124,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-startup",
       "batch": "batch-09",
       "title": "启动/恢复/性能界面",
       "module": "UI / 启动与恢复",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 120,
       "issue_title": "[评审] 启动/恢复/性能界面",
       "md": "review/batch-09/ui-startup.md",
@@ -2815,14 +2815,14 @@
       "refs_valid": 160,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-tokenstats",
       "batch": "batch-09",
       "title": "Token 用量统计界面",
       "module": "UI / 统计",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 113,
       "issue_title": "[评审] Token 用量统计界面",
       "md": "review/batch-09/ui-tokenstats.md",
@@ -2843,14 +2843,14 @@
       "refs_valid": 181,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-websession",
       "batch": "batch-09",
       "title": "内置浏览器界面",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 115,
       "issue_title": "[评审] 内置浏览器界面",
       "md": "review/batch-09/ui-websession.md",
@@ -2874,14 +2874,14 @@
       "refs_valid": 111,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-09/ui-workflow",
       "batch": "batch-09",
       "title": "工作流界面",
       "module": "UI / 工作流",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 114,
       "issue_title": "[评审] 工作流界面",
       "md": "review/batch-09/ui-workflow.md",
@@ -2901,7 +2901,7 @@
       "refs_valid": 169,
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     }
   ]
 }

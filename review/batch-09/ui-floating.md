@@ -1,14 +1,14 @@
 ---
 title: 悬浮窗界面
 module: UI / 悬浮窗
-sources: 28
+sources: 29
 date: 2026-10-01
 issue: 111
 ---
 
 # ui-floating（悬浮窗界面）
 
-> 种子：`app/src/main/java/com/ai/assistance/operit/ui/floating/`（28 个 Kotlin 文件、8,093 行；`ui/pet/AvatarEmotionManager.kt` 按大纲排除，avatar 相关）@ `dbf71916`
+> 种子：`app/src/main/java/com/ai/assistance/operit/ui/floating/`（28 个 Kotlin 文件、8,093 行）+ `ui/pet/AvatarEmotionManager.kt`（108 行，悬浮宠物表情推理，本轮补写，原按大纲排除）@ `dbf71916`
 
 > 覆盖 Operit 悬浮窗的六种形态：窗口聊天（可拖动缩放）、聊天球、语音球、全屏语音对话、结果气泡、屏幕圈选 OCR；以及共享状态容器、语音识别/TTS 交互、独立主题。
 
@@ -27,7 +27,7 @@ issue: 111
 
 ## AI 速览
 
-- **核心符号清单**：FloatingMode、FloatingChatWindow、FloatContext、rememberFloatContext、FloatingChatBallMode、FloatingVoiceBallMode、FloatingResultDisplay、SiriBall、BallParticles、SpeechInteractionManager、FloatingFullscreenMode、FloatingFullscreenModeViewModel、XmlTextProcessor、BottomControlBar、MessageDisplay、EditPanel、WaveVisualizerSection、FloatingChatWindowMode、FloatingChatWindowModeViewModel、FloatingChatWindowInputControls、FloatingAttachmentPanel、ResizeEdge、FloatingScreenOcrScreen、FloatingWindowTheme。
+- **核心符号清单**：FloatingMode、FloatingChatWindow、FloatContext、rememberFloatContext、FloatingChatBallMode、FloatingVoiceBallMode、FloatingResultDisplay、SiriBall、BallParticles、SpeechInteractionManager、FloatingFullscreenMode、FloatingFullscreenModeViewModel、XmlTextProcessor、BottomControlBar、MessageDisplay、EditPanel、WaveVisualizerSection、FloatingChatWindowMode、FloatingChatWindowModeViewModel、FloatingChatWindowInputControls、FloatingAttachmentPanel、ResizeEdge、FloatingScreenOcrScreen、FloatingWindowTheme、AvatarEmotionManager、analyzeEmotion、inferEmotionFromText、extractMoodTagValue、stripXmlLikeTags。
 - **主入口**：FloatingChatWindow() → AnimatedContent 按 currentMode 分发 → 六种形态 composable。
 - **数据流向一句话**：用户手势/语音输入 → 各形态 ViewModel 或 FloatContext 回调（onSendMessage/onModeChange）→ chatService 的 ChatCore 处理 → inputProcessingState/messages 回流 → Compose 重组刷新界面。
 
@@ -245,6 +245,15 @@ AI 处理中时发送按钮变为取消按钮，点击调用 `onCancelMessage` �
 
 主色为 Purple40 `0xFF6650a4`，与主应用默认主色匹配；Typography 默认比主应用小一号（如 bodyLarge 14sp）（`app/src/main/java/com/ai/assistance/operit/ui/floating/FloatingWindowTheme.kt:27`）。
 
+### 11. 悬浮宠物的表情推理
+
+悬浮宠物（小助手形象）会根据 AI 回复的内容"变脸"，管这事的是 `AvatarEmotionManager`（单例，逻辑从 PetOverlayService 迁过来）（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:11`）。
+它先看 AI 回复里有没有 `<mood>` 标签——AI 可以主动写 `<mood>开心</mood>` 来指定表情，有就按标签来：取最后一个标签，经 `AvatarMoodTypes.normalizeKey` 规范化再转表情（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:40`）。
+没有就退到关键词匹配：`inferEmotionFromText` 把文本转小写后做子串匹配，"开心""太好了"😊 之类判开心，"生气""讨厌"😡 之类判生气，"难过""哭"😭 判难过，"害羞""///" 判害羞，都没命中就是默认表情（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:17`）。
+
+注意一个设计局限：`AvatarEmotion` 枚举里根本没有"愤怒"这一档，所以"生气"被近似成"难过"（`SAD`）显示（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:29`）。
+另外它还有个 `stripXmlLikeTags` 工具函数，负责在把 AI 回复展示给用户之前，把 `<mood>` 这类标记标签清掉：成对标签循环替换最多 5 轮、自闭合、残余三步清理（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:84`）。
+
 ## 关键符号
 
 - `FloatingMode` —— 悬浮窗六种形态枚举（`app/src/main/java/com/ai/assistance/operit/ui/floating/FloatingMode.kt:4`）
@@ -272,6 +281,11 @@ AI 处理中时发送按钮变为取消按钮，点击调用 `onCancelMessage` �
 - `FloatingScreenOcrMode` —— 圈选 OCR 转发入口（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/screenocr/FloatingScreenOcrMode.kt:8`）
 - `FloatingScreenOcrScreen` —— 圈选 OCR 实现：截屏/圈选/识别/回填附件（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/screenocr/screen/FloatingScreenOcrScreen.kt:278`）
 - `FloatingWindowTheme` —— 悬浮窗独立静态主题（`app/src/main/java/com/ai/assistance/operit/ui/floating/FloatingWindowTheme.kt:18`）
+- `AvatarEmotionManager` —— 悬浮宠物表情推理单例：mood 标签优先、关键词匹配回退（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:11`）
+- `analyzeEmotion` —— 综合分析文本返回表情：先解析 `<mood>` 标签，失败回退关键词推理（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:61`）
+- `inferEmotionFromText` —— 中文关键词+emoji 子串匹配：开心→HAPPY、生气/难过→SAD、害羞→CONFUSED（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:17`）
+- `extractMoodTagValue` —— 取最后一个 `<mood>` 标签并经 normalizeKey 规范化（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:40`）
+- `stripXmlLikeTags` —— 展示前清理 XML 标记标签：成对/自闭合/残余三步，最多 5 层嵌套（`app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt:84`）
 
 ## 调用链
 
@@ -313,3 +327,4 @@ AI 处理中时发送按钮变为取消按钮，点击调用 `onCancelMessage` �
 - `app/src/main/java/com/ai/assistance/operit/ui/floating/ui/window/models/ChatModels.kt`（19 行）：ResizeEdge 枚举
 - `app/src/main/java/com/ai/assistance/operit/ui/floating/ui/screenocr/FloatingScreenOcrMode.kt`（10 行）：圈选 OCR 转发入口
 - `app/src/main/java/com/ai/assistance/operit/ui/floating/ui/screenocr/screen/FloatingScreenOcrScreen.kt`（883 行）：截屏、圈选、OCR 识别、附件回填
+- `app/src/main/java/com/ai/assistance/operit/ui/floating/ui/pet/AvatarEmotionManager.kt`（108 行）：悬浮宠物表情推理、mood 标签解析、XML 标签清理

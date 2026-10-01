@@ -2,12 +2,12 @@
   "critic": "",
   "id": "ui-startup",
   "issue": 120,
-  "refs_valid": 160,
+  "refs_valid": 174,
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "approved",
-  "approved_by_comment_id": 5929887670,
-  "approved_by": "luojiaping",
-  "approved_at": "2026-10-01 11:09 UTC",
+  "status": "review-pending",
+  "approved_by_comment_id": "",
+  "approved_by": "",
+  "approved_at": "",
   "updated": "2026-10-01"
 }
