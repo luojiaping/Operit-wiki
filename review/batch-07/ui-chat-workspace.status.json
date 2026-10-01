@@ -1,0 +1,9 @@
+{
+  "critic": "critic2-verified-PASS-5-anchors-fixed-by-parent",
+  "id": "ui-chat-workspace",
+  "issue": 95,
+  "refs_valid": 211,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending"
+}

@@ -14,7 +14,9 @@
     "为何本地化 LazyColumn 源码（魔改点）？",
     "聊天列表的性能优化？"
    ],
-   "notes": "本地化的 androidx LazyColumn 源码，抽取时聚焦\"魔改点/为何本地化\"而非复读上游逻辑"
+   "notes": "本地化的 androidx LazyColumn 源码，抽取时聚焦\"魔改点/为何本地化\"而非复读上游逻辑",
+   "issue": 94,
+   "batch": "batch-07"
   },
   {
    "id": "ui-chat-workspace",
@@ -45,7 +47,9 @@
     "本地 WebServer 与 WebView 桥接？",
     "工作区文件管理与后台进程？"
    ],
-   "notes": "webview/ 根 4 文件（LocalWebServer/WebViewHandler 等）+ workspace 根文件 + workspace/process + webview/computer；editor/ 归属 ui-chat-editor"
+   "notes": "webview/ 根 4 文件（LocalWebServer/WebViewHandler 等）+ workspace 根文件 + workspace/process + webview/computer；editor/ 归属 ui-chat-editor",
+   "issue": 95,
+   "batch": "batch-07"
   },
   {
    "id": "ui-chat-editor",
@@ -59,7 +63,9 @@
    "questions": [
     "代码补全/语言/主题/语法高亮的实现？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 96,
+   "batch": "batch-07"
   },
   {
    "id": "ui-settings-model",
@@ -82,7 +88,9 @@
     "提示词配置屏的结构？",
     "API Key 输入的视觉转换与自动保存？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 97,
+   "batch": "batch-07"
   },
   {
    "id": "ui-settings-theme",
@@ -112,7 +120,9 @@
     "主题设置屏的分区组织？",
     "颜色选择器与自定义表情管理？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 98,
+   "batch": "batch-07"
   },
   {
    "id": "ui-settings-chat",
@@ -139,7 +149,9 @@
     "备份管理卡片与备份对话框的流程？",
     "聊天历史/上下文总结设置项？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 99,
+   "batch": "batch-07"
   },
   {
    "id": "ui-settings-misc",
@@ -168,7 +180,9 @@
     "角色卡对话框与分配流程？",
     "工具权限设置屏？"
    ],
-   "notes": ""
+   "notes": "",
+   "issue": 100,
+   "batch": "batch-07"
   }
  ],
  "page_count": 7,
