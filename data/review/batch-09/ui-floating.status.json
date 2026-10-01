@@ -2,12 +2,12 @@
   "critic": "",
   "id": "ui-floating",
   "issue": 111,
-  "refs_valid": 141,
+  "refs_valid": 148,
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "approved",
-  "approved_by_comment_id": 5929884332,
-  "approved_by": "luojiaping",
-  "approved_at": "2026-10-01 11:08 UTC",
+  "status": "review-pending",
+  "approved_by_comment_id": "",
+  "approved_by": "",
+  "approved_at": "",
   "updated": "2026-10-01"
 }

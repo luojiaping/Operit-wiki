@@ -722,5 +722,193 @@
   {
     "fact": "起止天数超过上限时返回 TOO_LONG",
     "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/CustomRangePolicy.kt:21"
+  },
+  {
+    "fact": "UrlConfigDialog 是编辑 UrlConfig 的配置弹窗，含配置名、登录 URL 输入框与 4 个标签页（标题/URL）字段。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/components/UrlConfigDialog.kt:31"
+  },
+  {
+    "fact": "UrlConfigDialog 弹窗内容纵向滚动（verticalScroll + rememberScrollState），字段缺省值从 currentConfig 回填。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/components/UrlConfigDialog.kt:56"
+  },
+  {
+    "fact": "UrlConfigDialog 确认按钮把 4 个 TabConfig 组装成新 UrlConfig 传给 onSave。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/components/UrlConfigDialog.kt:142"
+  },
+  {
+    "fact": "TabConfig 只含 title 与 url 两个字段，为 @Serializable data class。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt:14"
+  },
+  {
+    "fact": "UrlConfig 的 name 默认为 \"DeepSeek\"。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt:21"
+  },
+  {
+    "fact": "UrlConfig 的 signInUrl 默认为 \"https://platform.deepseek.com/sign_in\"。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt:22"
+  },
+  {
+    "fact": "UrlConfig 默认 tabs 为 DeepSeek 平台 4 个页面：api_keys / usage / top_up / profile，标题走字符串资源。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt:24"
+  },
+  {
+    "fact": "NavDestination 含 title / url / icon 三个字段。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt:32"
+  },
+  {
+    "fact": "getIconForIndex 按索引返回 Key / Dashboard / CreditCard / Person 四个导航图标，越界回退 Key。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt:39"
+  },
+  {
+    "fact": "DEEPSEEK_SIGNIN_URL 为 https://platform.deepseek.com/sign_in。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt:5"
+  },
+  {
+    "fact": "DEEPSEEK_API_KEYS_URL 为 https://platform.deepseek.com/api_keys。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt:7"
+  },
+  {
+    "fact": "DEEPSEEK_GET_API_KEYS_URL 为密钥查询端点 /api/v0/users/get_api_keys。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt:8"
+  },
+  {
+    "fact": "DEEPSEEK_CREATE_API_KEY_URL 为密钥创建端点 /api/v0/users/create_api_key。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt:9"
+  },
+  {
+    "fact": "DEEPSEEK_DELETE_API_KEY_URL 为密钥删除端点 /api/v0/users/delete_api_key。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt:11"
+  },
+  {
+    "fact": "DEEPSEEK_PLATFORM_DOMAIN 为 \"platform.deepseek.com\"。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt:13"
+  },
+  {
+    "fact": "UrlConfigManager 用 preferencesDataStore(name=\"url_config\") 持久化配置。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:19"
+  },
+  {
+    "fact": "URL 配置以单键 URL_CONFIG_KEY（\"url_config\"）存 JSON 字符串。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:23"
+  },
+  {
+    "fact": "PRESET_CONFIGS 预设了 Claude / ChatGPT / Gemini / Poe 四套 UrlConfig。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:26"
+  },
+  {
+    "fact": "urlConfigFlow 解码失败或无存档时回退到默认 DeepSeek 配置并本地化 tab 标题。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:73"
+  },
+  {
+    "fact": "saveUrlConfig 把 UrlConfig 序列化为 JSON 写入 DataStore。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:87"
+  },
+  {
+    "fact": "resetToDefault 恢复默认 DeepSeek 配置。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:94"
+  },
+  {
+    "fact": "localizePresetTabNames 把英文 tab 标题（Chat / Projects / Settings 等）映射为本地化字符串资源。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/preferences/UrlConfigManager.kt:99"
+  },
+  {
+    "fact": "DeepseekJsInterface 是 @JavascriptInterface 回调桥，提供 onKeysReceived / onKeyCreated / onKeyDeleted / onError 四个 JS 可调方法。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/DeepseekJsInterface.kt:15"
+  },
+  {
+    "fact": "onKeysReceived 日志只输出 json 前 100 字符，避免密钥全文进日志。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/DeepseekJsInterface.kt:18"
+  },
+  {
+    "fact": "onKeyCreated 把新建密钥原文记入 debug 日志（Key created: $key）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/DeepseekJsInterface.kt:29"
+  },
+  {
+    "fact": "onKeyDeleted 接收 Boolean，转发密钥删除成功与否。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/DeepseekJsInterface.kt:38"
+  },
+  {
+    "fact": "getPageInfoScript 收集页面 URL、标题、readyState、referrer、domain 与 DOM 计数。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:8"
+  },
+  {
+    "fact": "getApiKeysScript 先从 localStorage/sessionStorage 按 token/auth_token/accessToken/id_token/access_token 找 token。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:70"
+  },
+  {
+    "fact": "找不到 token 时 getApiKeysScript 用硬编码 token，并把它写回 localStorage 的 auth_token。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:77"
+  },
+  {
+    "fact": "getApiKeysScript 用 Bearer token GET DEEPSEEK_GET_API_KEYS_URL。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:89"
+  },
+  {
+    "fact": "密钥从 data.api_keys 或 data.biz_data.api_keys 提取字段 name/sensitive_id/created_at/last_use/tracking_id。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:113"
+  },
+  {
+    "fact": "提取到的密钥一次性经 Android.onKeysReceived 回调给原生层。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:148"
+  },
+  {
+    "fact": "deleteKeyScript(trackingId) 向 DEEPSEEK_DELETE_API_KEY_URL POST {tracking_id}。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:167"
+  },
+  {
+    "fact": "密钥删除按 data.code === 0 判定成功，经 Android.onKeyDeleted 回调。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:209"
+  },
+  {
+    "fact": "getAuthTokenScript 枚举 document.cookie、localStorage、sessionStorage，记录长度 20–300 的 token 候选。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:220"
+  },
+  {
+    "fact": "injectTokenExtractorScript 劫持 window.fetch，捕获 Authorization: Bearer 头并存入 localStorage 的 auth_token。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/JsScripts.kt:263"
+  },
+  {
+    "fact": "WebViewConfig.createWebView 返回一个预配置的 WebView 实例。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:20"
+  },
+  {
+    "fact": "WebView 开启 javaScriptEnabled、domStorageEnabled、databaseEnabled。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:25"
+  },
+  {
+    "fact": "WebView 允许文件访问（allowFileAccess = true）与内容访问。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:31"
+  },
+  {
+    "fact": "WebView 显式设置 mixedContentMode=MIXED_CONTENT_ALWAYS_ALLOW，注释称对支付场景重要。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:37"
+  },
+  {
+    "fact": "User-Agent 伪装成 Chrome/124 移动浏览器，避免被 Google 登录等服务拦截。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:45"
+  },
+  {
+    "fact": "Android O+ 上开启 safeBrowsingEnabled，失败时捕获记警告。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:55"
+  },
+  {
+    "fact": "WebViewConfig 全局开启 WebView.setWebContentsDebuggingEnabled(true)。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:77"
+  },
+  {
+    "fact": "onCreateWindow 劫持弹窗：alipays:/alipay:/weixin:/weixins: 协议跳转外部应用，普通链接强制在发起者 WebView 内加载。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:110"
+  },
+  {
+    "fact": "onConsoleMessage 把 JS console 转发到 AppLogger（WebViewConsole）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:157"
+  },
+  {
+    "fact": "onGeolocationPermissionsShowPrompt 直接允许所有地理位置请求（invoke(origin, true, false)）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:182"
+  },
+  {
+    "fact": "onJsAlert / onJsConfirm / onJsPrompt 全部自动 confirm 并只记日志。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/token/webview/WebViewConfig.kt:186"
   }
 ]

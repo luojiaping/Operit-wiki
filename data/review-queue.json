@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 11:09 UTC",
+  "updated": "2026-10-01 11:21 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -464,15 +464,15 @@
       "batch": "batch-04",
       "title": "DeepSeek 供应商",
       "module": "app",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 30,
       "issue_title": "[评审] DeepSeek 供应商",
       "md": "review/batch-04/api-chat-deepseek.md",
       "facts": "review/batch-04/api-chat-deepseek.facts.json",
       "lint": "review/batch-04/api-chat-deepseek.lint.md",
       "seed_files": [],
-      "facts_count": 73,
-      "refs_valid": "73/73 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
+      "facts_count": 78,
+      "refs_valid": "78/78 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #30 端点反馈新增 5 条，lint 硬失败 0/警告 0）",
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -1423,10 +1423,10 @@
         "app/src/main/java/com/ai/assistance/operit/data/preferences/GitHubAuthPreferences.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexOAuthCoordinator.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexOAuthLoopbackCallbackServer.kt",
-        "app/src/main/java/com/ai/assistance/operit/ui/features/github/GitHubOAuthCoordinator.kt"
+        "app/src/main/java/com/ai/assistance/operit/ui/features/codex/CodexLoginDialog.kt"
       ],
-      "facts_count": 160,
-      "refs_valid": "160/160 引用行号真实存在（程序化逐条验真），lint 硬失败 0/警告 0",
+      "facts_count": 198,
+      "refs_valid": "198/198 引用行号真实存在（程序化逐条验真），lint 硬失败 0/警告 0",
       "critic": "独立 critic 逐条核引用通过（data-api-oauth.critic.md）：160 facts 全过、14 条走查 evidence 逐字命中、高危 2 条分级合理；轻微 3 项已处理（lint.md 自指措辞改写，其余两项经复验为 critic 误标、原引用窗口有支撑）",
       "summary": "",
       "updated": ""
@@ -1509,8 +1509,8 @@
         "data/repository/MemoryRepository.kt",
         "ui/theme/ThemePreferenceLocals.kt"
       ],
-      "facts_count": 230,
-      "refs_valid": "230/230 引用行号真实存在且不越界，0 复合事实；独立复验确认 facts[171]:721、quality 第11条:38、facts[164]:590/[165]:382 锚点正确，quality 19 条证据逐字命中，高危 2 条定级不夸大，lint 硬失败 0/警告 0",
+      "facts_count": 245,
+      "refs_valid": 245,
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-app.critic.md）",
       "summary": "",
       "updated": ""
@@ -1531,17 +1531,17 @@
         "app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterGroupCardManager.kt",
         "app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardToolAccessResolver.kt",
         "app/src/main/java/com/ai/assistance/operit/data/preferences/WaifuPreferences.kt",
+        "app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/WaifuModeSettingsScreen.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/config/FunctionalPrompts.kt",
         "app/src/main/java/com/ai/assistance/operit/data/preferences/ActivePromptManager.kt",
         "app/src/main/java/com/ai/assistance/operit/data/preferences/PersonaCardChatHistoryManager.kt",
         "app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardBilingualData.kt",
         "app/src/main/java/com/ai/assistance/operit/data/model/CharacterCard.kt",
-        "app/src/main/java/com/ai/assistance/operit/data/model/CharacterGroupCard.kt",
-        "app/src/main/java/com/ai/assistance/operit/data/model/ActivePrompt.kt",
-        "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt",
-        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt"
+        "app/src/main/java/com/ai/assistance/operit/data/model/CharacterGroupCard.kt"
       ],
-      "facts_count": 149,
-      "refs_valid": "149/149 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0",
+      "facts_count": 170,
+      "refs_valid": "170/170 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-character.critic.md）",
       "summary": "",
       "updated": ""
@@ -1602,8 +1602,8 @@
         "app/src/main/java/com/ai/assistance/operit/data/model/OperitChatArchive.kt",
         "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageTimestampAllocator.kt"
       ],
-      "facts_count": 132,
-      "refs_valid": "132 facts 引用锚点已按 critic 报告逐条修正并验真，lint 硬失败 0/警告 0",
+      "facts_count": 146,
+      "refs_valid": 146,
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-chat.critic.md）",
       "summary": "",
       "updated": ""
@@ -1613,7 +1613,7 @@
       "batch": "batch-05",
       "title": "记忆仓库",
       "module": "数据层",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 62,
       "issue_title": "[评审] 记忆仓库",
       "md": "review/batch-05/data-repo-memory.md",
@@ -1627,10 +1627,11 @@
         "app/src/main/java/com/ai/assistance/operit/data/model/MemoryExportModel.kt",
         "app/src/main/java/com/ai/assistance/operit/data/model/DocumentChunk.kt",
         "app/src/main/java/com/ai/assistance/operit/data/model/CloudEmbeddingConfig.kt",
-        "app/src/main/java/com/ai/assistance/operit/data/model/MemorySearchDebugInfo.kt"
+        "app/src/main/java/com/ai/assistance/operit/data/model/MemorySearchDebugInfo.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt"
       ],
-      "facts_count": 156,
-      "refs_valid": "156/156 引用行号真实存在，lint 硬失败 0/警告 0",
+      "facts_count": 173,
+      "refs_valid": 173,
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-memory.critic.md）",
       "summary": "",
       "updated": "2026-10-01"
@@ -2307,8 +2308,8 @@
       "facts": "review/batch-07/ui-settings-theme.facts.json",
       "lint": "review/batch-07/ui-settings-theme.lint.md",
       "seed_files": [],
-      "facts_count": 164,
-      "refs_valid": 164,
+      "facts_count": 234,
+      "refs_valid": 234,
       "critic": "critic2-verified-PASS-10-anchors-fixed-by-parent",
       "summary": "",
       "updated": ""
@@ -2568,15 +2569,15 @@
       "batch": "batch-09",
       "title": "单元测试·api/core",
       "module": "附录",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 121,
       "issue_title": "[评审] 单元测试·api/core",
       "md": "review/batch-09/appendix-tests-unit-api-core.md",
       "facts": "review/batch-09/appendix-tests-unit-api-core.facts.json",
       "lint": "review/batch-09/appendix-tests-unit-api-core.lint.md",
       "seed_files": [],
-      "facts_count": 89,
-      "refs_valid": 89,
+      "facts_count": 151,
+      "refs_valid": 151,
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2631,7 +2632,7 @@
       "batch": "batch-09",
       "title": "关于/更新/帮助界面",
       "module": "UI / 关于与更新",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 119,
       "issue_title": "[评审] 关于/更新/帮助界面",
       "md": "review/batch-09/ui-about.md",
@@ -2643,10 +2644,11 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/update/screens/UpdateScreen.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/update/screens/UpdateViewModel.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/update/screens/UpdateInfo.kt",
-        "app/src/main/java/com/ai/assistance/operit/ui/features/help/screens/HelpScreen.kt"
+        "app/src/main/java/com/ai/assistance/operit/ui/features/help/screens/HelpScreen.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt"
       ],
-      "facts_count": 118,
-      "refs_valid": 118,
+      "facts_count": 126,
+      "refs_valid": 126,
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2711,7 +2713,7 @@
       "batch": "batch-09",
       "title": "悬浮窗界面",
       "module": "UI / 悬浮窗",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 111,
       "issue_title": "[评审] 悬浮窗界面",
       "md": "review/batch-09/ui-floating.md",
@@ -2731,8 +2733,8 @@
         "app/src/main/java/com/ai/assistance/operit/ui/floating/ui/fullscreen/FloatingFullscreenMode.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/floating/ui/fullscreen/screen/FloatingFullscreenScreen.kt"
       ],
-      "facts_count": 141,
-      "refs_valid": 141,
+      "facts_count": 148,
+      "refs_valid": 148,
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2773,7 +2775,7 @@
       "batch": "batch-09",
       "title": "权限与 Token 配置界面",
       "module": "UI / 权限与 Token",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 118,
       "issue_title": "[评审] 权限与 Token 配置界面",
       "md": "review/batch-09/ui-permission.md",
@@ -2785,8 +2787,8 @@
         "toolbox/screens/apppermissions/AppPermissionsScreen.kt",
         "features/token/TokenConfigWebViewScreen.kt"
       ],
-      "facts_count": 124,
-      "refs_valid": 124,
+      "facts_count": 153,
+      "refs_valid": 153,
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2796,7 +2798,7 @@
       "batch": "batch-09",
       "title": "启动/恢复/性能界面",
       "module": "UI / 启动与恢复",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 120,
       "issue_title": "[评审] 启动/恢复/性能界面",
       "md": "review/batch-09/ui-startup.md",
@@ -2809,10 +2811,11 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorCharts.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt",
-        "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt"
+        "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt"
       ],
-      "facts_count": 160,
-      "refs_valid": 160,
+      "facts_count": 174,
+      "refs_valid": 174,
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2822,7 +2825,7 @@
       "batch": "batch-09",
       "title": "Token 用量统计界面",
       "module": "UI / 统计",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 113,
       "issue_title": "[评审] Token 用量统计界面",
       "md": "review/batch-09/ui-tokenstats.md",
@@ -2837,10 +2840,13 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenStatsComponents.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenStatsDialogs.kt",
         "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenUsageStatisticsScreen.kt",
-        "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenUsageStatisticsViewModel.kt"
+        "app/src/main/java/com/ai/assistance/operit/ui/features/tokenstats/TokenUsageStatisticsViewModel.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/features/token/components/UrlConfigDialog.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/features/token/model/UrlConfig.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt"
       ],
-      "facts_count": 181,
-      "refs_valid": 181,
+      "facts_count": 228,
+      "refs_valid": 228,
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
@@ -2902,6 +2908,27 @@
       "critic": "",
       "summary": "",
       "updated": "2026-10-01"
+    },
+    {
+      "id": "batch-10/appendix-uncovered-native",
+      "batch": "batch-10",
+      "title": "未覆盖 kt 扫尾·原生绑定/模板/示例",
+      "module": "附录",
+      "status": "review-pending",
+      "issue": 125,
+      "issue_title": "[评审] 未覆盖 kt 扫尾·原生绑定/模板/示例",
+      "md": "review/batch-10/appendix-uncovered-native.md",
+      "facts": "review/batch-10/appendix-uncovered-native.facts.json",
+      "lint": "review/batch-10/appendix-uncovered-native.lint.md",
+      "seed_files": [
+        "app/src/main/java/androidx/compose/foundation/internal/Preconditions.kt",
+        "app/src/main/java/kotlin/uuid/Uuid.kt"
+      ],
+      "facts_count": 138,
+      "refs_valid": 138,
+      "critic": "",
+      "summary": "",
+      "updated": ""
     }
   ]
 }

@@ -918,5 +918,65 @@
   {
     "fact": "EnvPreferences.setAllEnv() 先 clear 再全量写入。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/EnvPreferences.kt:64"
+  },
+  {
+    "fact": "AndroidPermissionPreferences 的 DataStore 名为 `android_permission_preferences`。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:17"
+  },
+  {
+    "fact": "RootCommandExecutionMode 枚举的三个值是 AUTO、FORCE_LIBSU、FORCE_EXEC。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:19"
+  },
+  {
+    "fact": "RootCommandExecutionMode.fromString 遇到未知字符串回落为 AUTO。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:25"
+  },
+  {
+    "fact": "全局单例经 initAndroidPermissionPreferences 初始化，用 @Volatile 标记加 synchronized 做双重检查锁，重复调用直接返回。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:40"
+  },
+  {
+    "fact": "DEFAULT_SU_COMMAND 常量为 `su`。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:57"
+  },
+  {
+    "fact": "normalizeSuCommand 把空或纯空白的自定义 su 命令归一化为 `su`。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:65"
+  },
+  {
+    "fact": "三个存储键分别是 preferred_permission_level、root_execution_mode、custom_su_command。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:60"
+  },
+  {
+    "fact": "preferredPermissionLevelFlow 在未设置时发射 null。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:71"
+  },
+  {
+    "fact": "rootExecutionModeFlow 在未设置时发射 RootCommandExecutionMode.AUTO。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:77"
+  },
+  {
+    "fact": "customSuCommandFlow 在未设置时发射归一化后的 `su`。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:82"
+  },
+  {
+    "fact": "getPreferredPermissionLevel 用 runBlocking 包装 preferredPermissionLevelFlow.first() 做同步读取，异常时返回 null。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:117"
+  },
+  {
+    "fact": "同步 getter 的文档注明这是阻塞调用，应在非 UI 线程使用或谨慎使用。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:114"
+  },
+  {
+    "fact": "resetPermissionLevel 删除 preferred_permission_level 键以清除设置。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:166"
+  },
+  {
+    "fact": "resetRootExecutionSettings 同时删除 root_execution_mode 与 custom_su_command 两个键。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:173"
+  },
+  {
+    "fact": "三个 save 方法都会先记一条 AppLogger.d 日志再写 DataStore。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:92"
   }
 ]

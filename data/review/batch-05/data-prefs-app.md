@@ -1,7 +1,7 @@
 ---
 title: 应用基础/主题/语音/记忆搜索配置
 module: 数据层
-sources: UserPreferencesManager.kt, DisplayPreferencesManager.kt, ThemePreferenceSnapshot.kt, ThemeScopeMigrationPolicy.kt, ThemeTargetOperationCoordinator.kt, SpeechServicesPreferences.kt, SpeechServiceProfilesPreferences.kt, WakeWordPreferences.kt, MemorySearchSettingsPreferences.kt, VersionedPreferencesDataStore.kt, AgreementPreferences.kt, CustomEmojiPreferences.kt, FunctionalConfigManager.kt, GitHubAuthPreferences.kt, GitHubAuthBus.kt, ExternalHttpApiPreferences.kt, FreeUsagePreferences.kt, RemoteAnnouncementPreferences.kt, MarketAgreementPreferences.kt, SkillVisibilityPreferences.kt, ToolCollapseMode.kt, EnvPreferences.kt
+sources: UserPreferencesManager.kt, DisplayPreferencesManager.kt, ThemePreferenceSnapshot.kt, ThemeScopeMigrationPolicy.kt, ThemeTargetOperationCoordinator.kt, SpeechServicesPreferences.kt, SpeechServiceProfilesPreferences.kt, WakeWordPreferences.kt, MemorySearchSettingsPreferences.kt, VersionedPreferencesDataStore.kt, AgreementPreferences.kt, CustomEmojiPreferences.kt, FunctionalConfigManager.kt, GitHubAuthPreferences.kt, GitHubAuthBus.kt, ExternalHttpApiPreferences.kt, FreeUsagePreferences.kt, RemoteAnnouncementPreferences.kt, MarketAgreementPreferences.kt, SkillVisibilityPreferences.kt, ToolCollapseMode.kt, EnvPreferences.kt, AndroidPermissionPreferences.kt
 date: 2026-10-01
 ---
 
@@ -219,6 +219,9 @@ DataStore 名 `wake_word_preferences`（schema 版本 1）。可配的参数：
 - **FunctionalConfigManager**：功能类型 → 模型配置 ID 的映射（DataStore `functional_configs`，schema 版本 1），引用已删配置时回落到 `("default", 0)`。**这份内容归属模型配置条目**，本页仅记录其存储形态。
   `app/src/main/java/com/ai/assistance/operit/data/preferences/FunctionalConfigManager.kt:17`
   `app/src/main/java/com/ai/assistance/operit/data/preferences/FunctionalConfigManager.kt:42`
+- **AndroidPermissionPreferences**：Android 权限级别偏好。DataStore 名 `android_permission_preferences`，存三样：首选权限级别（`preferred_permission_level`，未设置读出 null）、root 命令执行模式（`root_execution_mode`，未设置回落 AUTO）、自定义 su 命令（`custom_su_command`，空则归一化为 `su`）。执行模式枚举 `RootCommandExecutionMode`（AUTO / FORCE_LIBSU / FORCE_EXEC，未知字符串回落 AUTO）。全局单例经 `initAndroidPermissionPreferences` 双重检查锁初始化（可重复调用）。同步 getter 全用 runBlocking 包 `Flow.first()`（文档注明这是阻塞调用，应在非 UI 线程使用）；`resetPermissionLevel` 删权限级别键，`resetRootExecutionSettings` 删执行模式 + 自定义 su 两个键。注意：DataStore 官方不支持多进程访问，而初始化入口文档写明"可被多个进程组件重复调用"（见代码走查）。
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:17`
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:40`
 
 ## 关键符号
 
@@ -239,6 +242,7 @@ DataStore 名 `wake_word_preferences`（schema 版本 1）。可配的参数：
 | `ExternalHttpApiPreferences` | `app/src/main/java/com/ai/assistance/operit/data/preferences/ExternalHttpApiPreferences.kt:27` | 本机对外 HTTP API 配置 |
 | `FreeUsagePreferences` | `app/src/main/java/com/ai/assistance/operit/data/preferences/FreeUsagePreferences.kt:16` | 免费额度与退避管理 |
 | `ToolCollapseMode` | `app/src/main/java/com/ai/assistance/operit/data/preferences/ToolCollapseMode.kt:3` | 工具调用折叠模式枚举 |
+| `AndroidPermissionPreferences` | `app/src/main/java/com/ai/assistance/operit/data/preferences/AndroidPermissionPreferences.kt:54` | 权限级别/root 执行模式/自定义 su 命令偏好（独立 DataStore） |
 
 ## 输入→处理→输出调用链
 
@@ -268,4 +272,4 @@ DataStore 名 `wake_word_preferences`（schema 版本 1）。可配的参数：
 
 ## 来源
 
-本页事实全部来自 Operit v1.12.2（`dbf71916fae9750cfdc9f9a774f5a0fee56633fb`）源码 `app/src/main/java/com/ai/assistance/operit/data/preferences/` 目录下 22 个文件的全文阅读，及以下调用方/被调用方的抽读：`ActivePromptManager.kt`、`api/speech/SpeechServiceFactory.kt`、`api/voice/VoiceServiceFactory.kt`、`api/chat/AIForegroundService.kt`（唤醒词订阅段）、`services/FloatingChatService.kt`（唤醒建群段）、`core/tools/agent/PhoneAgent.kt`（截图参数段）、`core/tools/defaultTool/standard/MemoryQueryToolExecutor.kt`、`api/chat/library/MemoryAutoSaveScheduler.kt`、`data/repository/MemoryRepository.kt`、`ui/theme/ThemePreferenceLocals.kt`。原子事实清单见 `data-prefs-app.facts.json`（共 229 条），代码走查见 `data-prefs-app.quality.json`（共 19 条，高危 2 / 警告 9 / 建议 8）。
+本页事实全部来自 Operit v1.12.2（`dbf71916fae9750cfdc9f9a774f5a0fee56633fb`）源码 `app/src/main/java/com/ai/assistance/operit/data/preferences/` 目录下 22 个文件的全文阅读，及以下调用方/被调用方的抽读：`ActivePromptManager.kt`、`api/speech/SpeechServiceFactory.kt`、`api/voice/VoiceServiceFactory.kt`、`api/chat/AIForegroundService.kt`（唤醒词订阅段）、`services/FloatingChatService.kt`（唤醒建群段）、`core/tools/agent/PhoneAgent.kt`（截图参数段）、`core/tools/defaultTool/standard/MemoryQueryToolExecutor.kt`、`api/chat/library/MemoryAutoSaveScheduler.kt`、`data/repository/MemoryRepository.kt`、`ui/theme/ThemePreferenceLocals.kt`。原子事实清单见 `data-prefs-app.facts.json`（共 245 条），代码走查见 `data-prefs-app.quality.json`（共 21 条，高危 2 / 警告 10 / 建议 9）。

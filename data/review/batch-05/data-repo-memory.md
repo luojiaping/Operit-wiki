@@ -1,7 +1,7 @@
 ---
 title: 记忆仓库
 module: 数据层
-sources: MemoryRepository.kt, MemoryAutoSaveCandidateRepository.kt, Memory.kt, MemoryAutoSaveCandidate.kt, MemoryExportModel.kt, DocumentChunk.kt, CloudEmbeddingConfig.kt, MemorySearchDebugInfo.kt
+sources: MemoryRepository.kt, MemoryAutoSaveCandidateRepository.kt, MemorySpaceProfileDocumentRepository.kt, Memory.kt, MemoryAutoSaveCandidate.kt, MemoryExportModel.kt, DocumentChunk.kt, CloudEmbeddingConfig.kt, MemorySearchDebugInfo.kt
 date: 2026-10-01
 ---
 
@@ -164,6 +164,21 @@ date: 2026-10-01
 入队方有两处：`EnhancedAIService`（回复定稿）、`MessageCoordinationDelegate`（消息协调流程）；`MemoryAutoSaveScheduler` 只拉取 pending/failed 候选，不负责入队；聊天输入栏组件读 `countPendingAndFailedCandidates()` 展示待处理数量。
 `app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt:2048`
 
+### 10. 记忆空间画像文档：每空间一份 user.md
+
+`MemorySpaceProfileDocumentRepository`（单例，双重检查锁，构造时拿 `applicationContext` 防泄漏）给每个记忆空间存一份 Markdown 画像：`filesDir/memory-space-profiles/<memorySpaceId>/user.md`，内容上限 12_000 字符（`MAX_CONTENT_CHARS`），`save` 超限直接抛错。
+`app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:34`
+`app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:20`
+
+- 读写：`load` 在文件不存在时先在写锁内建空文件，再 UTF-8 读全文；所有写走 `writeAtomically`（Android `AtomicFile`：startWrite→写字节→finishWrite，失败 failWrite 并重抛）；`reset` = 写空串；`delete` 删 user.md 及整个空间目录。
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:73`
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:299`
+- 自动更新守门：`saveAutomatic` 先读该空间配置，`profileAutoUpdateEnabled` 未开或 `profileAutoUpdateLocked` 已锁定就返回 false 不写，否则写入并返回 true。
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:94`
+- 一次性迁移：`initialize` 用 Mutex 只跑一次，`schema_version` < 2（`CURRENT_SCHEMA_VERSION`）时跑迁移并用 SharedPreferences `commit()` 同步写回版本号。迁移三分支：有旧结构化画像元数据→`migrateLegacyStructuredProfiles`（旧 `LegacyUserProfile` 转 `# About me` + `## Basic information` / `## Personality` / `## Preferred assistant style` 三节 Markdown，生日按 `yyyy-MM-dd`）；有记忆空间元数据→`migratePublishedGlobalDocuments`（根 `user.md` 的归属靠"归档名是其余空间名列表的子序列"唯一确定，候选多于 1 个只记警告、保留源文件不迁移）；否则也跑旧画像迁移。
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:54`
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt:114`
+
 ## 关键符号
 
 | 符号 | 说明 |
@@ -174,6 +189,7 @@ date: 2026-10-01
 | `MemoryTag` | 标签实体，支持父子层级 |
 | `DocumentChunk` | 文档区块：内容 + 序号 + 独立向量 |
 | `MemoryAutoSaveCandidateRepository` | 自动保存候选队列的增删改查 |
+| `MemorySpaceProfileDocumentRepository` | 每记忆空间一份 Markdown 画像（`memory-space-profiles/<id>/user.md`，AtomicFile 原子写，12_000 字符上限，一次性 schema 迁移） |
 | `MemoryAutoSaveCandidate` | 候选实体：pending/processing/failed 三态 |
 | `CloudEmbeddingService` | 云端向量生成服务（`generateEmbedding`/`generateEmbeddingOrThrow`） |
 | `CloudEmbeddingConfig` | 向量服务配置：enabled/endpoint/apiKey/model，`isReady()` 判定可用 |
@@ -214,6 +230,7 @@ date: 2026-10-01
 - `app/src/main/java/com/ai/assistance/operit/data/model/DocumentChunk.kt`（27 行）：文档区块实体
 - `app/src/main/java/com/ai/assistance/operit/data/model/CloudEmbeddingConfig.kt`（24 行）：向量服务配置
 - `app/src/main/java/com/ai/assistance/operit/data/model/MemorySearchDebugInfo.kt`（38 行）：搜索调试信息模型
+- `app/src/main/java/com/ai/assistance/operit/data/preferences/MemorySpaceProfileDocumentRepository.kt`（312 行）：每记忆空间一份 Markdown 画像（原子写/上限/一次性迁移）
 
-事实清单：facts.json（156 条）
-代码走查：quality.json（13 条：高危 2 / 警告 2 / 建议 9）
+事实清单：facts.json（173 条）
+代码走查：quality.json（15 条：高危 2 / 警告 2 / 建议 11）

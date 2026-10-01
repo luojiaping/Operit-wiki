@@ -1,7 +1,7 @@
 ---
 title: 聊天历史仓库
 module: 数据层
-sources: ChatHistoryManager.kt, ChatDao.kt, MessageDao.kt, MessageVariantDao.kt, ChatContentDao.kt, ChatEntity.kt, MessageEntity.kt, MessageVariantEntity.kt, ChatHistory.kt, ChatMessage.kt, OperitChatArchive.kt, ChatMessageTimestampAllocator.kt, ChatFormat.kt, ChatFormatConverter.kt, ChatHistoryCsv.kt, ChatGPTConverter.kt, ChatBoxConverter.kt, MarkdownConverter.kt, GenericJsonConverter.kt, HtmlExporter.kt, MarkdownExporter.kt, TextExporter.kt, OperitBackupDirs.kt, ChatHistoryDelegate.kt
+sources: ChatHistoryManager.kt, ChatDao.kt, MessageDao.kt, MessageVariantDao.kt, ChatContentDao.kt, ChatEntity.kt, MessageEntity.kt, MessageVariantEntity.kt, ChatHistory.kt, ChatMessage.kt, OperitChatArchive.kt, ChatMessageTimestampAllocator.kt, ChatFormat.kt, ChatFormatConverter.kt, ChatFormatDetector.kt, ChatHistoryCsv.kt, ChatGPTConverter.kt, ChatBoxConverter.kt, MarkdownConverter.kt, GenericJsonConverter.kt, HtmlExporter.kt, MarkdownExporter.kt, TextExporter.kt, OperitBackupDirs.kt, ChatHistoryDelegate.kt
 date: 2026-10-01
 ---
 
@@ -277,6 +277,20 @@ date: 2026-10-01
   `app/src/main/java/com/ai/assistance/operit/data/converter/GenericJsonConverter.kt:57`
   `app/src/main/java/com/ai/assistance/operit/data/converter/GenericJsonConverter.kt:175`
 
+导入前的格式侦测：`ChatFormatDetector`（object 单例）：
+
+- `detectFormat(content)`：空白内容直接 UNKNOWN；检测顺序固定——先 Markdown，再 CSV，再 JSON（以 `{`/`[` 开头），最后默认纯文本。
+  `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt:16`
+- Markdown 有强弱两档：任一行去空白后以 `<!-- chat-info:` / `<!-- msg:` 开头即强命中；弱匹配要求同时有 `#` 标题行和整行严格匹配 `## User/Assistant/AI/System/Model/用户/助手/系统/模型`（可选中英文冒号、不区分大小写）的对话标记。
+  `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt:126`
+  `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt:142`
+- CSV 双条件：首行小写化后含 timestamp/role/content/sender 之一，且含逗号的行数过半。
+  `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt:165`
+- JSON 按键特征分流：`mapping`+`current_node`→CHATGPT；`id`+`title`+`messages`+`createdAt`→OPERIT；`uuid`/`chat_messages`→CLAUDE；`role`+`content`→GENERIC_JSON；空数组→GENERIC_JSON；解析抛错→UNKNOWN（解析器 `ignoreUnknownKeys = true`）。
+  `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt:82`
+- `detectFormatByExtension(fileName)`：json→null（需内容检测）、md/markdown→MARKDOWN、csv→CSV、txt→PLAIN_TEXT、html/htm→UNKNOWN（暂不支持导入）。
+  `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt:172`
+
 `ChatFormat` 枚举 9 个值（OPERIT / CHATGPT / CHATBOX / CLAUDE / MARKDOWN / GENERIC_JSON / CSV / PLAIN_TEXT / UNKNOWN），`ExportFormat` 5 个值（JSON / MARKDOWN / HTML / TXT / CSV）。
 `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormat.kt:8`
 `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormat.kt:38`
@@ -306,6 +320,7 @@ date: 2026-10-01
 | `ChatExportProgress` / `ChatExportResult` | 长文本导出进度 / 导出结果（文件路径 + 会话数） |
 | `ChatHistoryCsv` | CSV 导出器（format_version 1，三类记录） |
 | `ChatFormat` / `ExportFormat` | 导入格式枚举（9 值）/ 导出格式枚举（5 值） |
+| `ChatFormatDetector` | 导入格式侦测（object 单例：内容检测 + 扩展名推测两路） |
 | `ChatFormatConverter` | 转换器接口（`convert` + `getSupportedFormat`） |
 | `ChatMessageTimestampAllocator` | 进程内单调时间戳分配器 |
 | `globalMutex` / `chatMutexes` | 全局锁 / 按会话锁池 |
@@ -358,6 +373,7 @@ date: 2026-10-01
 - `app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageTimestampAllocator.kt`（35 行，全部读完）
 - `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormat.kt`（全部读完）
 - `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatConverter.kt`（全部读完）
+- `app/src/main/java/com/ai/assistance/operit/data/converter/ChatFormatDetector.kt`（181 行，全部读完）
 - `app/src/main/java/com/ai/assistance/operit/data/converter/ChatGPTConverter.kt`（209 行，全部读完）
 - `app/src/main/java/com/ai/assistance/operit/data/converter/ChatBoxConverter.kt`（327 行，全部读完）
 - `app/src/main/java/com/ai/assistance/operit/data/converter/MarkdownConverter.kt`（290 行，全部读完）

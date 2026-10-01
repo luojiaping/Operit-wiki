@@ -1,7 +1,7 @@
 ---
 title: 主题与显示设置
 module: UI 设置
-sources: Theme.kt, Color.kt, Type.kt, ThemeUtils.kt, ThemePreferenceLocals.kt, TextLayoutSettings.kt, ThemeColorSchemeResolver.kt, LiquidGlass.kt, WaterGlass.kt, AppBackgroundLayer.kt, CustomScaffold.kt, ErrorDialog.kt, ManagedDragonBonesView.kt, ThemeSettingsScreen.kt, LanguageSettingsScreen.kt, LayoutAdjustmentSettingsScreen.kt, GlobalDisplaySettingsScreen.kt, CustomEmojiManagementScreen.kt, ThemeSettingsBasicTab.kt, ThemeSettingsBackgroundTab.kt, ThemeSettingsChatTab.kt, ThemeSettingsInputTab.kt, ThemeSettingsInterfaceTab.kt, ThemeSettingsTabs.kt, ThemeEditorSession.kt, ThemeSettingsContentEditor.kt
+sources: Theme.kt, Color.kt, Type.kt, ThemeUtils.kt, ThemePreferenceLocals.kt, TextLayoutSettings.kt, ThemeColorSchemeResolver.kt, LiquidGlass.kt, WaterGlass.kt, AppBackgroundLayer.kt, CustomScaffold.kt, ErrorDialog.kt, ManagedDragonBonesView.kt, ThemeSettingsScreen.kt, LanguageSettingsScreen.kt, LayoutAdjustmentSettingsScreen.kt, GlobalDisplaySettingsScreen.kt, CustomEmojiManagementScreen.kt, ThemeSettingsBasicTab.kt, ThemeSettingsBackgroundTab.kt, ThemeSettingsChatTab.kt, ThemeSettingsInputTab.kt, ThemeSettingsInterfaceTab.kt, ThemeSettingsTabs.kt, ThemeEditorSession.kt, ThemeSettingsContentEditor.kt, ColorPickerDialog.kt, ThemeSettingsComponents.kt, ThemeSettingsBackgroundSection.kt, ThemeSettingsColorSection.kt, ThemeSettingsCoreSections.kt, ThemeSettingsFontAvatarSections.kt, CustomEmojiViewModel.kt
 date: 2026-10-01
 ---
 
@@ -130,6 +130,18 @@ date: 2026-10-01
 - ManagedDragonBonesView 待机动画名 `IDLE_ANIMATION_NAME` 为 "idle" `app/src/main/java/com/ai/assistance/operit/ui/components/ManagedDragonBonesView.kt:22`
 - 随机小动作每 2–8 秒（`delay`）播一次 `app/src/main/java/com/ai/assistance/operit/ui/components/ManagedDragonBonesView.kt:85`
 
+## 主题设置组件补遗
+
+七个零覆盖文件的说明（"是什么/为什么/怎么用"）：
+
+- **ColorPickerDialog.kt（637 行）**：主题设置里所有"选颜色"入口共用的 HSV 取色对话框。为什么用它：主题可调的颜色有 13 处（主色/次色/状态栏/顶栏/抽屉背景/强调色/历史图标/画中画图标/cursor 用户气泡/气泡用户色/气泡 AI 色/用户文字色/AI 文字色），一个对话框靠 `currentColorPickerMode` 字符串区分当前改哪一个。对话框内容：skydoves 的 `HsvColorPicker` + 亮度条 + 透明度条、实时预览（示例文字+对比度评级）、HEX/RGB/HSV 三组手动输入（HEX 有剪贴板粘贴按钮）、最近使用颜色两行各 7 个、14 色 Material 推荐色。点确定后按 mode 把 ARGB 填入 `onColorSelected` 回调对应位置、其余位置传 null。注意 `remember(currentColor)` 重建控制器的写法是修复"换取色项后初始颜色错误"的定案方案。
+- **ThemeSettingsComponents.kt（152 行）**：四个纯展示小组件，专供主题设置页复用：`ThemeModeOption`（可点击卡片，选中=半透明 primary 底色+2.dp primary 描边+文字加粗变色）、`MediaTypeOption`（同款样式，上方加 24.dp 图标，供背景图片/视频切换用）、`ColorSelectionItem`（48.dp 圆形色板+标题，禁用时整体 0.38f 透明）、`PresetColorItem`（32.dp 预设色点，1.dp 白描边）。
+- **ThemeSettingsBackgroundSection.kt（556 行）**：背景 tab 的"自定义背景"卡片。是什么：开关开启后可切换图片/视频两种媒体类型、选文件、调透明度、开模糊。怎么用：图片用 coil 预览、右上角 Crop 按钮重新裁剪；视频用 `AndroidView` 嵌 `StyledPlayerView`（`RESIZE_MODE_ZOOM` 铺满、无控制器），预览罩一层按透明度算出的黑/白 `ColorDrawable` 模拟效果，右上角有静音/循环按钮（切循环弹 Toast）。透明度 Slider 范围 0.1f..1f，模糊半径 1f..30f；两个 Slider 都用 `pendingOpacity`/`pendingBlurRadius` 缓存模式——`onValueChange` 只缓存不写草稿，`onValueChangeFinished` 才持久化，避免点按同帧重组未生效导致写入旧值。
+- **ThemeSettingsColorSection.kt（761 行）**：`ThemeSettingsColorContentMode`（`PALETTE`/`INTERFACE`）让同一个 composable 在配色/界面两个 tab 共用。界面侧：状态栏（隐藏/透明/自定义色三开关互锁：透明或隐藏时自定义色开关禁用置灰）、顶栏透明/自定义色、导航抽屉水玻璃+按钮液态玻璃+背景/强调色、聊天头透明（打开后才出现覆盖模式子开关）、顶栏内容色强制浅/暗、聊天头历史/PiP 图标色。配色侧：开启自定义配色时用 `editorSession.update` 一次性写主色+次色；`on_color_mode` 三档（自动/浅/暗）；底部有两个 Surface 按钮实时预览主/次色+对比文字色。
+- **ThemeSettingsCoreSections.kt（2466 行）**：基础 tab 的三个 section + 私有编辑器。`ThemeSettingsThemeModeSection`：跟随系统开关，关闭后才出现浅/暗选项。`ThemeSettingsChatStyleSection`：聊天风格（cursor/bubble）与输入框风格（经典/Agent）独立切换；cursor 下有"用户气泡跟随主题"（关了才出现颜色选择器）+液态/水玻璃开关；bubble 下有显示头像/宽布局/用户&AI 各自的液态/水玻璃/圆角/颜色/文字色/字体/图片背景。气泡图片背景是九宫格玩法：`BubbleImageStyleEditor` 给裁剪四边（0..0.45）、重复区起止、缩放（0.2..3）、左右内边距（0..32dp）一堆滑杆，`BubbleImageStyleConfig` 攒参数，`NineSliceSourcePreviewCard` 用 Canvas 画缩略图并叠红色裁剪框+九宫格线；`ChatStylePreviewCard` 按当前全部设置渲染一条用户消息+一条 AI 消息的实时预览（宽布局 280.dp/普通 240.dp）。`BubbleFontStyleEditor`：系统字体 5 选 1 或选 TTF 文件（只显示文件名）。`ThemeSettingsDisplayOptionsSection`：12 个"显示什么"的开关（思考过程/模型供应商/模型名/角色名/用户名/token 统计/速度/耗时/时间戳/状态标签/输入处理状态/悬浮圆点动画）。`ThemeSettingsSectionTitle` 是全页通用的"图标+加粗标题+分隔线"小标题。
+- **ThemeSettingsFontAvatarSections.kt（470 行）**：字体与头像两个 section。字体：自定义字体开关→系统字体（5 选 1）或字体文件（选/清除），字号缩放 Slider 0.8f..1.5f（steps=6）。头像：本角色用户头像（重置=主题草稿 `custom_user_avatar_uri` 写 null）与全局用户头像（重置=走 `DisplayPreferencesManager.saveDisplaySettings` 写全局，不走草稿）并排；全局用户名输入框为空时尾部是清空按钮、非空时是保存按钮；头像形状圆形/方形二选一，选方形时 `AnimatedVisibility` 展开圆角步进器（±1，0..16f）。
+- **CustomEmojiViewModel.kt（247 行）**：自定义表情管理屏的 ViewModel。为什么按目标隔离：表情是"每个角色卡/群组"分别存档的，所以 `activePrompt` 用 `WhileSubscribed(5000)` 共享当前目标，`categories` 在目标变化时先 `initializeBuiltinEmojis` 再取全部分类，`emojisInCategory` 用 `combine(activePrompt, selectedCategory)` 订阅当前分类。`addEmojis` 逐个入库并统计成功/失败数（部分成功提示 `emoji_added_partial`）；`createCategory` 先校验命名合法性与重名；`resetToDefault` 恢复默认。注意 `isCustomCategory()` 无条件返回 true 且全仓库无调用，是未实现的残留桩。
+
 ## 关键符号
 
 - `OperitTheme` —— 根主题 composable `app/src/main/java/com/ai/assistance/operit/ui/theme/Theme.kt:94`
@@ -147,6 +159,19 @@ date: 2026-10-01
 - `ThemeSettingsContent` —— 编辑器容器 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/theme/ThemeSettingsContentEditor.kt:95`
 - `ThemeSettingsTab` —— 五 tab 枚举 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/theme/ThemeSettingsTabs.kt:31`
 - `ThemeSettingsScreen` —— 转发入口 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/ThemeSettingsScreen.kt:7`
+- `ColorPickerDialog` —— HSV 取色对话框（13 色共用） `app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ColorPickerDialog.kt:98`
+- `ThemeModeOption` —— 可点击选中卡片 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ThemeSettingsComponents.kt:32`
+- `MediaTypeOption` —— 带图标的可点击选中卡片 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ThemeSettingsComponents.kt:66`
+- `ColorSelectionItem` —— 圆形色板+标题 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ThemeSettingsComponents.kt:109`
+- `PresetColorItem` —— 预设色点 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/ThemeSettingsComponents.kt:145`
+- `ThemeSettingsBackgroundSection` —— 背景图片/视频/透明度/模糊设置卡 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsBackgroundSection.kt:70`
+- `ThemeSettingsColorCustomizationSection` —— 配色/界面颜色设置（PALETTE/INTERFACE 双模式） `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsColorSection.kt:34`
+- `ThemeSettingsThemeModeSection` —— 跟随系统/浅/暗 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsCoreSections.kt:69`
+- `ThemeSettingsChatStyleSection` —— 聊天风格+气泡九宫格编辑+实时预览 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsCoreSections.kt:154`
+- `ThemeSettingsDisplayOptionsSection` —— 12 个显示开关 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsCoreSections.kt:2118`
+- `ThemeSettingsFontSection` —— 字体与字号设置 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsFontAvatarSections.kt:46`
+- `ThemeSettingsAvatarSection` —— 本角色/全局头像与全局用户名 `app/src/main/java/com/ai/assistance/operit/ui/features/settings/sections/ThemeSettingsFontAvatarSections.kt:258`
+- `CustomEmojiViewModel` —— 自定义表情管理 ViewModel `app/src/main/java/com/ai/assistance/operit/ui/features/settings/viewmodels/CustomEmojiViewModel.kt:34`
 
 ## 输入→处理→输出调用链
 
@@ -196,6 +221,13 @@ date: 2026-10-01
 - ui/features/settings/screens/theme/ThemeSettingsTabs.kt（155 行）：tab 容器与保存栏
 - ui/features/settings/screens/theme/ThemeEditorSession.kt（191 行）：草稿会话
 - ui/features/settings/screens/theme/ThemeSettingsContentEditor.kt（644 行）：编辑器容器
+- ui/features/settings/components/ColorPickerDialog.kt（637 行）：HSV 取色对话框
+- ui/features/settings/components/ThemeSettingsComponents.kt（152 行）：主题设置小组件
+- ui/features/settings/sections/ThemeSettingsBackgroundSection.kt（556 行）：背景设置卡
+- ui/features/settings/sections/ThemeSettingsColorSection.kt（761 行）：配色/界面颜色设置
+- ui/features/settings/sections/ThemeSettingsCoreSections.kt（2466 行）：主题模式/聊天风格/显示选项
+- ui/features/settings/sections/ThemeSettingsFontAvatarSections.kt（470 行）：字体与头像设置
+- ui/features/settings/viewmodels/CustomEmojiViewModel.kt（247 行）：自定义表情 ViewModel
 
-- 机器可读事实：`ui-settings-theme.facts.json`（164 条，引用逐条验真）
-- 代码走查：`ui-settings-theme.quality.json`（8 条：警告 2 / 建议 6）
+- 机器可读事实：`ui-settings-theme.facts.json`（234 条，引用逐条验真）
+- 代码走查：`ui-settings-theme.quality.json`（10 条：警告 2 / 建议 8）

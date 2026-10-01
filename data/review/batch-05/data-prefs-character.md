@@ -1,7 +1,7 @@
 ---
 title: 角色卡与人格配置
 module: 数据层
-sources: CharacterCardManager.kt, CharacterGroupCardManager.kt, CharacterCardToolAccessResolver.kt, WaifuPreferences.kt, ActivePromptManager.kt, PersonaCardChatHistoryManager.kt, CharacterCardBilingualData.kt, CharacterCard.kt, CharacterGroupCard.kt, ActivePrompt.kt
+sources: CharacterCardManager.kt, CharacterGroupCardManager.kt, CharacterCardToolAccessResolver.kt, WaifuPreferences.kt, ActivePromptManager.kt, PersonaCardChatHistoryManager.kt, CharacterCardBilingualData.kt, CharacterCard.kt, CharacterGroupCard.kt, ActivePrompt.kt, WaifuMessageProcessor.kt, WaifuModeSettingsScreen.kt, FunctionalPrompts.kt, AIChatScreen.kt, ChatViewModel.kt, AIForegroundService.kt
 date: 2026-10-01
 ---
 
@@ -17,7 +17,7 @@ date: 2026-10-01
 
 **群组卡**（CharacterGroupCard）是多张角色卡的组合，用来开“群聊”：一群不同人格的 AI 同场对话。
 
-除此之外还有三块配套机制：`WaifuPreferences` 给每张卡/每个群组存一份独立的“Waifu 模式”参数（打字机延迟、表情包、自拍等）；`ActivePromptManager` 裁定当前生效的是哪张卡或哪个群组；`PersonaCardChatHistoryManager` 给“人设卡生成”界面按卡隔离对话历史。
+除此之外还有三块配套机制：`WaifuPreferences` 给每张卡/每个群组存一份独立的“Waifu 模式”参数（打字机延迟、表情包、自拍等）；`ActivePromptManager` 裁定当前生效的是哪张卡或哪个群组；`PersonaCardChatHistoryManager` 给“人设卡生成”界面按卡隔离对话历史。而 `WaifuMessageProcessor` 负责把 AI 的回复切成一句一句发出去、配上打字机延迟和表情包（见第 8 节）。
 
 ## AI 速览
 
@@ -122,7 +122,36 @@ Waifu 模式是一组影响消息呈现的参数：总开关 `enable_waifu_mode`
 新建角色卡时会把创建时刻的当前 Waifu 配置复制给新卡。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:364`
 
-### 8. 酒馆卡互通：导入与导出
+### 8. Waifu 模式的消息呈现：分句、打字机、表情包与合并发送
+
+人话：Waifu 模式是“让 AI 像真人一样一句一句回消息”的呈现层。第 7 节讲的是参数存在哪、怎么跟卡走；这一节讲的是 AI 的回复怎么被切开、延迟、配上表情包。
+
+- **分句引擎**：`WaifuMessageProcessor` 是 object 单例（应用启动时由 `OperitApplication` 初始化），`streamSegments` 把模型流式输出按中英文句末标点切成句子逐个发出；`streamSegmentsWithTypingQueue` 再给每句加“打字机延迟”——从第 2 句起，每句等待 `句长 × 每字符延迟`，单句上限 3000ms，首句不等待。
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:22`
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:194`
+- **切分保护**：分句前先把 Markdown 图片/链接、URL、邮箱替换成 `{WAIFUENTITY:n}` 占位符，切完再还原，避免把链接从中间切断；代码块、表格、LaTeX 块被标记为“受保护”，整块作为一个 segment 发出、不拆句；LaTeX 块还会补回 `$$` 定界符，保证气泡里能正常渲染公式。
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:27`
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:881`
+- **流式一致性**：`StreamingSession` 记住已发出的句子；如果某次分句快照比已发出的还短、或前缀发生了变化（模型改写了前面已输出的文字），直接丢弃本次快照——发出去的句子永远不回滚、不重发。
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:72`
+- **表情包**：模型按提示词规则在句末输出 `<emotion>happy</emotion>` 这类标签，`separateEmotionAndText` 把它转成 Markdown 图片 segment（`!` 开头、方括号里是情绪名、括号里是 file:// 表情路径）单独发送。注意：只查**自定义表情**；找不到对应情绪时该标签被直接丢弃（只打一条 warning 日志），不会保留原文。
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:950`
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:1037`
+- **提示词注入**：Waifu 模式开启时，`ConversationService` 在系统提示词末尾追加 `[Extra Rules]`：开表情包→追加“每句末用 `<emotion>` 标注情绪”规则（可用情绪列表动态取自当前生效卡的表情分组，无表情时则明确告知模型不要用标签）；开自拍→追加自拍绘图规则（含外貌提示词与合影关键词）；自定义提示词原样追加。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt:593`
+  `app/src/main/java/com/ai/assistance/operit/core/config/FunctionalPrompts.kt:462`
+- **生效链路（注意）**：`send_message_to_ai_streaming` 工具里 `effectiveWaifuMode = waifuMode == true`——只有当模型调用时显式传 `waifu=true` 参数，分句+打字机才真正走 `streamSegmentsWithTypingQueue`；传了非法值直接返回“Invalid parameter: waifu must be true/false”报错。全局开关只决定提示词里有没有 `[Extra Rules]`，不直接决定流式切分走哪条路。
+  `app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardChatManagerTool.kt:2078`
+- **合并发送**：Waifu 模式和合并发送都开启时，聊天界面把用户每条短消息先放进 `waifuMergeBuffer` 并即时显示为可见消息；`LaunchedEffect` 等待 `waifuMergeSendDelayMs`（默认 5000ms）且输入空闲后，把 buffer 里所有消息合并成一条真正发给 AI。合并前会删掉最后一条“乐观可见”消息再重发——如果对不上（比如用户在等待窗口内删了消息），本轮合并直接跳过。
+  `app/src/main/java/com/ai/assistance/operit/ui/features/chat/screens/AIChatScreen.kt:1841`
+  `app/src/main/java/com/ai/assistance/operit/ui/features/chat/screens/AIChatScreen.kt:1681`
+- **复用**：`cleanContentForWaifu`（剥 thinking/状态/工具/emotion/XML 标签和 Markdown 标记，只留纯文本）也被 TTS 朗读和前台服务回复通知复用，保证“读出来、通知栏里看到的”都是干净文本。
+  `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt:766`
+  `app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt:329`
+- **设置界面**：`WaifuModeSettingsScreen` 有总开关、合并发送（间隔滑块 500~10000ms）、打字延迟（200~1000ms/字符）、去标点、自定义提示词、表情包开关（含自定义表情管理入口）、自拍开关（带外貌提示词输入框）。每次保存都会把当前全局配置同步写回当前卡/群组的前缀键。
+  `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/WaifuModeSettingsScreen.kt:76`
+
+### 9. 酒馆卡互通：导入与导出
 
 Operit 兼容 SillyTavern（酒馆）角色卡格式。导入入口 `createCharacterCardFromTavernJson`：酒馆卡名为空直接失败。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:966`
@@ -140,7 +169,7 @@ PNG 图片导入（`createCharacterCardFromTavernPng`）先从 PNG 的 `tEXt` �
 导出（`exportCharacterCardToTavernJson`）生成 `chara_card_v2` / `2.0` 规范卡：开场白→`first_mes`、聊天其他内容→`mes_example`、角色设定→`system_prompt`、高级自定义→`post_history_instructions`、备注→`creator_notes`，同时把 Operit 完整载荷塞进 `extensions.operit`，保证重导入无损。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:1105`
 
-### 9. 备份与恢复
+### 10. 备份与恢复
 
 `exportAllCharacterCardsToBackupFile` 把全部角色卡连同被引用的提示词标签导出为 JSON，schema 为 `operit_character_cards_backup_v1`，文件名为 `character_cards_backup_yyyy-MM-dd_HH-mm-ss.json`，放在备份目录的角色卡子目录。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:702`
@@ -148,7 +177,7 @@ PNG 图片导入（`createCharacterCardFromTavernPng`）先从 PNG 的 `tEXt` �
 导入（`importAllCharacterCardsFromBackupContent`）接受两种格式：含 `characterCards` + `promptTags` 的对象，或纯角色卡数组。id 或 name 为空的条目跳过；id 已存在计为更新，否则计为新增；默认卡 ID 的条目强制 `isDefault=true`，其余强制 false。导入的标签若本地已有相同内容则复用，不重复创建。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:836`
 
-### 10. 人设卡生成历史：按卡隔离的对话槽位
+### 11. 人设卡生成历史：按卡隔离的对话槽位
 
 `PersonaCardChatHistoryManager` 用独立 DataStore `persona_card_chat_history`，以 `chat_history_{角色卡ID}` 为键、用 Gson 存取消息列表，给“人设卡生成”界面提供每张卡独立的对话历史槽位，互不串台。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/PersonaCardChatHistoryManager.kt:49`
@@ -163,6 +192,9 @@ PNG 图片导入（`createCharacterCardFromTavernPng`）先从 PNG 的 `tEXt` �
 - `CharacterCardToolAccessConfig`：角色卡工具白名单配置（四份名单 + 总开关）
 - `CharacterCardToolAccessResolver` / `ResolvedCharacterCardToolAccess`：白名单解析器与解析结果
 - `WaifuPreferences`：Waifu 模式参数（含按卡/群组隔离的前缀存储）
+- `WaifuMessageProcessor`：Waifu 模式消息呈现引擎（分句、打字机延迟、表情包标签处理）
+- `StreamingSession`：流式分句一致性会话（已发出句子不回滚）
+- `WaifuModeSettingsScreen`：Waifu 模式设置界面（保存时同步写回当前卡/群组）
 - `ActivePrompt`：密封接口，`CharacterCard(id)` / `CharacterGroup(id)` 两种当前生效目标
 - `ActivePromptManager`：裁定当前生效目标，维护群组与角色卡互斥
 - `PersonaCardChatHistoryManager`：人设卡生成界面的按卡隔离对话历史
@@ -204,10 +236,13 @@ PNG 图片导入（`createCharacterCardFromTavernPng`）先从 PNG 的 `tEXt` �
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterGroupCardManager.kt`（502 行）：群组卡管理、拼图头像
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardToolAccessResolver.kt`（147 行）：工具白名单解析
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/WaifuPreferences.kt`（345 行）：Waifu 模式参数与按卡隔离
+- `app/src/main/java/com/ai/assistance/operit/util/WaifuMessageProcessor.kt`（1045 行）：分句、打字机延迟、表情包标签处理、文本清洗
+- `app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/WaifuModeSettingsScreen.kt`（693 行）：Waifu 模式设置界面
+- `app/src/main/java/com/ai/assistance/operit/core/config/FunctionalPrompts.kt`：waifu 情绪/自拍/自定义提示词规则文本
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/ActivePromptManager.kt`（167 行）：当前生效目标裁定
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/PersonaCardChatHistoryManager.kt`（108 行）：人设卡生成对话历史
 - `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardBilingualData.kt`（322 行）：默认人格双语模板
 - `app/src/main/java/com/ai/assistance/operit/data/model/CharacterCard.kt`：角色卡、工具白名单、酒馆卡格式数据模型
 - `app/src/main/java/com/ai/assistance/operit/data/model/CharacterGroupCard.kt`：群组卡数据模型
 - `app/src/main/java/com/ai/assistance/operit/data/model/ActivePrompt.kt`：当前生效目标密封接口
-- 调用方证据：`app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt`、`app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt`
+- 调用方证据：`app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt`（waifu 规则注入系统提示词）、`app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt`、`app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardChatManagerTool.kt`（`waifu` 工具参数门控流式分句）、`app/src/main/java/com/ai/assistance/operit/ui/features/chat/screens/AIChatScreen.kt`（合并发送）、`app/src/main/java/com/ai/assistance/operit/ui/features/chat/viewmodel/ChatViewModel.kt`（TTS 清洗）、`app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt`（回复通知清洗）

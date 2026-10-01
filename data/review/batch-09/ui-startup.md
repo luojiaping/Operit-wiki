@@ -1,14 +1,14 @@
 ---
 title: 启动/恢复/性能界面
 module: UI / 启动与恢复
-sources: 7
+sources: 8
 date: 2026-10-01
 issue: 120
 ---
 
 # ui-startup（启动/恢复/性能界面）
 
-> 种子：`app/src/main/java/com/ai/assistance/operit/ui/features/startup/`（3 个 Kotlin 文件）+ `app/src/main/java/com/ai/assistance/operit/ui/features/performance/`（2 个）+ `app/src/main/java/com/ai/assistance/operit/ui/recovery/`（2 个），共 7 文件、约 3,134 行 @ `dbf71916`
+> 种子：`app/src/main/java/com/ai/assistance/operit/ui/features/startup/`（3 个 Kotlin 文件）+ `app/src/main/java/com/ai/assistance/operit/ui/features/performance/`（2 个）+ `app/src/main/java/com/ai/assistance/operit/ui/recovery/`（2 个）+ `app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt`（1 个），共 8 文件、约 3,435 行 @ `dbf71916`
 >
 > 注：任务单原列出的 `ui/features/settings/screens/StartupScreen.kt` 与 `PerformanceScreen.kt` 在该 commit 下不存在（全仓 find 无同名文件），实际按 `tracking/shards/day-7.json` 的分片种子（startup / performance / recovery 三目录）阅读写作。
 
@@ -22,11 +22,13 @@ Operit 把"启动"和"自救"做成了三块独立界面。启动时插件（MCP
 
 数据恢复页跑在独立的 `:repair` 进程里，是数据库或配置损坏时的"急救室"：导出/导入原始数据快照（zip）、手写 SQL 直接查改正式库（内置三条查大消息/大变体/大聊天的只读安全查询）、一键检查 SharedPreferences 与 Room 数据库健康并尝试修复（修前先把原文件打包存档）。修完点"启动主应用"，杀掉当前进程拉起主程序。
 
+崩溃上报页（`ui/error/CrashReportActivity.kt`，manifest 声明 exported=false、跑独立 `:crash` 进程）是崩溃后的"事故现场"：展示截断到 24_000 字符的堆栈，提供重启应用、复制堆栈到剪贴板、导出堆栈到公共 Downloads、导出 logcat 四个操作；重启走 AlarmManager 延迟 200ms 拉起 + 杀进程。注意：堆栈原文会原样进入剪贴板/公共目录/本地日志，其中常带有文件路径等敏感信息；导出前无脱敏、无二次确认（见代码走查）。
+
 ## AI 速览
 
-- **核心符号清单**：PluginLoadingScreen、PluginLoadingScreenWithState、PluginLoadingState、PluginInfo、PluginStatus、SkipLoadingCallback、DraggableCollapsedIndicator、CollapsedLoadingIndicator、ExpandedLoadingView、PluginStatusItem、SmoothLinearProgressIndicator、generateSteps、easeInOutCubic、LocalPluginLoadingState、PluginLoadingStateRegistry、PerformanceMonitorScreen、PerformanceTab、PerformanceLiveChart、PerformanceChartSeries、PerformanceChartCanvas、dynamicNiceMax、formatMb、formatRate、CpuPage、MemoryPage、NetworkPage、EntityRow、DeviceHeaderCard、NetworkHeaderCard、DataRecoveryActivity、DataRecoveryScreen、DataRecoveryViewModel、QueryResult、StatusPanel、RecoverySection、QueryResultPanel、restartMainApp。
-- **主入口**：MainActivity 绑定 `pluginLoadingState` → `PluginLoadingScreenWithState(loadingState)`；性能页 `PerformanceMonitorScreen()`；恢复页 `DataRecoveryActivity.onCreate → DataRecoveryScreen()`。
-- **数据流向一句话**：启动：MCPStarter 插件启动回调 → PluginLoadingState 的 StateFlow（progress/message/plugins）→ PluginLoadingScreen 渲染，超时/跳过走 skip()；性能：PerformanceMonitorManager.stateFlow 采样快照 → CpuPage/MemoryPage/NetworkPage 按实体种类聚合绘图；恢复：用户操作 → DataRecoveryViewModel（StateFlow State）→ RawSnapshotBackupManager / AppDatabase / PreferencesHealthManager / RoomDatabaseHealthManager 执行，修完 restartMainApp 杀进程重启。
+- **核心符号清单**：PluginLoadingScreen、PluginLoadingScreenWithState、PluginLoadingState、PluginInfo、PluginStatus、SkipLoadingCallback、DraggableCollapsedIndicator、CollapsedLoadingIndicator、ExpandedLoadingView、PluginStatusItem、SmoothLinearProgressIndicator、generateSteps、easeInOutCubic、LocalPluginLoadingState、PluginLoadingStateRegistry、PerformanceMonitorScreen、PerformanceTab、PerformanceLiveChart、PerformanceChartSeries、PerformanceChartCanvas、dynamicNiceMax、formatMb、formatRate、CpuPage、MemoryPage、NetworkPage、EntityRow、DeviceHeaderCard、NetworkHeaderCard、DataRecoveryActivity、DataRecoveryScreen、DataRecoveryViewModel、QueryResult、StatusPanel、RecoverySection、QueryResultPanel、restartMainApp、CrashReportActivity、CrashReportScreen、EXTRA_STACK_TRACE、restartApp、exportToFile、copyToClipboard。
+- **主入口**：MainActivity 绑定 `pluginLoadingState` → `PluginLoadingScreenWithState(loadingState)`；性能页 `PerformanceMonitorScreen()`；恢复页 `DataRecoveryActivity.onCreate → DataRecoveryScreen()`；崩溃上报 `CrashReportActivity.onCreate → CrashReportScreen()`。
+- **数据流向一句话**：启动：MCPStarter 插件启动回调 → PluginLoadingState 的 StateFlow（progress/message/plugins）→ PluginLoadingScreen 渲染，超时/跳过走 skip()；性能：PerformanceMonitorManager.stateFlow 采样快照 → CpuPage/MemoryPage/NetworkPage 按实体种类聚合绘图；恢复：用户操作 → DataRecoveryViewModel（StateFlow State）→ RawSnapshotBackupManager / AppDatabase / PreferencesHealthManager / RoomDatabaseHealthManager 执行，修完 restartMainApp 杀进程重启；崩溃：CrashRecoveryState 消费待处理标记 → intent 传堆栈 → 展示/复制/导出/重启（AlarmManager 延迟 200ms 拉起 + killProcess）。
 
 ## 核心机制
 
@@ -152,6 +154,23 @@ repairStorage：先修数据库再修配置；修前各自把源文件打包为 
 
 Factory 用 applicationContext 再套本地化 context 防泄漏；传错 ViewModel 类型抛 IllegalArgumentException（`app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt:382`）。
 
+### 8. 崩溃上报 Activity
+
+CrashReportActivity（manifest 声明 `android:exported="false"`，跑独立 `:crash` 进程）。堆栈经 intent extra `extra_stack_trace`（常量 `EXTRA_STACK_TRACE`）传入。
+`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:58`
+
+onCreate 先调 `CrashRecoveryState.consumePendingCrashReportLaunch(this)` 消费待处理的崩溃上报启动标记。
+`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:64`
+
+堆栈经 `ThrowableTextFormatter.truncateText` 截到 24_000 字符（缺省 `No stack trace available.`），全文打两行 `AppLogger.e` 日志后进 Compose 界面。
+`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:65`
+
+界面四个操作：红色"重启应用"主按钮调 restartApp；复制按钮把堆栈经 `ClipData.newPlainText("error_stack_trace", …)` 写系统剪贴板；导出按钮把堆栈 UTF-8 写进公共 Downloads/`Operit/error/error-report-<yyyy-MM-dd_HH-mm-ss>.log`（失败弹 Toast 并记日志）；logcat 按钮在协程内调 `LogcatExportHelper.exportLogs(context)`，导出中禁用并转圈，结果卡片按成功/失败着色（`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:112`）。
+
+restartApp：取包 launch intent（取不到回退 MainActivity），加 NEW_TASK|CLEAR_TASK；PendingIntent 用 FLAG_CANCEL_CURRENT（API≥M 叠加 FLAG_IMMUTABLE）；`AlarmManager.set(RTC, now+200ms)` 延迟拉起；再 finishAffinity + `Process.killProcess(myPid())` + `exitProcess(0)`（`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:282`）。
+
+注意：堆栈原文会原样进入剪贴板/公共目录/本地日志，其中常带有文件路径等敏感信息；导出前无脱敏、无二次确认（见代码走查）。
+
 ## 关键符号
 
 - `PluginLoadingScreen`（`app/src/main/java/com/ai/assistance/operit/ui/features/startup/screens/PluginLoadingScreen.kt:102`）：插件加载悬浮屏，折叠/展开两态
@@ -178,6 +197,10 @@ Factory 用 applicationContext 再套本地化 context 防泄漏；传错 ViewMo
 - `inspectStorage`（`app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt:165`）：健康检查
 - `repairStorage`（`app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt:201`）：健康修复
 - `restartMainApp`（`app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt:717`）：杀进程重启主应用
+- `CrashReportActivity`（`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:55`）：崩溃上报 Activity（`:crash` 进程，exported=false）
+- `CrashReportScreen`（`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:78`）：崩溃上报 Compose 界面（重启/复制/导出/导出日志四操作）
+- `restartApp`（`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:282`）：AlarmManager 延迟拉起 + 杀进程重启
+- `exportToFile`（`app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt:258`）：堆栈写公共 Downloads（`getExternalStoragePublicDirectory` 已废弃）
 
 ## 调用链
 
@@ -214,3 +237,4 @@ Factory 用 applicationContext 再套本地化 context 防泄漏；传错 ViewMo
 - `app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorCharts.kt`
 - `app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt`
 - `app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt`
+- `app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt`
