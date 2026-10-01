@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 11:32 UTC",
+  "updated": "2026-10-01 11:58 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -1067,11 +1067,11 @@
       "facts": "review/batch-04/api-chat-xai.facts.json",
       "lint": "review/batch-04/api-chat-xai.lint.md",
       "seed_files": [],
-      "facts_count": 10,
-      "refs_valid": "10/10 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
+      "facts_count": 12,
+      "refs_valid": "12/12 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #41 xAI Responses 备注新增 2 条，lint 硬失败 0/警告 0）",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-04/api-speech",
