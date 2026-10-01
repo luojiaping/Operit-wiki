@@ -5,9 +5,9 @@
   "refs_valid": 228,
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "review-pending",
-  "approved_by_comment_id": "",
-  "approved_by": "",
-  "approved_at": "",
+  "status": "approved",
+  "approved_by_comment_id": 5929885165,
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-01 11:24 UTC",
   "updated": "2026-10-01"
 }
