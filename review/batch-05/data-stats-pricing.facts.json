@@ -834,5 +834,29 @@
   {
     "fact": "clearMigratedTokenStatsData 删除旧统计键与汇率键。",
     "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ApiPreferences.kt:578"
+  },
+  {
+    "fact": "TokenTrackingAIService 是 AIService 的装饰器：仅当 recordTokenUsage=true 时才拦截 onUsageReported/onUsageFinalized 做 token 统计，其余接口全部直透 delegate。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt:61"
+  },
+  {
+    "fact": "TokenTrackingAIService.cancelStreaming 递增 cancellationEpoch 并取消全部在途请求；请求启动时若 epoch 已变化则直接抛 CancellationException，防止过期请求落库。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt:46"
+  },
+  {
+    "fact": "TokenTrackingAIService 的用量持久化跑在 Dispatchers.IO + NonCancellable 上，保证协程被取消后仍能把 token 记录写进 TokenUsageRepository。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt:348"
+  },
+  {
+    "fact": "ApiPreferences.readTokenCount 兼容存成 Int 的旧计数：负 Int 按无符号 32 位掩码 value.toLong() and 0xFFFF_FFFFL 还原。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ApiPreferences.kt:596"
+  },
+  {
+    "fact": "ApiPreferences.getFeatureToggleBlocking/setFeatureToggleBlocking 用 runBlocking 做阻塞桥并标 @JvmStatic，供 Java 侧同步读写特性开关。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ApiPreferences.kt:56"
+  },
+  {
+    "fact": "ApiPreferences 的 SAF 书签以 JSON 存于 saf_bookmarks_json，按 uri 去重、按名称大小写不敏感排序。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/preferences/ApiPreferences.kt:213"
   }
 ]

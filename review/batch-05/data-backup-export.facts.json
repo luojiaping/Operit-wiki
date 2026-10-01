@@ -730,5 +730,45 @@
   {
     "fact": "DataRecoveryActivity 在 AndroidManifest 中声明 android:process=:repair，运行在独立进程。",
     "ref": "app/src/main/AndroidManifest.xml:289"
+  },
+  {
+    "fact": "MarkdownConverter 把整个 Markdown 文件视为一个对话（已明确禁用按 --- 切分）；支持 YAML front matter 与 <!-- chat-info: --> 元数据、<!-- msg: role=.. --> 消息分隔。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/converter/MarkdownConverter.kt:42"
+  },
+  {
+    "fact": "MarkdownConverter.parseRole 严格匹配：system 映射为 user，model/ai 映射为 ai，无法识别返回 null 不瞎猜；缺 role 时默认 user，缺时间戳按 baseTimestamp + index*100ms 合成。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/converter/MarkdownConverter.kt:258"
+  },
+  {
+    "fact": "Markdown 导入的消息 provider 记为 Imported、modelName 缺省为 markdown，分组为 markdown_import_from 字符串资源。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/converter/MarkdownConverter.kt:272"
+  },
+  {
+    "fact": "AppDatabase 含 5 个实体（Chat/Message/MessageVariant/TokenUsageRecord/TokenStatsModel），20 个 Migration 串起 v1→v21；MIGRATION_20_21 建 token_usage_records/token_stats_models 表并从 messages/message_variants 回填历史 token 数据。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:240"
+  },
+  {
+    "fact": "AppDatabase.validateRecoveryCopy 校验前删掉 room_master_table，强制 Room 做真实表/列/外键/索引比对而非信任哈希，并连带拷贝 wal/shm/journal sidecar。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt:485"
+  },
+  {
+    "fact": "ChatHistoryManager 的 HTML/TXT 导出在总字符数超过 4_000_000 时自动切换为流式导出，避免大聊天记录导出时 OOM。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:96"
+  },
+  {
+    "fact": "ChatHistoryManager.importChatHistoriesFromUri 导入 Markdown 时先尝试按 Zip 解包（对应导出的 markdown zip），失败再回退为纯文本解析。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:2176"
+  },
+  {
+    "fact": "DataRecoveryActivity 的恢复屏包含 SQL 控制台、配置/数据库健康报告、查询结果面板；恢复完成后 restartMainApp 用 launch intent + finishAffinity + killProcess 做硬重启。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt:717"
+  },
+  {
+    "fact": "DataRecoveryViewModel.sanitizeSql 只做 trim 与去尾部分号；非 select/with/pragma 语句直接走 writableDatabase().execSQL 执行，写后用 SELECT changes() 取影响行数。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt:361"
+  },
+  {
+    "fact": "DataRecoveryViewModel 内置三条诊断查询（按内容字节数倒序取前 50 的消息/变体/会话）；查询结果中 BLOB 单元格渲染为 BLOB(size) 占位而非原文。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt:429"
   }
 ]

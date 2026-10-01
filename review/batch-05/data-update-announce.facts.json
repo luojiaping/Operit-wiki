@@ -498,5 +498,25 @@
   {
     "fact": "公告对话框正文用纯 Text 渲染，不解析 HTML。",
     "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/announcement/RemoteAnnouncementDialog.kt:57"
+  },
+  {
+    "fact": "GitHubApiService 是 GitHub REST 客户端：base 为 https://api.github.com，OkHttp 30 秒超时，User-Agent 为 Operit-MCP-Client；读接口无 token 也可调用（有则附带提配额），写接口必须有 token。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/api/GitHubApiService.kt:149"
+  },
+  {
+    "fact": "GitHubApiService 的写能力：createRepository 建库、createTextFile 写文件（内容 Base64，带 sha 即更新）、release 的创建/更新/删除、uploadReleaseAsset 走 uploads.github.com 上传附件。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/api/GitHubApiService.kt:456"
+  },
+  {
+    "fact": "GitHubApiService 的 JSON 解析配 ignoreUnknownKeys + isLenient；全部接口为 suspend 且切 Dispatchers.IO，统一返回 Result。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/api/GitHubApiService.kt:141"
+  },
+  {
+    "fact": "关于页镜像测速选优：pickBestMirrorKey 在可用镜像中按速度优先、延迟次之挑选；镜像列表按可用优先、速度降序、延迟升序展示。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/AboutScreen.kt:268"
+  },
+  {
+    "fact": "远程公告弹窗的确认按钮默认 5 秒倒计时后才可点击（文案显示剩余秒数），且 onDismissRequest 为空实现——返回键与点击外部都关不掉，必须点确认。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/announcement/RemoteAnnouncementDialog.kt:27"
   }
 ]

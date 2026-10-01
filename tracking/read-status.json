@@ -101,10 +101,10 @@
    "lines": 126
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
-   "evidence": "review/batch-05/data-stats-pricing.quality.json",
+   "evidence": "review/batch-05/data-stats-pricing.facts.json",
    "lines": 360
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/FunctionType.kt": {
@@ -262,10 +262,10 @@
    "lines": 37
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-06",
    "date": "2026-10-01",
-   "evidence": "review/batch-06/integrations-external.quality.json",
+   "evidence": "review/batch-06/integrations-external.facts.json",
    "lines": 2745
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/agent/PhoneAgent.kt": {
@@ -374,14 +374,14 @@
    "lines": 192
   },
   "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
    "evidence": "review/batch-05/data-backup-export.facts.json",
    "lines": 558
   },
   "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
    "evidence": "review/batch-05/data-backup-export.facts.json",
@@ -2390,10 +2390,10 @@
    "lines": 111
   },
   "app/src/main/java/com/ai/assistance/operit/data/api/GitHubApiService.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
-   "evidence": "review/batch-05/data-update-announce.quality.json",
+   "evidence": "review/batch-05/data-update-announce.facts.json",
    "lines": 830
   },
   "app/src/main/java/com/ai/assistance/operit/data/api/GitHubOAuthBrokerService.kt": {
@@ -2516,10 +2516,10 @@
    "lines": 1196
   },
   "app/src/main/java/com/ai/assistance/operit/data/preferences/ApiPreferences.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
-   "evidence": "review/batch-05/data-stats-pricing.quality.json",
+   "evidence": "review/batch-05/data-stats-pricing.facts.json",
    "lines": 679
   },
   "app/src/main/java/com/ai/assistance/operit/data/preferences/ExternalHttpApiPreferences.kt": {
@@ -2761,7 +2761,7 @@
    "lines": 557
   },
   "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
    "evidence": "review/batch-05/data-backup-export.facts.json",
@@ -2796,7 +2796,7 @@
    "lines": 327
   },
   "app/src/main/java/com/ai/assistance/operit/data/converter/MarkdownConverter.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
    "evidence": "review/batch-05/data-backup-export.facts.json",
@@ -2915,14 +2915,14 @@
    "lines": 106
   },
   "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
    "evidence": "review/batch-05/data-backup-export.facts.json",
    "lines": 436
   },
   "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
    "evidence": "review/batch-05/data-backup-export.facts.json",
@@ -2993,10 +2993,10 @@
    "lines": 26
   },
   "app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/AboutScreen.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
-   "evidence": "review/batch-05/data-update-announce.quality.json",
+   "evidence": "review/batch-05/data-update-announce.facts.json",
    "lines": 1876
   },
   "app/src/main/java/com/ai/assistance/operit/ui/main/MainActivity.kt": {
@@ -3014,10 +3014,10 @@
    "lines": 590
   },
   "app/src/main/java/com/ai/assistance/operit/ui/features/announcement/RemoteAnnouncementDialog.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
-   "evidence": "review/batch-05/data-update-announce.quality.json",
+   "evidence": "review/batch-05/data-update-announce.facts.json",
    "lines": 66
   },
   "app/src/main/java/com/ai/assistance/operit/data/collects/ApiProviderConfigCollect.kt": {
@@ -3189,10 +3189,10 @@
    "lines": 59
   },
   "app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-05",
    "date": "2026-10-01",
-   "evidence": "review/batch-05/core-app-workflow.quality.json",
+   "evidence": "review/batch-05/core-app-workflow.facts.json",
    "lines": 628
   },
   "app/src/main/java/com/ai/assistance/operit/data/preferences/DisplayPreferencesManager.kt": {
@@ -3308,10 +3308,10 @@
    "lines": 74
   },
   "app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt": {
-   "status": "partial",
+   "status": "complete",
    "batch": "batch-06",
    "date": "2026-10-01",
-   "evidence": "review/batch-06/integrations-external.quality.json",
+   "evidence": "review/batch-06/integrations-external.facts.json",
    "lines": 997
   },
   "app/src/main/java/com/ai/assistance/operit/data/repository/CustomEmojiRepository.kt": {
