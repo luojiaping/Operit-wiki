@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 08:40 UTC",
+  "updated": "2026-10-01 08:41 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -1778,24 +1778,6 @@
       "updated": ""
     },
     {
-      "id": "batch-06/integrations-webchat.critic3",
-      "batch": "batch-06",
-      "title": "integrations-webchat.critic3",
-      "module": "",
-      "status": "review-pending",
-      "issue": null,
-      "issue_title": "[评审] integrations-webchat.critic3",
-      "md": "review/batch-06/integrations-webchat.critic3.md",
-      "facts": "",
-      "lint": "review/batch-06/integrations-webchat.critic3.lint.md",
-      "seed_files": [],
-      "facts_count": 0,
-      "refs_valid": "",
-      "critic": "",
-      "summary": "",
-      "updated": ""
-    },
-    {
       "id": "batch-06/integrations-webchat",
       "batch": "batch-06",
       "title": "WebChat 本地 HTTP 服务",
@@ -1917,24 +1899,6 @@
       "refs_valid": 79,
       "critic": "critic2-PASS",
       "summary": "聊天输入区：agent（OutlinedTextField+模型胶囊+双弹窗）与 classic（BasicTextField+右下角齿轮 280dp 设置菜单）两种样式由 inputStyle 切换；common 共享 ChatInputHookRegistry（三事件+ALLOW/BLOCK/REPLACE/CONSUME 裁决，AIChatScreen 接线执行）、InputMenuTogglePluginRegistry（6 槽位开关插件）、MentionVisualTransformation、PendingMessageQueuePanel、ThinkingQualitySlider、ToolPromptManagerDialog；输入增强：空输入 Mic 走全屏语音、附件面板（classic 内嵌/agent 弹窗）、工具权限三段开关与工具提示词管理；走查 11 条（警告 7：sendButtonEnabled 恒 true 死逻辑、透明双分支布局重复等）。",
-      "updated": ""
-    },
-    {
-      "id": "batch-06/ui-chat-parts.critic3",
-      "batch": "batch-06",
-      "title": "ui-chat-parts.critic3",
-      "module": "",
-      "status": "review-pending",
-      "issue": null,
-      "issue_title": "[评审] ui-chat-parts.critic3",
-      "md": "review/batch-06/ui-chat-parts.critic3.md",
-      "facts": "",
-      "lint": "review/batch-06/ui-chat-parts.critic3.lint.md",
-      "seed_files": [],
-      "facts_count": 0,
-      "refs_valid": "",
-      "critic": "",
-      "summary": "",
       "updated": ""
     },
     {
