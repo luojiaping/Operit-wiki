@@ -1,1 +1,13 @@
-{"critic":"","id":"appendix-tests-android","issue":124,"refs_valid":174,"source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending"}
+{
+  "critic": "",
+  "id": "appendix-tests-android",
+  "issue": 124,
+  "refs_valid": 174,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "approved",
+  "approved_by_comment_id": 5929889075,
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-01 11:07 UTC",
+  "updated": "2026-10-01"
+}

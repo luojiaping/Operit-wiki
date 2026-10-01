@@ -1,1 +1,13 @@
-{"critic":"","id":"ui-workflow","issue":114,"refs_valid":169,"source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending"}
+{
+  "critic": "",
+  "id": "ui-workflow",
+  "issue": 114,
+  "refs_valid": 169,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "approved",
+  "approved_by_comment_id": 5929885551,
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-01 11:09 UTC",
+  "updated": "2026-10-01"
+}

@@ -1,1 +1,13 @@
-{"critic":"","id":"ui-assistant","issue":116,"refs_valid":143,"source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending"}
+{
+  "critic": "",
+  "id": "ui-assistant",
+  "issue": 116,
+  "refs_valid": 143,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "approved",
+  "approved_by_comment_id": 5929886207,
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-01 11:08 UTC",
+  "updated": "2026-10-01"
+}
