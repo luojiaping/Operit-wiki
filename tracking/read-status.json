@@ -1,124 +1,124 @@
 {
  "repo_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
- "updated": "2026-09-30 16:24 UTC",
+ "updated": "2026-10-01 06:10 UTC",
  "files": {
   "app/src/main/java/com/ai/assistance/operit/api/chat/AIForegroundService.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-runtime.quality.json",
    "lines": 2021
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/ChatRuntimeHolder.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-runtime.quality.json",
    "lines": 266
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-runtime.quality.json",
    "lines": 3221
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationService.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
    "lines": 1342
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/MultiServiceManager.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
    "lines": 421
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ToolExecutionManager.kt": {
    "status": "complete",
-   "batch": "batch-02",
-   "date": "2026-09-30",
-   "evidence": "review/batch-02/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
    "lines": 793
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIService.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-providers-base.quality.json",
    "lines": 104
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIServiceFactory.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-providers-base.quality.json",
    "lines": 696
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-deepseek.quality.json",
    "lines": 1462
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/EndpointCompleter.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-providers-base.quality.json",
    "lines": 130
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LlmRetryPolicy.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-errors.quality.json",
    "lines": 13
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelListFetcher.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-providers-base.quality.json",
    "lines": 684
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-openai.quality.json",
    "lines": 3509
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RateLimitedAIService.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-errors.quality.json",
    "lines": 126
   },
   "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/TokenTrackingAIService.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/api-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-tokens.quality.json",
    "lines": 360
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/FunctionType.kt": {
    "status": "complete",
-   "batch": "batch-02",
-   "date": "2026-09-30",
-   "evidence": "review/batch-02/api-chat.md",
-   "lines": 15
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 16
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/ModelConfigData.kt": {
    "status": "complete",
-   "batch": "batch-02",
-   "date": "2026-09-30",
-   "evidence": "review/batch-02/api-chat.md",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 245
   },
   ".gitmodules": {
@@ -193,30 +193,30 @@
   },
   "app/src/main/java/com/ai/assistance/operit/core/chat/AIMessageManager.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
    "lines": 1454
   },
   "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/ChatRuntimeHookRegistry.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
    "lines": 80
   },
   "app/src/main/java/com/ai/assistance/operit/core/chat/plugins/MessageProcessingPluginRegistry.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
    "lines": 63
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/ChatTurnOptions.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-chat.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 8
   },
   "app/src/main/java/com/ai/assistance/operit/services/core/ChatHistoryDelegate.kt": {
@@ -270,9 +270,9 @@
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/agent/PhoneAgent.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
    "lines": 1297
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardShellToolExecutor.kt": {
@@ -284,51 +284,51 @@
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPPackage.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
    "lines": 181
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPTool.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
    "lines": 13
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPToolExecutor.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
    "lines": 610
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManager.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
    "lines": 4101
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/skill/SkillManager.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
    "lines": 431
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/system/AndroidShellExecutor.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
    "lines": 144
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/AITool.kt": {
    "status": "complete",
-   "batch": "batch-02",
-   "date": "2026-09-30",
-   "evidence": "review/batch-02/core-tools.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 37
   },
   "docs/TOOLPKG_FORMAT_GUIDE.md": {
@@ -340,114 +340,114 @@
   },
   "app/src/main/java/com/ai/assistance/operit/data/dao/ChatContentDao.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 471
   },
   "app/src/main/java/com/ai/assistance/operit/data/dao/ChatDao.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 287
   },
   "app/src/main/java/com/ai/assistance/operit/data/dao/MessageDao.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 245
   },
   "app/src/main/java/com/ai/assistance/operit/data/dao/MessageVariantDao.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 82
   },
   "app/src/main/java/com/ai/assistance/operit/data/dao/TokenUsageDao.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 192
   },
   "app/src/main/java/com/ai/assistance/operit/data/db/AppDatabase.kt": {
    "status": "complete",
-   "batch": "batch-02",
-   "date": "2026-09-30",
-   "evidence": "review/batch-02/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 558
   },
   "app/src/main/java/com/ai/assistance/operit/data/db/ObjectBox.kt": {
    "status": "complete",
-   "batch": "batch-02",
-   "date": "2026-09-30",
-   "evidence": "review/batch-02/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
    "lines": 60
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 94
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/ChatHistory.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 29
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessage.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 109
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/DocumentChunk.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 28
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/Memory.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 113
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 97
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/MessageVariantEntity.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 85
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/TokenStatsModelEntity.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 21
   },
   "app/src/main/java/com/ai/assistance/operit/data/model/TokenUsageRecordEntity.kt": {
    "status": "complete",
-   "batch": "quality-scan-01",
-   "date": "2026-09-30",
-   "evidence": "review/batch-01/data-model.quality.json",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
    "lines": 32
   },
   "app/src/main/java/com/ai/assistance/operit/core/tools/ToolExecutionLimits.kt": {
@@ -1072,62 +1072,1287 @@
    "date": "2026-09-30",
    "evidence": "review/batch-03/core-tools-standard-webchat.quality.json",
    "lines": 1383
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIResponsesProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-openai-responses.quality.json",
+   "lines": 791
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/GeminiProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-gemini.quality.json",
+   "lines": 2252
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LocalGenerationEnd.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-providers-base.quality.json",
+   "lines": 84
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/UnsafeModelSsl.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-providers-base.quality.json",
+   "lines": 38
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenCodeProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-opencode.quality.json",
+   "lines": 434
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/XaiProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-xai.quality.json",
+   "lines": 75
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/LlamaProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-llama.quality.json",
+   "lines": 410
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/library/MemoryLibrary.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-memory.quality.json",
+   "lines": 927
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/library/MemoryAutoSaveScheduler.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-memory.quality.json",
+   "lines": 297
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/library/ChatMemoryRebuildManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-memory.quality.json",
+   "lines": 245
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/library/ChatMemoryWindowPlanner.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-memory.quality.json",
+   "lines": 82
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/library/ChatMemoryRebuildTimeScope.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-memory.quality.json",
+   "lines": 43
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ClaudeProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-claude.quality.json",
+   "lines": 2080
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DoubaoAIProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-doubao.quality.json",
+   "lines": 73
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/CodexProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-codex.quality.json",
+   "lines": 303
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MNNProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-mnn.quality.json",
+   "lines": 1021
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MimoProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-mimo.quality.json",
+   "lines": 48
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenRouterProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-openrouter.quality.json",
+   "lines": 129
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/PromptHookRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
+   "lines": 277
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/SummaryHookRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
+   "lines": 99
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/ActivePromptHookMetadata.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
+   "lines": 98
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/PromptTurn.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-chat-runtime.quality.json",
+   "lines": 113
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/dao/ChatMessageCount.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-room-db.quality.json",
+   "lines": 6
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/KimiProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-kimi.quality.json",
+   "lines": 512
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/AccessibilityProviderInstaller.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 160
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/AndroidPermissionLevel.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 35
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/MediaProjectionCaptureManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 188
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/MediaProjectionHolder.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 27
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/OperitTerminalManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 51
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/RootAuthorizer.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 428
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/ScreenCaptureActivity.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 92
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/ScreenCaptureService.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 121
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/ShizukuAuthorizer.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 419
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/ShizukuInstaller.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 297
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/Terminal.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 204
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/AccessibilityActionListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 160
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/ActionListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 108
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/ActionListenerFactory.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 161
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/ActionManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 307
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/AdminActionListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 199
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/DebuggerActionListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 347
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/RootActionListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 334
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/action/StandardActionListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 136
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/AccessibilityShellExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 169
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/AdminShellExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 217
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/DebuggerShellExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 645
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/RootShellExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 601
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/ShellExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 97
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/ShellExecutorFactory.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 149
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shell/StandardShellExecutor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 328
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/system/shower/OperitShowerShellRunner.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-system.quality.json",
+   "lines": 30
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/PhoneAgentJobRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 72
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/ShowerBinderReceiver.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 29
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/ShowerBinderRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 18
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/ShowerController.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 201
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/ShowerServerManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 29
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/ShowerVideoRenderer.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 27
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/agent/VirtualDisplayManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 170
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/Calculator.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 62
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/CalculatorTest.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 62
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/ExpressionContext.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 319
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/ExpressionNode.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 154
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/ExpressionParser.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 623
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/calculator/JsCalculator.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 152
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/climode/CliToolModeSupport.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 688
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/condition/ConditionEvaluator.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 417
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPJson.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 21
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPServerConfig.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 13
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/MCPToolParameter.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 272
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/McpRuntimeSession.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 54
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/skill/SkillPackage.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-misc.quality.json",
+   "lines": 10
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationMarkupManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
+   "lines": 224
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationRoundManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
+   "lines": 145
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/FileBindingService.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
+   "lines": 722
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/InputProcessor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
+   "lines": 48
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/OrderedToolResults.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
+   "lines": 44
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ReferenceManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-enhance.quality.json",
+   "lines": 25
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/VoiceService.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 89
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/VoiceServiceFactory.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 139
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/TtsException.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 15
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/HttpTtsResponsePipelineStep.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 51
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/HttpVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 994
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/DoubaoVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 84
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/MiniMaxVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 144
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/MimoVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 151
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/OpenAIVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 364
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/OpenAIRealtimeVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 644
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/SiliconFlowVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 484
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/AccessibilityVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 726
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/VitsVoiceProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 1388
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/QueuedTtsPlayback.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 268
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/voice/VoiceListFetcher.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-voice.quality.json",
+   "lines": 167
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OllamaProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-ollama.quality.json",
+   "lines": 36
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/NousPortalProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-nousportal.quality.json",
+   "lines": 32
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/FourRouterProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-fourrouter.quality.json",
+   "lines": 32
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/ChatRuntimeSlot.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-runtime.quality.json",
+   "lines": 6
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgParser.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 1854
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManagerToolPkgFacade.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 1210
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgMainRegistrationScriptParser.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 701
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgRuntimeMonitor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 415
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 332
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgLoadOrder.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 237
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgComposeDslParser.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 207
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgApiVersion.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 117
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgLoader.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 100
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgCommonPluginConstants.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 89
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgManifestRequirement.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 84
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgMarketOrigin.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 81
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgDebugInstallReceiver.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 80
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageDebugRefreshReceiver.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 58
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgHookModels.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 48
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgComposeDslDebugDumpReceiver.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 40
+  },
+  "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgTemplateModels.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/core-tools-packtool.quality.json",
+   "lines": 37
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RateLimiterRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-errors.quality.json",
+   "lines": 19
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/SlidingWindowRateLimiter.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-errors.quality.json",
+   "lines": 42
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/RequestConcurrencyRegistry.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-errors.quality.json",
+   "lines": 28
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/HttpStatusCodeException.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-errors.quality.json",
+   "lines": 28
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MediaCapabilityProbe.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-media.quality.json",
+   "lines": 94
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkBuilder.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-media.quality.json",
+   "lines": 35
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MediaLinkParser.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-media.quality.json",
+   "lines": 192
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/StructuredToolCallBridge.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-tools-stream.quality.json",
+   "lines": 860
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ToolPkgJsAiProviderService.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-tools-stream.quality.json",
+   "lines": 712
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/QwenAIProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-qwen.quality.json",
+   "lines": 125
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ThinkingQualityMapping.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-thinking.quality.json",
+   "lines": 581
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/MistralProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-mistral.quality.json",
+   "lines": 95
+  },
+  "app/src/main/java/com/ai/assistance/operit/util/ChatMarkupRegex.kt": {
+   "status": "partial",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-mistral.quality.json",
+   "lines": 336
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/NvidiaAIProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-nvidia.quality.json",
+   "lines": 81
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/mnn/MnnModelDownloadManager.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 805
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ActivePrompt.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 6
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/AiReference.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 13
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ApiKeyFormatValidator.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 35
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ApiKeyInfo.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 42
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/AttachmentInfo.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 13
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/BillingMode.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 35
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/CharacterCard.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 194
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/CharacterCardChatStats.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 11
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/CharacterGroupCard.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 21
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/CharacterGroupChatStats.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 10
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageDisplayMode.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageLocatorPreview.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 16
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageTimestampAllocator.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 35
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/CloudEmbeddingConfig.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 24
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/CustomEmoji.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 25
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/DragonBones.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 47
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/Embedding.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 21
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/EmbeddingConverter.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 31
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/EmbeddingDimensionUsage.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 28
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/InputProcessingState.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 40
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/LegacyUserProfile.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 17
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MemoryAutoSaveCandidate.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 32
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MemoryExportModel.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 107
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MemorySearchConfig.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 24
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MemorySearchDebugInfo.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 38
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/MemorySpace.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 17
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ModelParameter.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 52
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/OpenAIModels.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 12
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/OperitChatArchive.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 150
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/OperitNodeInfo.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 56
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/PromptFunctionType.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 9
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/PromptTag.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 29
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ProviderIdentityUtils.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 30
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/SerializableColorScheme.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 107
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/SerializableTypography.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 95
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/StandardModelParameters.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 143
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/ToolPrompt.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 148
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/Workflow.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 189
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/WorkflowExecutionLog.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 43
+  },
+  "app/src/main/java/com/ai/assistance/operit/data/model/WorkspaceRenameResult.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/data-models.quality.json",
+   "lines": 7
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ApiKeyProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-keypool.quality.json",
+   "lines": 111
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ApiKeyPoolAvailabilityTester.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-keypool.quality.json",
+   "lines": 206
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ChatConfigReadiness.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-params.quality.json",
+   "lines": 114
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/ModelConfigConnectionTester.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-chat-params.quality.json",
+   "lines": 297
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/DeepgramSttProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 603
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/OnnxSileroVad.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 331
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/OpenAISttProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 611
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/PersonalWakeEnrollment.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 104
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/PersonalWakeFeatureExtractor.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 389
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/PersonalWakeListener.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 402
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/SherpaMnnSpeechProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 663
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/SherpaSpeechProvider.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 551
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/SpeechPrerollStore.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 152
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/SpeechService.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 111
+  },
+  "app/src/main/java/com/ai/assistance/operit/api/speech/SpeechServiceFactory.kt": {
+   "status": "complete",
+   "batch": "batch-04",
+   "date": "2026-10-01",
+   "evidence": "review/batch-04/api-speech.quality.json",
+   "lines": 230
   }
- },
- "app/src/main/java/com/ai/assistance/operit/core/chat/AIMessageManager.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 1454
- },
- "app/src/main/java/com/ai/assistance/operit/services/core/MessageProcessingDelegate.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 1985
- },
- "app/src/main/java/com/ai/assistance/operit/services/core/CurrentChatWindowController.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 101
- },
- "app/src/main/java/com/ai/assistance/operit/core/chat/plugins/MessageProcessingPluginRegistry.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 63
- },
- "app/src/main/java/com/ai/assistance/operit/core/chat/hooks/ChatRuntimeHookRegistry.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 80
- },
- "app/src/main/java/com/ai/assistance/operit/data/model/ChatTurnOptions.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 8
- },
- "app/src/main/java/com/ai/assistance/operit/services/core/TokenStatisticsDelegate.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 250
- },
- "app/src/main/java/com/ai/assistance/operit/services/core/ChatHistoryDelegate.kt": {
-  "status": "complete",
-  "batch": "batch-02",
-  "date": "2026-09-30",
-  "evidence": "review/batch-02/core-chat.quality.json",
-  "lines": 1696
  }
 }
