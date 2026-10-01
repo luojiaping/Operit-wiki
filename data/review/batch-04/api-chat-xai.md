@@ -39,6 +39,9 @@ date: 2026-10-01
   `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/XaiProvider.kt:20`
 - **endpoint 另存一份**：构造传入的 `apiEndpoint` 存到私有字段 `configuredApiEndpoint`，供 thinking 配置注入时使用。
   `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/XaiProvider.kt:40`
+- **Responses 端点说明（备注）**：xAI 官方支持 Responses 端点，但 Operit 当前只走了 Chat Completions——`XaiProvider` 类注释原文即 "xAI's OpenAI-compatible Chat Completions provider"，工厂注释也是 "xAI uses the OpenAI-compatible Chat Completions protocol"，且类内无任何 Responses 相关实现。如需对接官方 Responses 端点，需要自行扩展，当前版本不支持。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/XaiProvider.kt:12`
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/AIServiceFactory.kt:319`
 
 ## 关键符号
 
