@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 11:58 UTC",
+  "updated": "2026-10-01 12:08 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -464,7 +464,7 @@
       "batch": "batch-04",
       "title": "DeepSeek 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 30,
       "issue_title": "[评审] DeepSeek 供应商",
       "md": "review/batch-04/api-chat-deepseek.md",
@@ -568,7 +568,7 @@
       "batch": "batch-04",
       "title": "Gemini 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 28,
       "issue_title": "[评审] Gemini 供应商",
       "md": "review/batch-04/api-chat-gemini.md",
@@ -581,7 +581,7 @@
       "refs_valid": "100/100 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-04/api-chat-keypool",
@@ -867,7 +867,7 @@
       "batch": "batch-04",
       "title": "OpenCode 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 34,
       "issue_title": "[评审] OpenCode 供应商",
       "md": "review/batch-04/api-chat-opencode.md",
@@ -880,7 +880,7 @@
       "refs_valid": "65/65 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-04/api-chat-openrouter",
@@ -1019,7 +1019,7 @@
       "batch": "batch-04",
       "title": "Token 统计与 usage 上报",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 53,
       "issue_title": "[评审] Token 统计与 usage 上报",
       "md": "review/batch-04/api-chat-tokens.md",
@@ -1032,7 +1032,7 @@
       "refs_valid": "29/29 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-04/api-chat-tools-stream",
@@ -1520,7 +1520,7 @@
       "batch": "batch-05",
       "title": "角色卡与人格配置",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 66,
       "issue_title": "[评审] 角色卡与人格配置",
       "md": "review/batch-05/data-prefs-character.md",
@@ -1544,7 +1544,7 @@
       "refs_valid": "170/170 引用行号真实存在且 ±5 窗口经脚本复验均有支撑原文，lint 硬失败 0/警告 0",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-character.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-01"
     },
     {
       "id": "batch-05/data-prefs-model",
