@@ -1,13 +1,13 @@
 {
-  "approved_by_comment_id": "",
+  "approved_by_comment_id": 5929886956,
   "critic": "",
   "id": "ui-permission",
   "issue": 118,
   "refs_valid": 153,
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "review-pending",
-  "approved_by": "",
-  "approved_at": "",
+  "status": "approved",
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-01 11:24 UTC",
   "updated": "2026-10-01"
 }
