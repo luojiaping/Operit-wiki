@@ -1,0 +1,9 @@
+{
+  "critic": "critic2-verified-2-splits-fixed-by-parent",
+  "id": "util-stream-parse",
+  "issue": 86,
+  "refs_valid": 86,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending"
+}

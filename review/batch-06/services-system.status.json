@@ -1,0 +1,9 @@
+{
+  "critic": "critic2-verified-3-items-fixed-by-parent",
+  "id": "services-system",
+  "issue": 78,
+  "refs_valid": 131,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending"
+}

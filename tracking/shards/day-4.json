@@ -24,7 +24,8 @@
     "悬浮窗管理器的窗口生命周期？",
     "系统助手语音入口与通知监听？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 78
   },
   {
    "id": "plugins",
@@ -41,7 +42,8 @@
     "ToolPkg 13 个 Hook 桥接（ChatInput/Prompt/Summary/ChatMessage/MenuItem/Runtime/ChatView/AiProvider/ToolLifecycle）？",
     "如何写一个插件（OperitPlugin 接口实现示例）？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 79
   },
   {
    "id": "integrations-webchat",
@@ -57,7 +59,8 @@
     "ExternalChatHttpServer 的请求处理？",
     "网页端接入通道的鉴权与会话管理？"
    ],
-   "notes": ""
+   "notes": "critic3 closed 2026-10-01",
+   "issue": 80
   },
   {
    "id": "integrations-external",
@@ -76,7 +79,8 @@
     "ExternalChatRequestExecutor 如何被 http/a2a/intent 共用？",
     "Tasker 自动化集成的能力？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 81
   },
   {
    "id": "widget-provider",
@@ -92,7 +96,8 @@
     "Glance 桌面小组件的实现？",
     "DocumentsProvider 文件系统接入（Memory/OperitData/Workspace）？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 82
   },
   {
    "id": "util-file-media",
@@ -126,7 +131,8 @@
     "图片/媒体池与限流（ImagePoolManager/MediaBase64Limiter）？",
     "文档转换与工具包产物压缩？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 83
   },
   {
    "id": "util-text-chat",
@@ -155,7 +161,8 @@
     "TTS 文本清洗/分句与 LaTeX 转换？",
     "Markdown 数据模型（MarkdownProcessor）？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 84
   },
   {
    "id": "util-stream-core",
@@ -179,7 +186,8 @@
     "自研 Stream/SharedStream/StateStream/HotStream 的设计？",
     "操作符与修订追踪机制？"
    ],
-   "notes": "stream/plugins/ 归属 util-stream-parse"
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 85
   },
   {
    "id": "util-stream-parse",
@@ -195,7 +203,8 @@
     "JSON/Markdown/XML 字符流处理插件？",
     "JNI 原生流式切分的实现？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 86
   },
   {
    "id": "util-system",
@@ -227,7 +236,8 @@
     "更新检查（GithubReleaseUtil）与定位/国际化？",
     "UserCancellationException 的取消语义？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 87
   },
   {
    "id": "util-search",
@@ -243,7 +253,8 @@
     "精简 HNSW 向量索引的实现（记忆/RAG 检索用）？",
     "ripgrep JNI 声明与代码搜索？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 88
   },
   {
    "id": "ui-chat-screen",
@@ -262,7 +273,8 @@
     "聊天主界面的布局结构与状态管理（ViewModel）？",
     "附件处理流程？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 89
   },
   {
    "id": "ui-chat-components",
@@ -303,7 +315,8 @@
    "questions": [
     "聊天消息内容区与交互组件？"
    ],
-   "notes": "components/ 根目录 28 文件（ChatHistorySelector.kt 归属 ui-chat-screen；lazy/part/style/input/attachments/config 子目录各有独立页）"
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 90
   },
   {
    "id": "ui-chat-input",
@@ -318,7 +331,8 @@
     "输入区三种样式（agent/classic/common）的差异？",
     "输入增强（语音/附件/工具快捷入口）？"
    ],
-   "notes": ""
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 91
   },
   {
    "id": "ui-chat-styles",
@@ -334,7 +348,8 @@
    "questions": [
     "消息气泡/光标/通用样式的实现？"
    ],
-   "notes": "style/input/ 归属 ui-chat-input"
+   "notes": "critic2 closed 2026-10-01",
+   "issue": 92
   },
   {
    "id": "ui-chat-parts",
@@ -351,7 +366,8 @@
     "消息体 XML 渲染与工具调用卡片？",
     "文件差异（diff）展示？"
    ],
-   "notes": ""
+   "notes": "critic3 closed 2026-10-01",
+   "issue": 93
   }
  ],
  "page_count": 16,

@@ -1,0 +1,9 @@
+{
+  "critic": "critic3-verified-2-anchors-fixed-by-parent",
+  "id": "ui-chat-parts",
+  "issue": 93,
+  "refs_valid": 151,
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending"
+}
