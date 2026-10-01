@@ -76,7 +76,7 @@ def main() -> int:
         st = json.loads(sp.read_text(encoding="utf-8"))
         if st.get("status") != "review-pending":
             continue
-        seen_id = st.get("approved_by_comment_id", 0)
+        seen_id = st.get("approved_by_comment_id") or 0
 
         try:
             comments = gh_api(f"repos/{REPO}/issues/{issue}/comments")
