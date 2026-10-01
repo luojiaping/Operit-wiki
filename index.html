@@ -117,7 +117,8 @@ function pct(a, b) { return b ? (100 * a / b) : 0; }
 function renderCovBars() {
   const t = covData.totals;
   const rows = [
-    ["严格已读", t.complete_files, t.files, t.complete_loc, t.loc, "read"],
+    ["kt 严格已读（核心目标）", t.kt_complete_files, t.kt_files, t.kt_complete_loc, t.kt_loc, "read"],
+    ["严格已读（全仓库）", t.complete_files, t.files, t.complete_loc, t.loc, "read"],
     ["已触及", t.touched_files, t.files, t.touched_loc, t.loc, "touched"],
     ["已审批", t.approved_files, t.files, t.approved_loc, t.loc, "approved"],
   ];
