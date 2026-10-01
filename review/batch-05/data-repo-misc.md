@@ -54,8 +54,10 @@ date: 2026-10-01
 `MmdPersistenceDelegate` 取目录中首个 `.pmx` 或 `.pmd` 文件为模型，`.vmd` 文件按文件名排序收集为动作列表。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:347`
 
-`GltfPersistenceDelegate` 优先选择 `.glb`，其次 `.gltf`，并跳过 `.operit_` 前缀的内部文件。
-`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:391`
+`GltfPersistenceDelegate` 优先选择 `.glb`，其次 `.gltf`。
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:406`
+并跳过 `.operit_` 前缀的内部文件。
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:402`
 
 `FbxPersistenceDelegate` 用 `FbxInspector.inspectModel` 检查模型，检查失败或缺外部资源时跳过该目录。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:431`
@@ -76,7 +78,7 @@ date: 2026-10-01
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:586`
 
 prefs 中有记录、磁盘目录已消失但原路径仍存在的配置会被保留，不丢弃。
-`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:607`
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:615`
 
 最终配置列表按 `avatarSourceKey` 去重后写回 prefs。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:619`
@@ -87,14 +89,18 @@ prefs 中有记录、磁盘目录已消失但原路径仍存在的配置会被�
 `switchAvatar` 切换当前 Avatar 并把新 id 写回设置。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:652`
 
-`deleteAvatar` 拒绝删除内置 Avatar，直接返回 false；删除用户形象时同步删模型目录、更新配置列表，删的是当前形象则回退到第一个可用配置。
-`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:690`
+`deleteAvatar` 拒绝删除内置 Avatar，直接返回 false；删除用户形象时同步删模型目录、更新配置列表。
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:712`
+删的是当前形象则回退到第一个可用配置。
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:717`
 
 `importAvatarFromUri` 按文件名后缀与 MIME 类型把导入分流为 ZIP 与单模型文件两条路径。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:827`
 
-ZIP 导入支持 UTF-8、GBK、GB18030、CP437 四种文件名编码，解码报 MALFORMED 时自动换下一种重试。
+ZIP 导入支持 UTF-8、GBK、GB18030、CP437 四种文件名编码。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:512`
+解码报 MALFORMED 时自动换下一种重试。
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:1054`
 
 ZIP 导入用 canonicalPath 校验阻止目录穿越，可疑条目跳过不解压。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:1026`
@@ -103,7 +109,7 @@ ZIP 导入扫描解压后的全部子目录，识别出的配置按类型、base
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:1103`
 
 单模型文件导入支持 `.glb`、`.gltf`、`.mp4`、`.fbx` 四种后缀。
-`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:925`
+`app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:934`
 
 单文件导入的 FBX 若依赖外部资源则拒绝导入并删除已建目录，要求改用 ZIP 打包。
 `app/src/main/java/com/ai/assistance/operit/data/repository/AvatarRepository.kt:969`
@@ -123,7 +129,7 @@ Avatar 配置 id 生成规则：内置为 `built_in_<类型>_<目录名>`，用�
 `app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:164`
 
 文件写入使用 `AtomicFile`，经 `startWrite`、`finishWrite`、`failWrite` 保证原子性。
-`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:216`
+`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:228`
 
 `workflowStoreMutex` 是全局互斥锁，串行化所有工作流存储读写。
 `app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:66`
@@ -143,8 +149,10 @@ Avatar 配置 id 生成规则：内置为 `built_in_<类型>_<目录名>`，用�
 `readWorkflowFile` 强制用文件名覆盖 JSON 内容里的 id 字段，防止内容与文件名错位。
 `app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:203`
 
-`createWorkflow` 要求工作流 id 非空；启用且含 schedule 触发器时自动创建调度。
-`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:363`
+`createWorkflow` 要求工作流 id 非空。
+`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:365`
+启用且含 schedule 触发器时自动创建调度。
+`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:375`
 
 `updateWorkflow` 在保存前把 `updatedAt` 刷新为当前时间。
 `app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:391`
@@ -177,10 +185,10 @@ Intent 触发匹配 `triggerConfig` 的 `action` 与收到的 Intent action，�
 `app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:873`
 
 冷启动触发扫描 `triggerType` 为 `app_open` 的节点，并注入 `trigger_source` 为 `cold_start_app_open` 的触发参数。
-`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:909`
+`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:916`
 
 语音触发用 `triggerConfig` 的 `pattern` 正则匹配识别文本，支持 `require_final`、`ignore_case`、`cooldown_ms` 配置。
-`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:937`
+`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:968`
 
 语音触发的工作流列表缓存 TTL 为 2000 毫秒，默认冷却 3000 毫秒。
 `app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:65`
@@ -208,8 +216,10 @@ target 的 scope 目录名规则：角色卡 `character_card_<id>`，角色组 `
 `SUPPORTED_EXTENSIONS` 限定表情格式为 jpg、jpeg、png、gif、webp 五种；`addCustomEmoji` 拒绝不在白名单的扩展名，文件名用 UUID 生成。
 `app/src/main/java/com/ai/assistance/operit/data/repository/CustomEmojiRepository.kt:43`
 
-`deleteCustomEmoji` 同时删除表情文件与元数据，id 不存在返回失败。
-`app/src/main/java/com/ai/assistance/operit/data/repository/CustomEmojiRepository.kt:150`
+`deleteCustomEmoji` 同时删除表情文件与元数据。
+`app/src/main/java/com/ai/assistance/operit/data/repository/CustomEmojiRepository.kt:161`
+id 不存在返回失败。
+`app/src/main/java/com/ai/assistance/operit/data/repository/CustomEmojiRepository.kt:154`
 
 `deleteCategory` 删除分类目录及其下全部表情文件与元数据。
 `app/src/main/java/com/ai/assistance/operit/data/repository/CustomEmojiRepository.kt:178`
@@ -252,7 +262,9 @@ GitHub 导入缺省 ref 时调 GitHub API 取默认分支，结果缓存在 `def
 GitHub 导入经 `codeload.github.com` 下载仓库 zip；下载按 `owner/repo@ref` 池化复用，池未命中回退到 cacheDir 临时文件。
 `app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:103`
 
-`tree` 与 `blob` 链接可指定分支与子目录；`blob` 指向 `SKILL.md` 时取其父目录为技能子目录。
+`tree` 与 `blob` 链接可指定分支与子目录。
+`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:340`
+`blob` 指向 `SKILL.md` 时取其父目录为技能子目录。
 `app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:341`
 
 直接输入导入生成带 YAML front matter 的 `SKILL.md`，含 name 与 description 字段。
@@ -264,11 +276,15 @@ GitHub 导入经 `codeload.github.com` 下载仓库 zip；下载按 `owner/repo@
 `SKILL_ID_PATTERN` 为 `^[A-Za-z0-9._-]+$`，`isValidSkillId` 额外拒绝 id 为单个点或双点。
 `app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:31`
 
-`downloadFromUrl` 连接超时 15 秒、读取超时 30 秒，UA 伪装桌面浏览器，非 200 响应返回 false。
-`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:294`
+`downloadFromUrl` 连接超时 15 秒、读取超时 30 秒。
+`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:30`
+UA 伪装桌面浏览器。
+`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:388`
+非 200 响应返回 false。
+`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:394`
 
 `getGithubDefaultBranch` 解析 GitHub 仓库 API 返回的 `default_branch` 字段。
-`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:330`
+`app/src/main/java/com/ai/assistance/operit/data/skill/SkillRepository.kt:428`
 
 ### 插件黑名单：云端下发 SHA-256 名单，安装时按文件哈希拦截
 
@@ -282,7 +298,7 @@ GitHub 导入经 `codeload.github.com` 下载仓库 zip；下载按 `owner/repo@
 `app/src/main/java/com/ai/assistance/operit/data/security/PluginDenylistRepository.kt:135`
 
 载荷校验要求 schemaVersion 为 1、version 大于 0 且与指针版本一致、`hashAlgorithm` 为 `sha256`、`match` 为 `raw_file_bytes`、`action` 为 `reject_import`；条目 sha256 必须 64 位小写十六进制且不重复。
-`app/src/main/java/com/ai/assistance/operit/data/security/PluginDenylistRepository.kt:141`
+`app/src/main/java/com/ai/assistance/operit/data/security/PluginDenylistRepository.kt:146`
 
 `findDeniedImport` 计算待导入文件的 SHA-256，与缓存条目逐条比对，命中返回对应条目；无本地缓存时返回 null 即放行。
 `app/src/main/java/com/ai/assistance/operit/data/security/PluginDenylistRepository.kt:76`
@@ -310,8 +326,12 @@ GitHub 导入经 `codeload.github.com` 下载仓库 zip；下载按 `owner/repo@
 `extractProviderApkFromAssets` 把 assets 中的提供者 APK 提取到 cacheDir，`launchProviderInstall` 在 Android N 及以上用 `FileProvider` 生成 URI 发起安装。
 `app/src/main/java/com/ai/assistance/operit/data/repository/UIHierarchyManager.kt:87`
 
-`bindToService` 用 `Mutex` 串行化，经 `resolveService` 把隐式 Intent 显式化，`suspendCancellableCoroutine` 等连接回调，3 秒超时后解绑收尾。
-`app/src/main/java/com/ai/assistance/operit/data/repository/UIHierarchyManager.kt:197`
+`bindToService` 用 `Mutex` 串行化。
+`app/src/main/java/com/ai/assistance/operit/data/repository/UIHierarchyManager.kt:198`
+经 `resolveService` 把隐式 Intent 显式化。
+`app/src/main/java/com/ai/assistance/operit/data/repository/UIHierarchyManager.kt:209`
+`suspendCancellableCoroutine` 等连接回调，3 秒超时后解绑收尾。
+`app/src/main/java/com/ai/assistance/operit/data/repository/UIHierarchyManager.kt:223`
 
 提供者 App 未安装时 `bindToService` 直接返回当前绑定状态，不尝试绑定；`ensureBound` 在每次调用前自动重绑一次；绑定状态经 `isBound` 对外暴露。
 `app/src/main/java/com/ai/assistance/operit/data/repository/UIHierarchyManager.kt:183`

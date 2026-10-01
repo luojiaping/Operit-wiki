@@ -1,1 +1,10 @@
-{"critic":"","id":"data-prefs-app","issue":67,"refs_valid":"229/229 引用行号真实存在，quality 19 条证据逐字命中源码，lint 硬失败 0/警告 0","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"应用基础/主题/语音/记忆搜索配置"}
+{
+  "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-app.critic.md）",
+  "id": "data-prefs-app",
+  "issue": 67,
+  "refs_valid": "230/230 引用行号真实存在且不越界，0 复合事实；独立复验确认 facts[171]:721、quality 第11条:38、facts[164]:590/[165]:382 锚点正确，quality 19 条证据逐字命中，高危 2 条定级不夸大，lint 硬失败 0/警告 0",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "title": "应用基础/主题/语音/记忆搜索配置"
+}

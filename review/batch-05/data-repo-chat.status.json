@@ -1,1 +1,10 @@
-{"critic":"","issue":63,"refs_valid":"248 个引用行号真实存在（140 去重），lint 硬失败 0/警告 0","source_commit":"dbf71916fae9750cfdc9f9a774f5a0fee56633fb","source_repo":"operit","status":"review-pending","title":"聊天历史仓库"}
+{
+  "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-chat.critic.md）",
+  "id": "data-repo-chat",
+  "issue": 63,
+  "refs_valid": "132 facts 引用锚点已按 critic 报告逐条修正并验真，lint 硬失败 0/警告 0",
+  "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "source_repo": "operit",
+  "status": "review-pending",
+  "title": "聊天历史仓库"
+}

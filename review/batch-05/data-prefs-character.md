@@ -120,7 +120,7 @@ Waifu 模式是一组影响消息呈现的参数：总开关 `enable_waifu_mode`
 `app/src/main/java/com/ai/assistance/operit/data/preferences/WaifuPreferences.kt:236`
 
 新建角色卡时会把创建时刻的当前 Waifu 配置复制给新卡。
-`app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:359`
+`app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:364`
 
 ### 8. 酒馆卡互通：导入与导出
 
@@ -130,9 +130,9 @@ Operit 兼容 SillyTavern（酒馆）角色卡格式。导入入口 `createChara
 导入有两条路径：
 
 - 如果 JSON 里 `extensions.operit.schema` 等于 `operit_character_card_v1`，说明是 Operit 自己导出的，直接用完整载荷还原全部字段（含绑定模式、白名单）。
-  `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:1003`
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:994`
 - 否则走通用转换：`description`+`personality`+`scenario` 进角色设定；`mes_example`+`system_prompt`+`post_history_instructions`+备用问候语进聊天其他内容；`depth_prompt` 进高级自定义提示词；`first_mes` 做开场白。世界书（`character_book`）的条目会被拼成 `[条目名]\n内容` 文本，建一个 `FUNCTION` 类型标签挂到卡上。
-  `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:1280`
+  `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:1295`
 
 PNG 图片导入（`createCharacterCardFromTavernPng`）先从 PNG 的 `tEXt` 块里找关键字为 `chara` 的条目，Base64 解码出 JSON，再走同一套 JSON 导入流程。解析前会校验 8 字节 PNG 文件头。
 `app/src/main/java/com/ai/assistance/operit/data/preferences/CharacterCardManager.kt:1157`

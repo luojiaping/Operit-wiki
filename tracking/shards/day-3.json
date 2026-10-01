@@ -17,7 +17,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 62
+      "issue": 62,
+      "facts": 156,
+      "quality_count": 13,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-repo-memory.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-repo-chat",
@@ -33,7 +37,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 63
+      "issue": 63,
+      "facts": 132,
+      "quality_count": 9,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-repo-chat.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-repo-misc",
@@ -53,7 +61,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "repository/ 下 MemoryRepository、MemoryAutoSaveCandidateRepository、ChatHistoryManager 归属 data-repo-memory / data-repo-chat，本页为其余 5 文件",
-      "issue": 64
+      "issue": 64,
+      "facts": 168,
+      "quality_count": 20,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-repo-misc.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-prefs-model",
@@ -71,7 +83,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "本页仅覆盖 preferences/ 下模型与 API 配置 9 文件（ModelConfigManager、ApiPreferences、GitHubAuthPreferences 等）",
-      "issue": 65
+      "issue": 65,
+      "facts": 181,
+      "quality_count": 14,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-prefs-model.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-prefs-character",
@@ -89,7 +105,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "本页仅覆盖 preferences/ 下角色卡与人格 10 文件（CharacterCardManager、PromptTagManager 等）",
-      "issue": 66
+      "issue": 66,
+      "facts": 149,
+      "quality_count": 12,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-prefs-character.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-prefs-app",
@@ -107,7 +127,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "本页覆盖 preferences/ 下其余 18 文件",
-      "issue": 67
+      "issue": 67,
+      "facts": 230,
+      "quality_count": 19,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-prefs-app.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-stats-pricing",
@@ -126,7 +150,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 68
+      "issue": 68,
+      "facts": 209,
+      "quality_count": 9,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-stats-pricing.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-backup-export",
@@ -148,7 +176,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 69
+      "issue": 69,
+      "facts": 183,
+      "quality_count": 13,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-backup-export.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-mcp",
@@ -166,7 +198,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 70
+      "issue": 70,
+      "facts": 324,
+      "quality_count": 11,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-mcp.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "data-api-oauth",
@@ -183,7 +219,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 71
+      "issue": 71,
+      "facts": 160,
+      "quality_count": 14,
+      "critic_conclusion": "独立 critic 逐条核引用通过（data-api-oauth.critic.md）：160 facts 全过、14 条走查 evidence 逐字命中、高危 2 条分级合理；轻微 3 项已处理（lint.md 自指措辞改写，其余两项经复验为 critic 误标、原引用窗口有支撑）",
+      "status": "review-pending"
     },
     {
       "id": "data-update-announce",
@@ -201,7 +241,11 @@
         "总览见 batch-01/data-model"
       ],
       "notes": "",
-      "issue": 72
+      "issue": 72,
+      "facts": 125,
+      "quality_count": 9,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（data-update-announce.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "core-avatar",
@@ -224,7 +268,11 @@
         "总览见 batch-01/arch-overview（mmd 相关已标注停止维护）"
       ],
       "notes": "avatar/impl/mmd/（3 文件/373 行）已停止维护，不在 seed 内",
-      "issue": 73
+      "issue": 73,
+      "facts": 113,
+      "quality_count": 7,
+      "critic_conclusion": "独立 critic 逐条核引用全过（113/113 facts、7/7 evidence、MMD 未停维专项确认），结论通过（core-avatar.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "core-config-prompts",
@@ -240,7 +288,11 @@
         "各功能提示如何按场景装配？"
       ],
       "notes": "",
-      "issue": 74
+      "issue": 74,
+      "facts": 84,
+      "quality_count": 10,
+      "critic_conclusion": "独立 critic 初验打回后修错，经多轮独立复验通过（core-config-prompts.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "core-app-workflow",
@@ -259,7 +311,11 @@
         "工作流执行与调度引擎？"
       ],
       "notes": "",
-      "issue": 75
+      "issue": 75,
+      "facts": 113,
+      "quality_count": 7,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（core-app-workflow.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "core-subpack",
@@ -275,7 +331,11 @@
         "EXE 编辑与签名处理？"
       ],
       "notes": "",
-      "issue": 76
+      "issue": 76,
+      "facts": 107,
+      "quality_count": 15,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（core-subpack.critic.md）",
+      "status": "review-pending"
     },
     {
       "id": "services-chatservice",
@@ -292,7 +352,11 @@
         "总览见 batch-01/core-chat"
       ],
       "notes": "与 batch-01/core-chat 有重叠，本页深挖 Delegate 级实现细节",
-      "issue": 77
+      "issue": 77,
+      "facts": 181,
+      "quality_count": 14,
+      "critic_conclusion": "独立 critic 初验打回后修错，独立复验通过（services-chatservice.critic.md）",
+      "status": "review-pending"
     }
   ],
   "page_count": 16,

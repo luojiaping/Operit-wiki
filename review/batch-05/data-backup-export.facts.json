@@ -308,8 +308,12 @@
     "ref": "app/src/main/java/com/ai/assistance/operit/data/backup/RoomDatabaseBackupScheduler.kt:18"
   },
   {
-    "fact": "RoomDatabaseBackupScheduler.ensureScheduled 注册 24 小时周期的 RoomDatabaseBackupWorker，并要求存储空间不低。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/backup/RoomDatabaseBackupScheduler.kt:20"
+    "fact": "RoomDatabaseBackupScheduler.ensureScheduled 用 PeriodicWorkRequestBuilder 以 24 小时为周期注册 RoomDatabaseBackupWorker。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/backup/RoomDatabaseBackupScheduler.kt:27"
+  },
+  {
+    "fact": "ensureScheduled 给备份 WorkRequest 加 Constraints，要求存储空间不低（setRequiresStorageNotLow(true)）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/backup/RoomDatabaseBackupScheduler.kt:22"
   },
   {
     "fact": "RoomDatabaseBackupScheduler 把周期任务的首次延迟对齐到下一个凌晨 3 点。",
@@ -625,7 +629,7 @@
   },
   {
     "fact": "ChatHistoryManager 的 JSON 导出写入 archiveType、formatVersion、exportedAt 与 chats 数组，逐会话流式 flush。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:204"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:213"
   },
   {
     "fact": "ChatHistoryManager 的 CSV 导出经 ChatHistoryCsv 逐会话逐消息流式写入。",
@@ -637,7 +641,7 @@
   },
   {
     "fact": "ChatHistoryManager 导出失败时删除未完成的导出文件。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:2032"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:2038"
   },
   {
     "fact": "ChatHistoryManager.importChatHistoriesFromUri 是聊天记录导入的统一入口。",
@@ -649,7 +653,7 @@
   },
   {
     "fact": "ChatHistoryManager.importOperitChatHistoriesStream 用流式 JsonReader 解析，兼容归档对象与旧版数组两种 JSON。",
-    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:355"
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/ChatHistoryManager.kt:364"
   },
   {
     "fact": "ChatHistoryManager.convertToOperitFormat 按格式分发到 ChatGPT、ChatBox、Markdown、通用 JSON 转换器，CLAUDE 回退到通用 JSON。",
