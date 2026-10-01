@@ -97,7 +97,8 @@ def main() -> None:
               "read_files": 0, "approved_files": 0,
               "read_loc": 0, "approved_loc": 0,
               "complete_files": 0, "complete_loc": 0,
-              "touched_files": 0, "touched_loc": 0}
+              "touched_files": 0, "touched_loc": 0,
+              "kt_complete_files": 0, "kt_complete_loc": 0, "kt_loc": 0}
 
     for fpath, mod in sorted(all_files.items()):
         is_kt = fpath.endswith(".kt")
@@ -123,6 +124,7 @@ def main() -> None:
         if is_kt:
             ms["kt_files"] += 1
             totals["kt_files"] += 1
+            totals["kt_loc"] += loc
         if status >= 1:
             ms["read_files"] += 1
             ms["read_loc"] += loc
@@ -131,6 +133,9 @@ def main() -> None:
             ms["complete_loc"] += loc
             totals["complete_files"] += 1
             totals["complete_loc"] += loc
+            if is_kt:
+                totals["kt_complete_files"] += 1
+                totals["kt_complete_loc"] += loc
         elif rs == "touched":
             ms["touched_files"] += 1
             ms["touched_loc"] += loc
