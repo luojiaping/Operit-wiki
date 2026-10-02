@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 10:33 UTC",
+  "updated": "2026-10-02 11:17 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -2586,6 +2586,24 @@
         "SkillPackage.kt"
       ],
       "facts_count": 42,
+      "refs_valid": "用户指示直接上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-02"
+    },
+    {
+      "id": "batch-09/appendix-plugin-dev-guide",
+      "batch": "batch-09",
+      "title": "插件开发指南（Top50 实证）",
+      "module": "附录",
+      "status": "approved",
+      "issue": 140,
+      "issue_title": "[评审] 插件开发指南（Top50 实证）",
+      "md": "review/batch-09/appendix-plugin-dev-guide.md",
+      "facts": "review/batch-09/appendix-plugin-dev-guide.facts.json",
+      "lint": "review/batch-09/appendix-plugin-dev-guide.lint.md",
+      "seed_files": [],
+      "facts_count": 36,
       "refs_valid": "用户指示直接上线",
       "critic": "",
       "summary": "",
