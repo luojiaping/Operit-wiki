@@ -639,3 +639,17 @@ body.home { background-color: var(--ink); }
 #langLayer { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 .hero2 .kicker, .hero2 #dotTitle, .hero2 .hero-sub, .hero2 .hero-ctas { position: relative; z-index: 1; }
 .hero2 .scroll-cue { z-index: 1; }
+
+/* ---- 里程碑：卡片轮播（自动播放，无滚动条） ---- */
+.timeline { display: block; overflow: hidden; -webkit-mask-image: none; mask-image: none;
+  margin: 4px 0 0; padding: 10px 2px 4px; scroll-snap-type: none; scrollbar-width: none; }
+.timeline::-webkit-scrollbar { display: none; }
+.tl-track { display: flex; gap: 14px; transition: transform .65s cubic-bezier(.22,.61,.21,1); will-change: transform; }
+.tl-item { flex: 0 0 calc((100% - 28px) / 3); scroll-snap-align: none; padding-top: 0; }
+.tl-item::before { display: none; }
+.tl-dot { display: none; }
+.tl-progress { height: 2px; background: rgba(255, 255, 255, .08); border-radius: 2px; margin: 18px 2px 0; overflow: hidden; }
+.tl-progress i { display: block; height: 100%; width: 0; background: var(--app-accent); border-radius: 2px; }
+@media (max-width: 640px) {
+  .tl-item { flex: 0 0 100%; }
+}
