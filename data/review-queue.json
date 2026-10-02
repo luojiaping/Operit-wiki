@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 07:23 UTC",
+  "updated": "2026-10-02 08:37 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -464,7 +464,7 @@
       "batch": "batch-04",
       "title": "DeepSeek 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 30,
       "issue_title": "[评审] DeepSeek 供应商",
       "md": "review/batch-04/api-chat-deepseek.md",
