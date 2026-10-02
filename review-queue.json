@@ -1491,7 +1491,7 @@
       "batch": "batch-05",
       "title": "应用基础/主题/语音/记忆搜索配置",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 67,
       "issue_title": "[评审] 应用基础/主题/语音/记忆搜索配置",
       "md": "review/batch-05/data-prefs-app.md",
@@ -1510,10 +1510,10 @@
         "ui/theme/ThemePreferenceLocals.kt"
       ],
       "facts_count": 245,
-      "refs_valid": 245,
+      "refs_valid": "245；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-app.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/data-prefs-character",
@@ -1551,7 +1551,7 @@
       "batch": "batch-05",
       "title": "模型与 API 配置（偏好设置）",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 65,
       "issue_title": "[评审] 模型与 API 配置（偏好设置）",
       "md": "review/batch-05/data-prefs-model.md",
@@ -1572,17 +1572,17 @@
         "app/src/main/java/com/ai/assistance/operit/data/preferences/VersionedPreferencesDataStore.kt"
       ],
       "facts_count": 181,
-      "refs_valid": "181/181 引用行号真实存在且 ±5 窗口经独立复验确认有支撑原文，lint 硬失败 0/警告 0",
+      "refs_valid": "181/181 引用行号真实存在且 ±5 窗口经独立复验确认有支撑原文，lint 硬失败 0/警告 0；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-prefs-model.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/data-repo-chat",
       "batch": "batch-05",
       "title": "聊天历史仓库",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 63,
       "issue_title": "[评审] 聊天历史仓库",
       "md": "review/batch-05/data-repo-chat.md",
@@ -1603,10 +1603,10 @@
         "app/src/main/java/com/ai/assistance/operit/data/model/ChatMessageTimestampAllocator.kt"
       ],
       "facts_count": 146,
-      "refs_valid": 146,
+      "refs_valid": "146；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-chat.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/data-repo-memory",
@@ -1641,7 +1641,7 @@
       "batch": "batch-05",
       "title": "扩展仓库（Avatar/表情/工作流/Skill/插件黑名单/UI 层级）",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 64,
       "issue_title": "[评审] 扩展仓库（Avatar/表情/工作流/Skill/插件黑名单/UI 层级）",
       "md": "review/batch-05/data-repo-misc.md",
@@ -1661,17 +1661,17 @@
         "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/accessbility/AccessibilityUITools.kt"
       ],
       "facts_count": 168,
-      "refs_valid": "168/168 引用行号真实存在且 ±5 窗口逐条手工复验均有支撑原文（含复验员修正的 3 处更优锚点），quality 20 条 evidence 逐字命中，lint 硬失败 0/警告 0（单页隔离重跑，独立复验通过后）",
+      "refs_valid": "168/168 引用行号真实存在且 ±5 窗口逐条手工复验均有支撑原文（含复验员修正的 3 处更优锚点），quality 20 条 evidence 逐字命中，lint 硬失败 0/警告 0（单页隔离重跑，独立复验通过后）；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-misc.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/data-stats-pricing",
       "batch": "batch-05",
       "title": "Token 用量统计与模型定价数据",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 68,
       "issue_title": "[评审] Token 用量统计与模型定价数据",
       "md": "review/batch-05/data-stats-pricing.md",
@@ -1683,10 +1683,10 @@
         "data/dao/TokenUsageDao.kt"
       ],
       "facts_count": 215,
-      "refs_valid": "215/215 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）",
+      "refs_valid": "215/215 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-stats-pricing.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/data-update-announce",
@@ -1723,7 +1723,7 @@
       "batch": "batch-05",
       "title": "聊天服务核心 Delegate 群",
       "module": "系统服务与集成",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 77,
       "issue_title": "[评审] 聊天服务核心 Delegate 群",
       "md": "review/batch-05/services-chatservice.md",
@@ -1742,17 +1742,17 @@
         "app/src/main/java/com/ai/assistance/operit/services/ChatServiceCore.kt"
       ],
       "facts_count": 181,
-      "refs_valid": "181/181 引用行号真实存在且 ±5 窗口有支撑，quality 14/14 证据逐字，lint 硬失败 0/警告 0",
+      "refs_valid": "181/181 引用行号真实存在且 ±5 窗口有支撑，quality 14/14 证据逐字，lint 硬失败 0/警告 0；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "独立 critic 初验打回后修错，独立复验通过（services-chatservice.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/integrations-external",
       "batch": "batch-06",
       "title": "外部聊天入口与自动化集成",
       "module": "外部集成 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 81,
       "issue_title": "[评审] 外部聊天入口与自动化集成",
       "md": "review/batch-06/integrations-external.md",
@@ -1773,17 +1773,17 @@
         "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt"
       ],
       "facts_count": 161,
-      "refs_valid": "161/161 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）",
+      "refs_valid": "161/161 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-6-anchors-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/integrations-webchat",
       "batch": "batch-06",
       "title": "WebChat 本地 HTTP 服务",
       "module": "integrations-webchat",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 80,
       "issue_title": "[评审] WebChat 本地 HTTP 服务",
       "md": "review/batch-06/integrations-webchat.md",
@@ -1802,17 +1802,17 @@
         "app/src/main/java/com/ai/assistance/operit/integrations/http/ExternalChatHttpState.kt"
       ],
       "facts_count": 153,
-      "refs_valid": 153,
+      "refs_valid": "153；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic3-verified-6-items-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/plugins",
       "batch": "batch-06",
       "title": "插件机制与工具包桥接",
       "module": "插件体系",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 79,
       "issue_title": "[评审] 插件机制与工具包桥接",
       "md": "review/batch-06/plugins.md",
@@ -1833,17 +1833,17 @@
         "app/src/main/java/com/ai/assistance/operit/plugins/toolpkg/ToolPkgChatViewHookBridge.kt"
       ],
       "facts_count": 181,
-      "refs_valid": 181,
+      "refs_valid": "181；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/services-system",
       "batch": "batch-06",
       "title": "系统服务与悬浮窗",
       "module": "系统层 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 78,
       "issue_title": "[评审] 系统服务与悬浮窗",
       "md": "review/batch-06/services-system.md",
@@ -1861,17 +1861,17 @@
         "ui/floating/FloatingMode.kt"
       ],
       "facts_count": 131,
-      "refs_valid": 131,
+      "refs_valid": "131；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-3-items-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/ui-chat-components",
       "batch": "batch-06",
       "title": "UI 聊天内容组件",
       "module": "UI 聊天",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 90,
       "issue_title": "[评审] UI 聊天内容组件",
       "md": "review/batch-06/ui-chat-components.md",
@@ -1879,17 +1879,17 @@
       "lint": "review/batch-06/ui-chat-components.lint.md",
       "seed_files": [],
       "facts_count": 117,
-      "refs_valid": 117,
+      "refs_valid": "117；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-5-items-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/ui-chat-input",
       "batch": "batch-06",
       "title": "聊天输入区",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 91,
       "issue_title": "[评审] 聊天输入区",
       "md": "review/batch-06/ui-chat-input.md",
@@ -1897,17 +1897,17 @@
       "lint": "review/batch-06/ui-chat-input.lint.md",
       "seed_files": [],
       "facts_count": 79,
-      "refs_valid": 79,
+      "refs_valid": "79；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "聊天输入区：agent（OutlinedTextField+模型胶囊+双弹窗）与 classic（BasicTextField+右下角齿轮 280dp 设置菜单）两种样式由 inputStyle 切换；common 共享 ChatInputHookRegistry（三事件+ALLOW/BLOCK/REPLACE/CONSUME 裁决，AIChatScreen 接线执行）、InputMenuTogglePluginRegistry（6 槽位开关插件）、MentionVisualTransformation、PendingMessageQueuePanel、ThinkingQualitySlider、ToolPromptManagerDialog；输入增强：空输入 Mic 走全屏语音、附件面板（classic 内嵌/agent 弹窗）、工具权限三段开关与工具提示词管理；走查 11 条（警告 7：sendButtonEnabled 恒 true 死逻辑、透明双分支布局重复等）。",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/ui-chat-parts",
       "batch": "batch-06",
       "title": "UI 聊天消息部件",
       "module": "UI 聊天",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 93,
       "issue_title": "[评审] UI 聊天消息部件",
       "md": "review/batch-06/ui-chat-parts.md",
@@ -1917,17 +1917,17 @@
         "config/TokenInfoDialog.kt"
       ],
       "facts_count": 151,
-      "refs_valid": 151,
+      "refs_valid": "151；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic3-verified-2-anchors-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/ui-chat-screen",
       "batch": "batch-06",
       "title": "聊天主界面与状态管理",
       "module": "ui/chat-screen",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 89,
       "issue_title": "[评审] 聊天主界面与状态管理",
       "md": "review/batch-06/ui-chat-screen.md",
@@ -1935,17 +1935,17 @@
       "lint": "review/batch-06/ui-chat-screen.lint.md",
       "seed_files": [],
       "facts_count": 82,
-      "refs_valid": 82,
+      "refs_valid": "82；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/ui-chat-styles",
       "batch": "batch-06",
       "title": "聊天消息样式：气泡风格与 Cursor 风格",
       "module": "UI 聊天 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 92,
       "issue_title": "[评审] 聊天消息样式：气泡风格与 Cursor 风格",
       "md": "review/batch-06/ui-chat-styles.md",
@@ -1963,17 +1963,17 @@
         "cursor/UserMessageComposable.kt"
       ],
       "facts_count": 113,
-      "refs_valid": 113,
+      "refs_valid": "113；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/util-file-media",
       "batch": "batch-06",
       "title": "文件、媒体与格式转换工具",
       "module": "util",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 83,
       "issue_title": "[评审] 文件、媒体与格式转换工具",
       "md": "review/batch-06/util-file-media.md",
@@ -1981,17 +1981,17 @@
       "lint": "review/batch-06/util-file-media.lint.md",
       "seed_files": [],
       "facts_count": 156,
-      "refs_valid": 156,
+      "refs_valid": "156；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-1-split-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/util-search",
       "batch": "batch-06",
       "title": "向量索引与本地检索",
       "module": "工具函数库 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 88,
       "issue_title": "[评审] 向量索引与本地检索",
       "md": "review/batch-06/util-search.md",
@@ -2005,17 +2005,17 @@
         "StandardFileSystemTools.kt"
       ],
       "facts_count": 82,
-      "refs_valid": 82,
+      "refs_valid": "82；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/util-stream-core",
       "batch": "batch-06",
       "title": "响应式流框架",
       "module": "工具函数库 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 85,
       "issue_title": "[评审] 响应式流框架",
       "md": "review/batch-06/util-stream-core.md",
@@ -2034,17 +2034,17 @@
         "app/src/main/java/com/ai/assistance/operit/util/stream/StringExtensions.kt"
       ],
       "facts_count": 166,
-      "refs_valid": 166,
+      "refs_valid": "166；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/util-stream-parse",
       "batch": "batch-06",
       "title": "流式内容解析插件与原生实现",
       "module": "util",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 86,
       "issue_title": "[评审] 流式内容解析插件与原生实现",
       "md": "review/batch-06/util-stream-parse.md",
@@ -2062,17 +2062,17 @@
         "NativeXmlSplitter.kt"
       ],
       "facts_count": 86,
-      "refs_valid": 86,
+      "refs_valid": "86；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-2-splits-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/util-system",
       "batch": "batch-06",
       "title": "系统诊断、日志与平台服务",
       "module": "工具层 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 87,
       "issue_title": "[评审] 系统诊断、日志与平台服务",
       "md": "review/batch-06/util-system.md",
@@ -2080,17 +2080,17 @@
       "lint": "review/batch-06/util-system.lint.md",
       "seed_files": [],
       "facts_count": 71,
-      "refs_valid": 71,
+      "refs_valid": "71；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-1-anchor-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/util-text-chat",
       "batch": "batch-06",
       "title": "消息渲染与文本处理",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 84,
       "issue_title": "[评审] 消息渲染与文本处理",
       "md": "review/batch-06/util-text-chat.md",
@@ -2098,17 +2098,17 @@
       "lint": "review/batch-06/util-text-chat.lint.md",
       "seed_files": [],
       "facts_count": 192,
-      "refs_valid": 192,
+      "refs_valid": "192；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-06/widget-provider",
       "batch": "batch-06",
       "title": "桌面小组件与文档提供器",
       "module": "系统服务 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 82,
       "issue_title": "[评审] 桌面小组件与文档提供器",
       "md": "review/batch-06/widget-provider.md",
@@ -2129,17 +2129,17 @@
         "app/src/main/res/xml/toolpkg_desktop_widget_info.xml"
       ],
       "facts_count": 146,
-      "refs_valid": 146,
+      "refs_valid": "146；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-2-ref-moves-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-chat-editor",
       "batch": "batch-07",
       "title": "内置代码编辑器",
       "module": "聊天 / webview 工作区",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 96,
       "issue_title": "[评审] 内置代码编辑器",
       "md": "review/batch-07/ui-chat-editor.md",
@@ -2153,17 +2153,17 @@
         "EditorSyntaxHighlighter.kt"
       ],
       "facts_count": 105,
-      "refs_valid": 105,
+      "refs_valid": "105；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-1-anchor-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-chat-lazylist",
       "batch": "batch-07",
       "title": "聊天列表懒加载布局",
       "module": "ui-features-chat / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 94,
       "issue_title": "[评审] 聊天列表懒加载布局",
       "md": "review/batch-07/ui-chat-lazylist.md",
@@ -2184,17 +2184,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/lazy/LazyLayoutItemAnimation.kt"
       ],
       "facts_count": 131,
-      "refs_valid": 131,
+      "refs_valid": "131；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-chat-workspace",
       "batch": "batch-07",
       "title": "工作区与 WebView 基础设施",
       "module": "UI 聊天",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 95,
       "issue_title": "[评审] 工作区与 WebView 基础设施",
       "md": "review/batch-07/ui-chat-workspace.md",
@@ -2215,17 +2215,17 @@
         "webview/workspace/WorkspacePreviewRefreshBus.kt"
       ],
       "facts_count": 211,
-      "refs_valid": 211,
+      "refs_valid": "211；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-PASS-5-anchors-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-settings-chat",
       "batch": "batch-07",
       "title": "聊天/备份/历史设置界面",
       "module": "用户界面 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 99,
       "issue_title": "[评审] 聊天/备份/历史设置界面",
       "md": "review/batch-07/ui-settings-chat.md",
@@ -2246,17 +2246,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/settings/components/MarkdownSyntaxHighlighting.kt"
       ],
       "facts_count": 115,
-      "refs_valid": 115,
+      "refs_valid": "115；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-PASS-1-evidence-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-settings-misc",
       "batch": "batch-07",
       "title": "偏好与其他设置界面",
       "module": "设置 / 杂项",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 100,
       "issue_title": "[评审] 偏好与其他设置界面",
       "md": "review/batch-07/ui-settings-misc.md",
@@ -2264,17 +2264,17 @@
       "lint": "review/batch-07/ui-settings-misc.lint.md",
       "seed_files": [],
       "facts_count": 212,
-      "refs_valid": 212,
+      "refs_valid": "212；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-PASS",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-settings-model",
       "batch": "batch-07",
       "title": "模型配置与提示词设置",
       "module": "设置 / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 97,
       "issue_title": "[评审] 模型配置与提示词设置",
       "md": "review/batch-07/ui-settings-model.md",
@@ -2291,17 +2291,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/settings/screens/MnnModelDownloadScreen.kt"
       ],
       "facts_count": 126,
-      "refs_valid": 126,
+      "refs_valid": "126；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-PASS-1-anchor-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-07/ui-settings-theme",
       "batch": "batch-07",
       "title": "主题与显示设置",
       "module": "UI 设置",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 98,
       "issue_title": "[评审] 主题与显示设置",
       "md": "review/batch-07/ui-settings-theme.md",
@@ -2309,17 +2309,17 @@
       "lint": "review/batch-07/ui-settings-theme.lint.md",
       "seed_files": [],
       "facts_count": 234,
-      "refs_valid": 234,
+      "refs_valid": "234；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "critic2-verified-PASS-10-anchors-fixed-by-parent",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-common-dsl",
       "batch": "batch-08",
       "title": "工具包 Compose DSL 渲染",
       "module": "ui-common / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 108,
       "issue_title": "[评审] 工具包 Compose DSL 渲染",
       "md": "review/batch-08/ui-common-dsl.md",
@@ -2334,17 +2334,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/common/composedsl/ComposeDslTextInputSync.kt"
       ],
       "facts_count": 172,
-      "refs_valid": 172,
+      "refs_valid": "172；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-common-markdown",
       "batch": "batch-08",
       "title": "Markdown 与富文本渲染",
       "module": "UI 通用组件",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 109,
       "issue_title": "[评审] Markdown 与富文本渲染",
       "md": "review/batch-08/ui-common-markdown.md",
@@ -2352,17 +2352,17 @@
       "lint": "review/batch-08/ui-common-markdown.lint.md",
       "seed_files": [],
       "facts_count": 209,
-      "refs_valid": 209,
+      "refs_valid": "209；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-main",
       "batch": "batch-08",
       "title": "主界面与导航骨架",
       "module": "UI / 主界面",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 110,
       "issue_title": "[评审] 主界面与导航骨架",
       "md": "review/batch-08/ui-main.md",
@@ -2370,17 +2370,17 @@
       "lint": "review/batch-08/ui-main.lint.md",
       "seed_files": [],
       "facts_count": 173,
-      "refs_valid": 173,
+      "refs_valid": "173；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-packages-manager",
       "batch": "batch-08",
       "title": "扩展包管理界面",
       "module": "扩展包 / 管理界面",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 101,
       "issue_title": "[评审] 扩展包管理界面",
       "md": "review/batch-08/ui-packages-manager.md",
@@ -2388,17 +2388,17 @@
       "lint": "review/batch-08/ui-packages-manager.lint.md",
       "seed_files": [],
       "facts_count": 130,
-      "refs_valid": 130,
+      "refs_valid": "130；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-packages-market",
       "batch": "batch-08",
       "title": "扩展市场浏览界面",
       "module": "ui-features-packages / app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 102,
       "issue_title": "[评审] 扩展市场浏览界面",
       "md": "review/batch-08/ui-packages-market.md",
@@ -2419,17 +2419,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/packages/market/MarketInteractionController.kt"
       ],
       "facts_count": 118,
-      "refs_valid": 118,
+      "refs_valid": "118；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-packages-mcp",
       "batch": "batch-08",
       "title": "MCP 配置与部署界面",
       "module": "设置 / 扩展包（packages）",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 104,
       "issue_title": "[评审] MCP 配置与部署界面",
       "md": "review/batch-08/ui-packages-mcp.md",
@@ -2440,17 +2440,17 @@
         "SkillConfigScreen.kt"
       ],
       "facts_count": 138,
-      "refs_valid": 138,
+      "refs_valid": "138；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-packages-publish",
       "batch": "batch-08",
       "title": "扩展发布界面（Artifact / Market 发布）",
       "module": "插件 / 市场发布",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 103,
       "issue_title": "[评审] 扩展发布界面（Artifact / Market 发布）",
       "md": "review/batch-08/ui-packages-publish.md",
@@ -2469,17 +2469,17 @@
         "market/PluginCreationIntent.kt"
       ],
       "facts_count": 221,
-      "refs_valid": 221,
+      "refs_valid": "221；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-toolbox-apps",
       "batch": "batch-08",
       "title": "系统与媒体工具界面",
       "module": "工具箱",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 107,
       "issue_title": "[评审] 系统与媒体工具界面",
       "md": "review/batch-08/ui-toolbox-apps.md",
@@ -2490,17 +2490,17 @@
         "ProcessLimitRemoverToolScreen.kt"
       ],
       "facts_count": 160,
-      "refs_valid": 160,
+      "refs_valid": "160；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-toolbox-dev",
       "batch": "batch-08",
       "title": "开发调试工具界面（ui-toolbox-dev）",
       "module": "工具箱（toolbox）",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 106,
       "issue_title": "[评审] 开发调试工具界面（ui-toolbox-dev）",
       "md": "review/batch-08/ui-toolbox-dev.md",
@@ -2521,17 +2521,17 @@
         "LogcatViewModel.kt"
       ],
       "facts_count": 137,
-      "refs_valid": 137,
+      "refs_valid": "137；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-08/ui-toolbox-filemanager",
       "batch": "batch-08",
       "title": "文件管理器界面",
       "module": "工具箱 / 文件管理器",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 105,
       "issue_title": "[评审] 文件管理器界面",
       "md": "review/batch-08/ui-toolbox-filemanager.md",
@@ -2539,17 +2539,17 @@
       "lint": "review/batch-08/ui-toolbox-filemanager.lint.md",
       "seed_files": [],
       "facts_count": 144,
-      "refs_valid": 144,
+      "refs_valid": "144；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/appendix-tests-android",
       "batch": "batch-09",
       "title": "插桩测试、模板与本地化",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 124,
       "issue_title": "[评审] 插桩测试、模板与本地化",
       "md": "review/batch-09/appendix-tests-android.md",
@@ -2559,17 +2559,17 @@
         "app/src/main/res/xml/locales_config.xml"
       ],
       "facts_count": 174,
-      "refs_valid": "174；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "174；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/appendix-tests-unit-api-core",
       "batch": "batch-09",
       "title": "单元测试·api/core",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 121,
       "issue_title": "[评审] 单元测试·api/core",
       "md": "review/batch-09/appendix-tests-unit-api-core.md",
@@ -2577,17 +2577,17 @@
       "lint": "review/batch-09/appendix-tests-unit-api-core.lint.md",
       "seed_files": [],
       "facts_count": 151,
-      "refs_valid": "151；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "151；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/appendix-tests-unit-data",
       "batch": "batch-09",
       "title": "单元测试·data（测试覆盖附录）",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 122,
       "issue_title": "[评审] 单元测试·data（测试覆盖附录）",
       "md": "review/batch-09/appendix-tests-unit-data.md",
@@ -2604,17 +2604,17 @@
         "app/build.gradle.kts"
       ],
       "facts_count": 144,
-      "refs_valid": "144；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "144；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/appendix-tests-unit-ui-util",
       "batch": "batch-09",
       "title": "单元测试·ui/util",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 123,
       "issue_title": "[评审] 单元测试·ui/util",
       "md": "review/batch-09/appendix-tests-unit-ui-util.md",
@@ -2622,17 +2622,17 @@
       "lint": "review/batch-09/appendix-tests-unit-ui-util.lint.md",
       "seed_files": [],
       "facts_count": 149,
-      "refs_valid": "149；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "149；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-about",
       "batch": "batch-09",
       "title": "关于/更新/帮助界面",
       "module": "UI / 关于与更新",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 119,
       "issue_title": "[评审] 关于/更新/帮助界面",
       "md": "review/batch-09/ui-about.md",
@@ -2648,17 +2648,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/agreement/screens/AgreementScreen.kt"
       ],
       "facts_count": 126,
-      "refs_valid": "126；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "126；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-assistant",
       "batch": "batch-09",
       "title": "助手配置界面",
       "module": "UI / 助手配置",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 116,
       "issue_title": "[评审] 助手配置界面",
       "md": "review/batch-09/ui-assistant.md",
@@ -2674,17 +2674,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/assistant/components/SettingItem.kt"
       ],
       "facts_count": 143,
-      "refs_valid": "143；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "143；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-demo",
       "batch": "batch-09",
       "title": "权限引导与演示界面",
       "module": "UI / 权限与演示",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 117,
       "issue_title": "[评审] 权限引导与演示界面",
       "md": "review/batch-09/ui-demo.md",
@@ -2703,17 +2703,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/demo/wizards/OperitTerminalWizardCard.kt"
       ],
       "facts_count": 160,
-      "refs_valid": "160；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "160；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-floating",
       "batch": "batch-09",
       "title": "悬浮窗界面",
       "module": "UI / 悬浮窗",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 111,
       "issue_title": "[评审] 悬浮窗界面",
       "md": "review/batch-09/ui-floating.md",
@@ -2734,17 +2734,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/floating/ui/fullscreen/screen/FloatingFullscreenScreen.kt"
       ],
       "facts_count": 148,
-      "refs_valid": "148；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "148；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-memory",
       "batch": "batch-09",
       "title": "记忆与知识库界面",
       "module": "UI / 记忆",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 112,
       "issue_title": "[评审] 记忆与知识库界面",
       "md": "review/batch-09/ui-memory.md",
@@ -2765,17 +2765,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/memory/viewmodel/MemoryViewModel.kt"
       ],
       "facts_count": 210,
-      "refs_valid": "210；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "210；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-permission",
       "batch": "batch-09",
       "title": "权限与 Token 配置界面",
       "module": "UI / 权限与 Token",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 118,
       "issue_title": "[评审] 权限与 Token 配置界面",
       "md": "review/batch-09/ui-permission.md",
@@ -2788,17 +2788,17 @@
         "features/token/TokenConfigWebViewScreen.kt"
       ],
       "facts_count": 153,
-      "refs_valid": "153；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "153；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-startup",
       "batch": "batch-09",
       "title": "启动/恢复/性能界面",
       "module": "UI / 启动与恢复",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 120,
       "issue_title": "[评审] 启动/恢复/性能界面",
       "md": "review/batch-09/ui-startup.md",
@@ -2815,17 +2815,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/error/CrashReportActivity.kt"
       ],
       "facts_count": 174,
-      "refs_valid": "174；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "174；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-tokenstats",
       "batch": "batch-09",
       "title": "Token 用量统计界面",
       "module": "UI / 统计",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 113,
       "issue_title": "[评审] Token 用量统计界面",
       "md": "review/batch-09/ui-tokenstats.md",
@@ -2846,17 +2846,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/token/network/DeepseekApiConstants.kt"
       ],
       "facts_count": 228,
-      "refs_valid": "228；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "228；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-websession",
       "batch": "batch-09",
       "title": "内置浏览器界面",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 115,
       "issue_title": "[评审] 内置浏览器界面",
       "md": "review/batch-09/ui-websession.md",
@@ -2877,17 +2877,17 @@
         "WebSessionMinimizedIndicator.kt"
       ],
       "facts_count": 111,
-      "refs_valid": "111；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "111；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-09/ui-workflow",
       "batch": "batch-09",
       "title": "工作流界面",
       "module": "UI / 工作流",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 114,
       "issue_title": "[评审] 工作流界面",
       "md": "review/batch-09/ui-workflow.md",
@@ -2904,17 +2904,17 @@
         "app/src/main/java/com/ai/assistance/operit/ui/features/workflow/viewmodel/WorkflowViewModel.kt"
       ],
       "facts_count": 169,
-      "refs_valid": "169；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "refs_valid": "169；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-10/appendix-uncovered-native",
       "batch": "batch-10",
       "title": "未覆盖 kt 扫尾·原生绑定/模板/示例",
       "module": "附录",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 125,
       "issue_title": "[评审] 未覆盖 kt 扫尾·原生绑定/模板/示例",
       "md": "review/batch-10/appendix-uncovered-native.md",
@@ -2925,10 +2925,10 @@
         "app/src/main/java/kotlin/uuid/Uuid.kt"
       ],
       "facts_count": 138,
-      "refs_valid": 138,
+      "refs_valid": "138；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     }
   ]
 }

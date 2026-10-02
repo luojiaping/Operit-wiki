@@ -1,0 +1,29 @@
+name: 教程投稿
+description: 分享你写的 Operit 教程（排障手记、玩法、配置心得）
+title: "[教程] "
+labels: ["tutorial"]
+body:
+  - type: input
+    id: author
+    attributes:
+      label: 署名
+      description: 你在社群里的名字，展示在教程区
+      placeholder: 例如：群友小王
+    validations:
+      required: false
+  - type: textarea
+    id: summary
+    attributes:
+      label: 一句话简介
+      description: 这篇教程讲什么，一句话
+      placeholder: 例如：小米 HyperOS 受限制设置的三种解法
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: 教程正文（Markdown）
+      description: 把教程正文贴在这里，支持 Markdown。审核通过后会收录进网站教程区
+      placeholder: "## 问题表现\n\n……\n\n## 解决方法\n\n1. ……"
+    validations:
+      required: true
