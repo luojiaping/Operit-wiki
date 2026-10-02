@@ -73,9 +73,30 @@ def check_file(path: Path, src: Path, wiki_root: Path, errors, warnings):
                 )
 
     # 死链检查（只查相对 .md 链接）
+    # 站内条目链接 entry.html?id=<条目id> 按评审队列校验 id 是否存在
+    queue_ids = None
     for m in LINK_RE.finditer(text):
         url = m.group(1)
         if url.startswith(("http://", "https://", "#", "mailto:")):
+            continue
+        if url.startswith("entry.html?id="):
+            if queue_ids is None:
+                queue_ids = set()
+                d = wiki_root
+                for _ in range(4):
+                    qf = d / "review-queue.json"
+                    if qf.exists():
+                        try:
+                            q = json.loads(qf.read_text(encoding="utf-8"))
+                            entries = q["entries"] if isinstance(q, dict) else q
+                            queue_ids = {e["id"] for e in entries}
+                        except Exception:
+                            pass
+                        break
+                    d = d.parent
+            eid = url.split("entry.html?id=", 1)[1].split("#")[0].split("&")[0]
+            if eid not in queue_ids:
+                errors.append(f"{path.name}: 死链 `{url}`（评审队列无此条目 id）")
             continue
         target = (path.parent / url.split("#")[0]).resolve()
         if not target.exists():

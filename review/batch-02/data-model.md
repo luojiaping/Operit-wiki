@@ -53,13 +53,13 @@ Operit 的持久化数据分三套存储引擎：聊天记录与 Token 统计走
 
 | 数据类 | 存在哪 | 谁在读写 | 细页 |
 |---|---|---|---|
-| 聊天记录（会话/消息/AI 回复多变体） | Room `app_database` | `ChatHistoryManager` 经 5 个 DAO | [[data-room-db\|Room 数据库与 DAO]]、[[data-repo-chat\|聊天历史仓库]] |
-| 记忆（记忆条目/自动保存候选/文档块） | ObjectBox，按 profile 分目录 | `MemoryRepository` 经 `ObjectBoxManager.get` | [[data-repo-memory\|记忆仓库]] |
-| 配置偏好（模型/API Key/角色卡/主题/语音等） | DataStore Preferences（版本化迁移） | 各 `*Preferences`/`*Manager` | [[data-prefs-model\|模型与 API 配置]]、[[data-prefs-character\|角色卡与人格配置]]、[[data-prefs-app\|应用基础/主题/语音/记忆搜索配置]] |
-| Token 用量与定价 | Room `token_usage_records` + `token_stats_models` | `tokenUsageDao` 聚合查询 | [[data-stats-pricing\|Token 用量统计与模型定价数据]] |
-| 实体类定义 | Kotlin 数据类（`data/model/`） | 各仓库引用 | [[data-models\|数据模型与实体类]] |
-| 备份/导出/恢复 | 文件（归档包） | 备份导出逻辑 | [[data-backup-export\|数据备份、恢复与导入导出]] |
-| MCP/插件/OAuth/公告等扩展数据 | 各自仓库与偏好 | 对应 Repository | [[data-mcp\|MCP 服务与插件桥接]]、[[data-api-oauth\|OAuth 与外部 API 客户端]]、[[data-update-announce\|应用更新与公告]]、[[data-repo-misc\|扩展仓库]] |
+| 聊天记录（会话/消息/AI 回复多变体） | Room `app_database` | `ChatHistoryManager` 经 5 个 DAO | [Room 数据库与 DAO](entry.html?id=batch-04/data-room-db)、[聊天历史仓库](entry.html?id=batch-05/data-repo-chat) |
+| 记忆（记忆条目/自动保存候选/文档块） | ObjectBox，按 profile 分目录 | `MemoryRepository` 经 `ObjectBoxManager.get` | [记忆仓库](entry.html?id=batch-05/data-repo-memory) |
+| 配置偏好（模型/API Key/角色卡/主题/语音等） | DataStore Preferences（版本化迁移） | 各 `*Preferences`/`*Manager` | [模型与 API 配置](entry.html?id=batch-05/data-prefs-model)、[角色卡与人格配置](entry.html?id=batch-05/data-prefs-character)、[应用基础/主题/语音/记忆搜索配置](entry.html?id=batch-05/data-prefs-app) |
+| Token 用量与定价 | Room `token_usage_records` + `token_stats_models` | `tokenUsageDao` 聚合查询 | [Token 用量统计与模型定价数据](entry.html?id=batch-05/data-stats-pricing) |
+| 实体类定义 | Kotlin 数据类（`data/model/`） | 各仓库引用 | [数据模型与实体类](entry.html?id=batch-04/data-models) |
+| 备份/导出/恢复 | 文件（归档包） | 备份导出逻辑 | [数据备份、恢复与导入导出](entry.html?id=batch-05/data-backup-export) |
+| MCP/插件/OAuth/公告等扩展数据 | 各自仓库与偏好 | 对应 Repository | [MCP 服务与插件桥接](entry.html?id=batch-05/data-mcp)、[OAuth 与外部 API 客户端](entry.html?id=batch-05/data-api-oauth)、[应用更新与公告](entry.html?id=batch-05/data-update-announce)、[扩展仓库](entry.html?id=batch-05/data-repo-misc) |
 
 人话翻译：可以把数据层想象成三个抽屉——Room 是带表格的账本抽屉，记"说过什么、花了多少 token"；ObjectBox 是按人头分格的记忆抽屉，每个记忆空间（profile）一格；DataStore 是贴标签的配置抽屉，记"用哪个模型、API Key 是什么、界面长什么样"。删记忆空间只删它那一格（`delete` 删目录），不动聊天账本；反过来清聊天记录也不碰记忆。
 
@@ -98,8 +98,22 @@ Operit 的持久化数据分三套存储引擎：聊天记录与 Token 统计走
 
 ## 关联条目
 
-- 本页是数据章总览，13 个细页展开各领域：`data-room-db`、`data-models`、`data-repo-memory`、`data-repo-chat`、`data-repo-misc`、`data-prefs-model`、`data-prefs-character`、`data-prefs-app`、`data-stats-pricing`、`data-backup-export`、`data-mcp`、`data-api-oauth`、`data-update-announce`。
-- [[core-tools-registry\|工具注册与执行框架]]：工具结果类型 `ToolResultData` 的定义不在数据层，归工具章。
+本页是数据章总览，下属 13 个细页（点击直达评审页）：
+
+- [Room 数据库与 DAO](entry.html?id=batch-04/data-room-db)
+- [数据模型与实体类](entry.html?id=batch-04/data-models)
+- [记忆仓库](entry.html?id=batch-05/data-repo-memory)
+- [聊天历史仓库](entry.html?id=batch-05/data-repo-chat)
+- [扩展仓库](entry.html?id=batch-05/data-repo-misc)
+- [模型与 API 配置](entry.html?id=batch-05/data-prefs-model)
+- [角色卡与人格配置](entry.html?id=batch-05/data-prefs-character)
+- [应用基础配置](entry.html?id=batch-05/data-prefs-app)
+- [Token 用量统计与模型定价](entry.html?id=batch-05/data-stats-pricing)
+- [数据备份与导入导出](entry.html?id=batch-05/data-backup-export)
+- [MCP 服务与插件桥接](entry.html?id=batch-05/data-mcp)
+- [OAuth 与外部 API 客户端](entry.html?id=batch-05/data-api-oauth)
+- [应用更新与公告](entry.html?id=batch-05/data-update-announce)
+- [工具注册与执行框架](entry.html?id=batch-02/core-tools-registry)：工具结果类型 `ToolResultData` 的定义不在数据层，归工具章。
 
 ## 来源
 
