@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 05:08 UTC",
+  "updated": "2026-10-02 05:10 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -1196,7 +1196,7 @@
       "batch": "batch-04",
       "title": "插件包（ToolPkg）管理与解析",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 23,
       "issue_title": "[评审] 插件包（ToolPkg）管理与解析",
       "md": "review/batch-04/core-tools-packtool.md",
@@ -1220,7 +1220,7 @@
       "refs_valid": "196/196 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/core-tools-system",
@@ -1276,7 +1276,7 @@
       "batch": "batch-04",
       "title": "Room 数据库与 DAO",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 60,
       "issue_title": "[评审] Room 数据库与 DAO",
       "md": "review/batch-04/data-room-db.md",
@@ -1296,7 +1296,7 @@
       "refs_valid": "103/103 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/core-app-workflow",
@@ -1353,7 +1353,7 @@
       "batch": "batch-05",
       "title": "系统提示词与功能提示配置",
       "module": "引擎核心",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 74,
       "issue_title": "[评审] 系统提示词与功能提示配置",
       "md": "review/batch-05/core-config-prompts.md",
@@ -1373,7 +1373,7 @@
       "refs_valid": "84/84 引用行号真实存在且 ±5 窗口有支撑原文（第三轮独立复验：[59] 拆 2 条、[72] 移 :17），lint 硬失败 0/警告 0",
       "critic": "独立 critic 初验打回后修错，经多轮独立复验通过（core-config-prompts.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/core-subpack",

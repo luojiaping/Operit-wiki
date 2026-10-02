@@ -5,7 +5,10 @@
   "refs_valid": "130/130 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）",
   "source_commit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
   "source_repo": "operit",
-  "status": "review-pending",
+  "status": "approved",
   "title": "应用更新与公告",
-  "approved_by_comment_id": 5926577669
+  "approved_by_comment_id": 5945977741,
+  "approved_by": "luojiaping",
+  "approved_at": "2026-10-02 05:22 UTC",
+  "updated": "2026-10-02"
 }
