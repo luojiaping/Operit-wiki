@@ -63,24 +63,143 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
 </div>
 </div>
 
-  <div class="coverage" id="coverage">
-    <h2>Wiki 覆盖进度 <span class="cov-updated" id="covUpdated"></span></h2>
-    <p class="cov-desc">全仓库文件逐个对照 wiki 覆盖情况：<b>严格已读</b> = 整文件 100% 读完且有阅读记录；<b>已触及</b> = 被 facts 引用或列为 seed 但未证全读；已审批 = 归属已通过条目。目标：1402 个 kt 文件全部严格已读。</p>
-    <div class="cov-bars" id="covBars"></div>
-    <div class="cov-mods" id="covMods"></div>
-    <div class="cov-tools">
-      <input id="covSearch" class="cov-search" placeholder="搜索文件路径…">
-      <div class="cov-chips" id="covStatusChips"></div>
-      <div class="cov-chips" id="covReadChips"></div>
-      <select id="covModSel" class="cov-sel"></select>
-      <label class="cov-kt"><input type="checkbox" id="covKt"> 仅 kt</label>
+
+  <section class="milestones" id="milestones">
+    <div class="sec-head">
+      <h2>Wiki 里程碑</h2>
+      <p class="sec-sub">从大纲到全仓库覆盖的编译之路 · 源码版本钉住、可复核</p>
     </div>
-    <div class="cov-count" id="covCount"></div>
-    <table class="cov-table">
-      <thead><tr><th>状态</th><th>文件</th><th>模块</th><th>行数</th><th>覆盖条目</th></tr></thead>
-      <tbody id="covBody"></tbody>
-    </table>
-  </div>
+
+    <div class="src-card">
+      <div class="src-head"><span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span><span class="prompt-filename"><span class="tag">SOURCE</span> pinned-commits</span></div>
+      <div class="src-rows">
+        <div class="src-row">
+          <span class="src-repo">AAswordman/Operit</span>
+          <code class="src-hash" data-copy="dbf71916fae9750cfdc9f9a774f5a0fee56633fb" title="点击复制完整 commit">dbf71916</code>
+          <span class="src-ver">v1.12.2</span>
+          <span class="src-note">119 页钉住此版本</span>
+        </div>
+        <div class="src-row dim">
+          <span class="src-repo">AAswordman/OperitTerminalCore</span>
+          <span class="src-note">终端独立仓库 · 参考源</span>
+        </div>
+        <div class="src-row dim">
+          <span class="src-repo">AAswordman/OperitWeb</span>
+          <span class="src-note">官网 / 市场 / 审核文档 · 参考源</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ms-stats">
+      <div class="ms-stat"><b>122</b><span>知识页面</span></div>
+      <div class="ms-stat"><b>119</b><span>已发布</span></div>
+      <div class="ms-stat"><b>14,510</b><span>原子事实</span></div>
+      <div class="ms-stat"><b>10</b><span>编译批次</span></div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-00</span><span class="tl-state ok">已发布</span></div>
+          <h3>大纲定稿</h3>
+          <p>Wiki 宪法与双受众结构确立，大纲 v3 定稿。</p>
+          <div class="tl-tags"><span>大纲</span><span>SCHEMA</span><span>双受众设计</span></div>
+          <div class="tl-meta">2 页</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-02</span><span class="tl-state ok">已发布</span></div>
+          <h3>架构总览与工具框架</h3>
+          <p>整体架构、聊天与消息处理、工具注册与执行框架、数据模型总览。</p>
+          <div class="tl-tags"><span>整体架构</span><span>聊天管线</span><span>工具注册</span><span>数据模型</span></div>
+          <div class="tl-meta">6 页 · 589 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-03</span><span class="tl-state ok">已发布</span></div>
+          <h3>工具系统深挖</h3>
+          <p>工具执行模式、JS 引擎与 Java 互操作、标准工具库、网页会话与用户脚本。</p>
+          <div class="tl-tags"><span>执行模式</span><span>JS 引擎</span><span>标准工具</span><span>网页会话</span></div>
+          <div class="tl-meta">8 页 · 741 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-04</span><span class="tl-state ok">已发布</span></div>
+          <h3>AI 供应商矩阵</h3>
+          <p>26 家云端 / 端侧供应商全覆盖，外加语音识别与合成、数据层与聊天运行时。</p>
+          <div class="tl-tags"><span>26 家供应商</span><span>语音</span><span>数据层</span><span>对话增强</span></div>
+          <div class="tl-meta">39 页 · 3,137 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-05</span><span class="tl-state warn">1 页待评审</span></div>
+          <h3>应用核心</h3>
+          <p>应用生命周期、虚拟形象、系统提示词、MCP 桥接、备份恢复、偏好配置。</p>
+          <div class="tl-tags"><span>生命周期</span><span>MCP</span><span>备份</span><span>偏好配置</span></div>
+          <div class="tl-meta">16 页 · 2,747 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-06</span><span class="tl-state warn">1 页待评审</span></div>
+          <h3>集成与界面</h3>
+          <p>外部聊天入口、WebChat 服务、插件机制、聊天界面组件与文本渲染。</p>
+          <div class="tl-tags"><span>外部集成</span><span>插件机制</span><span>聊天 UI</span><span>本地检索</span></div>
+          <div class="tl-meta">16 页 · 2,071 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-07</span><span class="tl-state ok">已发布</span></div>
+          <h3>设置界面</h3>
+          <p>内置代码编辑器、聊天列表懒加载、工作区，以及模型 / 主题 / 聊天三套设置界面。</p>
+          <div class="tl-tags"><span>设置</span><span>代码编辑器</span><span>工作区</span></div>
+          <div class="tl-meta">7 页 · 1,134 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-08</span><span class="tl-state ok">已发布</span></div>
+          <h3>通用 UI 与工具箱</h3>
+          <p>主界面骨架、Markdown 渲染、扩展市场与管理、系统工具箱界面。</p>
+          <div class="tl-tags"><span>主界面</span><span>扩展市场</span><span>工具箱</span><span>DSL 渲染</span></div>
+          <div class="tl-meta">10 页 · 1,602 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-09</span><span class="tl-state warn">1 页待评审</span></div>
+          <h3>附录与插件开发</h3>
+          <p>插件能力目录与开发指南（Top50 实证）、单元测试附录、悬浮窗 / 记忆 / 工作流等界面。</p>
+          <div class="tl-tags"><span>插件开发指南</span><span>单元测试</span><span>悬浮窗</span><span>工作流</span></div>
+          <div class="tl-meta">17 页 · 2,351 原子事实</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ok"></div>
+        <div class="tl-card">
+          <div class="tl-top"><span class="tl-batch">batch-10</span><span class="tl-state ok">已发布</span></div>
+          <h3>扫尾</h3>
+          <p>未覆盖 kt 文件扫尾：原生绑定、模板与示例。</p>
+          <div class="tl-tags"><span>扫尾</span><span>原生绑定</span></div>
+          <div class="tl-meta">1 页 · 138 原子事实</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="credit">Operit-wiki · 知识编译方法参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
 </div>
@@ -187,86 +306,25 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
 })();
 </script>
 <script>
-load();
-loadCoverage();
-
-/* ---- Wiki 覆盖进度 ---- */
-const COV_LABEL = ["未读", "已读", "已审批"];
-let covData = null, covStatus = "all", covMod = "all", covRead = "all";
-const COV_READ_LABEL = {"unread": "未读", "touched": "已触及", "complete": "严格已读"};
-async function loadCoverage() {
-  try {
-    covData = await (await fetch("data/coverage.json")).json();
-  } catch (e) { return; }
-  document.getElementById("covUpdated").textContent = "· 数据更新 " + (covData.updated || "—");
-  renderCovBars(); renderCovMods(); renderCovTools(); renderCovTable();
-}
-function pct(a, b) { return b ? (100 * a / b) : 0; }
-function renderCovBars() {
-  const t = covData.totals;
-  const rows = [
-    ["kt 严格已读（核心目标）", t.kt_complete_files, t.kt_files, t.kt_complete_loc, t.kt_loc, "read"],
-    ["严格已读（全仓库）", t.complete_files, t.files, t.complete_loc, t.loc, "read"],
-    ["已触及", t.touched_files, t.files, t.touched_loc, t.loc, "touched"],
-    ["已审批", t.approved_files, t.files, t.approved_loc, t.loc, "approved"],
-  ];
-  document.getElementById("covBars").innerHTML = rows.map(([l, rf, f, rl, tl, cls]) => `
-    <div class="cov-bar-row">
-      <div class="cov-bar-label">${l} <b>${rf}</b>/${f} 文件 · ${rl.toLocaleString()}/${tl.toLocaleString()} 行</div>
-      <div class="cov-bar"><div class="cov-fill ${cls}" style="width:${pct(rf, f).toFixed(2)}%"></div></div>
-      <div class="cov-pct">${pct(rf, f).toFixed(1)}%</div>
-    </div>`).join("");
-}
-function renderCovMods() {
-  document.getElementById("covMods").innerHTML = covData.modules.map(m => `
-    <div class="cov-mod">
-      <div class="cov-mod-name">${m.name}<span>${m.dir}</span></div>
-      <div class="cov-bar slim"><div class="cov-fill read" style="width:${pct(m.complete_files, m.files).toFixed(2)}%"></div></div>
-      <div class="cov-mod-nums">严格已读 ${m.complete_files}/${m.files} · 已触及 ${m.touched_files} · 已审批 ${m.approved_files}</div>
-    </div>`).join("");
-}
-function renderCovTools() {
-  const defs = [["all", "全部"], ["0", "未读"], ["1", "已读"], ["2", "已审批"]];
-  document.getElementById("covStatusChips").innerHTML = defs.map(([v, l]) =>
-    `<button class="chip ${v === covStatus ? "active" : ""}" data-s="${v}">${l}</button>`).join("");
-  document.querySelectorAll("#covStatusChips .chip").forEach(b =>
-    b.onclick = () => { covStatus = b.dataset.s; renderCovTools(); renderCovTable(); });
-  const rdefs = [["all", "全部阅读"], ["unread", "未读"], ["touched", "已触及"], ["complete", "严格已读"]];
-  document.getElementById("covReadChips").innerHTML = rdefs.map(([v, l]) =>
-    `<button class="chip ${v === covRead ? "active" : ""}" data-r="${v}">${l}</button>`).join("");
-  document.querySelectorAll("#covReadChips .chip").forEach(b =>
-    b.onclick = () => { covRead = b.dataset.r; renderCovTools(); renderCovTable(); });
-  const sel = document.getElementById("covModSel");
-  sel.innerHTML = `<option value="all">全部模块</option>` + covData.modules.map(m =>
-    `<option value="${m.name}" ${m.name === covMod ? "selected" : ""}>${m.name} (${m.files})</option>`).join("");
-  sel.onchange = () => { covMod = sel.value; renderCovTable(); };
-  document.getElementById("covSearch").oninput = renderCovTable;
-  document.getElementById("covKt").onchange = renderCovTable;
-}
-function covFiltered() {
-  const q = document.getElementById("covSearch").value.trim().toLowerCase();
-  const ktOnly = document.getElementById("covKt").checked;
-  return covData.files.filter(f =>
-    (covStatus === "all" || String(f.s) === covStatus) &&
-    (covRead === "all" || f.rs === covRead) &&
-    (covMod === "all" || f.m === covMod) &&
-    (!ktOnly || f.kt) &&
-    (!q || f.p.toLowerCase().includes(q)));
-}
-function renderCovTable() {
-  const rows = covFiltered();
-  const LIMIT = 400;
-  document.getElementById("covCount").textContent =
-    `共 ${rows.length} 个文件${rows.length > LIMIT ? `，显示前 ${LIMIT} 个，请用搜索 / 筛选缩小范围` : ""}`;
-  document.getElementById("covBody").innerHTML = rows.slice(0, LIMIT).map(f => `
-    <tr>
-      <td><span class="seal cov-s${f.s}">${COV_LABEL[f.s]}</span> <span class="seal rs-${f.rs}">${COV_READ_LABEL[f.rs] || f.rs}</span></td>
-      <td class="mono">${f.p}</td>
-      <td>${f.m}</td>
-      <td class="num">${f.loc.toLocaleString()}</td>
-      <td>${f.page ? `<a href="entry.html?id=${encodeURIComponent(f.page)}">${f.page}</a>` : "—"}</td>
-    </tr>`).join("");
-}
+/* ---- 里程碑：点击复制 commit hash ---- */
+document.querySelectorAll('[data-copy]').forEach(function (el) {
+  el.addEventListener('click', function () {
+    var t = el.getAttribute('data-copy');
+    function done() {
+      var old = el.textContent;
+      el.textContent = '已复制';
+      setTimeout(function () { el.textContent = old; }, 1200);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = t; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done();
+    }
+  });
+});
 </script>
 </body>
 </html>

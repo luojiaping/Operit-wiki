@@ -412,3 +412,54 @@ details.collapse .body { padding: 0 16px 16px; }
 .tut-card:hover { transform: translateY(-2px); border-color: rgba(45, 212, 191, 0.45); }
 .tut-card .t { font-weight: 700; font-size: 16px; margin: 8px 0 6px; }
 .tut-card .d { font-size: 13px; color: var(--app-muted); }
+
+/* ---- Wiki 里程碑 ---- */
+.milestones { margin: 44px auto 0; max-width: 860px; padding: 0 18px; }
+.sec-head h2 { font-size: 22px; letter-spacing: .06em; margin: 0 0 6px; }
+.sec-head h2::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+  background: linear-gradient(135deg, #22d3ee, #34d399); margin-right: 10px; box-shadow: 0 0 12px rgba(34,211,238,.7); }
+.sec-sub { color: #8b949e; font-size: 13px; margin: 0 0 20px; }
+
+.src-card { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
+.src-head { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid #21262d; background: #161b22; }
+.src-rows { padding: 6px 0; }
+.src-row { display: flex; align-items: center; gap: 12px; padding: 9px 16px; font-size: 13px; flex-wrap: wrap; }
+.src-row + .src-row { border-top: 1px dashed #21262d; }
+.src-row.dim { opacity: .62; }
+.src-repo { color: #e6edf3; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; }
+.src-hash { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px;
+  color: #22d3ee; background: rgba(34,211,238,.08); border: 1px solid rgba(34,211,238,.25);
+  padding: 2px 8px; border-radius: 6px; cursor: pointer; }
+.src-hash:hover { background: rgba(34,211,238,.16); }
+.src-ver { font-size: 11px; color: #3fb950; border: 1px solid rgba(63,185,80,.4); padding: 1px 8px; border-radius: 20px; }
+.src-note { color: #8b949e; font-size: 12px; margin-left: auto; }
+
+.ms-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+.ms-stat { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 16px 8px; text-align: center; }
+.ms-stat b { display: block; font-size: 26px; font-weight: 700;
+  background: linear-gradient(135deg, #7dd3fc, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ms-stat span { font-size: 12px; color: #8b949e; }
+
+.timeline { position: relative; margin: 8px 0 0; padding-left: 26px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(180deg, #22d3ee, #34d399 60%, #21262d); border-radius: 2px; }
+.tl-item { position: relative; margin-bottom: 16px; }
+.tl-dot { position: absolute; left: -26px; top: 22px; width: 16px; height: 16px; border-radius: 50%;
+  background: #0d1117; border: 2px solid #34d399; box-shadow: 0 0 10px rgba(52,211,153,.8); }
+.tl-dot.warn { border-color: #d29922; box-shadow: 0 0 10px rgba(210,153,34,.8); }
+.tl-card { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 16px 18px;
+  transition: border-color .2s, transform .2s; }
+.tl-card:hover { border-color: #30363d; transform: translateX(4px); }
+.tl-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.tl-batch { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px;
+  color: #22d3ee; background: rgba(34,211,238,.08); border: 1px solid rgba(34,211,238,.25);
+  padding: 2px 10px; border-radius: 20px; }
+.tl-state { font-size: 11px; padding: 2px 10px; border-radius: 20px; }
+.tl-state.ok { color: #3fb950; border: 1px solid rgba(63,185,80,.4); }
+.tl-state.warn { color: #d29922; border: 1px solid rgba(210,153,34,.45); }
+.tl-card h3 { margin: 0 0 6px; font-size: 16px; }
+.tl-card p { margin: 0 0 10px; color: #8b949e; font-size: 13px; line-height: 1.7; }
+.tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tl-tags span { font-size: 11.5px; color: #a5d6ff; background: rgba(56,139,253,.1);
+  border: 1px solid rgba(56,139,253,.25); padding: 2px 10px; border-radius: 20px; }
+.tl-meta { font-size: 12px; color: #6e7681; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
