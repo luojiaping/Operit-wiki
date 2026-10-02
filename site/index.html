@@ -332,16 +332,32 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   });
 });
 
-/* ---- 里程碑：横向滚动箭头 ---- */
+/* ---- 里程碑：自动播放（悬停/触摸暂停，来回滚动） ---- */
 (function () {
   var tl = document.querySelector('.timeline');
   if (!tl) return;
-  document.getElementById('tlPrev').addEventListener('click', function () {
-    tl.scrollBy({ left: -320, behavior: 'smooth' });
+  var dir = 1, timer = null;
+  function step() {
+    tl.scrollLeft += dir * 2;
+    var max = tl.scrollWidth - tl.clientWidth;
+    if (tl.scrollLeft >= max - 2) dir = -1;
+    else if (tl.scrollLeft <= 2) dir = 1;
+  }
+  function start() { if (!timer) timer = setInterval(step, 35); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  tl.addEventListener('pointerenter', stop);
+  tl.addEventListener('pointerleave', start);
+  tl.addEventListener('touchstart', stop, { passive: true });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) start(); else stop();
+    }, { threshold: 0.1 }).observe(tl);
+  }
+  ['tlPrev', 'tlNext'].forEach(function (id) {
+    var b = document.getElementById(id);
+    if (b) b.addEventListener('click', function () { stop(); setTimeout(start, 5000); });
   });
-  document.getElementById('tlNext').addEventListener('click', function () {
-    tl.scrollBy({ left: 320, behavior: 'smooth' });
-  });
+  start();
 })();
 
 /* ---- 强制刷新：清缓存 + 时间戳硬重载 ---- */
