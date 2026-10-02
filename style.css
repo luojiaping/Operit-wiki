@@ -412,19 +412,6 @@ details.collapse .body { padding: 0 16px 16px; }
   color: #8b949e; font-size: 17px; cursor: pointer; line-height: 1; padding: 0; }
 .tl-nav button:hover { color: #e6edf3; border-color: #ff7a2f; }
 
-.src-card { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
-.src-head { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid #21262d; background: #161b22; }
-.src-rows { padding: 6px 0; }
-.src-row { display: flex; align-items: center; gap: 12px; padding: 9px 16px; font-size: 13px; flex-wrap: wrap; }
-.src-row + .src-row { border-top: 1px dashed #21262d; }
-.src-row.dim { opacity: .62; }
-.src-repo { color: #e6edf3; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; }
-.src-hash { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px;
-  color: #ff7a2f; background: rgba(255,122,47,.08); border: 1px solid rgba(255,122,47,.25);
-  padding: 2px 8px; border-radius: 6px; cursor: pointer; }
-.src-hash:hover { background: rgba(255,122,47,.16); }
-.src-ver { font-size: 11px; color: #3fb950; border: 1px solid rgba(63,185,80,.4); padding: 1px 8px; border-radius: 20px; }
-.src-note { color: #8b949e; font-size: 12px; margin-left: auto; }
 
 .ms-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
 .ms-stat { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 16px 8px; text-align: center; }
@@ -569,9 +556,6 @@ body.home { background-color: var(--ink); }
 .ms-top .sec-giant { margin-bottom: 10px; }
 .sec-sub { color: var(--app-muted); font-size: 14px; margin: 0; }
 .tl-nav { margin-bottom: 10px; }
-.src-card { background: rgba(13, 19, 30, .72); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 122, 47, .18); border-radius: 16px; margin-bottom: 26px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, .4); }
 .ms-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 44px;
   background: rgba(255, 255, 255, .015); border: 1px solid rgba(255, 255, 255, .07);
   border-radius: 16px; overflow: hidden; }
@@ -658,3 +642,11 @@ body.home { background-color: var(--ink); }
   mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 .tl-track { transition: none; }
+.hash-btn { background: none; border: none; cursor: pointer; font: inherit; color: var(--app-accent); padding: 0; }
+.hash-btn:hover { text-decoration: underline; }
+
+/* ---- 源码版本：三仓库卡片（与批次卡同 UI） ---- */
+.repo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 4px 0 34px; }
+.repo-grid .tl-item { flex: none; }
+.repo-grid .tl-item h4 { overflow-wrap: anywhere; }
+@media (max-width: 900px) { .repo-grid { grid-template-columns: 1fr; } }
