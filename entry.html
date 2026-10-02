@@ -10,7 +10,7 @@
 <body>
 <div class="topbar">
   <div class="inner">
-    <div class="brand"><span class="seal-mini">審</span>Operit-wiki</div>
+    <div class="brand"><span class="logo-mark" aria-hidden="true"></span>Operit-wiki</div>
     <nav>
       <a href="index.html">评审大厅</a>
       <a href="wiki.html">Wiki 预览</a>
@@ -164,13 +164,13 @@ async function load() {
       });
   }
 
-  // utterances 评论区（浅色主题配宣纸）
+  // utterances 评论区（深色主题）
   const s = document.createElement("script");
   s.src = "https://utteranc.es/client.js";
   s.setAttribute("repo", "luojiaping/Operit-wiki");
   s.setAttribute("issue-term", "title");
   s.setAttribute("label", "review");
-  s.setAttribute("theme", "github-light");
+  s.setAttribute("theme", "github-dark");
   s.setAttribute("crossorigin", "anonymous");
   s.async = true;
   document.getElementById("comments").appendChild(s);

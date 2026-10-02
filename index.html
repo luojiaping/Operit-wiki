@@ -9,7 +9,7 @@
 <body>
 <div class="topbar">
   <div class="inner">
-    <div class="brand"><span class="seal-mini">審</span>Operit-wiki</div>
+    <div class="brand"><span class="logo-mark" aria-hidden="true"></span>Operit-wiki</div>
     <nav>
       <a href="index.html" class="active">评审大厅</a>
       <a href="wiki.html">Wiki 预览</a>
@@ -22,47 +22,46 @@
 </div>
 
 <div class="layout">
-  <div class="hero-half">
-    <canvas id="dotTitle" aria-label="Operit wiki"></canvas>
-    <div class="prompt-block">
-      <div class="prompt-head">
-        <span class="prompt-title"><span class="seal-mini">AI</span> 接入提示词</span>
-        <button class="copy-btn" id="copyPrompt" type="button">复制</button>
-      </div>
-      <pre class="prompt-body" id="promptText"># Operit-wiki AI 接入提示词
-
-你是 Operit（Android 原生 AI Agent）问题的回答者。Operit-wiki 已把全仓库知识编译为结构化页面，
-你必须按以下协议使用它，而不是凭记忆回答：
-
-【检索流程】
-1. 读索引：review-queue.json（id / 标题 / 模块）定位候选条目
-2. grep 定位：在 review/ 下 grep 关键词，优先级：文件名 > 标题 > 正文
-3. 限量精读：只读最相关的 3–5 页；每页先读「AI 速览」，再读命中段落前后 5 行
-4. 原子事实：代码结论读同名 .facts.json，引用其自带的「文件:行号」
-
-【铁律】
-- 禁止把页面打碎做向量切块 / embedding 检索（会切坏符号与调用链）
-- 禁止凭记忆编造；wiki 没写的就说没写
-- 教程区是用户经验，引用时必须说明，不得冒充代码事实
-- 每个代码结论标注「页面标题 + 文件:行号」；落笔前 grep 复核行号
-- 输出区分 EXTRACTED（有精确引用）/ INFERRED（写明依据了哪几条）
-
-【数据地址】
-- GitHub：github.com/luojiaping/Operit-wiki（review/ + review-queue.json）
-- MCP：http://1.12.36.118:8000/mcp（search_index / read_page / get_facts）</pre>
-      <div class="prompt-foot">
-        <div class="agent-logos" aria-label="支持的主流 AI">
-          <span class="agent" title="ChatGPT"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#111"/><text x="16" y="20.5" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700" font-family="sans-serif">GPT</text></svg></span>
-          <span class="agent" title="Claude"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#d97757"/><text x="16" y="21" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="serif">C</text></svg></span>
-          <span class="agent" title="Gemini"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#1a73e8"/><text x="16" y="21" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="sans-serif">G</text></svg></span>
-          <span class="agent" title="Grok"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#111"/><text x="16" y="21" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="sans-serif">Gk</text></svg></span>
-          <span class="agent" title="Cursor"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#111"/><text x="16" y="20.5" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700" font-family="sans-serif">Cu</text></svg></span>
-          <span class="agent" title="DeepSeek"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#4d6bfe"/><text x="16" y="20.5" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700" font-family="sans-serif">DS</text></svg></span>
-        </div>
-        <span class="prompt-hint">复制后粘贴给任意 AI 即可用</span>
-      </div>
-    </div>
-  </div>
+<div class="hero-half">
+<canvas id="dotTitle" aria-label="Operit wiki"></canvas>
+<div class="prompt-block">
+<div class="prompt-head">
+<span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span>
+<span class="prompt-filename"><span class="tag">SYSTEM PROMPT</span>operit-wiki.md</span>
+<button class="copy-btn" id="copyPrompt" type="button">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+<span id="copyLabel">复制</span>
+</button>
+</div>
+<pre class="prompt-body" id="promptText">你是 Operit（Android 原生 AI Agent）问题的回答者。Operit-wiki 已把全仓库知识编译为结构化页面，必须按以下协议使用，禁止凭记忆回答。
+① review-queue.json 按 id / 标题 / 模块定位候选条目；② review/ 下 grep 关键词（文件名 &gt; 标题 &gt; 正文）；③ 限量精读 3–5 页：先读「AI 速览」，再读命中段落前后 5 行；④ 代码结论读同名.facts.json，引用其「文件:行号」。
+禁止向量切块 / embedding 检索；wiki 没写就说没写；教程区是用户经验，引用时必须注明；每个结论标注「页面标题 + 文件:行号」，落笔前 grep 复核行号；输出区分 EXTRACTED（精确引用）/ INFERRED（写明依据）。
+GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP http://1.12.36.118:8000/mcp（search_index / read_page / get_facts）</pre>
+<div class="prompt-foot">
+<div class="agent-logos" aria-label="可直接粘贴使用的 AI">
+<span class="agent" title="ChatGPT">
+<svg viewBox="0 0 24 24" role="img" aria-label="ChatGPT"><rect width="24" height="24" rx="6" fill="#111"/><g fill="#fff"><path id="cg-p" d="M12 4.6c1 1.9 1 4.3 0 6.4-1-2.1-1-4.5 0-6.4z"/><use href="#cg-p" transform="rotate(60 12 12)"/><use href="#cg-p" transform="rotate(120 12 12)"/><use href="#cg-p" transform="rotate(180 12 12)"/><use href="#cg-p" transform="rotate(240 12 12)"/><use href="#cg-p" transform="rotate(300 12 12)"/></g></svg>
+</span>
+<span class="agent" title="Claude">
+<svg viewBox="0 0 24 24" role="img" aria-label="Claude"><rect width="24" height="24" rx="6" fill="#d97757"/><g stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5.2" x2="12" y2="18.8"/><line x1="12" y1="5.2" x2="12" y2="18.8" transform="rotate(30 12 12)"/><line x1="12" y1="5.2" x2="12" y2="18.8" transform="rotate(60 12 12)"/><line x1="12" y1="5.2" x2="12" y2="18.8" transform="rotate(90 12 12)"/><line x1="12" y1="5.2" x2="12" y2="18.8" transform="rotate(120 12 12)"/><line x1="12" y1="5.2" x2="12" y2="18.8" transform="rotate(150 12 12)"/></g></svg>
+</span>
+<span class="agent" title="Gemini">
+<svg viewBox="0 0 24 24" role="img" aria-label="Gemini"><defs><linearGradient id="gem-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b90ff"/><stop offset=".55" stop-color="#9177c7"/><stop offset="1" stop-color="#d86a92"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#gem-g)"/><path d="M12 4.2c.7 3.9 2.5 5.7 6.4 6.4-3.9.7-5.7 2.5-6.4 6.4-.7-3.9-2.5-5.7-6.4-6.4 3.9-.7 5.7-2.5 6.4-6.4z" fill="#fff"/><path d="M18.6 3.6c.3 1.7 1 2.4 2.7 2.7-1.7.3-2.4 1-2.7 2.7-.3-1.7-1-2.4-2.7-2.7 1.7-.3 2.4-1 2.7-2.7z" fill="#fff" opacity=".92"/></svg>
+</span>
+<span class="agent" title="Grok">
+<svg viewBox="0 0 24 24" role="img" aria-label="Grok"><rect width="24" height="24" rx="6" fill="#000"/><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#fff"/></svg>
+</span>
+<span class="agent" title="Cursor">
+<svg viewBox="0 0 24 24" role="img" aria-label="Cursor"><rect width="24" height="24" rx="6" fill="#000"/><path d="M6.2 3.8l12 8.1-5.1.9-2.7 4.9z" fill="#fff"/></svg>
+</span>
+<span class="agent" title="DeepSeek">
+<svg viewBox="0 0 24 24" role="img" aria-label="DeepSeek"><rect width="24" height="24" rx="6" fill="#4d6bfe"/><path d="M3.6 13.8c0-3.4 3.2-6 7.2-6 2.2 0 4.1.8 5.3 2.1l2.9-1.7-.7 3.5-1.8c-.4 3-3.1 5.3-6.5 5.3-3.2 0-7.2-1.3-7.2-4z" fill="#fff"/><circle cx="7.6" cy="11.6" r="1.05" fill="#4d6bfe"/></svg>
+</span>
+</div>
+<span class="prompt-hint">复制后粘贴给 <b>任意 AI</b> 即可接入 Operit-wiki</span>
+</div>
+</div>
+</div>
 
   <div class="stats" id="stats"></div>
   <div class="filters" id="filters"></div>
@@ -88,7 +87,7 @@
     </table>
   </div>
 
-  <div class="credit">纸墨设计参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
+  <div class="credit">Operit-wiki · 知识编译方法参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
 </div>
 
 <script>
@@ -99,8 +98,8 @@
   var ctx = canvas.getContext('2d');
   var dots = [], W = 0, H = 0, dpr = 1, running = false, raf = 0;
   var mouse = { x: -9999, y: -9999 };
-  var INK = '58,53,48', CINNABAR = '192,87,63'; // #3a3530 / #c0573f
-  var WORD_A = 'Operit', WORD_B = 'wiki', GAP = 7;
+  var INK = '191,242,255', CINNABAR = '45,212,191'; // 冰白 / 青
+  var WORD_A = 'Operit', WORD_B = 'wiki', GAP = 4;
 
   function build() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -112,13 +111,13 @@
     // 离屏绘制文字，测出两词分界
     var off = document.createElement('canvas');
     var fs = 100, octx = off.getContext('2d');
-    octx.font = '900 ' + fs + 'px "Noto Serif SC", serif';
+    octx.font = '900 ' + fs + 'px system-ui, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
     var wA = octx.measureText(WORD_A + ' ').width;
     var wFull = octx.measureText(WORD_A + ' ' + WORD_B).width;
     fs = Math.floor(fs * Math.min((W * 0.96) / wFull, (H * 0.92) / (fs * 1.05)));
     off.width = Math.ceil(wFull * fs / 100) + 20; off.height = Math.ceil(fs * 1.3) + 20;
     octx = off.getContext('2d');
-    octx.font = '900 ' + fs + 'px "Noto Serif SC", serif';
+    octx.font = '900 ' + fs + 'px system-ui, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
     octx.textBaseline = 'middle';
     octx.fillStyle = '#000';
     octx.fillText(WORD_A + ' ' + WORD_B, 10, off.height / 2);
@@ -147,11 +146,11 @@
       var wave = Math.sin(d.x * 0.02 + time * 2 + d.ph) * 1.6;
       var dx = d.x - mouse.x, dy = (d.y + wave) - mouse.y;
       var dist = Math.sqrt(dx * dx + dy * dy), push = 0, px = 0, py = 0;
-      if (dist < 90 && dist > 0.1) { push = (90 - dist) / 90 * 10; px = dx / dist * push; py = dy / dist * push; }
-      var rad = GAP * 0.34 * (0.55 + 0.45 * d.k) * (1 + 0.12 * Math.sin(time * 2 + d.ph));
+      if (dist < 110 && dist > 0.1) { push = (110 - dist) / 110 * 12; px = dx / dist * push; py = dy / dist * push; }
+      var rad = GAP * 0.36 * (0.55 + 0.45 * d.k) * (1 + 0.1 * Math.sin(time * 2 + d.ph));
       ctx.beginPath();
       ctx.arc(d.x + px, d.y + wave + py, Math.max(0.6, rad), 0, 6.2832);
-      ctx.fillStyle = 'rgba(' + (d.ink ? INK : CINNABAR) + ',' + (0.55 + 0.45 * d.k).toFixed(2) + ')';
+      ctx.fillStyle = 'rgba(' + (d.ink ? INK : CINNABAR) + ',' + (0.62 + 0.38 * d.k).toFixed(2) + ')';
       ctx.fill();
     }
     if (running) raf = requestAnimationFrame(frame);
@@ -180,7 +179,8 @@
   var btn = document.getElementById('copyPrompt');
   if (btn) btn.addEventListener('click', function () {
     var txt = document.getElementById('promptText').innerText;
-    function done() { btn.textContent = '已复制 ✓'; setTimeout(function () { btn.textContent = '复制'; }, 1600); }
+    var label = document.getElementById('copyLabel');
+    function done() { if (label) label.textContent = '已复制 ✓'; setTimeout(function () { if (label) label.textContent = '复制'; }, 1600); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(txt).then(done, function () { fallback(); });
     } else fallback();
