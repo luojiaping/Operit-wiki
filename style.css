@@ -56,20 +56,7 @@ a:hover { text-decoration: underline; }
 }
 .brand { font-weight: 800; font-size: 16px; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
 .logo-mark {
-  width: 22px; height: 22px; border-radius: 6px; flex: none;
-  background:
-    radial-gradient(circle at 6px 6px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 11px 6px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 16px 6px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 6px 11px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 11px 11px, #fff 2.2px, transparent 2.6px),
-    radial-gradient(circle at 16px 11px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 6px 16px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 11px 16px, var(--app-accent) 2.2px, transparent 2.6px),
-    radial-gradient(circle at 16px 16px, var(--app-accent) 2.2px, transparent 2.6px),
-    linear-gradient(135deg, #123, #0a0e14);
-  background-color: #0e1622;
-  border: 1px solid var(--app-border);
+  width: 24px; height: 24px; border-radius: 7px; flex: none; display: block;
 }
 .topbar nav a { margin-left: 20px; color: var(--app-muted); font-size: 14px; }
 .topbar nav a:hover { color: var(--app-fg); text-decoration: none; }
