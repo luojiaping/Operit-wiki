@@ -8,7 +8,7 @@ issue: 140
 
 # appendix-plugin-dev-guide（插件开发指南：市场 Top50 实证）
 
-> 种子：operit.app 插件市场下载量 Top50（榜单生成于 2026-09-27，共 1452 个插件）中 48 个可读源码的插件包。35 个 ToolPkg bundle + 11 个单文件 JS 沙盒包 + 1 个 Skill + 1 个 MCP。分析材料：`wiki-work/plugin-top50/`。
+> 种子：operit.app 插件市场下载量 Top50（榜单生成于 2026-09-27，共 1452 个插件）中 48 个可读源码的插件包。35 个 ToolPkg bundle + 11 个单文件 JS 沙盒包 + 1 个 Skill + 1 个 MCP。分析方法：48 个插件包经市场 asset 下载解包，五路并行代码走查，逐包输出结构化分析报告后综合。
 
 > 一句话：这不是凭空写的规范，是把下载量最高的 48 个插件源码全部读完之后，提炼出的"它们实际都是这么写的"——照抄这些模式，你的插件就站在了 Top50 的肩膀上。
 
@@ -376,5 +376,5 @@ return Tools.Workflow.create(TEMPLATE); // 不存在则创建
 
 - 排名与下载量：`https://static.operit.app/market/v2/lists/all/downloads/page-1.json`（榜单生成于 2026-09-27；`sort=downloads`，`pageSize=100`）
 - 市场数据清单：`https://static.operit.app/market/v2/manifest.json`
-- 48 个插件源码：经市场 asset（GitHub release 的 `.toolpkg`/`.js`）下载解包，分析报告在 `wiki-work/plugin-top50/plugin_analysis/`（batch_A–E）
+- 48 个插件源码：经市场 asset（GitHub release 的 `.toolpkg`/`.js`）下载解包（48 个插件的逐包分析报告由 wiki 维护者归档备查）
 - 官方接口契约见本 wiki `appendix-js-package-dev`（JS 沙盒包开发接口）
