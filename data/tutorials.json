@@ -1,4 +1,69 @@
 {
-  "updated": "2026-10-02 05:56 UTC",
-  "tutorials": []
+  "updated": "2026-10-02 07:23 UTC",
+  "tutorials": [
+    {
+      "title": "鸿蒙系统终端兼容性说明",
+      "summary": "鸿蒙上终端不可用的原因、权限限制与现状建议。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 问题现象： 在华为鸿蒙系统（HarmonyOS）设备上使用 Operit 时，内置终端无法正常启动、报错或崩溃，依赖本地终端的 MCP 插件等功能无法运行。此外，部分鸿蒙版本存在系统级权限…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/134",
+      "issue": 134
+    },
+    {
+      "title": "Magisk 有 Root 但检测不到的排查",
+      "summary": "DenyList/排除列表误伤导致的检测失败。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 问题现象： 设备已获取Root权限（使用Magisk/面具），但在Operit中仍然检测不到Root权限或提示无权限。 原因分析： 用户虽然在Magisk超级用户中授予了权限，但由于开启…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/133",
+      "issue": 133
+    },
+    {
+      "title": "小米/红米 HyperOS 受限制设置解除",
+      "summary": "权限无法开启、提示受限制的设置，两种解法。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 在小米/红米机型（如 HyperOS / MIUI）上，部分权限（如无障碍、通知使用权、悬浮窗等）无法开启，系统提示“受限制的设置”或在权限设置页面来回跳转无法打开。 1. 长按应用图标 -…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/132",
+      "issue": 132
+    },
+    {
+      "title": "DeepSeek DSML 标签泄漏排障",
+      "summary": "DSML 标签泄漏进正文污染多轮对话时的表现与处置。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 - **DeepSeek DSML协议兼容问题**：参考Issue #856，Operit内部XML协议与DeepSeek原生DSML协议在多轮工具调用时产生兼容竞争，导致工具调用…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/131",
+      "issue": 131
+    },
+    {
+      "title": "Waifu 模式新手指南",
+      "summary": "分句发送、打字节奏、表情包，新手推荐配置。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 模式核心作用 Waifu 模式通过绑定角色卡，将 AI 回复由“整段一次性发送”改为“按标点拆分、分条逐句发送”，并配合打字延迟效果，模拟真人逐句打字的聊天节奏，从而显著提升对话的真实感与氛…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/130",
+      "issue": 130
+    },
+    {
+      "title": "生图配置详细流程",
+      "summary": "沙盒包生图工具包的环境变量配置，含常见误区。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 1. 打开应用设置，进入侧边栏，点击“包管理”。 2. 在顶部切换到“沙盒包”标签页。 3. 找到需要启用的绘图工具包（例如：openai_draw、智谱生图、Qwen 绘图等），打开其右…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/129",
+      "issue": 129
+    },
+    {
+      "title": "MCP 插件四大故障分类排查",
+      "summary": "插件不加载、运行失败、版本兼容、功能异常，四类问题的排查流程。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 MCP 插件系统概述 * 定义与功能：MCP（Model Context Protocol）插件用于扩展 Operit AI 的核心能力。 * 主要类型：包括 Excel…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/128",
+      "issue": 128
+    },
+    {
+      "title": "MCP 完整指南：安装、部署与故障排查",
+      "summary": "MCP 在 Operit 里怎么装、怎么跑、挂了怎么查，一篇讲透。 > 来源：社群知识库（2026-09-30 备份），经清洗整理。 10. 工具：MCP 上一节我们介绍了沙盒包，本节继续讲解另一种工具形态——MCP。 MCP（Model Context Protocol）是一种以独立进程运行的工具…",
+      "author": "luojiaping",
+      "date": "2026-10-02",
+      "url": "https://github.com/luojiaping/Operit-wiki/issues/127",
+      "issue": 127
+    }
+  ]
 }

@@ -60,6 +60,18 @@ date: 2026-10-01
 - 协议枚举 `DeepseekApiProtocol` 只有 `CHAT_COMPLETIONS` 和 `RESPONSES` 两个值。
   `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:558`
 
+### DSML 协议说明（备注）
+
+- DSML 是 DeepSeek 官方的内部工具协议（其原生工具调用标签格式），本身就有标签泄漏进正文的风险。
+- Operit 只认自己的内部 XML 协议：`ChatMarkupRegex.toolCallPattern` 只匹配 `<tool … name="…">…</tool …>` 形态的标签，DSML 标签不在匹配范围内。
+  `app/src/main/java/com/ai/assistance/operit/util/ChatMarkupRegex.kt:27`
+- `parseXmlToolCalls` 的逻辑是：正则命中才转成 tool_calls 并从正文中剔除标签；未命中则原样返回，raw 标签直接留在正文里。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt:1729`
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt:1733`
+- `DeepseekProvider` 在拼装 ASSISTANT 回合（`:348`）和 TOOL_CALL 历史（`:379`）时都会走 `parseXmlToolCalls`，因此模型一旦吐出 DSML 标签，就会泄漏进回复正文并污染多轮历史；污染后后续工具调用持续解析异常，只能回滚、重新生成或开新对话重置。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:348`
+  `app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:379`
+
 ### 请求体组装（Chat Completions）
 
 - `createRequestBody` 被重写，专为 `reasoning_content` 服务。
