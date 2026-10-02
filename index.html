@@ -4,41 +4,69 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operit-wiki</title>
-<link rel="stylesheet" href="style.css?v=b1cae12">
+<link rel="stylesheet" href="style.css?v=ae275a3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="home">
+<div class="grain" aria-hidden="true"></div>
+<div class="ambient" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+
 <div class="topbar">
   <div class="inner">
-    <div class="brand"><img class="logo-mark" src="logo.svg" alt="Operit">Operit-wiki</div>
+    <div class="brand"><img class="logo-mark" src="logo.svg" alt="Operit"><span>Operit-wiki</span></div>
     <nav>
       <a href="index.html" class="active">首页</a>
       <a href="wiki.html">Wiki 预览</a>
       <a href="graph.html">知识图谱</a>
       <a href="quality.html">代码走查</a>
       <a href="tutorials.html">教程分享</a>
-      <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
+      <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub ↗</a>
     </nav>
   </div>
 </div>
 
-<div class="layout">
-<div class="hero-half">
-<canvas id="dotTitle" aria-label="Operit wiki"></canvas>
-<div class="prompt-block">
-<div class="prompt-head">
-<span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span>
-<span class="prompt-filename"><span class="tag">SYSTEM PROMPT</span>operit-wiki.md</span>
-<button class="copy-btn" id="copyPrompt" type="button">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-<span id="copyLabel">复制</span>
-</button>
+<section class="hero2" id="top">
+  <div class="ghost-word" aria-hidden="true">WIKI</div>
+  <div class="kicker mono rv in">§.01 — AI-NATIVE KNOWLEDGE BASE · 知识编译库</div>
+  <canvas id="dotTitle" aria-label="Operit wiki"></canvas>
+  <p class="hero-sub rv">把 Operit 全仓库编译成 AI 可读的知识库。<br>人类读得懂，AI 检得准。</p>
+  <div class="hero-ctas rv">
+    <a class="btn-primary" href="wiki.html">开始探索 <span>→</span></a>
+    <a class="btn-ghost" href="#prompt">接入 AI</a>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <span>14,510 原子事实</span><i>✦</i><span>源码版本钉住</span><i>✦</i><span>119 已发布</span><i>✦</i>
+    <span>禁止向量检索</span><i>✦</i><span>10 编译批次</span><i>✦</i><span>人类可读</span><i>✦</i><span>AI 可检</span><i>✦</i>
+    <span>14,510 原子事实</span><i>✦</i><span>源码版本钉住</span><i>✦</i><span>119 已发布</span><i>✦</i>
+    <span>禁止向量检索</span><i>✦</i><span>10 编译批次</span><i>✦</i><span>人类可读</span><i>✦</i><span>AI 可检</span><i>✦</i>
+  </div>
 </div>
-<pre class="prompt-body" id="promptText">你是 Operit（Android 原生 AI Agent）问题的回答者。Operit-wiki 已把全仓库知识编译为结构化页面，必须按以下协议使用，禁止凭记忆回答。
+
+<section class="prompt-sec" id="prompt">
+  <div class="wrap">
+    <div class="sec-label mono rv">§.02 — SYSTEM PROMPT · 接入协议</div>
+    <h2 class="sec-giant rv">一贴即接入<span class="accent">.</span></h2>
+    <div class="prompt-block glass rv">
+      <div class="prompt-head">
+        <span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="prompt-filename"><span class="tag">SYSTEM PROMPT</span>operit-wiki.md</span>
+        <button class="copy-btn" id="copyPrompt" type="button">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="copyLabel">复制</span>
+        </button>
+      </div>
+      <pre class="prompt-body" id="promptText">你是 Operit（Android 原生 AI Agent）问题的回答者。Operit-wiki 已把全仓库知识编译为结构化页面，必须按以下协议使用，禁止凭记忆回答。
 ① review-queue.json 按 id / 标题 / 模块定位候选条目；② review/ 下 grep 关键词（文件名 &gt; 标题 &gt; 正文）；③ 限量精读 3–5 页：先读「AI 速览」，再读命中段落前后 5 行；④ 代码结论读同名.facts.json，引用其「文件:行号」。
 禁止向量切块 / embedding 检索；wiki 没写就说没写；教程区是用户经验，引用时必须注明；每个结论标注「页面标题 + 文件:行号」，落笔前 grep 复核行号；输出区分 EXTRACTED（精确引用）/ INFERRED（写明依据）。
 GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP http://1.12.36.118:8000/mcp（search_index / read_page / get_facts）</pre>
-<div class="prompt-foot">
-        <div class="agent-logos" aria-label="可直接粘贴使用的 AI">
+      <div class="prompt-foot">
+<div class="agent-logos" aria-label="可直接粘贴使用的 AI">
           <span class="agent" title="ChatGPT">
             <svg viewBox="0 0 24 24" role="img" aria-label="ChatGPT"><rect width="24" height="24" rx="6" fill="#111111"/><g transform="translate(4.56,4.56) scale(0.62)"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" fill="#fff"/></g></svg>
           </span>
@@ -58,25 +86,27 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
             <svg viewBox="0 0 24 24" role="img" aria-label="DeepSeek"><rect width="24" height="24" rx="6" fill="#4d6bfe"/><g transform="translate(4.56,4.56) scale(0.62)"><path d="M23.748 4.651c-.254-.124-.364.113-.512.233-.051.04-.094.09-.137.137-.372.397-.806.657-1.373.626-.829-.046-1.537.214-2.163.848-.133-.782-.575-1.248-1.247-1.548-.352-.155-.708-.311-.955-.65-.172-.24-.219-.509-.305-.774-.055-.16-.11-.323-.293-.35-.2-.031-.278.136-.356.276-.313.572-.434 1.202-.422 1.84.027 1.436.633 2.58 1.838 3.393.137.094.172.187.129.323-.082.28-.18.553-.266.833-.055.179-.137.218-.328.14a5.5 5.5 0 0 1-1.737-1.179c-.857-.828-1.631-1.743-2.597-2.46a12 12 0 0 0-.689-.47c-.985-.957.13-1.743.387-1.836.27-.098.094-.433-.778-.428-.872.003-1.67.295-2.687.685a3 3 0 0 1-.465.136 9.6 9.6 0 0 0-2.883-.101c-1.885.21-3.39 1.1-4.497 2.622C.082 8.776-.231 10.854.152 13.02c.403 2.284 1.568 4.175 3.36 5.653 1.857 1.533 3.997 2.284 6.438 2.14 1.482-.085 3.132-.284 4.994-1.86.47.234.962.328 1.78.398.629.058 1.235-.031 1.705-.129.735-.155.684-.836.418-.961-2.155-1.004-1.682-.595-2.112-.926 1.095-1.295 2.768-3.598 3.284-6.733.05-.346.115-.834.108-1.114-.004-.171.035-.238.23-.257a4.2 4.2 0 0 0 1.545-.475c1.397-.763 1.96-2.016 2.093-3.517.02-.23-.004-.467-.247-.588M11.58 18.168c-2.088-1.642-3.101-2.183-3.52-2.16-.39.024-.32.472-.234.763.09.288.207.487.371.74.114.167.192.416-.113.603-.673.416-1.842-.14-1.897-.168-1.361-.801-2.5-1.86-3.301-3.306-.775-1.393-1.225-2.888-1.299-4.482-.02-.385.094-.522.477-.592a4.7 4.7 0 0 1 1.53-.038c2.131.311 3.946 1.264 5.467 2.774.868.86 1.525 1.887 2.202 2.89.72 1.066 1.494 2.082 2.48 2.915.348.291.626.513.892.677-.802.09-2.14.109-3.055-.615zm1.001-6.44a.306.306 0 0 1 .415-.287.3.3 0 0 1 .113.074.3.3 0 0 1 .086.214c0 .17-.136.307-.308.307a.303.303 0 0 1-.306-.307m3.11 1.596c-.2.081-.4.151-.591.16a1.25 1.25 0 0 1-.798-.254c-.274-.23-.47-.358-.551-.758a1.7 1.7 0 0 1 .015-.588c.07-.327-.007-.537-.238-.727-.188-.156-.426-.199-.689-.199a.6.6 0 0 1-.254-.078.253.253 0 0 1-.114-.358 1 1 0 0 1 .192-.21c.356-.202.767-.136 1.146.016.352.144.618.408 1.001.782.392.451.462.576.685.915.176.264.336.536.446.848.066.194-.02.353-.25.45" fill="#fff"/></g></svg>
           </span>
         </div>
-<span class="prompt-hint">复制后粘贴给 <b>任意 AI</b> 即可接入 Operit-wiki</span>
-</div>
-</div>
-</div>
-
-
-  <section class="milestones" id="milestones">
-    <div class="sec-head">
-      <div>
-      <h2>Wiki 里程碑</h2>
-      <p class="sec-sub">从大纲到全仓库覆盖的编译之路 · 源码版本钉住、可复核</p>
+        <span class="prompt-hint">复制后粘贴给 <b>任意 AI</b> 即可接入 Operit-wiki</span>
       </div>
-      <div class="tl-nav">
+    </div>
+  </div>
+</section>
+
+<section class="milestones" id="milestones">
+  <div class="wrap">
+    <div class="ms-top">
+      <div>
+        <div class="sec-label mono rv">§.03 — MILESTONES · 里程碑</div>
+        <h2 class="sec-giant rv">编译之路<span class="accent">.</span></h2>
+        <p class="sec-sub rv">从大纲到全仓库覆盖 · 源码版本钉住、可复核</p>
+      </div>
+      <div class="tl-nav rv">
         <button id="tlPrev" type="button" aria-label="向左滚动">‹</button>
         <button id="tlNext" type="button" aria-label="向右滚动">›</button>
       </div>
     </div>
 
-    <div class="src-card">
+<div class="src-card">
       <div class="src-head"><span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span><span class="prompt-filename"><span class="tag">SOURCE</span> pinned-commits</span></div>
       <div class="src-rows">
         <div class="src-row">
@@ -96,14 +126,14 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
       </div>
     </div>
 
-    <div class="ms-stats">
-      <div class="ms-stat"><b>122</b><span>知识页面</span></div>
-      <div class="ms-stat"><b>119</b><span>已发布</span></div>
-      <div class="ms-stat"><b>14,510</b><span>原子事实</span></div>
-      <div class="ms-stat"><b>10</b><span>编译批次</span></div>
+    <div class="ms-stats rv">
+      <div class="ms-stat"><b data-count="122">0</b><span>知识页面</span></div>
+      <div class="ms-stat"><b data-count="119">0</b><span>已发布</span></div>
+      <div class="ms-stat"><b data-count="14510" data-comma="1">0</b><span>原子事实</span></div>
+      <div class="ms-stat"><b data-count="10">0</b><span>编译批次</span></div>
     </div>
 
-    <div class="timeline">
+    <div class="timeline rv">
       <div class="tl-item">
         <div class="tl-dot ok"></div>
         <div class="tl-card">
@@ -205,20 +235,23 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<footer class="cine">
+  <div class="cine-word" aria-hidden="true">OPERIT-WIKI</div>
   <div class="credit">Operit-wiki · 知识编译方法参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT） · <button class="refresh-btn" id="forceRefresh" type="button" title="清除本地缓存并加载最新版本">⟳ 强制刷新</button></div>
-</div>
+</footer>
 
 <script>
-/* ---- 半屏 Hero：点阵艺术字 ---- */
+/* ---- 点阵艺术字 ---- */
 (function () {
   var canvas = document.getElementById('dotTitle');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
   var dots = [], W = 0, H = 0, dpr = 1, running = false, raf = 0;
   var mouse = { x: -9999, y: -9999 };
-  var INK = '191,242,255', CINNABAR = '45,212,191'; // 冰白 / 青
+  var INK = '191,242,255', CINNABAR = '45,212,191';
   var WORD_A = 'Operit', WORD_B = 'wiki', GAP = 4;
 
   function build() {
@@ -227,12 +260,9 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
     W = Math.max(50, r.width); H = Math.max(50, r.height);
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    // 离屏绘制文字，测出两词分界
     var off = document.createElement('canvas');
     var fs = 100, octx = off.getContext('2d');
     octx.font = '900 ' + fs + 'px system-ui, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
-    var wA = octx.measureText(WORD_A + ' ').width;
     var wFull = octx.measureText(WORD_A + ' ' + WORD_B).width;
     fs = Math.floor(fs * Math.min((W * 0.96) / wFull, (H * 0.92) / (fs * 1.05)));
     off.width = Math.ceil(wFull * fs / 100) + 20; off.height = Math.ceil(fs * 1.3) + 20;
@@ -243,8 +273,6 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
     octx.fillText(WORD_A + ' ' + WORD_B, 10, off.height / 2);
     var splitX = 10 + octx.measureText(WORD_A + ' ').width;
     var data = octx.getImageData(0, 0, off.width, off.height).data;
-
-    // 采样为点阵（以画布为基准居中）
     dots = [];
     var ox = (W - off.width) / 2, oy = (H - off.height) / 2;
     for (var y = GAP / 2; y < off.height; y += GAP) {
@@ -262,7 +290,6 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
     var time = t * 0.0012;
     for (var i = 0; i < dots.length; i++) {
       var d = dots[i];
-      // 呼吸波 + 鼠标排斥
       var wave = Math.sin(d.x * 0.02 + time * 2 + d.ph) * 1.6;
       var dx = d.x - mouse.x, dy = (d.y + wave) - mouse.y;
       var dist = Math.sqrt(dx * dx + dy * dy), push = 0, px = 0, py = 0;
@@ -284,7 +311,7 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
   });
   canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
 
-  var hero = canvas.closest('.hero-half');
+  var hero = canvas.closest('.hero2');
   if ('IntersectionObserver' in window && hero) {
     new IntersectionObserver(function (es) { es[0].isIntersecting ? start() : stop(); }).observe(hero);
   }
@@ -295,7 +322,6 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { build(); start(); }); }
   build(); start();
 
-  /* ---- 复制提示词 ---- */
   var btn = document.getElementById('copyPrompt');
   if (btn) btn.addEventListener('click', function () {
     var txt = document.getElementById('promptText').innerText;
@@ -310,9 +336,44 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
     }
   });
 })();
-</script>
-<script>
-/* ---- 里程碑：点击复制 commit hash ---- */
+
+/* ---- 滚动显现 ---- */
+(function () {
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+
+/* ---- 数字递增 ---- */
+(function () {
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+  function fmt(el, v) {
+    var s = String(Math.round(v));
+    if (el.getAttribute('data-comma')) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    el.textContent = s;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var el = e.target, target = parseFloat(el.getAttribute('data-count')), t0 = null;
+      function tick(t) {
+        if (!t0) t0 = t;
+        var p = Math.min(1, (t - t0) / 1400), ease = 1 - Math.pow(1 - p, 3);
+        fmt(el, target * ease);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.4 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+
+/* ---- 点击复制 commit hash ---- */
 document.querySelectorAll('[data-copy]').forEach(function (el) {
   el.addEventListener('click', function () {
     var t = el.getAttribute('data-copy');
@@ -332,7 +393,7 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   });
 });
 
-/* ---- 里程碑：自动播放（悬停/触摸暂停，来回滚动） ---- */
+/* ---- 里程碑：自动播放 ---- */
 (function () {
   var tl = document.querySelector('.timeline');
   if (!tl) return;
@@ -364,7 +425,7 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   start();
 })();
 
-/* ---- 强制刷新：清缓存 + 时间戳硬重载 ---- */
+/* ---- 强制刷新 ---- */
 (function () {
   var btn = document.getElementById('forceRefresh');
   if (!btn) return;
