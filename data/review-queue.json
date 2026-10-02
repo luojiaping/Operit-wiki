@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 04:53 UTC",
+  "updated": "2026-10-02 05:08 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -251,7 +251,7 @@
       "batch": "batch-03",
       "title": "JS 工具脚本执行与注册",
       "module": "core",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 20,
       "issue_title": "[评审] JS 工具脚本执行与注册",
       "md": "review/batch-03/core-tools-jstools.md",
@@ -272,7 +272,7 @@
       "refs_valid": "101/101 引用行号真实存在，symbol 在 ±5 行内全命中（自查修复 1 条越界）；lint 硬失败 0/警告 0",
       "critic": "独立复核通过（110 条，1 处内容错误+16 处引用修正后复检通过）",
       "summary": "JS 工具脚本执行与注册：JsToolManager 调度与引擎池、执行脚本组装与 __operitExecuteScriptFunction 入口、ToolPkg 注册桥接与 23 个注册桶、结果判定协议、双层超时、执行追踪、广播触发执行、JS 侧 Tools 门面。",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-03/core-tools-standard-filesystem",
@@ -424,7 +424,7 @@
       "batch": "batch-04",
       "title": "Claude 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 29,
       "issue_title": "[评审] Claude 供应商",
       "md": "review/batch-04/api-chat-claude.md",
@@ -437,7 +437,7 @@
       "refs_valid": "126/126 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "Claude 供应商：ClaudeProvider 历史序列化与 system 参数、XML tool call 桥接、prompt cache 断点、token 用量解析、thinking、OpenAI 兼容回退、重试/取消。",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-codex",
@@ -500,7 +500,7 @@
       "batch": "batch-04",
       "title": "对话增强管线",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 56,
       "issue_title": "[评审] 对话增强管线",
       "md": "review/batch-04/api-chat-enhance.md",
@@ -511,7 +511,7 @@
       "refs_valid": "171/171 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-errors",
@@ -629,7 +629,7 @@
       "batch": "batch-04",
       "title": "Llama 端侧供应商（已停止维护）",
       "module": "api",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 35,
       "issue_title": "[评审] Llama 端侧供应商（已停止维护）",
       "md": "review/batch-04/api-chat-llama.md",
@@ -643,7 +643,7 @@
       "refs_valid": "46/46 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-media",
@@ -696,7 +696,7 @@
       "batch": "batch-04",
       "title": "小米 Mimo 供应商",
       "module": "api",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 43,
       "issue_title": "[评审] 小米 Mimo 供应商",
       "md": "review/batch-04/api-chat-mimo.md",
@@ -707,14 +707,14 @@
       "refs_valid": "7/7 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-mistral",
       "batch": "batch-04",
       "title": "Mistral 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 39,
       "issue_title": "[评审] Mistral 供应商",
       "md": "review/batch-04/api-chat-mistral.md",
@@ -730,7 +730,7 @@
       "refs_valid": "20/20 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-mnn",
@@ -755,7 +755,7 @@
       "batch": "batch-04",
       "title": "NousPortal 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 45,
       "issue_title": "[评审] NousPortal 供应商",
       "md": "review/batch-04/api-chat-nousportal.md",
@@ -772,7 +772,7 @@
       "refs_valid": "13/13 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "NousPortal 供应商：12 条 facts，走查 2 条，lint 硬失败 0/警告 0。",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-nvidia",
@@ -847,7 +847,7 @@
       "batch": "batch-04",
       "title": "OpenAI 供应商",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 27,
       "issue_title": "[评审] OpenAI 供应商",
       "md": "review/batch-04/api-chat-openai.md",
@@ -860,7 +860,7 @@
       "refs_valid": "120/120 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-opencode",
@@ -887,7 +887,7 @@
       "batch": "batch-04",
       "title": "OpenRouter 供应商",
       "module": "api",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 37,
       "issue_title": "[评审] OpenRouter 供应商",
       "md": "review/batch-04/api-chat-openrouter.md",
@@ -900,14 +900,14 @@
       "refs_valid": "18/18 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-params",
       "batch": "batch-04",
       "title": "统一参数模型与自定义参数",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 50,
       "issue_title": "[评审] 统一参数模型与自定义参数",
       "md": "review/batch-04/api-chat-params.md",
@@ -921,14 +921,14 @@
       "refs_valid": "44/44 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-providers-base",
       "batch": "batch-04",
       "title": "供应商接入基础设施",
       "module": "云端 Chat API",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 48,
       "issue_title": "[评审] 供应商接入基础设施",
       "md": "review/batch-04/api-chat-providers-base.md",
@@ -946,7 +946,7 @@
       "refs_valid": "159/159 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-qwen",
@@ -976,7 +976,7 @@
       "batch": "batch-04",
       "title": "对话编排运行时",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 55,
       "issue_title": "[评审] 对话编排运行时",
       "md": "review/batch-04/api-chat-runtime.md",
@@ -992,7 +992,7 @@
       "refs_valid": "107/107 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-thinking",
@@ -1060,7 +1060,7 @@
       "batch": "batch-04",
       "title": "xAI 供应商",
       "module": "api",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 41,
       "issue_title": "[评审] xAI 供应商",
       "md": "review/batch-04/api-chat-xai.md",
@@ -1071,7 +1071,7 @@
       "refs_valid": "12/12 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #41 xAI Responses 备注新增 2 条，lint 硬失败 0/警告 0）",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-speech",
@@ -1108,7 +1108,7 @@
       "batch": "batch-04",
       "title": "语音合成（TTS）服务",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 59,
       "issue_title": "[评审] 语音合成（TTS）服务",
       "md": "review/batch-04/api-voice.md",
@@ -1132,7 +1132,7 @@
       "refs_valid": "222/222 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/core-chat-runtime",
