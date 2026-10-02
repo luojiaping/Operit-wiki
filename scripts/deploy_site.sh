@@ -18,6 +18,9 @@ WORK=$(mktemp -d)
 git worktree add -q "$WORK" gh-pages
 rm -rf "$WORK"/*
 cp -r site/* "$WORK"/
+# 静态资源加版本号：根治浏览器/CDN 缓存导致的老版本残留（只改发布副本，不动源码）
+V=$(git -C "$ROOT" rev-parse --short HEAD)
+grep -rl 'style\.css' "$WORK" --include="*.html" | xargs -r sed -E -i "s|style\.css(\?v=[^\"' ]*)?|style.css?v=$V|g"
 # .nojekyll：关闭 Jekyll 处理，否则 .md 文件会被转成 .html 导致原路径 404
 touch "$WORK/.nojekyll"
 mkdir -p "$WORK/data"
