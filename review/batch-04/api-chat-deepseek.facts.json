@@ -310,5 +310,17 @@
   {
     "fact": "protocolFor 先规范化 endpoint（trim、去 # 后缀、截掉 query 和 fragment、去尾部斜杠），以 /responses 结尾（忽略大小写）走 RESPONSES，否则走 CHAT_COMPLETIONS",
     "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:572"
+  },
+  {
+    "fact": "ChatMarkupRegex.toolCallPattern 只匹配 Operit 内部 <tool … name=\"…\">…</tool …> 形态标签，DeepSeek DSML 原生标签不在匹配范围内。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/util/ChatMarkupRegex.kt:27"
+  },
+  {
+    "fact": "parseXmlToolCalls 未命中正则时原样返回 content（raw 标签留在正文），命中时才转 tool_calls 并剔除标签。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/OpenAIProvider.kt:1733"
+  },
+  {
+    "fact": "DeepseekProvider 在拼装 ASSISTANT 回合与 TOOL_CALL 历史时均调用 parseXmlToolCalls，DSML 标签泄漏会污染多轮历史，需回滚/重生成/开新对话重置。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/llmprovider/DeepseekProvider.kt:348"
   }
 ]
