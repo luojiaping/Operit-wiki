@@ -11,7 +11,7 @@ date: 2026-09-30
 
 - 工具是 Operit 里"AI 能动手干的事"：读文件、上网搜索、发消息、调系统能力，全部以工具的形式交给模型调用。你让 AI"查一下今天的天气"，它在回复里夹带一次工具调用，App 替它执行、把结果喂回去，它再组织成自然语言回答你。
 - 本页只回答两个问题：① 工具在代码里长什么样（数据模型）；② 一次工具调用在对话增强管线里怎么被调度（执行编排）。
-- 工具的注册表、Hook、执行限额、进度总线、工具包模型、结果类型体系由细页 [[core-tools-registry|工具注册与执行框架]] 深度覆盖，本页不重复搬运。
+- 工具的注册表、Hook、执行限额、进度总线、工具包模型、结果类型体系由细页 [工具注册与执行框架](entry.html?id=batch-02/core-tools-registry) 深度覆盖，本页不重复搬运。
 
 ## AI 速览
 
@@ -39,7 +39,7 @@ date: 2026-09-30
 - 模型"想调工具"时，真正流转的是 `ToolInvocation`：被调的 `AITool`、原始文本 `rawText`、以及调用在响应中的位置区间 `responseLocation`（`IntRange`，`@Contextual` 标注）。位置信息用来把结果插回原文对应处。`app/src/main/java/com/ai/assistance/operit/data/model/AITool.kt:24`
 - 执行完产出 `ToolResult`：`toolName`、`success`、结构化载荷 `result`（类型 `ToolResultData`，由 `core.tools` 包提供）、失败原因 `error`（可空，默认 `null`）。成功与失败走同一个结构，调用方只看 `success` 分流。`app/src/main/java/com/ai/assistance/operit/data/model/AITool.kt:33`
 - 参数校验的结果单独建模为 `ToolValidationResult`（`valid` + `errorMessage`），校验不过时错误信息原样拼进失败结果。`app/src/main/java/com/ai/assistance/operit/data/model/AITool.kt:37`
-- 设计上数据与调度分离：`AITool` 家族是纯数据类（可序列化、跨层传递），`ToolExecutionManager` 只做编排、不持有任何工具实现——真正的执行器来自 `AIToolHandler` 的注册表（注册细节见 [[core-tools-registry|工具注册与执行框架]]）。
+- 设计上数据与调度分离：`AITool` 家族是纯数据类（可序列化、跨层传递），`ToolExecutionManager` 只做编排、不持有任何工具实现——真正的执行器来自 `AIToolHandler` 的注册表（注册细节见 [工具注册与执行框架](entry.html?id=batch-02/core-tools-registry)）。
 
 ### 调度的五道工序（`executeInvocations`）
 
@@ -116,25 +116,25 @@ date: 2026-09-30
 
 ## 本章地图（工具系统）
 
-- [[core-tools|工具系统（总览）]]：本页——工具的数据模型与执行编排总览。
-- [[core-tools-registry|工具注册与执行框架]]：`AIToolHandler` 注册表、Hook、限额、进度总线、工具包模型、结果类型体系（已上评审）。
-- [[core-tools-standard-filesystem|标准工具·文件系统]]：文件读写/搜索/归档/SAF、路径校验与沙箱（规划中）。
-- [[core-tools-standard-webchat|标准工具·浏览器/网络/聊天/工作流]]：浏览器会话、网页访问、HTTP、聊天管理、工作流、记忆查询（规划中）。
-- [[core-tools-standard-system|标准工具·系统操作/多媒体/UI]]：系统操作、Shell/终端、多媒体、UI 自动化（规划中）。
-- [[core-tools-websession-browser|网页会话·浏览器宿主]]：WebView 宿主架构（规划中）。
-- [[core-tools-websession-userscript|网页会话·用户脚本引擎]]：Tampermonkey 式脚本解析与注入（规划中）。
-- [[core-tools-execmodes|工具执行模式]]：Debugger/Root/无障碍/Admin 四种权限模式（规划中）。
-- [[core-tools-jsengine|JS 引擎与 Java 互操作桥]]：QuickJS 引擎与 JsJavaBridge（规划中）。
-- [[core-tools-jstools|JS 工具脚本执行与注册]]：JS 工具注册、执行上下文、超时追踪（规划中）。
-- [[core-tools-packtool|插件包管理与解析]]：ToolPkg 解析加载与运行时监控（规划中）。
-- [[core-tools-system|系统底层能力]]：Shell 执行器分层、Action 监听器、终端、截屏投屏（规划中）。
-- [[core-tools-misc|专项工具]]：PhoneAgent、计算器、MCP、Skill、CLI 模式、条件工具（规划中）。
+- [工具系统（总览）](entry.html?id=batch-02/core-tools)：本页——工具的数据模型与执行编排总览。
+- [工具注册与执行框架](entry.html?id=batch-02/core-tools-registry)：`AIToolHandler` 注册表、Hook、限额、进度总线、工具包模型、结果类型体系（已上评审）。
+- [标准工具·文件系统](entry.html?id=batch-03/core-tools-standard-filesystem)：文件读写/搜索/归档/SAF、路径校验与沙箱（规划中）。
+- [标准工具·浏览器/网络/聊天/工作流](entry.html?id=batch-03/core-tools-standard-webchat)：浏览器会话、网页访问、HTTP、聊天管理、工作流、记忆查询（规划中）。
+- [标准工具·系统操作/多媒体/UI](entry.html?id=batch-03/core-tools-standard-system)：系统操作、Shell/终端、多媒体、UI 自动化（规划中）。
+- [网页会话·浏览器宿主](entry.html?id=batch-03/core-tools-websession-browser)：WebView 宿主架构（规划中）。
+- [网页会话·用户脚本引擎](entry.html?id=batch-03/core-tools-websession-userscript)：Tampermonkey 式脚本解析与注入（规划中）。
+- [工具执行模式](entry.html?id=batch-03/core-tools-execmodes)：Debugger/Root/无障碍/Admin 四种权限模式（规划中）。
+- [JS 引擎与 Java 互操作桥](entry.html?id=batch-03/core-tools-jsengine)：QuickJS 引擎与 JsJavaBridge（规划中）。
+- [JS 工具脚本执行与注册](entry.html?id=batch-03/core-tools-jstools)：JS 工具注册、执行上下文、超时追踪（规划中）。
+- [插件包管理与解析](entry.html?id=batch-04/core-tools-packtool)：ToolPkg 解析加载与运行时监控（规划中）。
+- [系统底层能力](entry.html?id=batch-04/core-tools-system)：Shell 执行器分层、Action 监听器、终端、截屏投屏（规划中）。
+- [专项工具](entry.html?id=batch-04/core-tools-misc)：PhoneAgent、计算器、MCP、Skill、CLI 模式、条件工具（规划中）。
 
 ## 关联条目
 
-- [[core-tools-registry|工具注册与执行框架]]：注册表与执行框架的细粒度展开，含 `AIToolHandler` 调用链与 `ToolPackage` 模型。
-- [[api-chat|云端 Chat API 接入]]：工具调用请求的来源（对话管线）。
-- [[data-model|数据模型（总览）]]：`AITool`、`ToolResult` 等数据类的归属说明。
+- [工具注册与执行框架](entry.html?id=batch-02/core-tools-registry)：注册表与执行框架的细粒度展开，含 `AIToolHandler` 调用链与 `ToolPackage` 模型。
+- [云端 Chat API 接入](entry.html?id=batch-02/api-chat)：工具调用请求的来源（对话管线）。
+- [数据模型（总览）](entry.html?id=batch-02/data-model)：`AITool`、`ToolResult` 等数据类的归属说明。
 
 ## 来源
 

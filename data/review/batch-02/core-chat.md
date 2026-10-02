@@ -216,11 +216,11 @@ date: 2026-09-30
 
 ## 关联条目
 
-- [[core-chat-runtime|聊天运行时（消息管理/Hook/插件）]]：本章细页，AIMessageManager 主循环、Hook 分发、插件匹配执行的完整机制。
-- [[api-chat-runtime|对话编排运行时]]：EnhancedAIService 侧的发送与编排。
-- [[api-chat-tokens|Token 统计与 usage 上报]]：服务侧 token 计数来源。
-- [[api-chat-memory|会话记忆与上下文总结]]：总结消费侧。
-- [[data-repo-chat|聊天历史仓库]]：ChatHistoryManager 的 Room 持久化细节。
+- [聊天运行时（消息管理/Hook/插件）](entry.html?id=batch-04/core-chat-runtime)：本章细页，AIMessageManager 主循环、Hook 分发、插件匹配执行的完整机制。
+- [对话编排运行时](entry.html?id=batch-04/api-chat-runtime)：EnhancedAIService 侧的发送与编排。
+- [Token 统计与 usage 上报](entry.html?id=batch-04/api-chat-tokens)：服务侧 token 计数来源。
+- [会话记忆与上下文总结](entry.html?id=batch-04/api-chat-memory)：总结消费侧。
+- [聊天历史仓库](entry.html?id=batch-05/data-repo-chat)：ChatHistoryManager 的 Room 持久化细节。
 
 ## 来源
 

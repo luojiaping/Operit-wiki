@@ -145,41 +145,41 @@ date: 2026-09-30
 
 跨供应商机制页：
 
-- [[api-chat-providers-base|供应商接入基础设施]]：AIService 接口契约、工厂装配、端点补全、模型列表拉取
-- [[api-chat-thinking|thinking 配置机制]]：思考档位规则匹配与跨供应商请求体写入
-- [[api-chat-params|统一参数模型与自定义参数]]：配置就绪检查与连接测试
-- [[api-chat-errors|错误/限流/重试]]：状态码封装、滑动窗口限流、重试与并发控制
-- [[api-chat-tools-stream|工具调用与流式协议]]：结构化工具调用桥接、SSE/分块流式处理
-- [[api-chat-tokens|Token 统计与 usage 上报]]：用量提取与统计账本
-- [[api-chat-media|多模态媒体链接与能力探测]]：媒体链接构造解析、供应商多模态能力探测
-- [[api-chat-keypool|Key 池轮询（ApiKeyProvider）]]：多 Key 池数据结构、轮询策略、可用性探测
+- [供应商接入基础设施](entry.html?id=batch-04/api-chat-providers-base)：AIService 接口契约、工厂装配、端点补全、模型列表拉取
+- [thinking 配置机制](entry.html?id=batch-04/api-chat-thinking)：思考档位规则匹配与跨供应商请求体写入
+- [统一参数模型与自定义参数](entry.html?id=batch-04/api-chat-params)：配置就绪检查与连接测试
+- [错误/限流/重试](entry.html?id=batch-04/api-chat-errors)：状态码封装、滑动窗口限流、重试与并发控制
+- [工具调用与流式协议](entry.html?id=batch-04/api-chat-tools-stream)：结构化工具调用桥接、SSE/分块流式处理
+- [Token 统计与 usage 上报](entry.html?id=batch-04/api-chat-tokens)：用量提取与统计账本
+- [多模态媒体链接与能力探测](entry.html?id=batch-04/api-chat-media)：媒体链接构造解析、供应商多模态能力探测
+- [Key 池轮询（ApiKeyProvider）](entry.html?id=batch-04/api-chat-keypool)：多 Key 池数据结构、轮询策略、可用性探测
 
 供应商页（主流）：
 
-- [[api-chat-openai|OpenAI 供应商]]、[[api-chat-openai-responses|OpenAI Responses 供应商]]、[[api-chat-codex|Codex 供应商]]
-- [[api-chat-gemini|Gemini 供应商]]、[[api-chat-claude|Claude 供应商]]、[[api-chat-deepseek|DeepSeek 供应商]]
-- [[api-chat-xai|xAI 供应商]]、[[api-chat-mistral|Mistral 供应商]]、[[api-chat-nvidia|NVIDIA AI 供应商]]
+- [OpenAI 供应商](entry.html?id=batch-04/api-chat-openai)、[OpenAI Responses 供应商](entry.html?id=batch-04/api-chat-openai-responses)、[Codex 供应商](entry.html?id=batch-04/api-chat-codex)
+- [Gemini 供应商](entry.html?id=batch-04/api-chat-gemini)、[Claude 供应商](entry.html?id=batch-04/api-chat-claude)、[DeepSeek 供应商](entry.html?id=batch-04/api-chat-deepseek)
+- [xAI 供应商](entry.html?id=batch-04/api-chat-xai)、[Mistral 供应商](entry.html?id=batch-04/api-chat-mistral)、[NVIDIA AI 供应商](entry.html?id=batch-04/api-chat-nvidia)
 
 供应商页（国产）：
 
-- [[api-chat-kimi|Kimi 供应商]]、[[api-chat-qwen|通义千问供应商]]、[[api-chat-doubao|豆包供应商]]、[[api-chat-mimo|小米 Mimo 供应商]]
+- [Kimi 供应商](entry.html?id=batch-04/api-chat-kimi)、[通义千问供应商](entry.html?id=batch-04/api-chat-qwen)、[豆包供应商](entry.html?id=batch-04/api-chat-doubao)、[小米 Mimo 供应商](entry.html?id=batch-04/api-chat-mimo)
 
 供应商页（聚合/中转与本地）：
 
-- [[api-chat-openrouter|OpenRouter 供应商]]、[[api-chat-fourrouter|FourRouter 供应商]]、[[api-chat-nousportal|NousPortal 供应商]]、[[api-chat-opencode|OpenCode 供应商]]
-- [[api-chat-ollama|Ollama 供应商]]、[[api-chat-mnn|MNN 端侧供应商（已停止维护）]]、[[api-chat-llama|Llama 端侧供应商（已停止维护）]]
+- [OpenRouter 供应商](entry.html?id=batch-04/api-chat-openrouter)、[FourRouter 供应商](entry.html?id=batch-04/api-chat-fourrouter)、[NousPortal 供应商](entry.html?id=batch-04/api-chat-nousportal)、[OpenCode 供应商](entry.html?id=batch-04/api-chat-opencode)
+- [Ollama 供应商](entry.html?id=batch-04/api-chat-ollama)、[MNN 端侧供应商（已停止维护）](entry.html?id=batch-04/api-chat-mnn)、[Llama 端侧供应商（已停止维护）](entry.html?id=batch-04/api-chat-llama)
 
 对话编排与记忆：
 
-- [[api-chat-runtime|对话编排运行时]]、[[api-chat-enhance|对话增强管线]]、[[api-chat-memory|会话记忆与上下文总结]]
+- [对话编排运行时](entry.html?id=batch-04/api-chat-runtime)、[对话增强管线](entry.html?id=batch-04/api-chat-enhance)、[会话记忆与上下文总结](entry.html?id=batch-04/api-chat-memory)
 
 ## 关联条目
 
-- [[api-chat-providers-base|供应商接入基础设施]]：本页"调用链"中装配逻辑的细粒度展开。
-- [[api-chat-thinking|thinking 配置机制]]：thinkingConfigurations / thinkingOptionId 如何写入各供应商请求体。
-- [[api-chat-keypool|Key 池轮询（ApiKeyProvider）]]：useMultipleApiKeys / apiKeyPool / keyRotationMode 的运行时实现。
-- [[api-chat-errors|错误/限流/重试]]：requestLimitPerMinute / maxConcurrentRequests 的运行时实现。
-- [[core-tools-registry|工具注册与执行框架]]：enableToolCall 打开后，模型原生工具调用的执行侧。
+- [供应商接入基础设施](entry.html?id=batch-04/api-chat-providers-base)：本页"调用链"中装配逻辑的细粒度展开。
+- [thinking 配置机制](entry.html?id=batch-04/api-chat-thinking)：thinkingConfigurations / thinkingOptionId 如何写入各供应商请求体。
+- [Key 池轮询（ApiKeyProvider）](entry.html?id=batch-04/api-chat-keypool)：useMultipleApiKeys / apiKeyPool / keyRotationMode 的运行时实现。
+- [错误/限流/重试](entry.html?id=batch-04/api-chat-errors)：requestLimitPerMinute / maxConcurrentRequests 的运行时实现。
+- [工具注册与执行框架](entry.html?id=batch-02/core-tools-registry)：enableToolCall 打开后，模型原生工具调用的执行侧。
 
 ## 来源
 
