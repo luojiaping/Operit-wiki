@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 09:01 UTC",
+  "updated": "2026-10-02 10:17 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -2540,6 +2540,29 @@
       "seed_files": [],
       "facts_count": 144,
       "refs_valid": "144；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-02"
+    },
+    {
+      "id": "batch-09/appendix-plugin-capabilities",
+      "batch": "batch-09",
+      "title": "插件能力目录",
+      "module": "附录",
+      "status": "approved",
+      "issue": 138,
+      "issue_title": "[评审] 插件能力目录",
+      "md": "review/batch-09/appendix-plugin-capabilities.md",
+      "facts": "review/batch-09/appendix-plugin-capabilities.facts.json",
+      "lint": "review/batch-09/appendix-plugin-capabilities.lint.md",
+      "seed_files": [
+        "PackageManager.kt",
+        "ToolPackage.kt",
+        "MCPRepository.kt",
+        "SkillPackage.kt"
+      ],
+      "facts_count": 42,
+      "refs_valid": "用户指示直接上线",
       "critic": "",
       "summary": "",
       "updated": "2026-10-02"
