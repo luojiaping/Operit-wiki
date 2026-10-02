@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operit-wiki</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=aa94e91">
 </head>
 <body>
 <div class="topbar">
@@ -207,7 +207,7 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
     </div>
   </section>
 
-  <div class="credit">Operit-wiki · 知识编译方法参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
+  <div class="credit">Operit-wiki · 知识编译方法参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT） · <button class="refresh-btn" id="forceRefresh" type="button" title="清除本地缓存并加载最新版本">⟳ 强制刷新</button></div>
 </div>
 
 <script>
@@ -341,6 +341,25 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   });
   document.getElementById('tlNext').addEventListener('click', function () {
     tl.scrollBy({ left: 320, behavior: 'smooth' });
+  });
+})();
+
+/* ---- 强制刷新：清缓存 + 时间戳硬重载 ---- */
+(function () {
+  var btn = document.getElementById('forceRefresh');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    btn.textContent = '刷新中…';
+    btn.disabled = true;
+    var go = function () {
+      var u = location.href.split('#')[0].split('?')[0];
+      location.href = u + '?v=' + Date.now();
+    };
+    if ('caches' in window) {
+      caches.keys().then(function (ks) {
+        return Promise.all(ks.map(function (k) { return caches.delete(k); }));
+      }).then(go, go);
+    } else { go(); }
   });
 })();
 </script>
