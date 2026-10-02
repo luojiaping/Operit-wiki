@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 10:17 UTC",
+  "updated": "2026-10-02 10:33 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -2540,6 +2540,30 @@
       "seed_files": [],
       "facts_count": 144,
       "refs_valid": "144；2026-10-02 用户一键通过全部（不再逐条审核），按用户指令直接批准上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-02"
+    },
+    {
+      "id": "batch-09/appendix-js-package-dev",
+      "batch": "batch-09",
+      "title": "JS 沙盒包开发接口",
+      "module": "附录",
+      "status": "approved",
+      "issue": 139,
+      "issue_title": "[评审] JS 沙盒包开发接口",
+      "md": "review/batch-09/appendix-js-package-dev.md",
+      "facts": "review/batch-09/appendix-js-package-dev.facts.json",
+      "lint": "review/batch-09/appendix-js-package-dev.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManager.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolPackage.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExecutionScriptBuilder.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsLibraries.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsTimeoutConfig.kt"
+      ],
+      "facts_count": 31,
+      "refs_valid": "用户指示直接上线",
       "critic": "",
       "summary": "",
       "updated": "2026-10-02"
