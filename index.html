@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operit-wiki</title>
-<link rel="stylesheet" href="style.css?v=3baf0e6">
+<link rel="stylesheet" href="style.css?v=b1cae12">
 </head>
 <body>
 <div class="topbar">
@@ -355,7 +355,11 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   }
   ['tlPrev', 'tlNext'].forEach(function (id) {
     var b = document.getElementById(id);
-    if (b) b.addEventListener('click', function () { stop(); setTimeout(start, 5000); });
+    if (b) b.addEventListener('click', function () {
+      stop();
+      tl.scrollBy({ left: id === 'tlPrev' ? -320 : 320, behavior: 'smooth' });
+      setTimeout(start, 5000);
+    });
   });
   start();
 })();
