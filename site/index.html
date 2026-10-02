@@ -28,6 +28,7 @@
 </div>
 
 <section class="hero2" id="top">
+  <canvas id="langLayer" aria-hidden="true"></canvas>
   <div class="kicker mono rv in">§.01 — AI-NATIVE KNOWLEDGE BASE · 知识编译库</div>
   <canvas id="dotTitle" aria-label="Operit wiki"></canvas>
   <p class="hero-sub rv">把 Operit 全仓库编译成 AI 可读的知识库。<br>人类读得懂，AI 检得准。</p>
@@ -334,6 +335,122 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
       ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
     }
   });
+})();
+
+/* ---- Hero 第二层：多语言"知识库"底纹，鼠标聚光灯揭示 ---- */
+(function () {
+  var hero = document.querySelector('.hero2');
+  var canvas = document.getElementById('langLayer');
+  if (!hero || !canvas) return;
+  var lctx = canvas.getContext('2d');
+  var WORDS = [
+    'Knowledge Base', '知识库', '知識庫', '知識ベース', '지식 베이스',
+    'Base de conocimientos', 'Base de connaissances', 'Wissensdatenbank',
+    'Base de conhecimento', 'Base di conoscenza', 'Kennisbank', 'Bilgi tabanı',
+    'Baza wiedzy', 'Kunskapsbas', 'Kunnskapsbase', 'Vidensbase', 'Tietämyskanta',
+    'Znalostní báze', 'Bază de cunoștințe', 'Tudásbázis', 'Msingi wa maarifa',
+    'Basis pengetahuan', 'Pangkalan pengetahuan', 'Cơ sở tri thức',
+    'База знаний', 'База знань', 'Βάση γνώσεων', 'قاعدة المعرفة', 'پایگاه دانش',
+    'בסיס ידע', 'ज्ञानकोश', 'জ্ঞানভাণ্ডার', 'ฐานความรู้', 'அறிவுத் தளம்'
+  ];
+  var BRAND = 'operit wiki';
+  var R = 200;
+  var langOff = null, spotWork = null, spotCtx = null, spotMask = null;
+  var lW = 0, lH = 0;
+  var tx = -9999, ty = -9999, sx = -9999, sy = -9999;
+  var spotA = 0, spotTarget = 0, inside = false;
+  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  var running = false, raf = 0;
+
+  function build() {
+    var r = hero.getBoundingClientRect();
+    lW = Math.max(50, Math.round(r.width)); lH = Math.max(50, Math.round(r.height));
+    canvas.width = lW; canvas.height = lH;
+    langOff = document.createElement('canvas');
+    langOff.width = lW; langOff.height = lH;
+    spotWork = document.createElement('canvas');
+    spotWork.width = lW; spotWork.height = lH;
+    spotCtx = spotWork.getContext('2d');
+    spotMask = document.createElement('canvas');
+    spotMask.width = spotMask.height = R * 2;
+    var m = spotMask.getContext('2d');
+    var g = m.createRadialGradient(R, R, 0, R, R, R);
+    g.addColorStop(0, 'rgba(255,255,255,1)');
+    g.addColorStop(0.55, 'rgba(255,255,255,.5)');
+    g.addColorStop(1, 'rgba(255,255,255,0)');
+    m.fillStyle = g; m.fillRect(0, 0, R * 2, R * 2);
+
+    var c = langOff.getContext('2d');
+    var dot = document.getElementById('dotTitle');
+    var tr = dot.getBoundingClientRect();
+    var x0 = tr.left - r.left - 40, x1 = tr.right - r.left + 40;
+    var y0 = tr.top - r.top - 40, y1 = tr.bottom - r.top + 40;
+    var cellW = 235, cellH = 100, n = 0;
+    c.textAlign = 'center'; c.textBaseline = 'middle';
+    for (var y = cellH * 0.5; y < lH; y += cellH) {
+      for (var x = cellW * 0.5; x < lW; x += cellW) {
+        var jx = x + (Math.random() - 0.5) * 80;
+        var jy = y + (Math.random() - 0.5) * 48;
+        if (jx > x0 && jx < x1 && jy > y0 && jy < y1) continue;
+        var isBrand = (n % 7 === 6);
+        var w = isBrand ? BRAND : WORDS[(Math.random() * WORDS.length) | 0];
+        var fs = Math.round(13 + Math.random() * 7);
+        c.font = '500 ' + fs + 'px "JetBrains Mono", system-ui, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
+        c.fillStyle = isBrand ? '#ff7a2f' : '#dfe7f2';
+        c.fillText(w, jx, jy);
+        n++;
+      }
+    }
+    sx = tx = lW / 2; sy = ty = lH / 2;
+  }
+
+  function frame(t) {
+    lctx.clearRect(0, 0, lW, lH);
+    lctx.globalAlpha = 0.06;
+    lctx.drawImage(langOff, 0, 0);
+    if (isTouch) {
+      var tt = t * 0.00016;
+      tx = lW * (0.5 + 0.36 * Math.cos(tt * 1.7));
+      ty = lH * (0.5 + 0.34 * Math.sin(tt * 2.3));
+      spotTarget = 0.85;
+    }
+    sx += (tx - sx) * 0.1; sy += (ty - sy) * 0.1;
+    spotA += (spotTarget - spotA) * 0.08;
+    if (spotA > 0.02 && sx > -50) {
+      spotCtx.clearRect(0, 0, lW, lH);
+      spotCtx.globalCompositeOperation = 'source-over';
+      spotCtx.drawImage(langOff, 0, 0);
+      spotCtx.globalCompositeOperation = 'destination-in';
+      spotCtx.drawImage(spotMask, sx - R, sy - R);
+      spotCtx.globalCompositeOperation = 'source-over';
+      lctx.globalAlpha = Math.min(1, 0.62 * spotA);
+      lctx.drawImage(spotWork, 0, 0);
+    }
+    lctx.globalAlpha = 1;
+    if (running) raf = requestAnimationFrame(frame);
+  }
+
+  function start() { if (!running) { running = true; raf = requestAnimationFrame(frame); } }
+  function stop() { running = false; cancelAnimationFrame(raf); }
+
+  hero.addEventListener('mousemove', function (e) {
+    if (isTouch) return;
+    var r = hero.getBoundingClientRect();
+    tx = e.clientX - r.left; ty = e.clientY - r.top;
+    if (!inside) { inside = true; sx = tx; sy = ty; }
+    spotTarget = 1;
+  });
+  hero.addEventListener('mouseleave', function () { inside = false; spotTarget = 0; });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { es[0].isIntersecting ? start() : stop(); }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 250); });
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(build); }
+
+  build(); start();
 })();
 
 /* ---- 滚动显现 ---- */
