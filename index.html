@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operit-wiki</title>
-<link rel="stylesheet" href="style.css?v=4aa818c">
+<link rel="stylesheet" href="style.css?v=6fa3567">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -54,11 +54,10 @@
     <h2 class="sec-giant rv">一贴即接入<span class="accent">.</span></h2>
     <div class="prompt-block glass rv">
       <div class="prompt-head">
-        <span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="prompt-filename"><span class="tag">SYSTEM PROMPT</span>operit-wiki.md</span>
         <button class="copy-btn" id="copyPrompt" type="button">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span id="copyLabel">复制</span>
+          <span id="copyLabel">复制提示词</span>
         </button>
       </div>
       <pre class="prompt-body" id="promptText">你是 Operit（Android 原生 AI Agent）问题的回答者。Operit-wiki 已把全仓库知识编译为结构化页面，必须按以下协议使用，禁止凭记忆回答。
@@ -339,7 +338,7 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
   if (btn) btn.addEventListener('click', function () {
     var txt = document.getElementById('promptText').innerText;
     var label = document.getElementById('copyLabel');
-    function done() { if (label) label.textContent = '已复制 ✓'; setTimeout(function () { if (label) label.textContent = '复制'; }, 1600); }
+    function done() { if (label) label.textContent = '已复制 ✓'; setTimeout(function () { if (label) label.textContent = '复制提示词'; }, 1600); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(txt).then(done, function () { fallback(); });
     } else fallback();
