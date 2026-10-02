@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 05:10 UTC",
+  "updated": "2026-10-02 05:23 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -1613,7 +1613,7 @@
       "batch": "batch-05",
       "title": "记忆仓库",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 62,
       "issue_title": "[评审] 记忆仓库",
       "md": "review/batch-05/data-repo-memory.md",
@@ -1634,7 +1634,7 @@
       "refs_valid": "173；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-repo-memory.critic.md）",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/data-repo-misc",
@@ -1693,7 +1693,7 @@
       "batch": "batch-05",
       "title": "应用更新与公告",
       "module": "数据层",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 72,
       "issue_title": "[评审] 应用更新与公告",
       "md": "review/batch-05/data-update-announce.md",
@@ -1716,7 +1716,7 @@
       "refs_valid": "130/130 引用行号真实存在（2026-10-01 partial 扫尾增补，lint 硬失败 0/警告 0）",
       "critic": "独立 critic 初验打回后修错，独立复验通过（data-update-announce.critic.md）",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-05/services-chatservice",
