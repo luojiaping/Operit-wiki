@@ -91,11 +91,11 @@ a:hover { text-decoration: underline; }
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 12px; padding: 16px 20px 20px; position: relative; overflow: hidden;
 }
-#dotTitle { width: min(880px, 100%); height: 34%; min-height: 110px; display: block; }
+#dotTitle { width: min(1200px, 100%); height: 34%; min-height: 110px; display: block; }
 
 /* 提示词：终端 / 指令卡 */
 .prompt-block {
-  width: min(880px, 100%);
+  width: min(1100px, 100%);
   background: rgba(13, 19, 30, 0.92);
   color: var(--app-fg);
   border-radius: 12px;
@@ -414,7 +414,7 @@ details.collapse .body { padding: 0 16px 16px; }
 .tut-card .d { font-size: 13px; color: var(--app-muted); }
 
 /* ---- Wiki 里程碑 ---- */
-.milestones { margin: 36px auto 0; max-width: 860px; padding: 0 18px; }
+.milestones { margin: 36px auto 0; max-width: 1240px; padding: 0 18px; }
 .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .sec-head h2 { font-size: 22px; letter-spacing: .06em; margin: 0 0 6px; }
 .sec-head h2::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px;
