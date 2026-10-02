@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operit-wiki · 教程分享</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="inner">
+    <div class="brand"><span class="seal-mini">審</span>Operit-wiki</div>
+    <nav>
+      <a href="index.html">评审大厅</a>
+      <a href="wiki.html">Wiki 预览</a>
+      <a href="graph.html">知识图谱</a>
+      <a href="quality.html">代码走查</a>
+      <a href="tutorials.html" class="active">教程分享</a>
+      <a href="https://github.com/luojiaping/Operit-wiki" target="_blank">GitHub</a>
+    </nav>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="hero">
+    <h1>教程分享</h1>
+    <div class="rule"><span>教程</span></div>
+    <p>社群用户自己写的 Operit 教程：排障手记、玩法分享、配置心得。这里只收录经过筛选的投稿，与 wiki 条目评审相互独立。</p>
+    <p><a class="btn" href="https://github.com/luojiaping/Operit-wiki/issues/new?template=tutorial.yml" target="_blank">✍️ 投稿一篇教程</a></p>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="entry-cards" id="list"></div>
+  <div class="updated" id="updated"></div>
+
+  <div class="credit">纸墨设计参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
+</div>
+
+<script>
+async function load() {
+  let data = { tutorials: [], updated: "" };
+  try { data = await (await fetch("data/tutorials.json")).json(); } catch (e) {}
+  const ts = data.tutorials || [];
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>${ts.length}</b><span>篇教程</span></div>`;
+  document.getElementById("list").innerHTML = ts.map(t => `
+    <a class="entry-card" href="${t.url}" target="_blank">
+      <div class="t">${t.title}</div>
+      <div class="d">${t.summary || ""}</div>
+      <div class="meta"><span>✍️ ${t.author || "佚名"}</span><span>📅 ${t.date || ""}</span></div>
+    </a>`).join("") ||
+    `<div class="empty">还没有收录教程。<br>写过 Operit 的排障、玩法、配置心得？<a href="https://github.com/luojiaping/Operit-wiki/issues/new?template=tutorial.yml" target="_blank">来投一篇</a>吧。</div>`;
+  document.getElementById("updated").textContent = data.updated ? ("数据更新：" + data.updated) : "";
+}
+load();
+</script>
+</body>
+</html>
