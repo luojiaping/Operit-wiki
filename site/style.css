@@ -477,6 +477,7 @@ details.collapse .body { padding: 0 16px 16px; }
   --font-display: 'Archivo', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 body { padding-top: 84px; background-color: var(--ink); }
+html, body { overflow-x: clip; }
 body.home { background-color: var(--ink); }
 
 /* 噪点颗粒 + 环境光 */
@@ -512,11 +513,7 @@ body.home { background-color: var(--ink); }
 .hero2 { position: relative; z-index: 1; min-height: calc(100vh - 84px); min-height: calc(100svh - 84px);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 40px 20px 80px; overflow: hidden; }
-.ghost-word { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
-  font-family: var(--font-display); font-weight: 900; font-size: clamp(120px, 23vw, 360px);
-  letter-spacing: .02em; line-height: 1; color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, .05);
-  user-select: none; pointer-events: none; white-space: nowrap; }
+
 .kicker { position: relative; margin-bottom: 20px; font-size: 12px; letter-spacing: .32em; color: var(--app-accent-strong); }
 .mono { font-family: var(--font-mono); }
 #dotTitle { width: min(1400px, 96vw); height: min(38vh, 340px); min-height: 170px; display: block; position: relative; }
@@ -543,7 +540,7 @@ body.home { background-color: var(--ink); }
   background: rgba(255, 255, 255, .015); padding: 16px 0; }
 .mq-track { display: inline-flex; align-items: center; gap: 36px; padding-right: 36px; white-space: nowrap;
   animation: mq 28s linear infinite;
-  font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: .16em; color: rgba(255, 255, 255, .55); }
+  font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: .16em; color: rgba(255, 255, 255, .78); }
 .mq-track i { color: var(--app-accent); font-style: normal; font-size: 12px; }
 @keyframes mq { to { transform: translateX(-50%); } }
 
@@ -586,13 +583,15 @@ body.home { background-color: var(--ink); }
 .ms-stat span { font-size: 11px; letter-spacing: .24em; color: var(--app-muted); margin-top: 6px; display: block; }
 
 /* 时间线：幽灵序号 */
-.timeline { counter-reset: tl; margin: 4px -20px 0; padding: 8px 20px 24px; }
+.timeline { counter-reset: tl; margin: 4px -20px 0; padding: 8px 20px 24px;
+  -webkit-mask-image: linear-gradient(90deg, #000 94%, transparent 99.5%);
+  mask-image: linear-gradient(90deg, #000 94%, transparent 99.5%); }
 .tl-item { counter-increment: tl; flex: 0 0 322px; padding-top: 26px; }
 .tl-card { position: relative; overflow: hidden; padding: 22px 20px 18px; border-radius: 16px;
   background: linear-gradient(180deg, rgba(26, 36, 54, .85), rgba(13, 19, 30, .92));
   transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
-.tl-card::after { content: counter(tl, decimal-leading-zero); position: absolute; right: 12px; top: 4px;
-  font-family: var(--font-display); font-weight: 900; font-size: 76px; line-height: 1;
+.tl-card::after { content: counter(tl, decimal-leading-zero); position: absolute; right: 12px; bottom: 2px; top: auto;
+  font-family: var(--font-display); font-weight: 900; font-size: 64px; line-height: 1;
   color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, .10); pointer-events: none; }
 .tl-card:hover { transform: translateY(-6px); border-color: rgba(45, 212, 191, .5);
   box-shadow: 0 18px 44px rgba(0, 0, 0, .5), 0 0 32px rgba(45, 212, 191, .12); }
@@ -602,7 +601,7 @@ body.home { background-color: var(--ink); }
 /* ---- 电影级页脚 ---- */
 .cine { position: relative; z-index: 1; margin-top: 80px; overflow: hidden;
   background: linear-gradient(180deg, transparent 0%, rgba(45, 212, 191, .045) 55%, rgba(20, 30, 44, .55) 100%); }
-.cine .credit { position: relative; padding: 26px 20px 10px; font-size: 12.5px; }
+.cine .credit { position: relative; padding: 14px 20px 12px; font-size: 13px; }
 .cine-word { font-family: var(--font-display); font-weight: 900; font-size: clamp(60px, 13.2vw, 210px);
   text-align: center; line-height: .84; letter-spacing: .015em; white-space: nowrap; user-select: none;
   background: linear-gradient(180deg, rgba(255, 255, 255, .30), rgba(255, 255, 255, .015));
