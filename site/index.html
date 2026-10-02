@@ -355,7 +355,11 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   }
   ['tlPrev', 'tlNext'].forEach(function (id) {
     var b = document.getElementById(id);
-    if (b) b.addEventListener('click', function () { stop(); setTimeout(start, 5000); });
+    if (b) b.addEventListener('click', function () {
+      stop();
+      tl.scrollBy({ left: id === 'tlPrev' ? -320 : 320, behavior: 'smooth' });
+      setTimeout(start, 5000);
+    });
   });
   start();
 })();
