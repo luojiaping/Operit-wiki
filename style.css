@@ -634,3 +634,8 @@ body.home { background-color: var(--ink); }
   .prompt-sec .prompt-hint { display: block; }
   .tl-item { flex-basis: 272px; }
 }
+
+/* ---- Hero 第二层：多语言"知识库"底纹 + 鼠标聚光灯 ---- */
+#langLayer { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.hero2 .kicker, .hero2 #dotTitle, .hero2 .hero-sub, .hero2 .hero-ctas { position: relative; z-index: 1; }
+.hero2 .scroll-cue { z-index: 1; }
