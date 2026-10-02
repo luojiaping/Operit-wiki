@@ -694,5 +694,13 @@
  {
   "fact": "sidebar_* 系列（6 个）是侧边栏宿主插件：account_book（记账本，React 本地页 + 终端起后端）、bing_action（action 函数直执行不跳转路由）、deepseek_harness（承载本机 Linux Runtime 的 DeepSeek Harness Web，127.0.0.1:3081，node-pty 无 ARM64 预编译故本地编译 pty.node）、model_sites（聚合大模型官网入口的 WebView）、opencode（本地 OpenCode Web + 全局配置编辑工具）、sillytavern（侧边栏直开本地 SillyTavern）",
   "ref": "examples/sidebar_deepseek_harness/README.md:1"
+ },
+ {
+  "fact": "【社群经验·非代码事实】华为鸿蒙（HarmonyOS）设备上 Operit 内置终端无法正常启动、报错或崩溃，依赖本地终端的 MCP 插件无法运行；社群结论是鸿蒙底层对 ptrace 等系统调用存在限制导致 proot 无法初始化（源码无此断言，代码侧仅能关联 PathMapper 的 proot-distro 路径映射事实）",
+  "ref": "教程区 issue #134《鸿蒙系统终端兼容性说明》"
+ },
+ {
+  "fact": "【社群经验·非代码事实】部分鸿蒙版本移除了无线调试功能且无障碍权限受限，无法提 Shizuku/ADB，Operit 只能以 Standard 权限运行；“鸿蒙→卓翼通→虚拟机→Operit”套娃方案实测不可行；基础 AI 对话与云端 API 可用，完整功能建议标准 Android 设备，完整适配待 Operit2",
+  "ref": "教程区 issue #134《鸿蒙系统终端兼容性说明》"
  }
 ]

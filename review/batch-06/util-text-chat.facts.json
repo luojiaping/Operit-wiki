@@ -766,5 +766,21 @@
   {
     "fact": "replace 整体替换内容但保留 buffer 实例。",
     "ref": "app/src/main/java/com/ai/assistance/operit/util/markdown/SmartString.kt:100"
+  },
+  {
+    "fact": "聊天界面把 `<status type=\"warning\">` 标签渲染为警告卡片：summaryText 硬编码取字符串 status_warning_ai_error_summary（\"AI犯了一个错误\"），detailText 取标签里的 warningMessage 原文。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/part/CustomXmlRenderer.kt:1329"
+  },
+  {
+    "fact": "ConversationMarkupManager.createWarningStatus 生成 `<status type=\"warning\">$warningMessage</status>` 文本标记，是 warning 卡片的统一构造入口。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationMarkupManager.kt:43"
+  },
+  {
+    "fact": "模型只输出思考内容、removeThinking 后正文为空时，EnhancedAIService 插入纯思考告警（\"警告：请输出正文内容，禁止仅输出思考内容。\"），然后让 AI 继续生成。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt:1789"
+  },
+  {
+    "fact": "纯思考告警以 PromptTurnKind.TOOL_RESULT 写进 conversationHistory，会参与后续轮次消息组装；习惯性只吐 thinking 的模型会每轮触发该警告。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt:1799"
   }
 ]

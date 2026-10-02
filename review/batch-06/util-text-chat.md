@@ -245,9 +245,29 @@ date: 2026-10-01
 - `truncate` —— 无快照截断，要求长度在合法范围内 `app/src/main/java/com/ai/assistance/operit/util/markdown/SmartString.kt:87`
 - `replace` —— 整体替换内容但保留 buffer 实例 `app/src/main/java/com/ai/assistance/operit/util/markdown/SmartString.kt:100`
 
+### 13. `<status type="warning">` 的渲染语义：「AI犯了一个错误」
+
+人话：聊天里看到的"AI犯了一个错误"不是 AI 在认错，是 App 渲染的一张警告卡片。流水线在特定情况下往消息里插入 `<status type="warning">…</status>` 标签，渲染层看到 warning 类型就套一个固定标题，真正的错误原因写在卡片详情里——看详情，别被标题吓到。
+
+- **构造**：`ConversationMarkupManager.createWarningStatus` 生成 `<status type="warning">$warningMessage</status>` 文本标记。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationMarkupManager.kt:43`
+- **渲染**：`CustomXmlRenderer` 遇到 `statusType == "warning"` 时走 `WarningStatusDisplay` 分支，`summaryText` 硬编码取字符串 `status_warning_ai_error_summary`（值就是"AI犯了一个错误"），`detailText` 取标签里的 warningMessage 原文。
+  `app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/part/CustomXmlRenderer.kt:1329`
+  `app/src/main/res/values/strings.xml:7792`
+- **注入点 1——纯思考输出**：`EnhancedAIService` 在模型只输出思考内容、removeThinking 后正文为空时插入纯思考警告，然后让 AI 继续生成。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt:1789`
+  警告文本"警告：请输出正文内容，禁止仅输出思考内容。"见 `app/src/main/res/values/strings.xml:7790`。
+- **注入点 2——工具调用被截断**：检测到未闭合的工具调用、本轮工具全部作废时，插入警告"警告：检测到工具调用输出被截断。本轮所有工具调用均已作废且不会执行。……"（`app/src/main/res/values/strings.xml:7791`）。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt:1907`
+- **注入点 3——一次多个工具调用**：`createMultipleToolsWarning` 只执行第一个工具、忽略其余。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/enhance/ConversationMarkupManager.kt:127`
+  警告文本"检测到多个工具调用。系统将只执行第一个工具……"见 `app/src/main/res/values/strings.xml:8225`。
+- **历史污染**：纯思考告警以 `PromptTurnKind.TOOL_RESULT` 被写进 `conversationHistory`（`:1799`），会参与后续轮次的消息组装。某些习惯性只吐 thinking 或频繁截断工具调用的模型会每轮触发，看起来就是"老是"报错；换新对话（清空历史）可解。
+  `app/src/main/java/com/ai/assistance/operit/api/chat/EnhancedAIService.kt:1799`
+
 ## 关键符号
 
-英文原名清单（按文件）：`ChatMarkupRegex`、`toolCallPattern`、`metaProviderAttrRegex`、`xmlStatusPattern`、`xmlToolResultPattern`、`xmlToolRequestPattern`、`toolParamPattern`、`isToolTagName`、`normalizeToolLikeTagName`、`generateRandomToolTagName`、`extractGeminiThoughtSignature`、`removeOpenAiResponsesProtocolMeta`；`WaifuMessageProcessor`、`StreamingSession`、`collectStableSegments`、`collectFinalSegments`、`streamSegments`、`streamSegmentsWithTypingQueue`、`streamTtsText`、`splitMessageBySentences`、`mergePunctuationOnlySegments`、`shouldHoldLastStableSentence`、`buildRenderableContentForWaifu`、`cleanContentForWaifu`、`processEmotionTags`、`separateEmotionAndText`、`getRandomEmojiPath`、`calculateTypingDelayMs`、`MAX_TYPING_DELAY_MS`、`SENTENCE_SPLIT_REGEX`；`ChatUtils`、`thinkContentPattern`、`removeThinkingContent`、`extractThinkingContent`、`estimateTokenCount`、`extractJson`；`StructuredAssistantContentParser`、`BlockKind`、`Block`、`parse`、`buildBlock`；`StreamingJsonXmlConverter`、`Event`、`State`、`feed`、`flush`、`escapeXml`、`hasUnfinishedParam`；`HtmlParserUtil`、`getExtractionScript`、`parseAndSimplify`、`simplifyNode`、`findTopmostModal`、`getCssSelector`、`isInteractive`、`getNodeDescription`；`TextSegmenter`、`segment`、`calculateRelevance`、`JiebaSegmenter`；`TokenCacheManager`、`calculateInputTokens`、`findCommonPrefixLength`、`calculateTokensForHistory`；`LatexMathMlConverter`、`convertAll`、`getEngine`、`createEngine`；`MathMlPlainTextConverter`、`convert`、`FUNCTION_NAMES`、`LARGE_OPERATORS`；`TtsCleaner`、`TtsSegmenter`、`split`、`nextSegmentEnd`；`MarkdownProcessorType`、`MarkdownNode`、`MarkdownNodeStable`、`MarkdownNodeProcessor`、`getBlockPlugins`、`getInlinePlugins`、`getTypeForPlugin`、`MarkdownUIBinder`、`bind`、`toCharStream`、`SmartString`。
+英文原名清单（按文件）：`ChatMarkupRegex`、`toolCallPattern`、`metaProviderAttrRegex`、`xmlStatusPattern`、`xmlToolResultPattern`、`xmlToolRequestPattern`、`toolParamPattern`、`isToolTagName`、`normalizeToolLikeTagName`、`generateRandomToolTagName`、`extractGeminiThoughtSignature`、`removeOpenAiResponsesProtocolMeta`；`WaifuMessageProcessor`、`StreamingSession`、`collectStableSegments`、`collectFinalSegments`、`streamSegments`、`streamSegmentsWithTypingQueue`、`streamTtsText`、`splitMessageBySentences`、`mergePunctuationOnlySegments`、`shouldHoldLastStableSentence`、`buildRenderableContentForWaifu`、`cleanContentForWaifu`、`processEmotionTags`、`separateEmotionAndText`、`getRandomEmojiPath`、`calculateTypingDelayMs`、`MAX_TYPING_DELAY_MS`、`SENTENCE_SPLIT_REGEX`；`ChatUtils`、`thinkContentPattern`、`removeThinkingContent`、`extractThinkingContent`、`estimateTokenCount`、`extractJson`；`StructuredAssistantContentParser`、`BlockKind`、`Block`、`parse`、`buildBlock`；`StreamingJsonXmlConverter`、`Event`、`State`、`feed`、`flush`、`escapeXml`、`hasUnfinishedParam`；`HtmlParserUtil`、`getExtractionScript`、`parseAndSimplify`、`simplifyNode`、`findTopmostModal`、`getCssSelector`、`isInteractive`、`getNodeDescription`；`TextSegmenter`、`segment`、`calculateRelevance`、`JiebaSegmenter`；`TokenCacheManager`、`calculateInputTokens`、`findCommonPrefixLength`、`calculateTokensForHistory`；`LatexMathMlConverter`、`convertAll`、`getEngine`、`createEngine`；`MathMlPlainTextConverter`、`convert`、`FUNCTION_NAMES`、`LARGE_OPERATORS`；`TtsCleaner`、`TtsSegmenter`、`split`、`nextSegmentEnd`；`MarkdownProcessorType`、`MarkdownNode`、`MarkdownNodeStable`、`MarkdownNodeProcessor`、`getBlockPlugins`、`getInlinePlugins`、`getTypeForPlugin`、`MarkdownUIBinder`、`bind`、`toCharStream`、`SmartString`；`ConversationMarkupManager`、`createWarningStatus`、`createMultipleToolsWarning`；`WarningStatusDisplay`、`status_warning_ai_error_summary`。
 
 ## 输入→处理→输出调用链
 

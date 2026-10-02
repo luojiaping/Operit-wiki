@@ -454,5 +454,25 @@
   {
     "fact": "PerformanceMonitorScreen 分 CPU/内存/网络三个 Tab 展示历史曲线与实体列表；无采样数据时显示 SamplingHint 提示；暂停按钮挂在 TopAppBar 的 actions 上。",
     "ref": "app/src/main/java/com/ai/assistance/operit/ui/features/performance/PerformanceMonitorScreen.kt:80"
+  },
+  {
+    "fact": "工作流执行完成后只做两件事：saveExecutionRecord 存执行记录、updateExecutionStatistics 更新统计；没有向通知栏或聊天推送结果的代码路径（阴性结论：core/workflow/ 四个文件全文无 Notification/NotificationManager/notify 引用）。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:639"
+  },
+  {
+    "fact": "notifyWorkflowsChanged 只是 workflowUpdateEvents.tryEmit(Unit) 的界面刷新事件，用于刷新工作流列表 UI，不是向用户发送通知。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:82"
+  },
+  {
+    "fact": "执行节点把 actionType 原样装进 AITool（name = actionType），交由 toolHandler 执行任意已注册工具。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:1261"
+  },
+  {
+    "fact": "send_notification 系统工具真实存在。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt:2282"
+  },
+  {
+    "fact": "send_notification 的实现经 NotificationManager 以高优先级通道发通知；因此工作流可通过末尾执行节点拼装出“执行完发通知”的用法，但这不是引擎内置的自动触达行为。",
+    "ref": "app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardSystemOperationTools.kt:153"
   }
 ]
