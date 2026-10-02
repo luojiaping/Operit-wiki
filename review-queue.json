@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 05:56 UTC",
+  "updated": "2026-10-02 07:23 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -464,18 +464,18 @@
       "batch": "batch-04",
       "title": "DeepSeek 供应商",
       "module": "app",
-      "status": "approved",
+      "status": "review-pending",
       "issue": 30,
       "issue_title": "[评审] DeepSeek 供应商",
       "md": "review/batch-04/api-chat-deepseek.md",
       "facts": "review/batch-04/api-chat-deepseek.facts.json",
       "lint": "review/batch-04/api-chat-deepseek.lint.md",
       "seed_files": [],
-      "facts_count": 78,
-      "refs_valid": "78/78 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #30 端点反馈新增 5 条，lint 硬失败 0/警告 0）；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移",
+      "facts_count": 81,
+      "refs_valid": "78/78 引用行号真实存在（critic 逐条核引用复验通过；2026-10-01 落实 Issue #30 端点反馈新增 5 条，lint 硬失败 0/警告 0）；2026-10-01 误批准回滚（watcher 误将流水线留言判为通过），水位线已前移；2026-10-02 新增 DSML 协议说明（备注）3 facts，内容变更打回待评审",
       "critic": "",
       "summary": "",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-doubao",
