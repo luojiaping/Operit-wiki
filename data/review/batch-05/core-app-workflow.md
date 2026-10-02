@@ -151,6 +151,19 @@ date: 2026-10-01
 
 `CancellationException` 在各分支被重新抛出，保证协程取消向上传播（`:87`）。`WorkflowExecutionRetryableException` 是标记可重试的异常类型，供 `WorkflowWorker` 映射为 WorkManager 重试（`:73`）。
 
+### 工作流执行结果的触达：引擎无内置推送（边界）
+
+人话：工作流跑完，结果只进"账本"（执行记录+统计），不会自己跳到通知栏，也不会写回聊天。要让用户看到结果，得在工作流里自己拼一个发通知的节点。
+
+- **执行完成后只做两件事**：`saveExecutionRecord` 存执行记录、`updateExecutionStatistics` 更新统计（`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:639`）。没有第三件事，更没有向通知栏或聊天推送结果的代码。
+- **`notifyWorkflowsChanged` 不是给用户发通知**：它只是 `workflowUpdateEvents.tryEmit(Unit)`，用来刷新工作流列表 UI（`app/src/main/java/com/ai/assistance/operit/data/repository/WorkflowRepository.kt:82`）。名字里有 notify，但它是界面刷新事件。
+- 后台 Worker 把执行结果映射成 `Result.success()` / `Result.retry()` / `Result.failure()` 返回给 WorkManager，不发通知（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowWorker.kt:46`）。
+- **阴性结论**：core/workflow/ 下四个文件经 grep 确认无 Notification / NotificationManager / notify( 引用；节点类型只有 TriggerNode / ExecuteNode / ConditionNode / LogicNode / ExtractNode 五种（`app/src/main/java/com/ai/assistance/operit/data/model/Workflow.kt:55`），无通知/消息节点类型。
+- **拼装路径（非内置）**：执行节点把 `actionType` 原样装进 `AITool`（name = actionType），交由 toolHandler 执行任意已注册工具（`app/src/main/java/com/ai/assistance/operit/core/workflow/WorkflowExecutor.kt:1261`）。
+- `send_notification` 系统工具真实存在（`app/src/main/java/com/ai/assistance/operit/core/tools/ToolRegistration.kt:2282`）。
+- 其实现经 `NotificationManager` 以高优先级通道发通知（`app/src/main/java/com/ai/assistance/operit/core/tools/defaultTool/standard/StandardSystemOperationTools.kt:153`）。
+- 因此"定时打招呼"想让用户看到：在工作流末尾加一个执行节点，actionType 填 send_notification，参数里引用前面节点生成的打招呼文本即可——这是拼装用法，不是引擎"执行完自动触达"；工作流编辑器里能否直接选到该工具，本次未查证。
+
 ## 关键符号
 
 | 符号 | 位置 | 说明 |

@@ -158,6 +158,15 @@ apktool 是最重的示例（ToolPkg，toolpkg_id=com.operit.apk_reverse_toolkit
 
 其他代表：context_limiter_c 截取最近 N 层上下文（env CTX_LIMITER_C_FLOOR_LIMIT 默认 5）（`examples/context_limiter_c/src/packages/ctx_limiter_c.ts:1`）；custom_ai_provider 演示 ToolPkg.registerAiProvider 注册自定义 AI 供应商（`examples/custom_ai_provider/README.md:1`）；deepsearching 是多子 Agent 深度搜索调度（`examples/deepsearching/src/main.ts:1`）；linux_ssh 基于 terminal 的 SSH + tmux 长任务（`examples/linux_ssh/src/packages/linux_ssh.ts:1`）；message_insert 在发消息时注入时间/电量/天气/位置等显性附件（`examples/message_insert/src/main.ts:1`）；plan_mode 是聊天内计划模式 + PLAN.md 协作（`examples/plan_mode/src/packages/plan_mode_tools.ts:1`）；subagent 是被动式 subagent_run 工具（`examples/subagent/src/packages/subagent.ts:1`）；windows_control 经 HTTP 调 PC Agent 控制 Windows（`examples/windows_control/src/packages/windows_control.ts:1`）；worldbook v1.2.0 是世界书/知识库插件（`examples/worldbook/src/packages/worldbook_tools.ts:1`）；sidebar_* 6 个侧边栏宿主插件（含 deepseek_harness，127.0.0.1:3081）（`examples/sidebar_deepseek_harness/README.md:1`）。
 
+### 7. 鸿蒙系统限制备注（社群经验，非代码事实）
+
+> 口径声明：本节不是代码事实。内容来自教程区 issue #134《鸿蒙系统终端兼容性说明》（社群知识库 2026-09-30 备份清洗），描述的是鸿蒙操作系统自身的行为。代码侧唯一能关联的事实是：Operit 内置终端是基于 proot 的 Linux 环境——PathMapper 的 `ubuntuRoot` 指向 `filesDir` 下的 proot-distro ubuntu root（`app/src/main/java/com/ai/assistance/operit/util/PathMapper.kt:21`）。"鸿蒙限制 ptrace → proot 无法初始化"这条因果是社群实测结论，源码里没有对应断言，不要当代码事实引用。
+
+- 现象：华为鸿蒙（HarmonyOS）设备上，Operit 内置终端无法正常启动、报错或崩溃；依赖本地终端的 MCP 插件无法运行。
+- 原因（社群结论）：① 鸿蒙底层安全机制与内核对 ptrace 等系统调用存在限制，proot 进程无法正常初始化和运行；② 部分鸿蒙版本移除了无线调试功能、无障碍权限开放受限，无法提 Shizuku/ADB，Operit 只能以 Standard（标准）权限等级运行。
+- 实测无效的绕法："鸿蒙 → 卓翼通 → 虚拟机 → Operit"套娃方案实测行不通。
+- 现状建议：缺无线调试/无障碍权限的鸿蒙设备上，基础的 AI 联网对话、角色卡聊天、云端 API 调用及不依赖本地终端/高级系统权限的功能可正常使用；要完整功能建议用标准 Android 设备；完整适配待 Operit2 重构。
+
 ## 关键符号
 
 - `createAndGetDefaultWorkspace` — 模板消费总入口，按 projectType 映射模板目录（`app/src/main/java/com/ai/assistance/operit/ui/features/chat/webview/WorkspaceUtils.kt:22`）
@@ -191,5 +200,6 @@ apktool 是最重的示例（ToolPkg，toolpkg_id=com.operit.apk_reverse_toolkit
 - `app/src/main/res/values/` + values-en/es/id/ja/ko/ms/night/pt-rBR/ro + `app/src/main/res/xml/locales_config.xml` — 7716 条 strings，9 语言
 - `tools/` — 114 文件：adb、compose_dsl、example_packages、ffmpeg、github、hotbuild、mcp_bridge、native_ripgrep、sandboxpackage_dev_install_or_update.js、shell_identity_launcher、shower、string、toolpkg
 - `examples/` — 540 文件：60+ 示例工具包，.ts 源码 + .js 产物成对
+- 教程区 issue #134《鸿蒙系统终端兼容性说明》——§7 鸿蒙系统限制备注的唯一来源，社群经验、非代码事实
 
 关联阅读：模板消费侧见 WorkspaceUtils（ui-main 页）；JsBridge 运行时见 JsExecutionScriptBuilder（core 相关页）；LocaleUtils 语言工具（util 相关页）。
