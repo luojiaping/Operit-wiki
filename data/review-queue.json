@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 04:48 UTC",
+  "updated": "2026-10-02 04:53 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -220,7 +220,7 @@
       "batch": "batch-03",
       "title": "JS 引擎与 Java 互操作桥",
       "module": "工具系统",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 21,
       "issue_title": "[评审] JS 引擎与 Java 互操作桥",
       "md": "review/batch-03/core-tools-jsengine.md",
@@ -244,7 +244,7 @@
       "refs_valid": "146/146 引用行号真实存在，critic 逐条核引用修掉 5 处事实错误，lint 硬失败 0/警告 0",
       "critic": "独立复核通过（147 条，6 处引用行号修正后复检通过）",
       "summary": "JS 引擎与 Java 互操作桥：QuickJS 引擎生命周期、JS 执行会话与超时取消、NativeInterface 方法门、JS↔Java 对象桥（代理+句柄+JSON 信封）、18 个 bootstrap 模块、Compose DSL 运行时、外部 dex/jar 隔离加载。146 条 facts，走查 10 条（高危 1/警告 4/建议 5）。",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-03/core-tools-jstools",
@@ -305,7 +305,7 @@
       "batch": "batch-03",
       "title": "标准工具·系统操作/多媒体/UI",
       "module": "core",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 19,
       "issue_title": "[评审] 标准工具·系统操作/多媒体/UI",
       "md": "review/batch-03/core-tools-standard-system.md",
@@ -329,7 +329,7 @@
       "refs_valid": "130/130 引用行号真实存在（critic 全量复核 130/130），lint 硬失败 0/警告 0",
       "critic": "独立复核通过（134 条，1 处事实错误+7 处引用修正后复检通过）",
       "summary": "标准工具·系统操作/多媒体/UI：系统设置与应用管理、设备信息、Intent/广播、Shell/终端（会话复用/超时中断）、蓝牙/BLE（会话单例）、音乐播放（ExoPlayer）、FFmpeg、计算器、软件设置（模型配置/角色卡/沙盒包/语音服务/MCP 重启）、UI 自动化（标准版直接操作不可用，子 agent 循环与截图可用）。",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-03/core-tools-standard-webchat",
@@ -393,7 +393,7 @@
       "batch": "batch-03",
       "title": "网页会话·用户脚本引擎",
       "module": "core",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 18,
       "issue_title": "[评审] 网页会话·用户脚本引擎",
       "md": "review/batch-03/core-tools-websession-userscript.md",
@@ -417,7 +417,7 @@
       "refs_valid": "80/80 引用行号真实存在且 ±5 行内关键字命中（critic 脚本全量核验），lint 硬失败 0/警告 0",
       "critic": "独立复核通过（81 条，1 处引用行号修正后复检通过）",
       "summary": "Tampermonkey 式用户脚本引擎：元数据解析、URL 匹配（@match/@include/@exclude/@connect）、33 个 grant 能力注册表、JSON 文件存储（scripts/cache/state）、安装三入口、document-start 注入 + OperitUserscriptBridge RPC、GM.* 特权 API（cookie/XHR/通知/下载/标签页/webRequest 拦截改写）。走查 4 条：高危 1（桥接消息无来源与授权校验）、中 1（安装失败无回滚）、低 2。",
-      "updated": "2026-10-01"
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-claude",
@@ -518,7 +518,7 @@
       "batch": "batch-04",
       "title": "错误/限流/重试",
       "module": "app",
-      "status": "review-pending",
+      "status": "approved",
       "issue": 51,
       "issue_title": "[评审] 错误/限流/重试",
       "md": "review/batch-04/api-chat-errors.md",
@@ -537,7 +537,7 @@
       "refs_valid": "32/32 引用行号真实存在（critic 逐条核引用复验通过），lint 硬失败 0/警告 0",
       "critic": "",
       "summary": "",
-      "updated": ""
+      "updated": "2026-10-02"
     },
     {
       "id": "batch-04/api-chat-fourrouter",
