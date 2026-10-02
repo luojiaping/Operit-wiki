@@ -66,8 +66,14 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
 
   <section class="milestones" id="milestones">
     <div class="sec-head">
+      <div>
       <h2>Wiki 里程碑</h2>
       <p class="sec-sub">从大纲到全仓库覆盖的编译之路 · 源码版本钉住、可复核</p>
+      </div>
+      <div class="tl-nav">
+        <button id="tlPrev" type="button" aria-label="向左滚动">‹</button>
+        <button id="tlNext" type="button" aria-label="向右滚动">›</button>
+      </div>
     </div>
 
     <div class="src-card">
@@ -325,6 +331,18 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
     }
   });
 });
+
+/* ---- 里程碑：横向滚动箭头 ---- */
+(function () {
+  var tl = document.querySelector('.timeline');
+  if (!tl) return;
+  document.getElementById('tlPrev').addEventListener('click', function () {
+    tl.scrollBy({ left: -320, behavior: 'smooth' });
+  });
+  document.getElementById('tlNext').addEventListener('click', function () {
+    tl.scrollBy({ left: 320, behavior: 'smooth' });
+  });
+})();
 </script>
 </body>
 </html>

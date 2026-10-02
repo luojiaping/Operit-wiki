@@ -414,11 +414,16 @@ details.collapse .body { padding: 0 16px 16px; }
 .tut-card .d { font-size: 13px; color: var(--app-muted); }
 
 /* ---- Wiki 里程碑 ---- */
-.milestones { margin: 44px auto 0; max-width: 860px; padding: 0 18px; }
+.milestones { margin: 36px auto 0; max-width: 860px; padding: 0 18px; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .sec-head h2 { font-size: 22px; letter-spacing: .06em; margin: 0 0 6px; }
 .sec-head h2::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px;
   background: linear-gradient(135deg, #22d3ee, #34d399); margin-right: 10px; box-shadow: 0 0 12px rgba(34,211,238,.7); }
-.sec-sub { color: #8b949e; font-size: 13px; margin: 0 0 20px; }
+.sec-sub { color: #8b949e; font-size: 13px; margin: 0 0 16px; }
+.tl-nav { display: flex; gap: 8px; margin-bottom: 16px; flex-shrink: 0; }
+.tl-nav button { width: 32px; height: 32px; border-radius: 8px; border: 1px solid #30363d; background: #0d1117;
+  color: #8b949e; font-size: 17px; cursor: pointer; line-height: 1; padding: 0; }
+.tl-nav button:hover { color: #e6edf3; border-color: #22d3ee; }
 
 .src-card { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
 .src-head { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid #21262d; background: #161b22; }
@@ -440,16 +445,21 @@ details.collapse .body { padding: 0 16px 16px; }
   background: linear-gradient(135deg, #7dd3fc, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .ms-stat span { font-size: 12px; color: #8b949e; }
 
-.timeline { position: relative; margin: 8px 0 0; padding-left: 26px; }
-.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
-  background: linear-gradient(180deg, #22d3ee, #34d399 60%, #21262d); border-radius: 2px; }
-.tl-item { position: relative; margin-bottom: 16px; }
-.tl-dot { position: absolute; left: -26px; top: 22px; width: 16px; height: 16px; border-radius: 50%;
-  background: #0d1117; border: 2px solid #34d399; box-shadow: 0 0 10px rgba(52,211,153,.8); }
+.timeline { display: flex; gap: 14px; overflow-x: auto; margin: 2px -18px 0; padding: 4px 18px 16px;
+  scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: #30363d transparent; }
+.timeline::-webkit-scrollbar { height: 8px; }
+.timeline::-webkit-scrollbar-track { background: transparent; }
+.timeline::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+.timeline::-webkit-scrollbar-thumb:hover { background: #484f58; }
+.tl-item { position: relative; flex: 0 0 288px; scroll-snap-align: start; padding-top: 20px; }
+.tl-item::before { content: ""; position: absolute; top: 8px; left: 0; right: -14px; height: 2px; background: #21262d; }
+.tl-item:last-child::before { right: 0; }
+.tl-dot { position: absolute; left: 22px; top: 2px; width: 14px; height: 14px; border-radius: 50%;
+  background: #0d1117; border: 2px solid #34d399; box-shadow: 0 0 10px rgba(52,211,153,.8); z-index: 1; }
 .tl-dot.warn { border-color: #d29922; box-shadow: 0 0 10px rgba(210,153,34,.8); }
-.tl-card { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 16px 18px;
-  transition: border-color .2s, transform .2s; }
-.tl-card:hover { border-color: #30363d; transform: translateX(4px); }
+.tl-card { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 14px 16px;
+  height: 100%; box-sizing: border-box; transition: border-color .2s; }
+.tl-card:hover { border-color: #22d3ee; }
 .tl-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .tl-batch { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px;
   color: #22d3ee; background: rgba(34,211,238,.08); border: 1px solid rgba(34,211,238,.25);
