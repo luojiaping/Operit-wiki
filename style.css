@@ -648,8 +648,13 @@ body.home { background-color: var(--ink); }
 .tl-item { flex: 0 0 calc((100% - 28px) / 3); scroll-snap-align: none; padding-top: 0; }
 .tl-item::before { display: none; }
 .tl-dot { display: none; }
-.tl-progress { height: 2px; background: rgba(255, 255, 255, .08); border-radius: 2px; margin: 18px 2px 0; overflow: hidden; }
-.tl-progress i { display: block; height: 100%; width: 0; background: var(--app-accent); border-radius: 2px; }
 @media (max-width: 640px) {
   .tl-item { flex: 0 0 100%; }
 }
+
+/* ---- 里程碑：连续滚动 + 两侧渐隐 ---- */
+.timeline {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.tl-track { transition: none; }

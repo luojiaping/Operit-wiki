@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operit-wiki</title>
-<link rel="stylesheet" href="style.css?v=535073d">
+<link rel="stylesheet" href="style.css?v=bbc5a36">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -237,7 +237,6 @@ GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP 
       </div>
       </div>
     </div>
-    <div class="tl-progress" aria-hidden="true"><i></i></div>
   </div>
 </section>
 
@@ -512,68 +511,57 @@ document.querySelectorAll('[data-copy]').forEach(function (el) {
   });
 });
 
-/* ---- 里程碑：卡片轮播（自动播放，无滚动条） ---- */
+/* ---- 里程碑：连续无缝自动播放（无等待、无滚动条） ---- */
 (function () {
   var viewport = document.querySelector('.timeline');
   if (!viewport) return;
   var track = viewport.querySelector('.tl-track');
   if (!track) return;
-  var items = track.children.length;
-  var bar = document.querySelector('.tl-progress i');
-  var DUR = 4500, GAP = 14, dir = 1, idx = 0, timer = null;
+  track.innerHTML += track.innerHTML; /* 克隆一份，无缝循环 */
+  var GAP = 14, SPEED = 60, x = 0, last = 0, paused = false, raf = 0, running = false;
   var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
   function perView() { return window.innerWidth <= 640 ? 1 : 3; }
-  function maxIdx() { return Math.max(0, items - perView()); }
-  function render() {
+  function halfWidth() {
+    var n = track.children.length / 2;
     var w = (viewport.clientWidth - GAP * (perView() - 1)) / perView();
-    track.style.transform = 'translateX(' + (-idx * (w + GAP)) + 'px)';
+    return n * (w + GAP);
   }
-  function go(i) {
-    var m = maxIdx();
-    idx = Math.max(0, Math.min(m, i));
-    render();
-  }
-  function advance() {
-    var m = maxIdx();
-    if (dir > 0 && idx >= m) dir = -1;
-    else if (dir < 0 && idx <= 0) dir = 1;
-    go(idx + dir);
-  }
-  function start() {
-    stop();
-    if (bar) {
-      bar.style.transition = 'none';
-      bar.style.width = '0';
-      void bar.offsetWidth;
-      bar.style.transition = 'width ' + DUR + 'ms linear';
-      bar.style.width = '100%';
+  function frame(t) {
+    if (!last) last = t;
+    var dt = (t - last) / 1000;
+    last = t;
+    if (!paused) {
+      x -= SPEED * dt;
+      var h = halfWidth();
+      if (h > 0 && -x >= h) x += h;
+      track.style.transform = 'translateX(' + x + 'px)';
     }
-    timer = setTimeout(function () { advance(); start(); }, DUR);
+    if (running) raf = requestAnimationFrame(frame);
   }
-  function stop() {
-    if (timer) { clearTimeout(timer); timer = null; }
-    if (bar) bar.style.transition = 'none';
-  }
-  function pause() {
-    if (!timer) return;
-    clearTimeout(timer); timer = null;
-    if (bar) {
-      var w = getComputedStyle(bar).width;
-      bar.style.transition = 'none';
-      bar.style.width = w;
-    }
+  function start() { if (!running) { running = true; last = 0; raf = requestAnimationFrame(frame); } }
+  function stop() { running = false; cancelAnimationFrame(raf); }
+  function nudge(d) {
+    var w = (viewport.clientWidth - GAP * (perView() - 1)) / perView();
+    x -= d * (w + GAP);
+    var h = halfWidth();
+    while (x > 0) x -= h;
+    while (-x >= h) x += h;
+    track.style.transform = 'translateX(' + x + 'px)';
   }
   var prev = document.getElementById('tlPrev'), next = document.getElementById('tlNext');
-  if (prev) prev.addEventListener('click', function () { dir = -1; go(idx - 1); start(); });
-  if (next) next.addEventListener('click', function () { dir = 1; go(idx + 1); start(); });
+  if (prev) prev.addEventListener('click', function () { nudge(-1); });
+  if (next) next.addEventListener('click', function () { nudge(1); });
   if (!isTouch) {
-    viewport.addEventListener('pointerenter', pause);
-    viewport.addEventListener('pointerleave', start);
+    viewport.addEventListener('pointerenter', function () { paused = true; });
+    viewport.addEventListener('pointerleave', function () { paused = false; });
   }
-  var rt;
-  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { go(idx); }, 200); });
-  go(0); start();
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) start(); else stop();
+    }, { threshold: 0.05 }).observe(viewport);
+  }
+  start();
 })();
 
 /* ---- 强制刷新 ---- */
