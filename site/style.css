@@ -650,3 +650,48 @@ body.home { background-color: var(--ink); }
 .repo-grid .tl-item { flex: none; }
 .repo-grid .tl-item h4 { overflow-wrap: anywhere; }
 @media (max-width: 900px) { .repo-grid { grid-template-columns: 1fr; } }
+
+/* ---- 一贴即接入：去终端风，编辑式面板 ---- */
+.prompt-sec .prompt-block.glass {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, .09);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .015));
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+}
+.prompt-sec .prompt-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 26px;
+  background: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+.prompt-sec .prompt-filename { font-size: 13px; }
+.prompt-sec .copy-btn {
+  margin-left: auto;
+  background: var(--app-accent); color: #2b1206; border: none;
+  border-radius: 12px; padding: 11px 24px;
+  font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  box-shadow: 0 8px 26px rgba(255, 122, 47, .35);
+  transition: transform .15s ease, background .15s ease;
+}
+.prompt-sec .copy-btn:hover { background: #ff8c4d; color: #2b1206; transform: translateY(-1px); }
+.prompt-sec .copy-btn svg { width: 14px; height: 14px; }
+.prompt-sec .prompt-body {
+  font-size: 14px; line-height: 2.05;
+  padding: 28px 34px;
+  max-height: 300px;
+  color: #dbe4f0;
+  background: rgba(0, 0, 0, .22);
+  border-left: 2px solid var(--app-accent);
+}
+.prompt-sec .prompt-body::selection { background: rgba(255, 122, 47, .4); }
+.prompt-sec .prompt-foot {
+  padding: 16px 26px;
+  background: none;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+@media (max-width: 640px) {
+  .prompt-sec .prompt-head { padding: 14px 18px; }
+  .prompt-sec .prompt-body { font-size: 13px; padding: 20px 22px; max-height: 260px; }
+  .prompt-sec .copy-btn { padding: 9px 16px; font-size: 13px; }
+}
