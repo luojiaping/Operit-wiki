@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="178" viewBox="0 0 108 178">
   <defs>
-    <filter id="shadow" x="0" y="0" width="108" height="108" filterUnits="userSpaceOnUse">
+    <filter id="shadow" x="0" y="0" width="108" height="178" filterUnits="userSpaceOnUse">
       <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.18"/>
     </filter>
   </defs>
