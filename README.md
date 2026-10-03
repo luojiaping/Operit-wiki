@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/title.svg?v=1" alt="Operit-wiki" width="400">
+  <img src="docs/title.svg?v=2" alt="Operit-wiki" width="400">
 </div>
 <p align="center">
   <a href="https://luojiaping.github.io/Operit-wiki"><img src="https://img.shields.io/badge/📖-Operit_Wiki-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5" alt="Wiki"></a>
