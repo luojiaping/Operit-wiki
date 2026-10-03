@@ -5,7 +5,7 @@ Operit 的知识库：**既是正式 wiki 站，也是 AI 答疑的知识源头*
 [![Wiki](https://img.shields.io/badge/📖-Operit_Wiki-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5)](https://luojiaping.github.io/Operit-wiki)
 [![license](https://img.shields.io/badge/MIT-license-5a6e5c?style=flat-square&labelColor=3a3026)](LICENSE)
 
-👉 **在线阅读：https://luojiaping.github.io/Operit-wiki/wiki.html**
+👉 **在线阅读：https://luojiaping.github.io/Operit-wiki**
 
 - 123 个知识页面，全部条目由 AI agent 按 [SCHEMA.md](SCHEMA.md) 生成与维护
 - 每个事实断言都带 `file:line` 引用，可机器验证
