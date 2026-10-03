@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 19:16 UTC",
+  "updated": "2026-10-03 06:39 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -2592,6 +2592,30 @@
       "updated": "2026-10-02"
     },
     {
+      "id": "batch-09/appendix-plugin-contract",
+      "batch": "batch-09",
+      "title": "插件开发契约手册",
+      "module": "附录",
+      "status": "approved",
+      "issue": 153,
+      "issue_title": "[评审] 插件开发契约手册",
+      "md": "review/batch-09/appendix-plugin-contract.md",
+      "facts": "review/batch-09/appendix-plugin-contract.facts.json",
+      "lint": "review/batch-09/appendix-plugin-contract.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManager.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/ToolPackage.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExecutionScriptBuilder.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsLibraries.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsTimeoutConfig.kt"
+      ],
+      "facts_count": 22,
+      "refs_valid": "用户指示直接上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-03"
+    },
+    {
       "id": "batch-09/appendix-plugin-dev-guide",
       "batch": "batch-09",
       "title": "插件开发指南（Top50 实证）",
@@ -2608,6 +2632,27 @@
       "critic": "",
       "summary": "",
       "updated": "2026-10-02"
+    },
+    {
+      "id": "batch-09/appendix-plugin-examples",
+      "batch": "batch-09",
+      "title": "插件最小实例集",
+      "module": "附录",
+      "status": "approved",
+      "issue": 154,
+      "issue_title": "[评审] 插件最小实例集",
+      "md": "review/batch-09/appendix-plugin-examples.md",
+      "facts": "review/batch-09/appendix-plugin-examples.facts.json",
+      "lint": "review/batch-09/appendix-plugin-examples.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManager.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsExecutionScriptBuilder.kt"
+      ],
+      "facts_count": 11,
+      "refs_valid": "用户指示直接上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-03"
     },
     {
       "id": "batch-09/appendix-tests-android",
@@ -2691,6 +2736,30 @@
       "critic": "",
       "summary": "",
       "updated": "2026-10-02"
+    },
+    {
+      "id": "batch-09/appendix-toolpkg-contract",
+      "batch": "batch-09",
+      "title": "ToolPkg 容器契约",
+      "module": "附录",
+      "status": "approved",
+      "issue": 155,
+      "issue_title": "[评审] ToolPkg 容器契约",
+      "md": "review/batch-09/appendix-toolpkg-contract.md",
+      "facts": "review/batch-09/appendix-toolpkg-contract.facts.json",
+      "lint": "review/batch-09/appendix-toolpkg-contract.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgParser.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/ToolPkgApiVersion.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsToolPkgApiRuntime.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/javascript/JsToolPkgRegistration.kt",
+        "app/src/main/java/com/ai/assistance/operit/core/tools/packTool/PackageManager.kt"
+      ],
+      "facts_count": 13,
+      "refs_valid": "用户指示直接上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-03"
     },
     {
       "id": "batch-09/ui-about",
