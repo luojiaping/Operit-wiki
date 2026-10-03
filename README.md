@@ -1,11 +1,15 @@
-# Operit-wiki
+<p align="center">
+  <img src="docs/logo.svg" alt="Operit-wiki logo" width="120">
+</p>
+<h1 align="center">Operit-wiki</h1>
+<p align="center">
+  <a href="https://luojiaping.github.io/Operit-wiki"><img src="https://img.shields.io/badge/📖-Operit_Wiki-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5" alt="Wiki"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/MIT-license-5a6e5c?style=flat-square&labelColor=3a3026" alt="license"></a>
+</p>
 
 ![Operit-wiki](docs/banner.jpg)
 
-Operit 的知识库：**既是正式 wiki 站，也是 AI 答疑的知识源头**。
-
-[![Wiki](https://img.shields.io/badge/📖-Operit_Wiki-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5)](https://luojiaping.github.io/Operit-wiki)
-[![license](https://img.shields.io/badge/MIT-license-5a6e5c?style=flat-square&labelColor=3a3026)](LICENSE)
+<p align="center">Operit 的知识库：<strong>既是正式 wiki 站，也是 AI 答疑的知识源头</strong>。</p>
 
 👉 **在线阅读：https://luojiaping.github.io/Operit-wiki**
 
