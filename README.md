@@ -1,7 +1,4 @@
-<p align="center">
-  <img src="docs/logo.svg" alt="Operit-wiki logo" width="120">
-</p>
-<h1 align="center">Operit-wiki</h1>
+<h1 align="center"><img src="docs/logo.svg" width="42" alt="Operit-wiki logo"> Operit-wiki</h1>
 <p align="center">
   <a href="https://luojiaping.github.io/Operit-wiki"><img src="https://img.shields.io/badge/📖-Operit_Wiki-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5" alt="Wiki"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/MIT-license-5a6e5c?style=flat-square&labelColor=3a3026" alt="license"></a>
