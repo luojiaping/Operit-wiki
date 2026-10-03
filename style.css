@@ -521,15 +521,6 @@ body.home { background-color: var(--ink); }
   border-radius: 2px; background: var(--app-accent); animation: cue 1.8s ease-in-out infinite; }
 @keyframes cue { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(10px); opacity: .3; } }
 
-/* ---- 跑马灯 ---- */
-.marquee { position: relative; z-index: 1; overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, .07); border-bottom: 1px solid rgba(255, 255, 255, .07);
-  background: rgba(255, 255, 255, .015); padding: 16px 0; }
-.mq-track { display: inline-flex; align-items: center; gap: 36px; padding-right: 36px; white-space: nowrap;
-  animation: mq 28s linear infinite;
-  font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: .16em; color: rgba(255, 255, 255, .78); }
-.mq-track i { color: var(--app-accent); font-style: normal; font-size: 12px; }
-@keyframes mq { to { transform: translateX(-50%); } }
 
 /* ---- 通用区块 ---- */
 .wrap { max-width: 1240px; margin: 0 auto; }
@@ -597,7 +588,6 @@ body.home { background-color: var(--ink); }
 .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .rv { opacity: 1; transform: none; transition: none; }
-  .mq-track { animation: none; }
   .scroll-cue span::after { animation: none; }
 }
 
