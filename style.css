@@ -25,6 +25,8 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "PingFang SC", monospace;
 }
 * { box-sizing: border-box; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;

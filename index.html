@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operit-wiki</title>
-<link rel="stylesheet" href="style.css?v=ba197c7">
+<link rel="stylesheet" href="style.css?v=440dc73">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,7 +30,8 @@
 <section class="hero2" id="top">
   <canvas id="langLayer" aria-hidden="true"></canvas>
   <div class="kicker mono rv in">§.01 — AI-NATIVE KNOWLEDGE BASE · 知识编译库</div>
-  <canvas id="dotTitle" aria-label="Operit wiki"></canvas>
+  <h1 class="vh">Operit wiki —— AI 原生知识库</h1>
+  <canvas id="dotTitle" aria-hidden="true"></canvas>
   <p class="hero-sub rv">把 Operit 全仓库编译成 AI 可读的知识库。<br>人类读得懂，AI 检得准。</p>
   <div class="hero-ctas rv">
     <a class="btn-primary" href="wiki.html">开始探索 <span>→</span></a>
@@ -248,17 +249,43 @@
 
 <script>
 /* ---- 点阵艺术字 ---- */
+/* ---- 点阵艺术字 v2：笔画补偿 / 分界渐变 / 光点质感 / 入场聚合 / 移动端自适应 ---- */
 (function () {
   var canvas = document.getElementById('dotTitle');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var dots = [], W = 0, H = 0, dpr = 1, running = false, raf = 0;
+  var dots = [], W = 0, H = 0, dpr = 1, running = false, raf = 0, t0 = 0;
   var mouse = { x: -9999, y: -9999 };
-  var INK = '191,242,255', CINNABAR = '255,122,47';
+  var INK = [191, 242, 255], CINNABAR = [255, 122, 47];
   var WORD_A = 'Operit', WORD_B = 'wiki', GAP = 4;
+  var ENTR_DUR = 850, STAGGER = 550;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 径向渐变光点 sprite：5 档（纯白→3 档混合→纯橙），drawImage 比逐点 arc 快且有光泽 */
+  function mix(a, b, t) {
+    return [Math.round(a[0] + (b[0] - a[0]) * t), Math.round(a[1] + (b[1] - a[1]) * t), Math.round(a[2] + (b[2] - a[2]) * t)];
+  }
+  function makeSprite(rgb) {
+    var s = 48, c = document.createElement('canvas');
+    c.width = c.height = s;
+    var g = c.getContext('2d');
+    var grad = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+    var k = rgb.join(',');
+    grad.addColorStop(0, 'rgba(' + k + ',1)');
+    grad.addColorStop(0.35, 'rgba(' + k + ',0.95)');
+    grad.addColorStop(0.7, 'rgba(' + k + ',0.45)');
+    grad.addColorStop(1, 'rgba(' + k + ',0)');
+    g.fillStyle = grad;
+    g.fillRect(0, 0, s, s);
+    return c;
+  }
+  var sprites = [];
+  for (var si = 0; si <= 4; si++) sprites.push(makeSprite(mix(INK, CINNABAR, si / 4)));
 
   function build() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var mobile = window.innerWidth <= 640;
+    GAP = mobile ? 5 : 4;
+    dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2);
     var r = canvas.getBoundingClientRect();
     W = Math.max(50, r.width); H = Math.max(50, r.height);
     canvas.width = W * dpr; canvas.height = H * dpr;
@@ -278,41 +305,92 @@
     var data = octx.getImageData(0, 0, off.width, off.height).data;
     dots = [];
     var ox = (W - off.width) / 2, oy = (H - off.height) / 2;
+    var bw = GAP * 3; /* 分界渐变半宽：3 列点白→橙过渡，不再一刀切 */
     for (var y = GAP / 2; y < off.height; y += GAP) {
       for (var x = GAP / 2; x < off.width; x += GAP) {
         var a = data[((y | 0) * off.width + (x | 0)) * 4 + 3];
-        if (a > 110) {
-          dots.push({ x: ox + x, y: oy + y, ink: (x < splitX), k: a / 255, ph: Math.random() * 6.28 });
+        if (a > 60) { /* 阈值 110→60：细笔画不断线 */
+          var k = a / 255;
+          var dx = ox + x, dy = oy + y, qi;
+          if (x < splitX - bw) qi = 0;
+          else if (x > splitX + bw) qi = 4;
+          else qi = Math.round(((x - (splitX - bw)) / (bw * 2)) * 4);
+          dots.push({
+            x: dx, y: dy,
+            sy: dy + 110 + Math.random() * 70,
+            delay: (dx / W) * STAGGER,
+            r: GAP * 0.44 * (0.72 + 0.28 * k), /* 半径下限提高：细笔画不再缩成针尖 */
+            a: 0.55 + 0.45 * k,
+            sp: sprites[qi],
+            ph: Math.random() * 6.28
+          });
         }
       }
     }
+    t0 = 0; /* 重建后入场重播 */
+  }
+
+  function drawDot(d, px, py, pr, alpha) {
+    ctx.globalAlpha = alpha > 1 ? 1 : alpha;
+    var s = pr * 2;
+    ctx.drawImage(d.sp, px - pr, py - pr, s, s);
   }
 
   function frame(t) {
+    if (!t0) t0 = t;
     ctx.clearRect(0, 0, W, H);
     var time = t * 0.0012;
+    var elapsed = t - t0;
+    var allIn = elapsed > STAGGER + ENTR_DUR;
     for (var i = 0; i < dots.length; i++) {
       var d = dots[i];
+      var px = d.x, py = d.y, alpha = d.a;
+      if (!allIn) {
+        var et = (elapsed - d.delay) / ENTR_DUR;
+        if (et <= 0) continue;
+        if (et < 1) {
+          var e = 1 - Math.pow(1 - et, 3);
+          py = d.sy + (d.y - d.sy) * e;
+          alpha = d.a * e;
+        }
+      }
       var wave = Math.sin(d.x * 0.02 + time * 2 + d.ph) * 1.6;
-      var dx = d.x - mouse.x, dy = (d.y + wave) - mouse.y;
-      var dist = Math.sqrt(dx * dx + dy * dy), push = 0, px = 0, py = 0;
-      if (dist < 110 && dist > 0.1) { push = (110 - dist) / 110 * 12; px = dx / dist * push; py = dy / dist * push; }
-      var rad = GAP * 0.36 * (0.55 + 0.45 * d.k) * (1 + 0.1 * Math.sin(time * 2 + d.ph));
-      ctx.beginPath();
-      ctx.arc(d.x + px, d.y + wave + py, Math.max(0.6, rad), 0, 6.2832);
-      ctx.fillStyle = 'rgba(' + (d.ink ? INK : CINNABAR) + ',' + (0.62 + 0.38 * d.k).toFixed(2) + ')';
-      ctx.fill();
+      var mdx = d.x - mouse.x, mdy = (d.y + wave) - mouse.y;
+      var dist = Math.sqrt(mdx * mdx + mdy * mdy);
+      var ox2 = 0, oy2 = 0, boost = 0;
+      if (dist < 150 && dist > 0.1) {
+        var heat = 1 - dist / 150;
+        if (dist < 110) { /* 排斥保留 */
+          var push = (110 - dist) / 110 * 12;
+          ox2 = mdx / dist * push; oy2 = mdy / dist * push;
+        }
+        boost = heat; /* 新增：聚光灯点亮 */
+      }
+      var pr = d.r * (1 + boost * 0.45) * (1 + 0.08 * Math.sin(time * 2 + d.ph));
+      drawDot(d, px + ox2, py + wave + oy2, pr, alpha * (1 + boost * 0.7));
     }
+    ctx.globalAlpha = 1;
     if (running) raf = requestAnimationFrame(frame);
   }
 
-  function start() { if (!running && dots.length) { running = true; raf = requestAnimationFrame(frame); } }
+  function renderStatic() { /* prefers-reduced-motion：只渲染一帧静态字 */
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      drawDot(d, d.x, d.y, d.r, d.a);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function start() { if (!running && dots.length && !reduced) { running = true; raf = requestAnimationFrame(frame); } }
   function stop() { running = false; cancelAnimationFrame(raf); }
 
-  canvas.addEventListener('mousemove', function (e) {
-    var r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
-  });
-  canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+  if (!reduced) {
+    canvas.addEventListener('mousemove', function (e) {
+      var r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    });
+    canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+  }
 
   var hero = canvas.closest('.hero2');
   if ('IntersectionObserver' in window && hero) {
@@ -320,25 +398,13 @@
   }
   document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
 
-  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); start(); }, 200); });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); reduced ? renderStatic() : start(); }, 200); });
 
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { build(); start(); }); }
-  build(); start();
-
-  var btn = document.getElementById('copyPrompt');
-  if (btn) btn.addEventListener('click', function () {
-    var txt = document.getElementById('promptText').innerText;
-    var label = document.getElementById('copyLabel');
-    function done() { if (label) label.textContent = '已复制 ✓'; setTimeout(function () { if (label) label.textContent = '复制提示词'; }, 1600); }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(done, function () { fallback(); });
-    } else fallback();
-    function fallback() {
-      var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
-      ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
-    }
-  });
+  function init() { build(); reduced ? renderStatic() : start(); }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(init); }
+  init();
 })();
+
 
 /* ---- Hero 第二层：多语言"知识库"底纹，鼠标聚光灯揭示 ---- */
 (function () {
