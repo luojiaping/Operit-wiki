@@ -1,5 +1,7 @@
 # Operit-wiki
 
+![Operit-wiki](docs/banner.jpg)
+
 Operit 的知识库：**既是正式 wiki 站，也是 AI 答疑的知识源头**。
 
 [![Wiki](https://img.shields.io/badge/📖-Operit_Wiki-E8D5B5?style=flat-square&labelColor=3a3026&color=E8D5B5)](https://luojiaping.github.io/Operit-wiki)
