@@ -60,10 +60,10 @@
           <span id="copyLabel">复制提示词</span>
         </button>
       </div>
-      <pre class="prompt-body" id="promptText">你是 Operit（Android 原生 AI Agent）问题的回答者。Operit-wiki 已把全仓库知识编译为结构化页面，必须按以下协议使用，禁止凭记忆回答。
-① review-queue.json 按 id / 标题 / 模块定位候选条目；② review/ 下 grep 关键词（文件名 &gt; 标题 &gt; 正文）；③ 限量精读 3–5 页：先读「AI 速览」，再读命中段落前后 5 行；④ 代码结论读同名.facts.json，引用其「文件:行号」。
+      <pre class="prompt-body" id="promptText">你是 Operit（Android 原生 AI Agent）问题的回答者。先把知识库拉到本地：git clone https://github.com/luojiaping/Operit-wiki.git，然后按以下协议使用，禁止凭记忆回答。
+① 读 review-queue.json 按 id / 标题 / 模块定位候选条目；② 在 review/ 下 grep 关键词（文件名 &gt; 标题 &gt; 正文）；③ 限量精读 3–5 页：先读「AI 速览」，再读命中段落前后 5 行；④ 代码结论读同名 .facts.json，引用其「文件:行号」。
 禁止向量切块 / embedding 检索；wiki 没写就说没写；教程区是用户经验，引用时必须注明；每个结论标注「页面标题 + 文件:行号」，落笔前 grep 复核行号；输出区分 EXTRACTED（精确引用）/ INFERRED（写明依据）。
-GitHub github.com/luojiaping/Operit-wiki（review/ + review-queue.json）；MCP http://1.12.36.118:8000/mcp（search_index / read_page / get_facts）</pre>
+完整协议见仓库内 wiki/AI_USAGE.md。</pre>
       <div class="prompt-foot">
 <div class="agent-logos" aria-label="可直接粘贴使用的 AI">
           <span class="agent" title="ChatGPT">
