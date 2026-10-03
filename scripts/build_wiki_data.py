@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""生成 Wiki 预览页的数据：site/data/wiki/pages.json。
+"""生成正式 Wiki 站的数据：site/data/wiki/pages.json。
 
-每页状态：
-  已发布  wiki/<id>.md 存在
-  评审中  review-queue.json 中有关联该 id 的条目
-  规划中  其余（正文为大纲占位 stub，仅含 outline.yaml 确定性字段）
+正式 wiki 不再有"预览/评审中/规划中"之分：每一页都直接嵌入正文。
+- 大纲 11 章 116 页：正文取自 review-queue.json 对应条目的 review/<id>.md（去 frontmatter）。
+- 附录章追加 7 个不在大纲里的附录页（batch-09 插件系列 6 页 + batch-10 扫尾 1 页）。
 """
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, timezone
+import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -17,23 +17,38 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / "data" / "wiki" / "pages.json"
 
+# 不在大纲里、需要并入附录章的条目（固定阅读顺序）
+APPENDIX_EXTRA = [
+    "batch-09/appendix-plugin-capabilities",
+    "batch-09/appendix-js-package-dev",
+    "batch-09/appendix-plugin-contract",
+    "batch-09/appendix-plugin-examples",
+    "batch-09/appendix-plugin-dev-guide",
+    "batch-09/appendix-toolpkg-contract",
+    "batch-10/appendix-uncovered-native",
+]
 
-def stub_md(info: dict) -> str:
-    lines = [
-        f"# {info['title']}",
-        "",
-        f"> 状态：规划中｜章节：{info['chapter']}｜模块：{info['module']}",
-        "",
-        "本页正文尚未生成。以下为大纲规划的覆盖范围（来自 outline.yaml）：",
-        "",
-        "## 计划覆盖的问题",
-        "",
-    ]
-    lines += [f"- {q}" for q in info.get("questions", [])]
-    lines += ["", "## 种子文件", ""]
-    lines += [f"- `{s}`" for s in info.get("seed_files", [])]
-    lines.append("")
-    return "\n".join(lines)
+FRONTMATTER_RE = re.compile(r"^---\s*\n.*?\n---\s*\n", re.S)
+
+
+def strip_frontmatter(md: str) -> str:
+    return FRONTMATTER_RE.sub("", md, count=1)
+
+
+def page_from_entry(entry: dict, pid: str, title: str, module: str) -> dict:
+    md_path = ROOT / entry["md"]
+    md = strip_frontmatter(md_path.read_text(encoding="utf-8")) if md_path.exists() else ""
+    updated = ""
+    st_path = (ROOT / "review" / entry["id"]).with_suffix(".status.json")
+    if st_path.exists():
+        try:
+            updated = json.loads(st_path.read_text(encoding="utf-8")).get("updated", "")
+        except Exception:
+            pass
+    return {
+        "id": pid, "title": title, "module": module, "md": md,
+        "updated": updated, "issue": entry.get("issue"),
+    }
 
 
 def main() -> None:
@@ -41,49 +56,47 @@ def main() -> None:
     op = v3 if v3.exists() else (ROOT / "wiki-work" / "outline.yaml")
     outline = yaml.safe_load(op.read_text(encoding="utf-8"))
     queue = json.loads((ROOT / "review-queue.json").read_text(encoding="utf-8"))
-    # queue 的 id 形如 batch-01/arch-overview；去掉 batch 前缀得到大纲 page id
-    review_of: dict[str, str] = {}
-    for e in queue.get("entries", []):
+    entries = queue.get("entries", [])
+
+    # page_id（去掉 batch 前缀）-> queue entry
+    by_page: dict[str, dict] = {}
+    by_full: dict[str, dict] = {}
+    for e in entries:
         eid = e.get("id", "")
-        page_id = eid.split("/", 1)[1] if "/" in eid else eid
-        review_of[page_id] = eid
+        by_full[eid] = e
+        pid = eid.split("/", 1)[1] if "/" in eid else eid
+        by_page[pid] = e
 
     chapters = []
-    counts = {"published": 0, "review": 0, "planned": 0}
+    total = 0
     for ch in outline["chapters"]:
         pages = []
         for p in ch["pages"]:
             pid = p["id"]
-            wiki_md = ROOT / "wiki" / f"{pid}.md"
-            if wiki_md.exists():
-                status, md = "published", wiki_md.read_text(encoding="utf-8")
-                counts["published"] += 1
-            elif pid in review_of:
-                status = "review"
-                md = (f"> 本页正在评审中，[去评审页](entry.html?id={review_of[pid]})。\n\n"
-                      + stub_md({**p, "chapter": ch["chapter"]}))
-                counts["review"] += 1
-            else:
-                status, md = "planned", stub_md({**p, "chapter": ch["chapter"]})
-                counts["planned"] += 1
-            pages.append({
-                "id": pid, "title": p["title"], "module": p["module"],
-                "status": status, "md": md,
-            })
+            e = by_page.get(pid)
+            if e is None:
+                continue
+            pages.append(page_from_entry(e, pid, p["title"], p["module"]))
+            total += 1
+        # 附录章：追加大纲之外的附录页
+        if ch["chapter"] == "附录":
+            for full_id in APPENDIX_EXTRA:
+                e = by_full.get(full_id)
+                if e is None:
+                    continue
+                pid = full_id.split("/", 1)[1]
+                pages.append(page_from_entry(e, pid, e["title"], e.get("module", "附录")))
+                total += 1
         chapters.append({"chapter": ch["chapter"], "pages": pages})
 
-    v3e = next((e for e in queue.get("entries", []) if e["id"] == "batch-00/outline-v3"), None)
-    outline_status = (v3e or queue["entries"][0])["status"] if queue.get("entries") else "none"
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
         "built": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "outline_version": outline.get("version"),
-        "outline_status": outline_status,
-        "counts": counts,
+        "counts": {"total": total},
         "chapters": chapters,
     }, ensure_ascii=False), encoding="utf-8")
-    print(f"wiki 预览数据：{OUT}（已发布 {counts['published']} / 评审中 "
-          f"{counts['review']} / 规划中 {counts['planned']}）")
+    print(f"正式 wiki 数据：{OUT}（共 {total} 页）")
 
 
 if __name__ == "__main__":

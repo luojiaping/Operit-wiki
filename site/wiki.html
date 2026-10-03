@@ -3,35 +3,99 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wiki 预览 · Operit-wiki</title>
+<title>Wiki · Operit-wiki</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
-  .tree-chapter { margin: 14px 0 4px; font-size: 13px; font-weight: 700; color: var(--app-fg); }
-  .tree-chapter:first-child { margin-top: 0; }
-  .tree-page { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
-    background: none; border: 1px solid transparent; border-radius: 8px;
-    padding: 7px 10px; font-size: 14px; cursor: pointer; color: var(--app-fg); }
-  .tree-page:hover { background: var(--app-raised); }
-  .tree-page.active { background: var(--app-raised); border-color: var(--app-border); }
-  .tree-page .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
-  .dot.published { background: var(--app-accent-deep); }
-  .dot.review { background: var(--app-amber); }
-  .dot.planned { background: var(--app-muted); opacity: .5; }
-  .page-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
-  .page-head h2 { margin: 0; font-size: 22px; }
-  .kv { font-size: 13px; color: var(--app-muted); margin: 4px 0; }
-  .kv b { color: var(--app-fg); font-weight: 600; }
-  .status-line { font-size: 13px; color: var(--app-muted); margin: 10px 0 0; }
+  /* ---- 正式 wiki：文件树 + 正文 + 页内目录 ---- */
+  #menu-btn { display: none; border: 1px solid rgba(255,255,255,.12); background: none; color: #fff;
+    border-radius: 999px; width: 34px; height: 34px; font-size: 16px; cursor: pointer; flex: none; }
+  .wiki-search { flex: 1; max-width: 300px; margin: 0 8px; position: relative; }
+  .wiki-search input { width: 100%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 999px; padding: 7px 30px 7px 14px; font-size: 13px; color: var(--app-fg); outline: none; }
+  .wiki-search input:focus { border-color: var(--app-accent); }
+  .wiki-search .clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--app-muted); cursor: pointer; font-size: 14px; display: none; }
+  .tree-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+  .tree-head h3 { margin: 0; }
+  .tree-head .count { font-size: 12px; color: var(--app-faint); }
+  .tree-chapter { border-bottom: 1px solid var(--app-border-soft); }
+  .tree-chapter:last-child { border-bottom: none; }
+  .tree-chapter > button { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+    background: none; border: none; padding: 9px 6px; font-size: 13.5px; font-weight: 700;
+    color: var(--app-fg); cursor: pointer; border-radius: 8px; }
+  .tree-chapter > button:hover { background: var(--app-raised); }
+  .tree-chapter > button .arrow { transition: transform .18s; color: var(--app-faint); font-size: 11px; flex: none; }
+  .tree-chapter.open > button .arrow { transform: rotate(90deg); }
+  .tree-chapter > button .n { margin-left: auto; font-size: 11px; color: var(--app-faint); font-weight: 400; }
+  .tree-pages { display: none; padding: 2px 0 8px; }
+  .tree-chapter.open .tree-pages { display: block; }
+  .tree-page { display: block; width: 100%; text-align: left; background: none; border: none;
+    border-left: 2px solid transparent; padding: 6px 8px 6px 14px; margin: 1px 0;
+    font-size: 13.5px; color: var(--app-muted); cursor: pointer; border-radius: 0 8px 8px 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tree-page:hover { color: var(--app-fg); background: var(--app-raised); }
+  .tree-page.active { color: var(--app-accent-strong); border-left-color: var(--app-accent);
+    background: var(--app-accent-dim); font-weight: 600; }
+  .tree-empty { display: none; padding: 16px 6px; font-size: 13px; color: var(--app-faint); }
+  .crumb { font-size: 12.5px; color: var(--app-faint); margin-bottom: 8px; }
+  .crumb b { color: var(--app-muted); font-weight: 500; }
+  #page-title { margin: 0 0 6px; font-size: 24px; line-height: 1.4; }
+  .page-meta { font-size: 12.5px; color: var(--app-faint); margin-bottom: 4px; }
+  .page-meta a { color: var(--app-muted); }
+  .toc-mobile { display: none; margin: 12px 0; border: 1px solid var(--app-border);
+    border-radius: 10px; background: var(--app-surface); }
+  .toc-mobile summary { padding: 10px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .toc-mobile .toc-list { padding: 0 14px 12px; }
+  .toc-list { font-size: 13px; }
+  .toc-list a { display: block; color: var(--app-muted); padding: 4px 0; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; }
+  .toc-list a:hover { color: var(--app-accent-strong); text-decoration: none; }
+  .toc-list a.lv3 { padding-left: 14px; font-size: 12.5px; }
+  .page-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px;
+    padding-top: 16px; border-top: 1px solid var(--app-border-soft); }
+  .page-nav a { flex: 1; border: 1px solid var(--app-border); border-radius: 10px; padding: 10px 14px;
+    font-size: 13px; color: var(--app-muted); background: var(--app-surface); }
+  .page-nav a:hover { border-color: var(--app-accent); color: var(--app-fg); text-decoration: none; }
+  .page-nav a span { display: block; font-size: 11px; color: var(--app-faint); }
+  .page-nav a.next { text-align: right; }
+  .page-nav a.hidden { visibility: hidden; }
+  .page-foot { margin-top: 14px; font-size: 12.5px; color: var(--app-faint); }
+  .drawer-overlay { display: none; }
+  .tree-card { max-height: calc(100vh - 120px); overflow: auto; }
+
+  @media (max-width: 1023px) {
+    #menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+    .wiki-search { max-width: none; }
+    .topbar nav a:not(.active):not([href*="github.com"]) { display: none; }
+    #tree-rail { position: fixed; top: 0; left: 0; bottom: 0; width: 310px; max-width: 86vw; z-index: 120;
+      margin: 0; transform: translateX(-105%); transition: transform .25s ease; }
+    #tree-rail .tree-card { max-height: none; height: 100%; border-radius: 0; border: none;
+      border-right: 1px solid var(--app-border); }
+    body.tree-open #tree-rail { transform: none; }
+    body.tree-open .drawer-overlay { display: block; position: fixed; inset: 0; z-index: 110;
+      background: rgba(0,0,0,.55); }
+    .rail-right { display: none; }
+    .toc-mobile { display: block; }
+    #page-title { font-size: 20px; }
+  }
+  @media (min-width: 1024px) {
+    .toc-mobile { display: none; }
+  }
 </style>
 </head>
 <body>
 <div class="topbar">
   <div class="inner">
+    <button id="menu-btn" aria-label="目录">☰</button>
     <div class="brand"><img class="logo-mark" src="logo.svg" alt="Operit">Operit-wiki</div>
+    <div class="wiki-search">
+      <input id="search" type="search" placeholder="搜索 wiki 页面…（ / ）" autocomplete="off">
+      <button class="clear" id="search-clear" aria-label="清空">×</button>
+    </div>
     <nav>
       <a href="index.html">首页</a>
-      <a href="wiki.html" class="active">Wiki 预览</a>
+      <a href="wiki.html" class="active">Wiki</a>
       <a href="graph.html">知识图谱</a>
       <a href="quality.html">代码走查</a>
       <a href="tutorials.html">教程分享</a>
@@ -41,91 +105,197 @@
 </div>
 
 <div class="layout cols">
-  <aside class="rail-left">
-    <div class="paper-card">
-      <h3 style="margin-top:0">目录</h3>
-      <div class="status-line" id="counts"></div>
+  <aside class="rail-left" id="tree-rail">
+    <div class="paper-card tree-card">
+      <div class="tree-head"><h3>目录</h3><span class="count" id="page-count"></span></div>
       <div id="tree"></div>
+      <div class="tree-empty" id="tree-empty">没有匹配的页面，换个关键词试试。</div>
     </div>
   </aside>
 
   <main>
     <div class="paper-card">
-      <div class="page-head">
-        <h2 id="page-title">载入中…</h2>
-        <span class="seal" id="page-seal"></span>
-      </div>
-      <div class="kv" id="page-meta"></div>
+      <div class="crumb" id="crumb"></div>
+      <h1 id="page-title">载入中…</h1>
+      <div class="page-meta" id="page-meta"></div>
+      <details class="toc-mobile"><summary>本页目录</summary><div class="toc-list" id="toc-m"></div></details>
       <div class="rule"><span>正文</span></div>
       <div class="markdown-body" id="page-body"></div>
+      <div class="page-nav">
+        <a id="prev-link" href="#"><span>← 上一篇</span><b></b></a>
+        <a id="next-link" class="next" href="#"><span>下一篇 →</span><b></b></a>
+      </div>
+      <div class="page-foot" id="page-foot"></div>
     </div>
     <div class="credit">纸墨设计参考 <a href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank">sdyckjq-lab/llm-wiki-skill</a>（MIT）</div>
   </main>
 
   <aside class="rail-right">
     <div class="paper-card">
-      <h3 style="margin-top:0">凡例</h3>
-      <div class="kv"><span class="dot published" style="display:inline-block"></span> <b>已发布</b> — 通过评审并合并</div>
-      <div class="kv"><span class="dot review" style="display:inline-block"></span> <b>评审中</b> — 正在走评审流程</div>
-      <div class="kv"><span class="dot planned" style="display:inline-block"></span> <b>规划中</b> — 大纲占位，正文未生成</div>
-      <div class="rule"><span>说明</span></div>
-      <p style="font-size:13px;color:var(--app-muted)">规划中条目只展示大纲里的确定性字段（覆盖问题、种子文件），不写推测正文。条目间关联可去<a href="graph.html">知识图谱</a>
-      <a href="quality.html">代码走查</a>
-      <a href="tutorials.html">教程分享</a>查看。</p>
+      <h3 style="margin-top:0">本页目录</h3>
+      <div class="toc-list" id="toc"></div>
     </div>
   </aside>
 </div>
+<div class="drawer-overlay" id="overlay"></div>
 
 <script>
-const SEAL = { published: ["approved", "已发布"], review: ["review-pending", "评审中"], planned: ["planned", "规划中"] };
-let DATA = null;
+let DATA = null, FLAT = [];
+const OPEN_KEY = "operit-wiki-tree-open";
+
+function getOpen() {
+  try { return JSON.parse(localStorage.getItem(OPEN_KEY) || "[]"); } catch (e) { return []; }
+}
+function setOpen(arr) {
+  try { localStorage.setItem(OPEN_KEY, JSON.stringify(arr)); } catch (e) {}
+}
+
+function buildTree() {
+  const tree = document.getElementById("tree");
+  tree.innerHTML = "";
+  FLAT = [];
+  const open = new Set(getOpen());
+  DATA.chapters.forEach((ch, ci) => {
+    const wrap = document.createElement("div");
+    wrap.className = "tree-chapter";
+    wrap.dataset.chapter = ch.chapter;
+    const head = document.createElement("button");
+    head.innerHTML = `<span class="arrow">▶</span><span></span><span class="n">${ch.pages.length}</span>`;
+    head.children[1].textContent = ch.chapter;
+    head.onclick = () => {
+      wrap.classList.toggle("open");
+      const cur = new Set(getOpen());
+      wrap.classList.contains("open") ? cur.add(ch.chapter) : cur.delete(ch.chapter);
+      setOpen([...cur]);
+    };
+    const list = document.createElement("div");
+    list.className = "tree-pages";
+    ch.pages.forEach(p => {
+      FLAT.push({ chapter: ch.chapter, id: p.id, title: p.title });
+      const b = document.createElement("button");
+      b.className = "tree-page";
+      b.dataset.id = p.id;
+      b.title = p.title;
+      b.textContent = p.title;
+      b.onclick = () => select(p.id);
+      list.appendChild(b);
+    });
+    wrap.appendChild(head);
+    wrap.appendChild(list);
+    if (open.has(ch.chapter)) wrap.classList.add("open");
+    tree.appendChild(wrap);
+  });
+  document.getElementById("page-count").textContent = `共 ${FLAT.length} 页`;
+}
+
+function ensureVisible(id) {
+  const btn = document.querySelector(`.tree-page[data-id="${CSS.escape(id)}"]`);
+  if (!btn) return;
+  const ch = btn.closest(".tree-chapter");
+  if (!ch.classList.contains("open")) {
+    ch.classList.add("open");
+    const cur = new Set(getOpen()); cur.add(ch.dataset.chapter); setOpen([...cur]);
+  }
+  document.querySelectorAll(".tree-page").forEach(b => b.classList.toggle("active", b === btn));
+  const card = document.querySelector(".tree-card");
+  const r = btn.getBoundingClientRect(), c = card.getBoundingClientRect();
+  if (r.top < c.top || r.bottom > c.bottom) btn.scrollIntoView({ block: "nearest" });
+}
+
+function slugify(text, i) {
+  return "sec-" + i + "-" + text.trim().toLowerCase()
+    .replace(/[^\u4e00-\u9fa5a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
+}
+
+function buildToc() {
+  const heads = document.getElementById("page-body").querySelectorAll("h2, h3");
+  const html = [...heads].map((h, i) => {
+    const id = slugify(h.textContent, i);
+    h.id = id;
+    return `<a class="${h.tagName === "H3" ? "lv3" : ""}" href="#${id}"></a>`;
+  }).join("");
+  // 用 textContent 转义后填入，避免标题里的 HTML 被执行
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  const links = tmp.querySelectorAll("a");
+  heads.forEach((h, i) => { links[i].textContent = h.textContent; });
+  document.getElementById("toc").innerHTML = tmp.innerHTML;
+  document.getElementById("toc-m").innerHTML = tmp.innerHTML;
+  document.querySelector(".rail-right .paper-card").style.display = heads.length ? "" : "none";
+}
 
 function select(id, push = true) {
-  for (const ch of DATA.chapters) for (const p of ch.pages) {
-    if (p.id === id) { renderPage(p, ch.chapter); break; }
-  }
-  document.querySelectorAll(".tree-page").forEach(b => b.classList.toggle("active", b.dataset.id === id));
+  const item = FLAT.find(f => f.id === id);
+  if (!item) return;
+  const ch = DATA.chapters.find(c => c.chapter === item.chapter);
+  const p = ch.pages.find(x => x.id === id);
+  document.title = p.title + " · Operit-wiki";
+  document.getElementById("crumb").innerHTML =
+    `Wiki / <b></b> / <b></b>`;
+  const crumbs = document.getElementById("crumb").querySelectorAll("b");
+  crumbs[0].textContent = item.chapter; crumbs[1].textContent = p.title;
+  document.getElementById("page-title").textContent = p.title;
+  document.getElementById("page-meta").innerHTML =
+    `模块 <b>${p.module}</b>` + (p.updated ? ` · 更新 ${p.updated}` : "");
+  document.getElementById("page-body").innerHTML = marked.parse(p.md || "");
+  buildToc();
+  const idx = FLAT.findIndex(f => f.id === id);
+  const prev = FLAT[idx - 1], next = FLAT[idx + 1];
+  const pl = document.getElementById("prev-link"), nl = document.getElementById("next-link");
+  pl.classList.toggle("hidden", !prev);
+  nl.classList.toggle("hidden", !next);
+  if (prev) { pl.href = "wiki.html?id=" + encodeURIComponent(prev.id); pl.querySelector("b").textContent = prev.title; }
+  if (next) { nl.href = "wiki.html?id=" + encodeURIComponent(next.id); nl.querySelector("b").textContent = next.title; }
+  document.getElementById("page-foot").innerHTML = p.issue
+    ? `内容勘误或补充 → <a href="https://github.com/luojiaping/Operit-wiki/issues/${p.issue}" target="_blank">Issue #${p.issue}</a>`
+    : "";
+  ensureVisible(id);
   if (push) history.replaceState(null, "", "wiki.html?id=" + encodeURIComponent(id));
+  document.body.classList.remove("tree-open");
+  window.scrollTo({ top: 0 });
 }
 
-function renderPage(p, chapter) {
-  document.title = p.title + " · Operit-wiki";
-  document.getElementById("page-title").textContent = p.title;
-  const [cls, label] = SEAL[p.status];
-  const seal = document.getElementById("page-seal");
-  seal.className = "seal " + cls; seal.textContent = label;
-  document.getElementById("page-meta").innerHTML =
-    `章节 <b>${chapter}</b> · 模块 <b>${p.module}</b>`;
-  document.getElementById("page-body").innerHTML = marked.parse(p.md);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+// 搜索：按标题过滤树
+function applySearch(q) {
+  q = q.trim().toLowerCase();
+  document.getElementById("search-clear").style.display = q ? "block" : "none";
+  let visible = 0;
+  document.querySelectorAll(".tree-chapter").forEach(ch => {
+    let hit = 0;
+    ch.querySelectorAll(".tree-page").forEach(b => {
+      const show = !q || b.textContent.toLowerCase().includes(q);
+      b.style.display = show ? "" : "none";
+      if (show) hit++;
+    });
+    ch.style.display = hit ? "" : "none";
+    if (q && hit) ch.classList.add("open"); else if (q) ch.classList.remove("open");
+    visible += hit;
+  });
+  document.getElementById("tree-empty").style.display = visible ? "none" : "block";
 }
+
+document.getElementById("search").addEventListener("input", e => applySearch(e.target.value));
+document.getElementById("search-clear").onclick = () => {
+  document.getElementById("search").value = "";
+  applySearch("");
+};
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
+    e.preventDefault(); document.getElementById("search").focus();
+  }
+  if (e.key === "Escape") document.body.classList.remove("tree-open");
+});
+document.getElementById("menu-btn").onclick = () => document.body.classList.add("tree-open");
+document.getElementById("overlay").onclick = () => document.body.classList.remove("tree-open");
 
 fetch("data/wiki/pages.json")
   .then(r => { if (!r.ok) throw 0; return r.json(); })
   .then(d => {
     DATA = d;
-    const c = d.counts;
-    document.getElementById("counts").textContent =
-      `已发布 ${c.published} · 评审中 ${c.review} · 规划中 ${c.planned}`;
-    const tree = document.getElementById("tree");
-    let first = null;
-    for (const ch of d.chapters) {
-      const h = document.createElement("div");
-      h.className = "tree-chapter"; h.textContent = ch.chapter;
-      tree.appendChild(h);
-      for (const p of ch.pages) {
-        if (!first) first = p.id;
-        const b = document.createElement("button");
-        b.className = "tree-page"; b.dataset.id = p.id;
-        b.innerHTML = `<span class="dot ${p.status}"></span><span></span>`;
-        b.lastChild.textContent = p.title;
-        b.onclick = () => select(p.id);
-        tree.appendChild(b);
-      }
-    }
+    buildTree();
     const want = new URLSearchParams(location.search).get("id");
-    const exists = d.chapters.some(ch => ch.pages.some(p => p.id === want));
-    select(exists ? want : first, false);
+    const exists = FLAT.some(f => f.id === want);
+    select(exists ? want : FLAT[0].id, false);
   })
   .catch(() => {
     document.getElementById("page-title").textContent = "数据未生成";
