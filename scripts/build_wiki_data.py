@@ -3,7 +3,7 @@
 
 正式 wiki 不再有"预览/评审中/规划中"之分：每一页都直接嵌入正文。
 - 大纲 11 章 116 页：正文取自 review-queue.json 对应条目的 review/<id>.md（去 frontmatter）。
-- 附录章追加 7 个不在大纲里的附录页（batch-09 插件系列 6 页 + batch-10 扫尾 1 页）。
+- 附录章追加 8 个不在大纲里的附录页（batch-09 插件系列 6 页 + batch-10 扫尾 1 页 + batch-10 Room 字段规范 1 页）。
 """
 from __future__ import annotations
 
@@ -26,6 +26,7 @@ APPENDIX_EXTRA = [
     "batch-09/appendix-plugin-dev-guide",
     "batch-09/appendix-toolpkg-contract",
     "batch-10/appendix-uncovered-native",
+    "batch-10/appendix-room-field-spec",
 ]
 
 FRONTMATTER_RE = re.compile(r"^---\s*\n.*?\n---\s*\n", re.S)
