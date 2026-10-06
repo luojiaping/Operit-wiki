@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06 02:33 UTC",
+  "updated": "2026-10-06 17:58 UTC",
   "entries": [
     {
       "id": "batch-00/outline-v3",
@@ -3042,6 +3042,36 @@
       "critic": "",
       "summary": "",
       "updated": "2026-10-02"
+    },
+    {
+      "id": "batch-10/appendix-room-field-spec",
+      "batch": "batch-10",
+      "title": "Room 表字段规范与数据救援",
+      "module": "附录",
+      "status": "approved",
+      "issue": null,
+      "issue_title": "[评审] Room 表字段规范与数据救援",
+      "md": "review/batch-10/appendix-room-field-spec.md",
+      "facts": "review/batch-10/appendix-room-field-spec.facts.json",
+      "lint": "review/batch-10/appendix-room-field-spec.lint.md",
+      "seed_files": [
+        "app/src/main/java/com/ai/assistance/operit/data/model/ChatEntity.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/model/MessageEntity.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/model/MessageVariantEntity.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/model/TokenUsageRecordEntity.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/model/TokenStatsModelEntity.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryActivity.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/recovery/DataRecoveryViewModel.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/recovery/RoomDatabaseHealthManager.kt",
+        "app/src/main/res/xml/shortcuts.xml",
+        "app/src/main/AndroidManifest.xml",
+        "app/src/main/res/values/strings.xml"
+      ],
+      "facts_count": 30,
+      "refs_valid": "用户指示直接上线",
+      "critic": "",
+      "summary": "",
+      "updated": "2026-10-07"
     },
     {
       "id": "batch-10/appendix-uncovered-native",
